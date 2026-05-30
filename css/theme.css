@@ -1,0 +1,71 @@
+/* ============================================================
+   Stride theme — Catppuccin. Single source of truth for colour.
+   Semantic labels (--bg, --surface, --text, --accent, --highlight, …) are used
+   throughout the app — there are no legacy aliases.
+   The flavour follows the viewer's OS setting:
+     light  → Catppuccin Latte
+     dark   → Catppuccin Mocha
+   Force one regardless of OS with <html data-theme="latte|mocha">.
+   Palettes: https://catppuccin.com/palette
+   ============================================================ */
+
+/* ---- Catppuccin Latte (light) — the default ---- */
+:root,
+[data-theme="latte"] {
+  --bg:          #e6e9ef;  /* mantle — page background */
+  --surface:     #eff1f5;  /* base   — cards sit lighter than the page */
+  --surface-alt: #dce0e8;  /* crust  — secondary surfaces */
+  --text:        #4c4f69;  /* text */
+  --text-muted:  #6c6f85;  /* subtext0 */
+  --text-subtle: #8c8fa1;  /* overlay1 */
+  --border:      #ccd0da;  /* surface0 */
+  --accent:      #8839ef;  /* mauve — brand, primary actions */
+  --accent-text: #eff1f5;  /* readable text on --accent */
+  --highlight:   #fe640b;  /* peach — graph line, records, emphasis */
+  --danger:      #d20f39;  /* red */
+  --success:     #40a02b;  /* green */
+  --info:        #1e66f5;  /* blue */
+  --wash-top:    rgba(136, 57, 239, 0.10);  /* mauve sky bleed */
+  --wash-bottom: rgba(4, 165, 229, 0.10);   /* sky horizon */
+}
+
+/* ---- Catppuccin Mocha (dark) — when the OS asks for dark and the viewer
+        hasn't pinned light. ---- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="latte"]) {
+    --bg:          #1e1e2e;  /* base */
+    --surface:     #313244;  /* surface0 — elevated card */
+    --surface-alt: #45475a;  /* surface1 */
+    --text:        #cdd6f4;  /* text */
+    --text-muted:  #a6adc8;  /* subtext0 */
+    --text-subtle: #9399b2;  /* overlay2 */
+    --border:      #45475a;  /* surface1 */
+    --accent:      #cba6f7;  /* mauve */
+    --accent-text: #1e1e2e;
+    --highlight:   #fab387;  /* peach */
+    --danger:      #f38ba8;  /* red */
+    --success:     #a6e3a1;  /* green */
+    --info:        #89b4fa;  /* blue */
+    --wash-top:    rgba(203, 166, 247, 0.10);
+    --wash-bottom: rgba(137, 180, 250, 0.08);
+  }
+}
+
+/* ---- Force dark regardless of OS ---- */
+[data-theme="mocha"] {
+  --bg:          #1e1e2e;
+  --surface:     #313244;
+  --surface-alt: #45475a;
+  --text:        #cdd6f4;
+  --text-muted:  #a6adc8;
+  --text-subtle: #9399b2;
+  --border:      #45475a;
+  --accent:      #cba6f7;
+  --accent-text: #1e1e2e;
+  --highlight:   #fab387;
+  --danger:      #f38ba8;
+  --success:     #a6e3a1;
+  --info:        #89b4fa;
+  --wash-top:    rgba(203, 166, 247, 0.10);
+  --wash-bottom: rgba(137, 180, 250, 0.08);
+}
