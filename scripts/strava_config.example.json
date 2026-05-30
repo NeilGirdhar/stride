@@ -1,0 +1,6 @@
+{
+  "_comment": "Copy this file to scripts/strava_config.json (untracked) and fill in your Strava API app credentials from https://www.strava.com/settings/api",
+  "client_id": "YOUR_CLIENT_ID",
+  "client_secret": "YOUR_CLIENT_SECRET",
+  "redirect_port": 8721
+}

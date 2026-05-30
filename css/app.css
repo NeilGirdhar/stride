@@ -1,0 +1,84 @@
+/* Stride rebuild — styles for the new panes (Running graph, stubs). Layered
+   on top of css/styles.css, reusing its design tokens. */
+
+/* ---- Running graph ---- */
+.rg-controls {
+  display: flex; gap: 8px; margin: 0 0 14px;
+}
+.rg-btn {
+  flex: 1; padding: 8px 10px; border: 1px solid var(--hairline);
+  background: var(--surface); color: var(--mocha);
+  border-radius: var(--r-pill); font-family: var(--font-body);
+  font-size: 13px; font-weight: 500; cursor: pointer;
+}
+.rg-btn.on { background: var(--cocoa); color: var(--paper); border-color: var(--cocoa); }
+
+.rg-wrap { position: relative; padding: 14px 8px 8px; }
+svg.rg { width: 100%; height: auto; display: block; overflow: visible; }
+
+.rg-grid  { stroke: var(--hairline); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.rg-line  { fill: none; stroke: var(--full-roast); stroke-width: 2.5;
+            stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.rg-dot   { fill: var(--cocoa); fill-opacity: 0.5; cursor: pointer; }
+.rg-dot:hover { fill-opacity: 1; }
+.rg-dot.hl { fill: var(--full-roast); fill-opacity: 1; stroke: var(--paper); stroke-width: 1.5; }
+.rg-ylab  { fill: var(--slate); font: 500 11px var(--font-mono); text-anchor: end; }
+.rg-ylab.rg-wk { fill: var(--full-roast); text-anchor: start; }
+.rg-xlab  { fill: var(--slate); font: 500 11px var(--font-mono); text-anchor: middle; }
+.rg-axis-title { fill: var(--slate); font: 600 9px var(--font-mono); text-transform: uppercase; letter-spacing: 0.04em; }
+.rg-axis-title.rg-wk { fill: var(--full-roast); }
+
+/* Best-efforts strip */
+.rg-recs { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 8px; }
+.rg-rec {
+  display: flex; flex-direction: column; align-items: flex-start;
+  padding: 8px 12px; border: 1px solid var(--hairline); background: var(--surface);
+  border-radius: var(--r-md); cursor: pointer; min-width: 64px;
+}
+.rg-rec:hover { border-color: var(--full-roast); }
+.rg-rec-label { font: 600 10px var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em; color: var(--slate); }
+.rg-rec-time { font: 600 16px var(--font-display); color: var(--cocoa); }
+
+/* Run detail overlay */
+#rg-modal {
+  position: fixed; inset: 0; background: rgba(27,12,11,0.5);
+  display: none; align-items: flex-end; justify-content: center; z-index: 50;
+}
+#rg-modal.show { display: flex; }
+.rg-modal-card {
+  position: relative; width: 100%; max-width: 480px; background: var(--surface);
+  border-radius: var(--r-lg) var(--r-lg) 0 0; padding: 24px 22px calc(24px + env(safe-area-inset-bottom));
+}
+@media (min-width: 520px) { #rg-modal { align-items: center; } .rg-modal-card { border-radius: var(--r-lg); } }
+.rg-modal-x { position: absolute; top: 14px; right: 16px; background: none; border: none;
+  font-size: 26px; line-height: 1; color: var(--slate); cursor: pointer; }
+.rg-modal-name { font: 600 20px var(--font-display); color: var(--cocoa); padding-right: 28px; }
+.rg-modal-date { color: var(--slate); font-size: 13px; margin-top: 2px; }
+.rg-modal-photo { width: 100%; border-radius: var(--r-md); margin: 14px 0; display: block; }
+.rg-modal-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 16px 0; }
+.rg-modal-grid div { background: var(--paper-deep); border-radius: var(--r-md); padding: 10px 6px; text-align: center; }
+.rg-modal-grid b { display: block; font: 600 18px var(--font-display); color: var(--cocoa); }
+.rg-modal-grid span { font: 500 10px var(--font-mono); color: var(--slate); text-transform: uppercase; }
+.rg-modal-shoe { font-size: 14px; color: var(--ink-soft); margin-bottom: 14px; }
+.rg-modal-link { display: inline-block; font-weight: 600; color: var(--full-roast); }
+
+.rg-tip {
+  position: absolute; transform: translate(-50%, calc(-100% - 12px));
+  background: var(--ink); color: var(--paper); padding: 8px 11px;
+  border-radius: var(--r-md); font-size: 12px; line-height: 1.45;
+  pointer-events: none; white-space: nowrap; z-index: 5;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.22);
+}
+.rg-tip-name { font-weight: 600; margin-bottom: 2px; max-width: 220px;
+               overflow: hidden; text-overflow: ellipsis; }
+.rg-tip-row  { color: var(--mushroom); font-family: var(--font-mono); }
+.rg-tip-row b { color: var(--cream-glow); }
+
+.rg-empty { padding: 40px 8px; text-align: center; color: var(--slate); line-height: 1.6; }
+.rg-note  { margin-top: 14px; font-size: 12px; color: var(--slate); line-height: 1.5; }
+
+/* ---- Placeholder cards ---- */
+.stub-card p { color: var(--ink-soft); font-size: 15px; line-height: 1.6; margin: 0 0 10px; }
+.stub-card ul { margin: 0 0 12px; padding-left: 20px; color: var(--ink-soft); font-size: 15px; line-height: 1.7; }
+.stub-card b { color: var(--cocoa); }
+.stub-meta { color: var(--slate) !important; font-size: 13px !important; }

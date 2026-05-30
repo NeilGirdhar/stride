@@ -1,0 +1,15 @@
+# Personal synced data + derived summaries (Strava, Oura, calendar, tokens).
+# This is your private training data — never committed.
+/data/
+
+# Secrets — API client credentials live here, untracked.
+scripts/strava_config.json
+*.env
+
+# Python
+__pycache__/
+*.pyc
+
+# OS / editor cruft
+.DS_Store
+*.swp
