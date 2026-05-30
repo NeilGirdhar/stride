@@ -3,7 +3,7 @@
 // Line = smoothed WEEKLY VOLUME (km/week, right axis) via a Gaussian kernel rate
 // estimate with edge renormalization (boundary mass corrected so the ends aren't
 // biased low). Horizontally zoomable. Hover a run for stats; click for detail.
-// Best-efforts strip pulls records.json; clicking a record frames + highlights it.
+// Best-efforts table pulls records.json; clicking a row frames + highlights it.
 
 const ACTS_URL = './data/strava-activities.json';
 const DETAILS_URL = './data/strava-run-details.json';
@@ -12,26 +12,34 @@ const RECORDS_URL = './data/records.json';
 
 const RUN_TYPES = new Set(['Run', 'TrailRun']);
 const DAY = 86400000;
+const SERIOUS_START = new Date(2024, 5, 5).getTime(); // Jun 5, 2024 — first 6am block
 
-// viewBox geometry (taller than before so it reads bigger on a phone).
-const W = 380, H = 440, padL = 44, padR = 50, padT = 18, padB = 34;
-const plotH = H - padT - padB;
+// Plot margins (in the same pixel units as the measured svg).
+const padL = 48, padR = 56, padT = 22, padB = 34;
 
 let RUNS = null;
 let DETAILS = {}, GEAR = {}, RECORDS = {};
-let view = 'year';        // week | month | year | all
-let plotted = [];         // window points w/ pixel coords for hit-testing
+let view = 'year';
 let highlightId = null;
 
+// per-draw state shared with drawGraph / pointer handlers
+let currentRoot = null, curStart = 0, curNow = 0, winPts = [], curW = 0, curH = 0;
+let plotted = [];
+let resizeWired = false, rzT = null;
+
 const WINDOWS = {
-  week:  { days: 7,   sigmaDays: 2 },
-  month: { days: 31,  sigmaDays: 4 },
-  year:  { days: 365, sigmaDays: 9 },
-  all:   { days: null, sigmaDays: 16 },
+  week:    { sigmaDays: 2,  start: () => Date.now() - 7 * DAY },
+  month:   { sigmaDays: 4,  start: () => Date.now() - 31 * DAY },
+  year:    { sigmaDays: 9,  start: () => Date.now() - 365 * DAY },
+  serious: { sigmaDays: 12, start: () => SERIOUS_START },
+  all:     { sigmaDays: 16, start: () => RUNS[0].t },
 };
+const BTN_ORDER = ['week', 'month', 'year', 'serious', 'all'];
+const BTN_LABEL = { week: 'Week', month: 'Month', year: 'Year', serious: 'Serious', all: 'All' };
+
 const REC_ORDER = ['400m', '1k', '5k', '10k', 'half', '30k', 'marathon'];
-const REC_LABEL = { '400m': '400m', '1k': '1K', '5k': '5K', '10k': '10K',
-                    half: 'Half', '30k': '30K', marathon: 'Marathon' };
+const REC_LABEL = { '400m': '400 m', '1k': '1 km', '5k': '5 km', '10k': '10 km',
+                    half: 'half marathon', '30k': '30 km', marathon: 'marathon' };
 
 export async function renderRunning() {
   const root = document.getElementById('page-running');
@@ -67,6 +75,17 @@ export async function renderRunning() {
       <div class="date">Run <code>python3 scripts/sync_strava.py sync</code> first.</div></div>`;
     return;
   }
+
+  if (!resizeWired) {
+    window.addEventListener('resize', () => {
+      clearTimeout(rzT);
+      rzT = setTimeout(() => {
+        const page = document.getElementById('page-running');
+        if (currentRoot && page && page.classList.contains('active')) drawGraph(currentRoot);
+      }, 150);
+    });
+    resizeWired = true;
+  }
   draw(root);
 }
 
@@ -82,31 +101,66 @@ async function fetchJSON(url, fallback) {
 }
 
 function draw(root) {
-  const now = Date.now();
-  const win = WINDOWS[view];
-  const start = win.days ? now - win.days * DAY : RUNS[0].t;
-  const pts = RUNS.filter(r => r.t >= start && r.t <= now);
+  currentRoot = root;
+  curNow = Date.now();
+  curStart = Math.max(WINDOWS[view].start(), RUNS[0].t);
+  winPts = RUNS.filter(r => r.t >= curStart && r.t <= curNow);
+  const total = winPts.reduce((s, p) => s + p.km, 0);
+  const longest = winPts.reduce((m, p) => Math.max(m, p.km), 0);
+
+  root.innerHTML = `
+    <div class="hero">
+      <div class="eyebrow">Running</div>
+      <h1>Your runs</h1>
+      <div class="date">${winPts.length} runs · ${total.toFixed(0)} km · longest ${longest.toFixed(1)} km</div>
+    </div>
+
+    <div class="rg-controls">
+      ${BTN_ORDER.map(v => `<button class="rg-btn ${v === view ? 'on' : ''}" data-view="${v}"${
+        v === 'serious' ? ' title="Since start of serious running · Jun 5, 2024"' : ''}>${BTN_LABEL[v]}</button>`).join('')}
+    </div>
+
+    <div class="rg-wrap card">
+      <div id="rg-graph" class="rg-graph"></div>
+      <div class="rg-tip" id="rg-tip" hidden></div>
+    </div>
+
+    ${bestEffortsTable()}
+  `;
+
+  root.querySelectorAll('.rg-btn').forEach(b =>
+    b.addEventListener('click', () => { view = b.dataset.view; highlightId = null; draw(root); }));
+  root.querySelectorAll('tr.rg-rec').forEach(tr =>
+    tr.addEventListener('click', () => showRecord(root, tr.dataset.rec)));
+
+  drawGraph(root);
+}
+
+function drawGraph(root) {
+  const host = root.querySelector('#rg-graph');
+  if (!host) return;
+  const W = curW = Math.max(300, Math.round(host.clientWidth));
+  const H = curH = Math.round(Math.min(560, Math.max(340, window.innerHeight * 0.5)));
+  const plotH = H - padT - padB;
+  const now = curNow, start = curStart, pts = winPts;
 
   const maxKm = niceTop(Math.max(10, ...pts.map(p => p.km)));
   const x = t => padL + (W - padL - padR) * (t - start) / Math.max(1, now - start);
   const yKm = km => H - padB - plotH * (km / maxKm);
 
-  // ---- smoothed weekly volume (km/week) ----
-  const line = weeklyVolumeLine(pts, start, now, win.sigmaDays * DAY);
+  const line = weeklyVolumeLine(pts, start, now, WINDOWS[view].sigmaDays * DAY);
   const maxWk = niceTop(Math.max(20, ...line.map(p => p.kmwk)));
   const yWk = kmwk => H - padB - plotH * (kmwk / maxWk);
   const linePath = line.length
     ? 'M ' + line.map(p => `${x(p.t).toFixed(1)} ${yWk(p.kmwk).toFixed(1)}`).join(' L ')
     : '';
 
-  // ---- dots ----
   plotted = pts.map(p => ({ ...p, px: x(p.t), py: yKm(p.km) }));
   const dots = plotted.map(p => {
     const hl = p.id === highlightId;
     return `<circle class="rg-dot${hl ? ' hl' : ''}" cx="${p.px.toFixed(1)}" cy="${p.py.toFixed(1)}" r="${hl ? 6 : 3}" />`;
   }).join('');
 
-  // ---- axes ----
   const yL = ticks(maxKm).map(km =>
     `<line class="rg-grid" x1="${padL}" y1="${yKm(km)}" x2="${W - padR}" y2="${yKm(km)}" />
      <text class="rg-ylab" x="${padL - 6}" y="${(yKm(km) + 3).toFixed(1)}">${km}</text>`).join('');
@@ -115,40 +169,16 @@ function draw(root) {
   const xT = axisDates(start, now).map(t =>
     `<text class="rg-xlab" x="${x(t).toFixed(1)}" y="${H - 10}">${fmtTick(t, now - start)}</text>`).join('');
 
-  const total = pts.reduce((s, p) => s + p.km, 0);
-  const longest = pts.reduce((m, p) => Math.max(m, p.km), 0);
+  host.innerHTML = `
+    <svg class="rg" id="rg-svg" viewBox="0 0 ${W} ${H}">
+      ${yL}${yR}
+      <text class="rg-axis-title" x="${padL - 6}" y="${padT - 6}">km/run</text>
+      <text class="rg-axis-title rg-wk" x="${W - padR + 6}" y="${padT - 6}" text-anchor="end">km/week</text>
+      ${linePath ? `<path class="rg-line" d="${linePath}" />` : ''}
+      ${dots}
+      ${xT}
+    </svg>`;
 
-  root.innerHTML = `
-    <div class="hero">
-      <div class="eyebrow">Running</div>
-      <h1>Your runs</h1>
-      <div class="date">${pts.length} runs · ${total.toFixed(0)} km · longest ${longest.toFixed(1)} km</div>
-    </div>
-
-    <div class="rg-controls">
-      ${['week', 'month', 'year', 'all'].map(v =>
-        `<button class="rg-btn ${v === view ? 'on' : ''}" data-view="${v}">${cap(v)}</button>`).join('')}
-    </div>
-
-    <div class="rg-wrap card">
-      <svg class="rg" viewBox="0 0 ${W} ${H}" id="rg-svg">
-        ${yL}${yR}
-        <text class="rg-axis-title" x="${padL - 6}" y="${padT - 4}">km/run</text>
-        <text class="rg-axis-title rg-wk" x="${W - padR + 6}" y="${padT - 4}" text-anchor="end">km/wk</text>
-        ${linePath ? `<path class="rg-line" d="${linePath}" />` : ''}
-        ${dots}
-        ${xT}
-      </svg>
-      <div class="rg-tip" id="rg-tip" hidden></div>
-    </div>
-
-    ${bestEffortsStrip()}
-  `;
-
-  root.querySelectorAll('.rg-btn').forEach(b =>
-    b.addEventListener('click', () => { view = b.dataset.view; highlightId = null; draw(root); }));
-  root.querySelectorAll('.rg-rec').forEach(b =>
-    b.addEventListener('click', () => showRecord(root, b.dataset.rec)));
   wirePointer(root);
 }
 
@@ -159,33 +189,40 @@ function weeklyVolumeLine(pts, start, end, h) {
   const t0 = pts[0].t, t1 = pts[pts.length - 1].t;
   const norm = 1 / (h * Math.sqrt(2 * Math.PI));
   const out = [];
-  const N = 160;
+  const N = 200;
   for (let i = 0; i <= N; i++) {
     const t = start + (end - start) * (i / N);
     let s = 0;
     for (const p of pts) s += p.km * Math.exp(-0.5 * ((t - p.t) / h) ** 2);
     s *= norm;
     const edge = Phi((t1 - t) / h) - Phi((t0 - t) / h);
-    if (edge < 0.05) continue;            // too far from data — don't draw
+    if (edge < 0.05) continue;
     out.push({ t, kmwk: (s / edge) * 7 * DAY });
   }
   return out;
 }
 
-function bestEffortsStrip() {
+function bestEffortsTable() {
   const present = REC_ORDER.filter(k => RECORDS[k]);
   if (!present.length) {
-    return `<div class="rg-note">Best efforts (400m · 1K · 5K · 10K · Half · 30K · Marathon) appear here once
+    return `<div class="rg-note">Best efforts (400 m · 1 km · 5 km · 10 km · half · 30 km · marathon) appear here once
       <code>python3 scripts/sync_strava.py details</code> finishes.</div>`;
   }
   return `
-    <div class="rg-recs">
-      ${present.map(k => `
-        <button class="rg-rec" data-rec="${k}" title="${esc(RECORDS[k].name || '')}">
-          <span class="rg-rec-label">${REC_LABEL[k]}</span>
-          <span class="rg-rec-time">${RECORDS[k].time}</span>
-        </button>`).join('')}
-    </div>
+    <div class="section-head"><h3 class="rg-h3">Best efforts</h3></div>
+    <table class="rg-table">
+      <thead><tr><th>distance</th><th>time</th><th>when</th></tr></thead>
+      <tbody>
+        ${present.map(k => {
+          const r = RECORDS[k];
+          return `<tr class="rg-rec" data-rec="${k}" title="${esc(r.name || '')}">
+            <td>${REC_LABEL[k]}</td>
+            <td class="rg-rec-time">${r.time}</td>
+            <td class="rg-rec-when">${fmtDate(new Date(r.date).getTime())}</td>
+          </tr>`;
+        }).join('')}
+      </tbody>
+    </table>
     <div class="rg-note">Tap a record to frame and highlight that run.</div>`;
 }
 
@@ -193,8 +230,11 @@ function showRecord(root, key) {
   const r = RECORDS[key];
   if (!r) return;
   const t = new Date(r.date).getTime();
-  const age = Date.now() - t;
-  view = age <= 7 * DAY ? 'week' : age <= 31 * DAY ? 'month' : age <= 365 * DAY ? 'year' : 'all';
+  const now = Date.now();
+  view = t >= now - 7 * DAY ? 'week'
+       : t >= now - 31 * DAY ? 'month'
+       : t >= now - 365 * DAY ? 'year'
+       : t >= SERIOUS_START ? 'serious' : 'all';
   highlightId = r.activity_id;
   draw(root);
   const run = RUNS.find(x => x.id === r.activity_id);
@@ -210,7 +250,7 @@ function wirePointer(root) {
 
   const nearest = (clientX) => {
     const rect = svg.getBoundingClientRect();
-    const vx = (clientX - rect.left) * (W / rect.width);
+    const vx = (clientX - rect.left) * (curW / rect.width);
     let best = null, bd = Infinity;
     for (const p of plotted) {
       const d = Math.abs(p.px - vx);
@@ -223,8 +263,8 @@ function wirePointer(root) {
     const hit = nearest(e.clientX);
     if (!hit) { tip.hidden = true; return; }
     const { p, rect } = hit;
-    tip.style.left = `${p.px * (rect.width / W)}px`;
-    tip.style.top = `${p.py * (rect.height / H)}px`;
+    tip.style.left = `${p.px * (rect.width / curW)}px`;
+    tip.style.top = `${p.py * (rect.height / curH)}px`;
     tip.innerHTML = `
       <div class="rg-tip-name">${esc(p.name)}</div>
       <div class="rg-tip-row"><b>${p.km.toFixed(2)} km</b> · ${fmtDate(p.t)}</div>
@@ -302,5 +342,4 @@ function fmtTick(t, span) {
 }
 function fmtDate(t) { return new Date(t).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' }); }
 function fmtPace(s) { return `${Math.floor(s / 60)}:${String(Math.round(s % 60)).padStart(2, '0')}/km`; }
-function cap(v) { return v[0].toUpperCase() + v.slice(1); }
 function esc(s) { return String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }

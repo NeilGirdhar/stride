@@ -13,7 +13,12 @@
 }
 .rg-btn.on { background: var(--cocoa); color: var(--paper); border-color: var(--cocoa); }
 
-.rg-wrap { position: relative; padding: 14px 8px 8px; }
+/* Break the graph out of the 640px column so it can be ~2x wider on desktop. */
+.rg-wrap {
+  position: relative; padding: 14px 10px 8px; box-sizing: border-box;
+  width: 96vw; max-width: 1280px; margin-left: 50%; transform: translateX(-50%);
+}
+.rg-graph { width: 100%; }
 svg.rg { width: 100%; height: auto; display: block; overflow: visible; }
 
 .rg-grid  { stroke: var(--hairline); stroke-width: 1; vector-effect: non-scaling-stroke; }
@@ -25,19 +30,21 @@ svg.rg { width: 100%; height: auto; display: block; overflow: visible; }
 .rg-ylab  { fill: var(--slate); font: 500 11px var(--font-mono); text-anchor: end; }
 .rg-ylab.rg-wk { fill: var(--full-roast); text-anchor: start; }
 .rg-xlab  { fill: var(--slate); font: 500 11px var(--font-mono); text-anchor: middle; }
-.rg-axis-title { fill: var(--slate); font: 600 9px var(--font-mono); text-transform: uppercase; letter-spacing: 0.04em; }
+.rg-axis-title { fill: var(--slate); font: 600 10px var(--font-mono); letter-spacing: 0.02em; }
 .rg-axis-title.rg-wk { fill: var(--full-roast); }
 
-/* Best-efforts strip */
-.rg-recs { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 8px; }
-.rg-rec {
-  display: flex; flex-direction: column; align-items: flex-start;
-  padding: 8px 12px; border: 1px solid var(--hairline); background: var(--surface);
-  border-radius: var(--r-md); cursor: pointer; min-width: 64px;
+/* Best-efforts table */
+.rg-h3 { font-family: var(--font-display); font-weight: 600; font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--slate); }
+.rg-table { width: 100%; border-collapse: collapse; margin: 4px 0 8px; }
+.rg-table th {
+  text-align: left; font: 600 10px var(--font-mono); letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--slate); padding: 6px 8px; border-bottom: 1px solid var(--hairline);
 }
-.rg-rec:hover { border-color: var(--full-roast); }
-.rg-rec-label { font: 600 10px var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em; color: var(--slate); }
-.rg-rec-time { font: 600 16px var(--font-display); color: var(--cocoa); }
+.rg-table td { padding: 11px 8px; border-bottom: 1px solid var(--hairline); font-size: 15px; color: var(--ink-soft); }
+tr.rg-rec { cursor: pointer; }
+tr.rg-rec:hover td { background: var(--paper-deep); }
+.rg-rec-time { font-family: var(--font-mono); font-weight: 600; color: var(--cocoa); }
+.rg-rec-when { color: var(--slate); font-size: 13px; }
 
 /* Run detail overlay */
 #rg-modal {
