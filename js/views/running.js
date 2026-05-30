@@ -19,8 +19,12 @@ const padL = 48, padR = 56, padT = 22, padB = 34;
 
 let RUNS = null;
 let DETAILS = {}, GEAR = {}, RECORDS = {};
-let view = 'year';
+let view = 'serious';
+let detailTab = 'clubs';
+let highlightedRecordKey = null;
 let highlightId = null;
+let highlightedShoeId = null;
+let highlightedClubId = null;
 
 // per-draw state shared with drawGraph / pointer handlers
 let currentRoot = null, curStart = 0, curNow = 0, winPts = [], curW = 0, curH = 0;
@@ -36,17 +40,32 @@ const WINDOWS = {
 };
 const BTN_ORDER = ['week', 'month', 'year', 'serious', 'all'];
 const BTN_LABEL = { week: 'Week', month: 'Month', year: 'Year', serious: 'Serious', all: 'All' };
+const DETAIL_TABS = [
+  { id: 'clubs', label: 'Clubs' },
+  { id: 'shoes', label: 'Shoes' },
+  { id: 'best', label: 'Best' },
+];
 
 const REC_ORDER = ['400m', '1k', '5k', '10k', 'half', '30k', 'marathon'];
 const REC_LABEL = { '400m': '400 m', '1k': '1 km', '5k': '5 km', '10k': '10 km',
                     half: 'half marathon', '30k': '30 km', marathon: 'marathon' };
+const CLUBS = [
+  { id: 'mrrc', label: 'MRRC', re: /\bMRRC\b/i },
+  { id: 'cose', label: 'Cosé', re: /\bCos[ée]\b/i },
+  { id: '6am-mile-end', label: '6am Mile End', re: /\b6\s*am\s+Mile\s+End\b/i },
+  { id: '6am-villeray', label: '6am Villeray', re: /\b6\s*am\s+Villeray\b/i },
+  { id: '6am-outremont', label: '6am Outremont', re: /\b6\s*am\s+Outrem[eo]nt\b/i },
+  { id: '6am-rosemont', label: '6am Rosemont', re: /\b6\s*am\s+Rosemont\b/i },
+  { id: '6am-plateau', label: '6am Plateau', re: /\b6\s*am\s+Plateau\b/i },
+  { id: '6am-laurier-east', label: '6am Laurier East', re: /\b6\s*am\s+Laurier\s+East\b/i },
+];
 
 export async function renderRunning() {
   const root = document.getElementById('page-running');
   if (!root) return;
 
   if (RUNS === null) {
-    root.innerHTML = `<div class="hero"><div class="eyebrow">Running</div><h1>Loading…</h1></div>`;
+    root.innerHTML = `<div class="hero"><h1>Loading runs…</h1></div>`;
     try {
       const [acts, details, gear, records] = await Promise.all([
         fetchJSON(ACTS_URL), fetchJSON(DETAILS_URL, {}),
@@ -63,6 +82,8 @@ export async function renderRunning() {
           paceSec: a.moving_time ? a.moving_time / (a.distance / 1000) : null,
           hr: a.average_heartrate || null,
           cad: a.average_cadence ? Math.round(a.average_cadence * 2) : null,
+          gearId: DETAILS[a.id]?.gear_id || null,
+          club: classifyClub(a.name),
         }))
         .sort((x, y) => x.t - y.t);
     } catch (e) {
@@ -71,7 +92,7 @@ export async function renderRunning() {
   }
 
   if (!RUNS.length) {
-    root.innerHTML = `<div class="hero"><div class="eyebrow">Running</div><h1>No run data</h1>
+    root.innerHTML = `<div class="hero"><h1>No run data</h1>
       <div class="date">Run <code>python3 scripts/sync_strava.py sync</code> first.</div></div>`;
     return;
   }
@@ -110,28 +131,60 @@ function draw(root) {
 
   root.innerHTML = `
     <div class="hero">
-      <div class="eyebrow">Running</div>
-      <h1>Your runs</h1>
+      <h1>Training log</h1>
       <div class="date">${winPts.length} runs · ${total.toFixed(0)} km · longest ${longest.toFixed(1)} km</div>
     </div>
 
-    <div class="rg-controls">
-      ${BTN_ORDER.map(v => `<button class="rg-btn ${v === view ? 'on' : ''}" data-view="${v}"${
-        v === 'serious' ? ' title="Since start of serious running · Jun 5, 2024"' : ''}>${BTN_LABEL[v]}</button>`).join('')}
-    </div>
+    <div class="rg-shell">
+      <div class="rg-controls">
+        ${BTN_ORDER.map(v => `<button class="rg-btn ${v === view ? 'on' : ''}" data-view="${v}"${
+          v === 'serious' ? ' title="Since start of serious running · Jun 5, 2024"' : ''}>${BTN_LABEL[v]}</button>`).join('')}
+      </div>
 
-    <div class="rg-wrap card">
-      <div id="rg-graph" class="rg-graph"></div>
-      <div class="rg-tip" id="rg-tip" hidden></div>
-    </div>
+      <div class="rg-layout">
+        <div class="rg-wrap card">
+          <div id="rg-graph" class="rg-graph"></div>
+          <div class="rg-tip" id="rg-tip" hidden></div>
+        </div>
 
-    ${bestEffortsTable()}
+        <aside class="rg-side card">
+          <div class="rg-detail-tabs">
+            ${DETAIL_TABS.map(tab => `<button class="rg-detail-tab ${tab.id === detailTab ? 'on' : ''}" data-detail="${tab.id}">${tab.label}</button>`).join('')}
+          </div>
+          <div class="rg-detail-body">${detailPanel()}</div>
+        </aside>
+      </div>
+    </div>
   `;
 
   root.querySelectorAll('.rg-btn').forEach(b =>
-    b.addEventListener('click', () => { view = b.dataset.view; highlightId = null; draw(root); }));
+    b.addEventListener('click', () => { view = b.dataset.view; clearHighlights(); draw(root); }));
+  root.querySelectorAll('.rg-detail-tab').forEach(b =>
+    b.addEventListener('click', () => { detailTab = b.dataset.detail; clearHighlights(); draw(root); }));
   root.querySelectorAll('tr.rg-rec').forEach(tr =>
-    tr.addEventListener('click', () => showRecord(root, tr.dataset.rec)));
+    tr.addEventListener('click', () => {
+      const record = RECORDS[tr.dataset.rec];
+      if (!record) return;
+      highlightedRecordKey = highlightedRecordKey === tr.dataset.rec ? null : tr.dataset.rec;
+      highlightId = highlightedRecordKey ? record.activity_id : null;
+      highlightedShoeId = null;
+      highlightedClubId = null;
+      draw(root);
+    }));
+  root.querySelectorAll('tr.rg-shoe').forEach(tr =>
+    tr.addEventListener('click', () => {
+      highlightedShoeId = highlightedShoeId === tr.dataset.gear ? null : tr.dataset.gear;
+      highlightId = null;
+      highlightedClubId = null;
+      draw(root);
+    }));
+  root.querySelectorAll('tr.rg-club').forEach(tr =>
+    tr.addEventListener('click', () => {
+      highlightedClubId = highlightedClubId === tr.dataset.club ? null : tr.dataset.club;
+      highlightId = null;
+      highlightedShoeId = null;
+      draw(root);
+    }));
 
   drawGraph(root);
 }
@@ -148,7 +201,7 @@ function drawGraph(root) {
   const x = t => padL + (W - padL - padR) * (t - start) / Math.max(1, now - start);
   const yKm = km => H - padB - plotH * (km / maxKm);
 
-  const line = weeklyVolumeLine(pts, start, now, WINDOWS[view].sigmaDays * DAY);
+  const line = weeklyVolumeLine(RUNS, start, now, WINDOWS[view].sigmaDays * DAY);
   const maxWk = niceTop(Math.max(20, ...line.map(p => p.kmwk)));
   const yWk = kmwk => H - padB - plotH * (kmwk / maxWk);
   const linePath = line.length
@@ -158,7 +211,9 @@ function drawGraph(root) {
   plotted = pts.map(p => ({ ...p, px: x(p.t), py: yKm(p.km) }));
   const dots = plotted.map(p => {
     const hl = p.id === highlightId;
-    return `<circle class="rg-dot${hl ? ' hl' : ''}" cx="${p.px.toFixed(1)}" cy="${p.py.toFixed(1)}" r="${hl ? 6 : 3}" />`;
+    const shoeHl = highlightedShoeId && p.gearId === highlightedShoeId;
+    const clubHl = highlightedClubId && p.club?.id === highlightedClubId;
+    return `<circle class="rg-dot${hl ? ' hl' : ''}${shoeHl ? ' shoe-hl' : ''}${clubHl ? ' club-hl' : ''}" cx="${p.px.toFixed(1)}" cy="${p.py.toFixed(1)}" r="3" />`;
   }).join('');
 
   const yL = ticks(maxKm).map(km =>
@@ -209,15 +264,15 @@ function bestEffortsTable() {
       <code>python3 scripts/sync_strava.py details</code> finishes.</div>`;
   }
   return `
-    <div class="section-head"><h3 class="rg-h3">Best efforts</h3></div>
     <table class="rg-table">
-      <thead><tr><th>distance</th><th>time</th><th>when</th></tr></thead>
+      <thead><tr><th>distance</th><th>time</th><th>pace</th><th>when</th></tr></thead>
       <tbody>
         ${present.map(k => {
           const r = RECORDS[k];
-          return `<tr class="rg-rec" data-rec="${k}" title="${esc(r.name || '')}">
+          return `<tr class="rg-rec${k === highlightedRecordKey ? ' active' : ''}" data-rec="${k}" title="${esc(r.name || '')}">
             <td>${REC_LABEL[k]}</td>
             <td class="rg-rec-time">${r.time}</td>
+            <td>${fmtPace(r.sec / recordDistanceKm(k)).replace('/km', '')}</td>
             <td class="rg-rec-when">${fmtDate(new Date(r.date).getTime())}</td>
           </tr>`;
         }).join('')}
@@ -226,19 +281,71 @@ function bestEffortsTable() {
     <div class="rg-note">Tap a record to frame and highlight that run.</div>`;
 }
 
-function showRecord(root, key) {
-  const r = RECORDS[key];
-  if (!r) return;
-  const t = new Date(r.date).getTime();
-  const now = Date.now();
-  view = t >= now - 7 * DAY ? 'week'
-       : t >= now - 31 * DAY ? 'month'
-       : t >= now - 365 * DAY ? 'year'
-       : t >= SERIOUS_START ? 'serious' : 'all';
-  highlightId = r.activity_id;
-  draw(root);
-  const run = RUNS.find(x => x.id === r.activity_id);
-  if (run) openRun(run);
+function shoesTable() {
+  const shoes = new Map();
+  for (const run of winPts) {
+    if (!run.gearId || !GEAR[run.gearId]) continue;
+    const current = shoes.get(run.gearId) || { id: run.gearId, km: 0, runs: 0, gear: GEAR[run.gearId] };
+    current.km += run.km;
+    current.runs += 1;
+    shoes.set(run.gearId, current);
+  }
+  const rows = [...shoes.values()].sort((a, b) => b.km - a.km);
+  if (!rows.length) return '';
+  return `
+    <table class="rg-table">
+      <thead><tr><th>shoe</th><th>visible km</th><th>runs</th></tr></thead>
+      <tbody>
+        ${rows.map(row => `<tr class="rg-shoe${row.id === highlightedShoeId ? ' active' : ''}" data-gear="${esc(row.id)}" title="${esc(row.gear.name)}">
+          <td>${esc(row.gear.name)}${row.gear.retired ? ' <span class="rg-shoe-retired">retired</span>' : ''}</td>
+          <td class="rg-rec-time">${row.km.toFixed(1)}</td>
+          <td class="rg-rec-when">${row.runs}</td>
+        </tr>`).join('')}
+      </tbody>
+    </table>
+    <div class="rg-note">Tap a shoe to highlight matching runs in the graph.</div>`;
+}
+
+function clubsTable() {
+  const clubs = new Map();
+  for (const run of winPts) {
+    if (!run.club) continue;
+    const current = clubs.get(run.club.id) || { ...run.club, km: 0, runs: 0 };
+    current.km += run.km;
+    current.runs += 1;
+    clubs.set(run.club.id, current);
+  }
+  const rows = [...clubs.values()].sort((a, b) => b.runs - a.runs || b.km - a.km);
+  if (!rows.length) return '';
+  return `
+    <table class="rg-table">
+      <thead><tr><th>club</th><th>visible km</th><th>runs</th></tr></thead>
+      <tbody>
+        ${rows.map(row => `<tr class="rg-club${row.id === highlightedClubId ? ' active' : ''}" data-club="${esc(row.id)}">
+          <td>${esc(row.label)}</td>
+          <td class="rg-rec-time">${row.km.toFixed(1)}</td>
+          <td class="rg-rec-when">${row.runs}</td>
+        </tr>`).join('')}
+      </tbody>
+    </table>
+    <div class="rg-note">Tap a club to highlight matching runs in the graph.</div>`;
+}
+
+function detailPanel() {
+  if (detailTab === 'shoes') return shoesTable();
+  if (detailTab === 'clubs') return clubsTable();
+  return bestEffortsTable();
+}
+
+function classifyClub(name) {
+  return CLUBS.find(club => club.re.test(name || '')) || null;
+}
+
+function clearHighlights() {
+  highlightId = null;
+  highlightedRecordKey = null;
+  highlightedShoeId = null;
+  highlightedClubId = null;
 }
 
 // ---- pointer (hover tooltip + click detail) ----
@@ -342,4 +449,5 @@ function fmtTick(t, span) {
 }
 function fmtDate(t) { return new Date(t).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' }); }
 function fmtPace(s) { return `${Math.floor(s / 60)}:${String(Math.round(s % 60)).padStart(2, '0')}/km`; }
+function recordDistanceKm(key) { return ({ '400m': 0.4, '1k': 1, '5k': 5, '10k': 10, half: 21.0975, '30k': 30, marathon: 42.195 })[key]; }
 function esc(s) { return String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }

@@ -51,33 +51,6 @@ input, textarea, select { font: inherit; }
 /* ---------- Layout ---------- */
 .wrap { max-width: 640px; margin: 0 auto; padding: 20px 18px; }
 
-header.top {
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 18px 22px 4px;
-  max-width: 720px; margin: 0 auto;
-  background: transparent;
-}
-.brandmark {
-  display: inline-flex; align-items: center;
-  padding: 9px 18px;
-  background: var(--accent);
-  border-radius: var(--r-pill);
-  font-family: var(--font-display);
-  font-weight: 500; font-size: 14px;
-  letter-spacing: -0.005em;
-  color: var(--accent-text);
-}
-.countdown {
-  display: inline-block;
-  padding: 9px 18px;
-  background: var(--surface);
-  border-radius: var(--r-pill);
-  font-family: var(--font-body);
-  font-size: 13px; color: var(--text-muted);
-  font-weight: 480;
-}
-.countdown b { color: var(--accent); font-weight: 600; margin-right: 4px; }
-
 /* ---------- Hero ---------- */
 .hero { padding: 56px 4px 32px; }
 .eyebrow {

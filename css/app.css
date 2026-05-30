@@ -11,28 +11,44 @@
 }
 .rg-btn.on { background: var(--accent); color: var(--accent-text); border-color: var(--accent); }
 
-/* Break the graph out of the 640px column so it can be ~2x wider on desktop. */
-.rg-wrap {
-  position: relative; padding: 14px 10px 8px; box-sizing: border-box;
+.rg-shell {
   width: 96vw; max-width: 1280px; margin-left: 50%; transform: translateX(-50%);
 }
+.rg-layout { display: grid; gap: 16px; align-items: start; }
+.rg-wrap {
+  position: relative; padding: 14px 10px 8px; box-sizing: border-box;
+}
+.rg-wrap.card, .rg-side.card { margin-bottom: 0; }
+.rg-side { min-width: 0; padding: 18px; }
+.rg-detail-tabs {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px; margin-bottom: 12px;
+}
+.rg-detail-tab {
+  min-width: 0; padding: 8px 6px; border: 1px solid var(--border);
+  border-radius: var(--r-pill); background: transparent; color: var(--text-muted);
+  font: 500 12px var(--font-body);
+}
+.rg-detail-tab.on { background: var(--accent); border-color: var(--accent); color: var(--accent-text); }
+.rg-detail-body { min-height: 160px; overflow-x: auto; }
 .rg-graph { width: 100%; }
 svg.rg { width: 100%; height: auto; display: block; overflow: visible; }
 
 .rg-grid  { stroke: var(--border); stroke-width: 1; vector-effect: non-scaling-stroke; }
-.rg-line  { fill: none; stroke: var(--highlight); stroke-width: 2.5;
+.rg-line  { fill: none; stroke: var(--info); stroke-width: 2.5;
             stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
 .rg-dot   { fill: var(--text-subtle); fill-opacity: 0.7; cursor: pointer; }
 .rg-dot:hover { fill: var(--text); fill-opacity: 1; }
-.rg-dot.hl { fill: var(--highlight); fill-opacity: 1; stroke: var(--surface); stroke-width: 1.5; }
+.rg-dot.shoe-hl,
+.rg-dot.club-hl,
+.rg-dot.hl { fill: var(--highlight); fill-opacity: 1; }
 .rg-ylab  { fill: var(--text-muted); font: 500 11px var(--font-mono); text-anchor: end; }
-.rg-ylab.rg-wk { fill: var(--highlight); text-anchor: start; }
+.rg-ylab.rg-wk { fill: var(--info); text-anchor: start; }
 .rg-xlab  { fill: var(--text-muted); font: 500 11px var(--font-mono); text-anchor: middle; }
 .rg-axis-title { fill: var(--text-muted); font: 600 10px var(--font-mono); letter-spacing: 0.02em; }
-.rg-axis-title.rg-wk { fill: var(--highlight); }
+.rg-axis-title.rg-wk { fill: var(--info); }
 
-/* ---- Best-efforts table ---- */
-.rg-h3 { font-family: var(--font-display); font-weight: 600; font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted); }
+/* ---- Detail tables ---- */
 .rg-table { width: 100%; border-collapse: collapse; margin: 4px 0 8px; }
 .rg-table th {
   text-align: left; font: 600 10px var(--font-mono); letter-spacing: 0.06em;
@@ -40,9 +56,27 @@ svg.rg { width: 100%; height: auto; display: block; overflow: visible; }
 }
 .rg-table td { padding: 11px 8px; border-bottom: 1px solid var(--border); font-size: 15px; color: var(--text); }
 tr.rg-rec { cursor: pointer; }
-tr.rg-rec:hover td { background: var(--surface-alt); }
+tr.rg-rec:hover td,
+tr.rg-rec.active td { background: var(--surface-alt); }
+tr.rg-shoe { cursor: pointer; }
+tr.rg-shoe:hover td,
+tr.rg-shoe.active td { background: var(--surface-alt); }
+tr.rg-club { cursor: pointer; }
+tr.rg-club:hover td,
+tr.rg-club.active td { background: var(--surface-alt); }
 .rg-rec-time { font-family: var(--font-mono); font-weight: 600; color: var(--accent); }
 .rg-rec-when { color: var(--text-muted); font-size: 13px; }
+.rg-shoe-retired {
+  margin-left: 6px; color: var(--text-subtle); font-size: 12px; font-family: var(--font-mono);
+}
+
+@media (min-width: 900px) {
+  .rg-layout { grid-template-columns: minmax(0, 1fr) 360px; }
+  .rg-side { position: sticky; top: 18px; }
+  .rg-side .rg-table th,
+  .rg-side .rg-table td { padding-left: 6px; padding-right: 6px; font-size: 13px; }
+  .rg-side .rg-table th { font-size: 9px; }
+}
 
 /* ---- Hover tooltip ---- */
 .rg-tip {

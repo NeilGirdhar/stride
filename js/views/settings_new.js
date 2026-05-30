@@ -8,7 +8,6 @@ export function renderSettings() {
   if (!root) return;
   root.innerHTML = `
     <div class="hero">
-      <div class="eyebrow">Settings</div>
       <h1>Settings</h1>
     </div>
     <div class="card">

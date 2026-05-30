@@ -7,7 +7,6 @@ export function renderGoals() {
   if (!root) return;
   root.innerHTML = `
     <div class="hero">
-      <div class="eyebrow">Goals</div>
       <h1>Sub-3:00 marathon</h1>
       <div class="date">Montreal Beneva · Oct 11, 2026 · 4:16/km</div>
     </div>

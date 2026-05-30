@@ -7,7 +7,6 @@ export function renderFitness() {
   if (!root) return;
   root.innerHTML = `
     <div class="hero">
-      <div class="eyebrow">Fitness</div>
       <h1>Fitness &amp; Freshness</h1>
       <div class="date">Running-only load model — coming next.</div>
     </div>
