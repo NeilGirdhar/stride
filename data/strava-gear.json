@@ -1,0 +1,47 @@
+{
+  "g25805243": {
+    "name": "New Balance FuelCell Rebel v5 Olivine",
+    "distance_km": 522.9,
+    "retired": false
+  },
+  "g24162579": {
+    "name": "New Balance Fresh Foam X 880v15",
+    "distance_km": 446.9,
+    "retired": true
+  },
+  "g18527526": {
+    "name": "Mizuno Wave Rebellion Sonic",
+    "distance_km": 299.5,
+    "retired": true
+  },
+  "g19578325": {
+    "name": "ASICS GEL-Nimbus 26 ASICS GEL-Nimbus 26",
+    "distance_km": 846.0,
+    "retired": true
+  },
+  "g21409049": {
+    "name": "Salomon S/Lab Genesis",
+    "distance_km": 871.6,
+    "retired": false
+  },
+  "g26014455": {
+    "name": "New Balance FuelCell SuperComp Elite v5",
+    "distance_km": 99.9,
+    "retired": false
+  },
+  "g30522125": {
+    "name": "Norda 002",
+    "distance_km": 62.4,
+    "retired": false
+  },
+  "g24148471": {
+    "name": "Brooks Hyperion 2",
+    "distance_km": 34.3,
+    "retired": false
+  },
+  "g31188164": {
+    "name": "New Balance FuelCell Rebel v5 Pink heat",
+    "distance_km": 33.1,
+    "retired": false
+  }
+}

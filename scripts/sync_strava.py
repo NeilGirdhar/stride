@@ -53,9 +53,11 @@ SCOPE = "read,activity:read_all"
 
 RUN_TYPES = ("Run", "TrailRun")
 # Strava best_effort name -> our record key. Strava computes these per run.
-BEST_EFFORT_KEYS = {"400m": "400m", "1k": "1k", "5k": "5k", "10k": "10k",
-                    "Half-Marathon": "half"}
-# Distances Strava does NOT compute — we find the fastest window from streams.
+# Note Strava's casing: "400m" but "1K"/"5K"/"10K"/"30K"/"Marathon".
+BEST_EFFORT_KEYS = {"400m": "400m", "1K": "1k", "5K": "5k", "10K": "10k",
+                    "Half-Marathon": "half", "30K": "30k", "Marathon": "marathon"}
+# Fallback for 30k/marathon on long runs where Strava didn't flag a best effort
+# — found as the fastest window from the distance/time streams.
 STREAM_RECORDS = {"30k": 30000, "marathon": 42195}
 
 

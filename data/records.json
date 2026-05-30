@@ -1,0 +1,58 @@
+{
+  "400m": {
+    "sec": 84,
+    "time": "1:24",
+    "activity_id": 12280066194,
+    "name": "6am Plateau",
+    "date": "2024-08-30",
+    "url": "https://www.strava.com/activities/12280066194"
+  },
+  "1k": {
+    "sec": 242,
+    "time": "4:02",
+    "activity_id": 13016263635,
+    "name": "Speeding on le MIL",
+    "date": "2024-11-30",
+    "url": "https://www.strava.com/activities/13016263635"
+  },
+  "5k": {
+    "sec": 1362,
+    "time": "22:42",
+    "activity_id": 18172734023,
+    "name": "Montreal 21k",
+    "date": "2026-04-19",
+    "url": "https://www.strava.com/activities/18172734023"
+  },
+  "10k": {
+    "sec": 2772,
+    "time": "46:12",
+    "activity_id": 18172734023,
+    "name": "Montreal 21k",
+    "date": "2026-04-19",
+    "url": "https://www.strava.com/activities/18172734023"
+  },
+  "half": {
+    "sec": 5873,
+    "time": "1:37:53",
+    "activity_id": 18172734023,
+    "name": "Montreal 21k",
+    "date": "2026-04-19",
+    "url": "https://www.strava.com/activities/18172734023"
+  },
+  "30k": {
+    "sec": 9563,
+    "time": "2:39:23",
+    "activity_id": 16044666433,
+    "name": "Choo choo! \ud83d\ude82 \ud83d\ude82",
+    "date": "2025-10-05",
+    "url": "https://www.strava.com/activities/16044666433"
+  },
+  "marathon": {
+    "sec": 14548,
+    "time": "4:02:28",
+    "activity_id": 16044666433,
+    "name": "Choo choo! \ud83d\ude82 \ud83d\ude82",
+    "date": "2025-10-05",
+    "url": "https://www.strava.com/activities/16044666433"
+  }
+}
