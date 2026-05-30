@@ -1,8 +1,7 @@
-# Personal synced data + derived summaries (Strava, Oura, calendar, tokens).
-# This is your private training data — never committed.
-/data/
-
-# Secrets — API client credentials live here, untracked.
+# Strava history IS committed (public repo, so the deployed site has data).
+# The slimmed activity data has no GPS/route coordinates.
+# But NEVER commit OAuth tokens or API secrets:
+data/strava-tokens.json
 scripts/strava_config.json
 *.env
 

@@ -424,8 +424,12 @@ class Tokens:
 
 
 def api_get(tm, url, params=None):
-    """GET with auto token-refresh on 401 and back-off on 429."""
-    for attempt in range(5):
+    """GET with auto token-refresh on 401 and back-off on 429.
+
+    Strava's short limit is 100 requests per 15-minute window that resets on the
+    quarter hour, so on 429 we sleep to just past the next boundary and retry.
+    Up to ~24 windows (~6h) — comfortable for a long background backfill."""
+    for attempt in range(24):
         if time.time() > tm.expires_at - 60:
             tm.refresh()
         try:
@@ -434,8 +438,9 @@ def api_get(tm, url, params=None):
             if e.code == 401:
                 tm.refresh()
             elif e.code == 429:
-                wait = 60 * (attempt + 1)
-                print(f"  rate limited, waiting {wait}s ...")
+                now = time.time()
+                wait = (900 - (now % 900)) + 5
+                print(f"  rate limited — sleeping {int(wait)}s for the window to reset ...")
                 time.sleep(wait)
             else:
                 raise
@@ -506,7 +511,7 @@ def details(cfg, limit=None):
             except Exception:
                 entry["windows"] = {}
         cache[str(a["id"])] = entry
-        if (i + 1) % 25 == 0:
+        if (i + 1) % 10 == 0:
             save_json(DETAILS_PATH, cache)
             print(f"  {i + 1}/{len(batch)} ...")
 
