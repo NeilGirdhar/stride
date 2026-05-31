@@ -10,9 +10,10 @@ import math
 import operator
 import pathlib
 import sys
+from bisect import bisect_left, bisect_right
 from collections import defaultdict
 from dataclasses import dataclass
-from datetime import UTC, datetime, timedelta
+from datetime import UTC, date, datetime
 from itertools import pairwise
 from typing import Any, cast
 
@@ -32,8 +33,14 @@ MODEL_PATH = GENERATED_DIR / "durability-model.json"
 
 FRESH_CAE_FLOOR = 1200.0
 FRESH_CAE_CEILING = 4500.0
-RETENTION_THRESHOLD = 0.9
 ROLLING_SERIES_DAYS = 180
+SERIES_STEP_DAYS = 7
+MIN_WINDOW_SAMPLES = 2000
+# Durability is reported as the fraction of fresh efficiency still held after this
+# much cumulative load. A fixed reference (most runs reach it) keeps the metric
+# scale-stable over time, unlike "CAE at which efficiency drops 10%", which is
+# bounded by run length and swings wildly as the efficiency curve flattens.
+REFERENCE_CAE = 4000.0
 
 JsonDict = dict[str, Any]
 
@@ -179,88 +186,73 @@ def binned_retention(
 ) -> list[tuple[float, float, int]]:
     if not points:
         return []
-    xs = np.array([point[0] for point in points], dtype=float)
+    arr = np.array(points, dtype=float)
+    order = np.argsort(arr[:, 0])
+    xs = arr[order, 0]
+    ys = arr[order, 1]
     edges = np.quantile(xs, np.linspace(0, 1, bins + 1))
     out = []
     for lo, hi in pairwise(edges):
-        bucket = [point for point in points if lo <= point[0] <= hi]
-        if len(bucket) < min_bin_size:
+        left = int(np.searchsorted(xs, lo, side="left"))
+        right = int(np.searchsorted(xs, hi, side="right"))
+        if right - left < min_bin_size:
             continue
         out.append(
             (
-                float(np.median([point[0] for point in bucket])),
-                float(np.median([point[1] for point in bucket])),
-                len(bucket),
+                float(np.median(xs[left:right])),
+                float(np.median(ys[left:right])),
+                right - left,
             )
         )
     return out
 
 
-def threshold_cae(curve: list[JsonDict]) -> float | None:
-    previous = None
-    for point in curve:
-        cae = float(point["cae"])
-        retained = float(point["retained_efficiency"])
-        if retained <= RETENTION_THRESHOLD:
-            if previous is None:
-                return cae
-            prev_cae, prev_retained = previous
-            if prev_retained == retained:
-                return cae
-            frac = (prev_retained - RETENTION_THRESHOLD) / (prev_retained - retained)
-            return prev_cae + (cae - prev_cae) * frac
-        previous = (cae, retained)
-    return None
+def retained_at(curve: list[JsonDict], reference_cae: float) -> float | None:
+    """Fraction of fresh efficiency retained at `reference_cae`, interpolated on the curve.
+
+    Scale-stable: a fixed reference load most runs reach, so the value compares
+    across time instead of riding the run-length tail like a drop-off threshold.
+    """
+    if not curve:
+        return None
+    points = [(float(p["cae"]), float(p["retained_efficiency"])) for p in curve]
+    if reference_cae <= points[0][0]:
+        return points[0][1]
+    for (cae0, ret0), (cae1, ret1) in pairwise(points):
+        if cae0 <= reference_cae <= cae1:
+            frac = (reference_cae - cae0) / (cae1 - cae0) if cae1 > cae0 else 0.0
+            return ret0 + (ret1 - ret0) * frac
+    return points[-1][1]
 
 
-def per_run_thresholds(retained: list[tuple[Sample, float]]) -> list[JsonDict]:
-    by_run: dict[int, list[tuple[Sample, float]]] = defaultdict(list)
-    for sample, value in retained:
-        by_run[sample.run_id].append((sample, value))
+def durability_series(retained: list[tuple[Sample, float]], window_days: int) -> list[JsonDict]:
+    """Durability over time, on the summary's scale.
 
-    rows = []
-    for run_id, values in by_run.items():
-        if len(values) < 30:
-            continue
-        values.sort(key=lambda item: item[0].cae)
-        smoothed = rolling_median(values, window=15)
-        for sample, value in smoothed:
-            if sample.cae >= FRESH_CAE_FLOOR and value <= RETENTION_THRESHOLD:
-                rows.append(
-                    {
-                        "activity_id": run_id,
-                        "date": sample.date,
-                        "cae_90": round(sample.cae, 1),
-                    }
-                )
-                break
-    return sorted(rows, key=operator.itemgetter("date"))
-
-
-def rolling_median(values: list[tuple[Sample, float]], window: int) -> list[tuple[Sample, float]]:
-    half = window // 2
-    out = []
-    for i, (sample, _value) in enumerate(values):
-        lo = max(0, i - half)
-        hi = min(len(values), i + half + 1)
-        out.append((sample, float(np.median([value for _sample, value in values[lo:hi]]))))
-    return out
-
-
-def rolling_series(rows: list[JsonDict]) -> list[JsonDict]:
-    if not rows:
+    For each weekly date it fits the efficiency-vs-load curve on a trailing window
+    of samples and reads retained efficiency at REFERENCE_CAE. Series and headline
+    number therefore share one scale, so the line tracks durability as it improves.
+    Only full windows are emitted, so a partial window at the start of the history
+    cannot read as artificially low.
+    """
+    dated = sorted(retained, key=lambda item: item[0].date)
+    if not dated:
         return []
-    out = []
-    for row in rows:
-        end = datetime.fromisoformat(str(row["date"])).date()
-        start = end - timedelta(days=ROLLING_SERIES_DAYS)
-        values = [
-            float(other["cae_90"])
-            for other in rows
-            if start.isoformat() <= str(other["date"]) <= end.isoformat()
-        ]
-        if len(values) >= 2:
-            out.append({"date": row["date"], "cae_90": round(float(np.median(values)), 1)})
+    ordinals = [date.fromisoformat(sample.date).toordinal() for sample, _ in dated]
+    out: list[JsonDict] = []
+    for end_ordinal in range(ordinals[0] + window_days, ordinals[-1] + 1, SERIES_STEP_DAYS):
+        lo = bisect_left(ordinals, end_ordinal - window_days)
+        hi = bisect_right(ordinals, end_ordinal)
+        window = dated[lo:hi]
+        if len(window) < MIN_WINDOW_SAMPLES:
+            continue
+        retained_fraction = retained_at(durability_curve(window), REFERENCE_CAE)
+        if retained_fraction is not None:
+            out.append(
+                {
+                    "date": date.fromordinal(end_ordinal).isoformat(),
+                    "retained": round(retained_fraction, 4),
+                }
+            )
     return out
 
 
@@ -299,19 +291,21 @@ def build_model(samples: list[Sample]) -> JsonDict:
     baseline = fit_baseline(samples)
     retained = retained_samples(samples, baseline)
     curve = durability_curve(retained)
-    cae90 = threshold_cae(curve)
-    run_thresholds = per_run_thresholds(retained)
-    series = rolling_series(run_thresholds)
+    series = durability_series(retained, ROLLING_SERIES_DAYS)
+    # The headline number is the latest point on the series, so the two never
+    # disagree (the Goals pane plots the series and pins this value as "today").
+    current = series[-1]["retained"] if series else retained_at(curve, REFERENCE_CAE)
     runs_used = len({sample.run_id for sample in samples})
 
     return {
         "generated_at": datetime.now(UTC).isoformat(),
         "summary": {
-            "durability_cae_90": round(cae90, 1) if cae90 is not None else None,
-            "unit": "CAE",
+            "durability_retained": round(current, 4) if current is not None else None,
+            "reference_cae": REFERENCE_CAE,
+            "unit": "fraction of fresh efficiency",
             "definition": (
-                "How much cumulative active exertion you can absorb before "
-                "grade-adjusted metres per heartbeat drops by 10%."
+                f"Fraction of fresh grade-adjusted metres per heartbeat still held after "
+                f"{REFERENCE_CAE:.0f} CAE of cumulative load in a run."
             ),
             "runs_used": runs_used,
             "sample_count": len(samples),
@@ -321,7 +315,6 @@ def build_model(samples: list[Sample]) -> JsonDict:
             {"effort_rate": round(x, 4), "efficiency_m_per_beat": round(y, 4)} for x, y in baseline
         ],
         "durability_curve": curve,
-        "run_thresholds": run_thresholds,
         "series": series,
     }
 
@@ -333,7 +326,8 @@ def main() -> None:
     summary = cast("JsonDict", model["summary"])
     print(
         "Durability: "
-        f"{summary['durability_cae_90']} {summary['unit']} "
+        f"{summary['durability_retained'] * 100:.1f}% of fresh efficiency held at "
+        f"{summary['reference_cae']:.0f} CAE "
         f"from {summary['runs_used']} runs / {summary['sample_count']} samples"
     )
 

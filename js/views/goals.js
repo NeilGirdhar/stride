@@ -326,12 +326,15 @@ function chart(s, W) {
     padB = 28;
   const sourcePts = s.directSeries || SERIES[s.id] || [];
   const end = goalOn ? MARATHON : Math.min(Date.now(), MARATHON);
-  const dataStart = sourcePts[0]?.t ?? RANGE_START;
+  // The x-axis spans the selected window over all run history (GRID[0] = first
+  // run), not just where this metric has data. The line below simply cuts out
+  // where the metric is empty, so widening to "All" expands the axis regardless.
+  const allStart = GRID?.[0] ?? sourcePts[0]?.t ?? RANGE_START;
   const start = Math.max(
-    dataStart,
+    allStart,
     rangeStart(view, {
       seriousStart: SERIOUS_START,
-      allStart: dataStart,
+      allStart,
       fallbackStart: RANGE_START,
     }),
   );
@@ -530,11 +533,11 @@ function caeDurability() {
   const series = (DURABILITY_MODEL?.series || [])
     .map((point) => ({
       t: parseLocalDate(point.date),
-      v: Number(point.cae_90),
+      v: Number(point.retained),
     }))
     .filter((point) => Number.isFinite(point.t) && Number.isFinite(point.v))
     .sort((a, b) => a.t - b.t);
-  const current = Number(DURABILITY_MODEL?.summary?.durability_cae_90);
+  const current = Number(DURABILITY_MODEL?.summary?.durability_retained);
   if (Number.isFinite(current) && !series.length) {
     return [{ t: Math.min(Date.now(), MARATHON), v: current }];
   }
@@ -617,7 +620,7 @@ function formatterFor(id) {
   if (id === "race") return hms;
   if (id === "fitness") return clock;
   if (id === "anaerobic_power") return speedPaceLabel;
-  if (id === "cae_durability") return (v) => `${v.toFixed(0)} CAE`;
+  if (id === "cae_durability") return (v) => `${(v * 100).toFixed(0)}%`;
   if (id === "volume") return (v) => `${v.toFixed(0)} km/wk`;
   if (id === "recovery" || id === "aerobic_power")
     return (v) => `${v.toFixed(2)} m/beat`;
@@ -653,7 +656,7 @@ function addGeneratedSections() {
   const section = buildSection({
     id: "cae_durability",
     label: "Durability",
-    unit: "How much cumulative active exertion you can absorb before grade-adjusted metres per heartbeat drops by 10%.",
+    unit: "Share of fresh grade-adjusted metres per heartbeat still held deep into a run (after 4000 CAE of cumulative load).",
     higher_better: true,
     compute: "cae_durability",
     targets: [],
