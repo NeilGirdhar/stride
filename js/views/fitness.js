@@ -10,6 +10,8 @@ const FITNESS_TAU = 42;
 const FATIGUE_TAU = 7;
 const FITNESS_MOMENTUM_TAU = 14;
 const FATIGUE_MOMENTUM_TAU = 5;
+// Gaussian display smooth (σ, symmetric/non-causal) — purely cosmetic, and
+// distinct from the model's exponential time constants (τ) above.
 const CHART_SMOOTH_SIGMA_DAYS = 2;
 const WINDOWS = {
   week:    { start: () => Date.now() - 7 * DAY },
@@ -85,7 +87,7 @@ export async function renderFitness() {
             </div>
           </div>
           <div class="fit-metrics">
-            ${metricCard('Form (mildly encourages)', today.form, 'fit-form')}
+            ${metricCard('Form (mildly encourages running)', today.form, 'fit-form')}
             ${metricCard('Fitness momentum (encourages running)', today.fitnessMomentum, 'fit-fitness')}
             ${metricCard('Fatigue momentum (discourages running)', today.fatigueMomentum, 'fit-fatigue')}
           </div>

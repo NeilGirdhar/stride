@@ -31,12 +31,14 @@ let currentRoot = null, curStart = 0, curNow = 0, winPts = [], curW = 0, curH = 
 let plotted = [];
 let resizeWired = false, rzT = null;
 
+// Gaussian bandwidth (σ) for the km/week trend line — one value for every zoom.
+const SMOOTH_SIGMA_DAYS = 9;
 const WINDOWS = {
-  week:    { sigmaDays: 2,  start: () => Date.now() - 7 * DAY },
-  month:   { sigmaDays: 4,  start: () => Date.now() - 31 * DAY },
-  year:    { sigmaDays: 9,  start: () => Date.now() - 365 * DAY },
-  serious: { sigmaDays: 12, start: () => SERIOUS_START },
-  all:     { sigmaDays: 16, start: () => RUNS[0].t },
+  week:    { start: () => Date.now() - 7 * DAY },
+  month:   { start: () => Date.now() - 31 * DAY },
+  year:    { start: () => Date.now() - 365 * DAY },
+  serious: { start: () => SERIOUS_START },
+  all:     { start: () => RUNS[0].t },
 };
 const BTN_ORDER = ['week', 'month', 'year', 'serious', 'all'];
 const BTN_LABEL = { week: 'Week', month: 'Month', year: 'Year', serious: 'Serious', all: 'All' };
@@ -201,7 +203,7 @@ function drawGraph(root) {
   const x = t => padL + (W - padL - padR) * (t - start) / Math.max(1, now - start);
   const yKm = km => H - padB - plotH * (km / maxKm);
 
-  const line = weeklyVolumeLine(RUNS, start, now, WINDOWS[view].sigmaDays * DAY);
+  const line = weeklyVolumeLine(RUNS, start, now, SMOOTH_SIGMA_DAYS * DAY);
   const maxWk = niceTop(Math.max(20, ...line.map(p => p.kmwk)));
   const yWk = kmwk => H - padB - plotH * (kmwk / maxWk);
   const linePath = line.length
