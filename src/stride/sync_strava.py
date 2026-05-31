@@ -54,6 +54,7 @@ DETAILS_PATH = IMPORTED_DIR / "strava-run-details.json"  # cache: id -> detail
 GEAR_PATH = IMPORTED_DIR / "strava-gear.json"  # gear_id -> shoe
 RECORDS_PATH = GENERATED_DIR / "records.json"  # best efforts
 CLUB_OVERRIDES_PATH = ENTERED_DIR / "club-overrides.json"
+CLUB_PATTERNS_PATH = ENTERED_DIR / "club-patterns.json"
 
 AUTH_URL = "https://www.strava.com/oauth/authorize"
 TOKEN_URL = "https://www.strava.com/oauth/token"  # noqa: S105
@@ -77,21 +78,6 @@ BEST_EFFORT_KEYS = {
 # Fallback for 30k/marathon on long runs where Strava didn't flag a best effort
 # — found as the fastest window from the distance/time streams.
 STREAM_RECORDS = {"30k": 30000, "marathon": 42195}
-CLUB_PATTERNS = {
-    "mrrc": re.compile(r"\bMRRC\b", re.IGNORECASE),
-    "cose": re.compile(r"\bCos[ée]\b", re.IGNORECASE),
-    "zab": re.compile(r"\bZAB\b", re.IGNORECASE),
-    "le-quartier": re.compile(r"\bLe\s+Quartier\b", re.IGNORECASE),
-    "run-sip": re.compile(r"\bRun\s*(?:&|and)\s*Sip\b", re.IGNORECASE),
-    "6am-mile-end": re.compile(r"\b6\s*am\s+Mile\s+End\b", re.IGNORECASE),
-    "6am-villeray": re.compile(r"\b6\s*am\s+Villeray\b", re.IGNORECASE),
-    "6am-outremont": re.compile(r"\b6\s*am\s+Outrem[eo]nt\b", re.IGNORECASE),
-    "6am-rosemont": re.compile(r"\b6\s*am\s+Rosemont\b", re.IGNORECASE),
-    "6am-plateau": re.compile(r"\b6\s*am\s+Plateau\b", re.IGNORECASE),
-    "6am-laurier-est": re.compile(r"\b6\s*am\s+Laurier(?:\s+E(?:st|ast))?\b", re.IGNORECASE),
-    "6am-verdun": re.compile(r"\b6\s*am\s+Verdun\b", re.IGNORECASE),
-}
-
 JsonDict = dict[str, Any]
 
 
@@ -122,6 +108,15 @@ def load_config() -> JsonDict:
             "See scripts/README.md."
         )
     return cfg
+
+
+def load_club_patterns() -> dict[str, re.Pattern[str]]:
+    rows = cast("list[JsonDict]", load_json(CLUB_PATTERNS_PATH, []) or [])
+    return {
+        str(row["id"]): re.compile(str(row["pattern"]), re.IGNORECASE)
+        for row in rows
+        if row.get("id") and row.get("pattern")
+    }
 
 
 # ---------- HTTP ----------
@@ -348,6 +343,7 @@ def prune_club_overrides(activities: list[JsonDict]) -> None:
     if not overrides:
         return
 
+    club_patterns = load_club_patterns()
     activities_by_id = {int(a["id"]): a for a in activities}
     kept = []
     removed = []
@@ -355,7 +351,7 @@ def prune_club_overrides(activities: list[JsonDict]) -> None:
         activity_id = int(row.get("activity_id") or 0)
         club_id = str(row.get("club") or "")
         activity = activities_by_id.get(activity_id)
-        pattern = CLUB_PATTERNS.get(club_id)
+        pattern = club_patterns.get(club_id)
         if activity and pattern and pattern.search(activity.get("name") or ""):
             removed.append(row)
         else:

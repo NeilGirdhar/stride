@@ -1,0 +1,62 @@
+[
+  {
+    "id": "mrrc",
+    "label": "MRRC",
+    "pattern": "\\bMRRC\\b"
+  },
+  {
+    "id": "cose",
+    "label": "Cos\u00e9",
+    "pattern": "\\bCos[\u00e9e]\\b"
+  },
+  {
+    "id": "zab",
+    "label": "Zab",
+    "pattern": "\\bZAB\\b"
+  },
+  {
+    "id": "le-quartier",
+    "label": "Le Quartier",
+    "pattern": "\\bLe\\s+Quartier\\b"
+  },
+  {
+    "id": "run-sip",
+    "label": "Run & Sip",
+    "pattern": "\\bRun\\s*(?:&|and)\\s*Sip\\b"
+  },
+  {
+    "id": "6am-mile-end",
+    "label": "6am Mile End",
+    "pattern": "\\b6\\s*am\\s+Mile\\s+End\\b"
+  },
+  {
+    "id": "6am-villeray",
+    "label": "6am Villeray",
+    "pattern": "\\b6\\s*am\\s+Villeray\\b"
+  },
+  {
+    "id": "6am-outremont",
+    "label": "6am Outremont",
+    "pattern": "\\b6\\s*am\\s+Outrem[eo]nt\\b"
+  },
+  {
+    "id": "6am-rosemont",
+    "label": "6am Rosemont",
+    "pattern": "\\b6\\s*am\\s+Rosemont\\b"
+  },
+  {
+    "id": "6am-plateau",
+    "label": "6am Plateau",
+    "pattern": "\\b6\\s*am\\s+Plateau\\b"
+  },
+  {
+    "id": "6am-laurier-est",
+    "label": "6am Laurier Est",
+    "pattern": "\\b6\\s*am\\s+Laurier(?:\\s+E(?:st|ast))?\\b"
+  },
+  {
+    "id": "6am-verdun",
+    "label": "6am Verdun",
+    "pattern": "\\b6\\s*am\\s+Verdun\\b"
+  }
+]

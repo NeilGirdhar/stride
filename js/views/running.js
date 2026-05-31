@@ -11,6 +11,7 @@ const GEAR_URL = "./data/imported/strava-gear.json";
 const RECORDS_URL = "./data/generated/records.json";
 const RACES_URL = "./data/entered/races.json";
 const CLUB_OVERRIDES_URL = "./data/entered/club-overrides.json";
+const CLUB_PATTERNS_URL = "./data/entered/club-patterns.json";
 
 const RUN_TYPES = new Set(["Run", "TrailRun"]);
 const DAY = 86400000;
@@ -28,6 +29,8 @@ let DETAILS = {},
   RECORDS = {},
   RACE_IDS = new Set(),
   CLUB_OVERRIDES = new Map();
+let CLUBS = [],
+  CLUB_BY_ID = new Map();
 let view = "serious";
 let detailTab = "clubs";
 let highlightedRecordKey = null;
@@ -81,32 +84,9 @@ const REC_LABEL = {
   "30k": "30 km",
   marathon: "marathon",
 };
-const CLUBS = [
-  { id: "mrrc", label: "MRRC", re: /\bMRRC\b/i },
-  { id: "cose", label: "Cosé", re: /\bCos[ée]\b/i },
-  { id: "zab", label: "Zab", re: /\bZAB\b/i },
-  { id: "le-quartier", label: "Le Quartier", re: /\bLe\s+Quartier\b/i },
-  { id: "run-sip", label: "Run & Sip", re: /\bRun\s*(?:&|and)\s*Sip\b/i },
-  { id: "6am-mile-end", label: "6am Mile End", re: /\b6\s*am\s+Mile\s+End\b/i },
-  { id: "6am-villeray", label: "6am Villeray", re: /\b6\s*am\s+Villeray\b/i },
-  {
-    id: "6am-outremont",
-    label: "6am Outremont",
-    re: /\b6\s*am\s+Outrem[eo]nt\b/i,
-  },
-  { id: "6am-rosemont", label: "6am Rosemont", re: /\b6\s*am\s+Rosemont\b/i },
-  { id: "6am-plateau", label: "6am Plateau", re: /\b6\s*am\s+Plateau\b/i },
-  {
-    id: "6am-laurier-est",
-    label: "6am Laurier Est",
-    re: /\b6\s*am\s+Laurier(?:\s+E(?:st|ast))?\b/i,
-  },
-  { id: "6am-verdun", label: "6am Verdun", re: /\b6\s*am\s+Verdun\b/i },
-];
 // Buckets that are not running clubs, but still useful in the Clubs table.
 const RACES = { id: "races", label: "Races", nonClub: true };
 const SOLO = { id: "solo", label: "Solo", nonClub: true };
-const CLUB_BY_ID = new Map(CLUBS.map((club) => [club.id, club]));
 
 export async function renderRunning() {
   const root = document.getElementById("page-running");
@@ -115,7 +95,7 @@ export async function renderRunning() {
   if (RUNS === null) {
     root.innerHTML = `<div class="hero"><h1>Loading runs…</h1></div>`;
     try {
-      const [acts, details, gear, records, races, clubOverrides] =
+      const [acts, details, gear, records, races, clubOverrides, clubPatterns] =
         await Promise.all([
           fetchJSON(ACTS_URL),
           fetchJSON(DETAILS_URL, {}),
@@ -123,10 +103,13 @@ export async function renderRunning() {
           fetchJSON(RECORDS_URL, {}),
           fetchJSON(RACES_URL, []),
           fetchJSON(CLUB_OVERRIDES_URL, []),
+          fetchJSON(CLUB_PATTERNS_URL, []),
         ]);
       DETAILS = details || {};
       GEAR = gear || {};
       RECORDS = records || {};
+      CLUBS = loadClubs(clubPatterns || []);
+      CLUB_BY_ID = new Map(CLUBS.map((club) => [club.id, club]));
       RACE_IDS = new Set(
         (races || []).map((r) => Number(r.activity_id)).filter(Boolean),
       );
@@ -183,6 +166,16 @@ async function fetchJSON(url, fallback) {
     if (fallback !== undefined) return fallback;
     throw e;
   }
+}
+
+function loadClubs(rows) {
+  return rows
+    .filter((row) => row.id && row.label && row.pattern)
+    .map((row) => ({
+      id: row.id,
+      label: row.label,
+      re: new RegExp(row.pattern, "i"),
+    }));
 }
 
 function draw(root) {
