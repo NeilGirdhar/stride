@@ -10,6 +10,7 @@ import {
   rangeStart,
 } from "../lib/ranges.js";
 import { gaussianSmoothFields } from "../lib/smoothing.js";
+import { timeAxisLabels } from "../lib/time-axis.js";
 
 const ACTS_URL = "./data/imported/strava-activities.json";
 const TRAINING_CONFIG_URL = "./data/entered/training-config.json";
@@ -304,6 +305,10 @@ function fitnessChart(points, W) {
       .join(" L ");
   const zero = y(0);
   const ticks = axisTicks(lo, hi);
+  const xTicks = timeAxisLabels(points[0].t, points[points.length - 1].t, W, {
+    padL,
+    padR,
+  });
   return `
     <svg class="fit-svg" viewBox="0 0 ${W} ${H}">
       ${ticks
@@ -318,8 +323,12 @@ function fitnessChart(points, W) {
       <path class="fit-line fit-fatigue" d="${path("fatigue")}" />
       <path class="fit-line fit-form" d="${path("form")}" />
       <path class="fit-line fit-fitness" d="${path("fitness")}" />
-      <text class="fit-xlab" x="${padL}" y="${H - 6}">${fmtShort(points[0].t)}</text>
-      <text class="fit-xlab" x="${W - padR}" y="${H - 6}" text-anchor="end">${fmtShort(points[points.length - 1].t)}</text>
+      ${xTicks
+        .map(
+          (tick) =>
+            `<text class="fit-xlab" x="${x(tick.t).toFixed(1)}" y="${H - 6}" text-anchor="${tick.anchor}">${tick.label}</text>`,
+        )
+        .join("")}
     </svg>`;
 }
 
@@ -352,10 +361,4 @@ function dayStart(t) {
 
 function clamp(v, lo, hi) {
   return Math.max(lo, Math.min(hi, v));
-}
-function fmtShort(t) {
-  return new Date(t).toLocaleDateString(undefined, {
-    month: "short",
-    day: "numeric",
-  });
 }

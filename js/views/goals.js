@@ -19,6 +19,7 @@ import {
   gaussianRateLine,
   VOLUME_SMOOTH_SIGMA_DAYS,
 } from "../lib/smoothing.js";
+import { timeAxisLabels } from "../lib/time-axis.js";
 
 const ACTS_URL = "./data/imported/strava-activities.json";
 const DETAILS_URL = "./data/imported/strava-run-details.json";
@@ -375,19 +376,7 @@ function chart(s, W) {
     )
     .join("");
 
-  // month ticks
-  const months = [];
-  const startMonth = new Date(start);
-  const tick = new Date(startMonth.getFullYear(), startMonth.getMonth(), 1);
-  while (tick.getTime() <= end) {
-    const t = tick.getTime();
-    if (t >= start) {
-      months.push(
-        `<text class="goal-xlab" x="${x(t).toFixed(1)}" y="${H - 8}">${new Date(t).toLocaleDateString(undefined, { month: "short" })}</text>`,
-      );
-    }
-    tick.setMonth(tick.getMonth() + 1);
-  }
+  const xTicks = timeAxisLabels(start, end, W, { padL, padR });
 
   const todayX = x(now);
   return `
@@ -395,7 +384,12 @@ function chart(s, W) {
       ${ticks}${targetPaths}
       ${now >= start && now <= end ? `<line class="goal-today" x1="${todayX.toFixed(1)}" x2="${todayX.toFixed(1)}" y1="${padT}" y2="${H - padB}" />` : ""}
       ${pts.length ? `<path class="goal-line" d="${line(pts)}" />` : ""}
-      ${months.join("")}
+      ${xTicks
+        .map(
+          (tick) =>
+            `<text class="goal-xlab" x="${x(tick.t).toFixed(1)}" y="${H - 8}" text-anchor="${tick.anchor}">${tick.label}</text>`,
+        )
+        .join("")}
     </svg>
     ${legend}`;
 }

@@ -14,6 +14,7 @@ import {
   rangeStart,
 } from "../lib/ranges.js";
 import { gaussianRateLine } from "../lib/smoothing.js";
+import { timeAxisLabels } from "../lib/time-axis.js";
 
 const ACTS_URL = "./data/imported/strava-activities.json";
 const DETAILS_URL = "./data/imported/strava-run-details.json";
@@ -313,10 +314,10 @@ function drawGraph(root) {
         `<text class="rg-ylab rg-wk" x="${W - padR + 6}" y="${(yWk(v) + 3).toFixed(1)}">${v}</text>`,
     )
     .join("");
-  const xT = axisDates(start, now)
+  const xT = timeAxisLabels(start, now, W, { padL, padR })
     .map(
-      (t) =>
-        `<text class="rg-xlab" x="${x(t).toFixed(1)}" y="${H - 10}">${fmtTick(t, now - start)}</text>`,
+      (tick) =>
+        `<text class="rg-xlab" x="${x(tick.t).toFixed(1)}" y="${H - 10}" text-anchor="${tick.anchor}">${tick.label}</text>`,
     )
     .join("");
 
@@ -569,19 +570,6 @@ function ticks(top) {
   const out = [];
   for (let k = step; k <= top; k += step) out.push(k);
   return out;
-}
-function axisDates(start, end) {
-  const out = [];
-  for (let i = 1; i < 5; i++) out.push(start + (end - start) * (i / 5));
-  return out;
-}
-function fmtTick(t, span) {
-  const d = new Date(t);
-  if (span > 200 * DAY)
-    return d.toLocaleDateString(undefined, { month: "short", year: "2-digit" });
-  if (span > 40 * DAY)
-    return d.toLocaleDateString(undefined, { month: "short", day: "numeric" });
-  return d.toLocaleDateString(undefined, { weekday: "short", day: "numeric" });
 }
 function fmtPace(s) {
   return `${Math.floor(s / 60)}:${String(Math.round(s % 60)).padStart(2, "0")}/km`;
