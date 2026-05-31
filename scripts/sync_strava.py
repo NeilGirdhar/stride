@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 """Stride — Strava sync.
 
 Pulls your Strava activity history (all sports) and writes, under data/:
@@ -15,11 +15,11 @@ Also writes (after `details`):
   records.json             best efforts: 400m, 1k, 5k, 10k, half, 30k, marathon
 
 Usage:
-  python3 scripts/sync_strava.py auth            one-time browser authorization
-  python3 scripts/sync_strava.py sync            fetch new activities + recompute summary
-  python3 scripts/sync_strava.py sync --full     ignore checkpoint, refetch everything
-  python3 scripts/sync_strava.py details         backfill per-run shoes + PRs (resumable)
-  python3 scripts/sync_strava.py details --limit=100   do it in chunks (rate limits)
+  python scripts/sync_strava.py auth            one-time browser authorization
+  python scripts/sync_strava.py sync            fetch new activities + recompute summary
+  python scripts/sync_strava.py sync --full     ignore checkpoint, refetch everything
+  python scripts/sync_strava.py details         backfill per-run shoes + PRs (resumable)
+  python scripts/sync_strava.py details --limit=100   do it in chunks (rate limits)
 
 No third-party dependencies — Python 3 standard library only.
 """
@@ -163,7 +163,7 @@ def auth(cfg):
     })
     save_tokens(tok)
     print("Authorized. Tokens saved to data/strava-tokens.json")
-    print("Now run:  python3 scripts/sync_strava.py sync")
+    print("Now run:  python scripts/sync_strava.py sync")
 
 
 def save_tokens(tok):
@@ -177,7 +177,7 @@ def save_tokens(tok):
 def valid_access_token(cfg):
     tokens = load_json(TOKENS_PATH)
     if not tokens:
-        sys.exit("Not authorized yet. Run:  python3 scripts/sync_strava.py auth")
+        sys.exit("Not authorized yet. Run:  python scripts/sync_strava.py auth")
     if time.time() > tokens["expires_at"] - 60:
         tok = http_post(TOKEN_URL, {
             "client_id": cfg["client_id"],
@@ -406,7 +406,7 @@ class Tokens:
         self.cfg = cfg
         t = load_json(TOKENS_PATH)
         if not t:
-            sys.exit("Not authorized yet. Run:  python3 scripts/sync_strava.py auth")
+            sys.exit("Not authorized yet. Run:  python scripts/sync_strava.py auth")
         self.access = t["access_token"]
         self.expires_at = t["expires_at"]
         if time.time() > self.expires_at - 60:
@@ -477,7 +477,7 @@ def details(cfg, limit=None):
     tm = Tokens(cfg)
     activities = load_json(RAW_PATH, []) or []
     if not activities:
-        sys.exit("No activities yet. Run:  python3 scripts/sync_strava.py sync")
+        sys.exit("No activities yet. Run:  python scripts/sync_strava.py sync")
     runs = [a for a in activities
             if (a.get("sport_type") or a.get("type")) in RUN_TYPES and a.get("distance")]
     cache = load_json(DETAILS_PATH, {}) or {}

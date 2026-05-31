@@ -96,7 +96,7 @@ export async function renderRunning() {
 
   if (!RUNS.length) {
     root.innerHTML = `<div class="hero"><h1>No run data</h1>
-      <div class="date">Run <code>python3 scripts/sync_strava.py sync</code> first.</div></div>`;
+      <div class="date">Run <code>python scripts/sync_strava.py sync</code> first.</div></div>`;
     return;
   }
 
@@ -263,7 +263,7 @@ function bestEffortsTable() {
   const present = REC_ORDER.filter(k => RECORDS[k]);
   if (!present.length) {
     return `<div class="rg-note">Best efforts (400 m · 1 km · 5 km · 10 km · half · 30 km · marathon) appear here once
-      <code>python3 scripts/sync_strava.py details</code> finishes.</div>`;
+      <code>python scripts/sync_strava.py details</code> finishes.</div>`;
   }
   return `
     <table class="rg-table">

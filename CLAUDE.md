@@ -11,7 +11,7 @@ Stride is a static, client-side PWA for training planning — vanilla JS ES modu
 There is no build, bundler, or test runner. Serve the directory over HTTP (ES modules + `fetch` of `data/*.json` require a real origin, not `file://`):
 
 ```sh
-python3 -m http.server 8000   # then open http://localhost:8000
+python -m http.server 8000   # then open http://localhost:8000
 ```
 
 - **Keep all imports as bare relative paths** (`./state.js`). The whole app must share **one module graph so there is one `state` singleton**. Never add `?v=` cache-busting query strings to imports — that forks the graph and you get two divergent states.

@@ -47,7 +47,7 @@ export async function renderFitness() {
 
   if (!RUNS.length) {
     root.innerHTML = `<div class="hero">
-      <div class="date">Run <code>python3 scripts/sync_strava.py sync</code> first.</div></div>`;
+      <div class="date">Run <code>python scripts/sync_strava.py sync</code> first.</div></div>`;
     return;
   }
 
