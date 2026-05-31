@@ -41,8 +41,8 @@ TOKENS_PATH = os.path.join(DATA_DIR, "strava-tokens.json")
 RAW_PATH = os.path.join(DATA_DIR, "strava-activities.json")
 SUMMARY_PATH = os.path.join(DATA_DIR, "fitness-summary.json")
 DETAILS_PATH = os.path.join(DATA_DIR, "strava-run-details.json")  # cache: id -> detail
-GEAR_PATH = os.path.join(DATA_DIR, "strava-gear.json")            # gear_id -> shoe
-RECORDS_PATH = os.path.join(DATA_DIR, "records.json")            # best efforts
+GEAR_PATH = os.path.join(DATA_DIR, "strava-gear.json")  # gear_id -> shoe
+RECORDS_PATH = os.path.join(DATA_DIR, "records.json")  # best efforts
 
 AUTH_URL = "https://www.strava.com/oauth/authorize"
 TOKEN_URL = "https://www.strava.com/oauth/token"
@@ -54,14 +54,22 @@ SCOPE = "read,activity:read_all"
 RUN_TYPES = ("Run", "TrailRun")
 # Strava best_effort name -> our record key. Strava computes these per run.
 # Note Strava's casing: "400m" but "1K"/"5K"/"10K"/"30K"/"Marathon".
-BEST_EFFORT_KEYS = {"400m": "400m", "1K": "1k", "5K": "5k", "10K": "10k",
-                    "Half-Marathon": "half", "30K": "30k", "Marathon": "marathon"}
+BEST_EFFORT_KEYS = {
+    "400m": "400m",
+    "1K": "1k",
+    "5K": "5k",
+    "10K": "10k",
+    "Half-Marathon": "half",
+    "30K": "30k",
+    "Marathon": "marathon",
+}
 # Fallback for 30k/marathon on long runs where Strava didn't flag a best effort
 # — found as the fastest window from the distance/time streams.
 STREAM_RECORDS = {"30k": 30000, "marathon": 42195}
 
 
 # ---------- small IO helpers ----------
+
 
 def load_json(path, default=None):
     try:
@@ -91,6 +99,7 @@ def load_config():
 
 # ---------- HTTP ----------
 
+
 def http_post(url, data):
     body = urllib.parse.urlencode(data).encode()
     req = urllib.request.Request(url, data=body, method="POST")
@@ -107,6 +116,7 @@ def http_get(url, params, token):
 
 
 # ---------- OAuth ----------
+
 
 def auth(cfg):
     """One-time browser authorization. Spins up a localhost server to catch
@@ -131,16 +141,19 @@ def auth(cfg):
             self.send_response(200)
             self.send_header("Content-Type", "text/html")
             self.end_headers()
-            self.wfile.write(b"<h2>Stride: Strava connected.</h2>"
-                             b"<p>You can close this tab and return to the terminal.</p>")
+            self.wfile.write(
+                b"<h2>Stride: Strava connected.</h2>"
+                b"<p>You can close this tab and return to the terminal.</p>"
+            )
 
-        def log_message(self, *args):
+        def log_message(self, format: str, *args: object):
             pass
 
     print("\nOpen this URL in your browser and click Authorize:\n")
     print(f"  {url}\n")
     try:
         import webbrowser
+
         webbrowser.open(url)
     except Exception:
         pass
@@ -155,23 +168,29 @@ def auth(cfg):
         sys.exit(f"Authorization failed: {captured['error'][0]}")
 
     code = captured["code"][0]
-    tok = http_post(TOKEN_URL, {
-        "client_id": cfg["client_id"],
-        "client_secret": cfg["client_secret"],
-        "code": code,
-        "grant_type": "authorization_code",
-    })
+    tok = http_post(
+        TOKEN_URL,
+        {
+            "client_id": cfg["client_id"],
+            "client_secret": cfg["client_secret"],
+            "code": code,
+            "grant_type": "authorization_code",
+        },
+    )
     save_tokens(tok)
     print("Authorized. Tokens saved to data/strava-tokens.json")
     print("Now run:  python scripts/sync_strava.py sync")
 
 
 def save_tokens(tok):
-    save_json(TOKENS_PATH, {
-        "access_token": tok["access_token"],
-        "refresh_token": tok["refresh_token"],
-        "expires_at": tok["expires_at"],
-    })
+    save_json(
+        TOKENS_PATH,
+        {
+            "access_token": tok["access_token"],
+            "refresh_token": tok["refresh_token"],
+            "expires_at": tok["expires_at"],
+        },
+    )
 
 
 def valid_access_token(cfg):
@@ -179,18 +198,22 @@ def valid_access_token(cfg):
     if not tokens:
         sys.exit("Not authorized yet. Run:  python scripts/sync_strava.py auth")
     if time.time() > tokens["expires_at"] - 60:
-        tok = http_post(TOKEN_URL, {
-            "client_id": cfg["client_id"],
-            "client_secret": cfg["client_secret"],
-            "grant_type": "refresh_token",
-            "refresh_token": tokens["refresh_token"],
-        })
+        tok = http_post(
+            TOKEN_URL,
+            {
+                "client_id": cfg["client_id"],
+                "client_secret": cfg["client_secret"],
+                "grant_type": "refresh_token",
+                "refresh_token": tokens["refresh_token"],
+            },
+        )
         save_tokens(tok)
         return tok["access_token"]
     return tokens["access_token"]
 
 
 # ---------- fetch ----------
+
 
 def fetch_activities(token, after_epoch=None):
     """Page through /athlete/activities. If after_epoch is given, only newer
@@ -225,11 +248,26 @@ def fetch_activities(token, after_epoch=None):
 
 # Keep only the fields we need from each summary activity — smaller raw file.
 KEEP = (
-    "id", "name", "sport_type", "type", "start_date", "start_date_local",
-    "distance", "moving_time", "elapsed_time", "total_elevation_gain",
-    "average_speed", "max_speed", "average_heartrate", "max_heartrate",
-    "average_cadence", "average_watts", "weighted_average_watts",
-    "suffer_score", "achievement_count", "gear_id",
+    "id",
+    "name",
+    "sport_type",
+    "type",
+    "start_date",
+    "start_date_local",
+    "distance",
+    "moving_time",
+    "elapsed_time",
+    "total_elevation_gain",
+    "average_speed",
+    "max_speed",
+    "average_heartrate",
+    "max_heartrate",
+    "average_cadence",
+    "average_watts",
+    "weighted_average_watts",
+    "suffer_score",
+    "achievement_count",
+    "gear_id",
 )
 
 
@@ -245,8 +283,10 @@ def sync(cfg, full=False):
     if existing and not full:
         newest = max(parse_dt(a["start_date"]) for a in existing.values())
         after = newest.timestamp()
-        print(f"Incremental sync: fetching activities after {newest.date()} "
-              f"({len(existing)} already stored).")
+        print(
+            f"Incremental sync: fetching activities after {newest.date()} "
+            f"({len(existing)} already stored)."
+        )
     else:
         print("Full sync: fetching entire activity history (first run).")
 
@@ -261,15 +301,20 @@ def sync(cfg, full=False):
     save_json(SUMMARY_PATH, summary)
 
     print(f"Fetched {len(fetched)} new; {len(activities)} total stored.")
-    print(f"Wrote {os.path.relpath(RAW_PATH, ROOT)} and "
-          f"{os.path.relpath(SUMMARY_PATH, ROOT)}.")
+    print(
+        f"Wrote {os.path.relpath(RAW_PATH, ROOT)} and "
+        f"{os.path.relpath(SUMMARY_PATH, ROOT)}."
+    )
     rf = summary.get("running_fitness", {})
     if rf.get("best_equiv_5k"):
-        print(f"Best recent equivalent 5K: {rf['best_equiv_5k']} "
-              f"(from {rf.get('best_from', {}).get('name', '?')}).")
+        print(
+            f"Best recent equivalent 5K: {rf['best_equiv_5k']} "
+            f"(from {rf.get('best_from', {}).get('name', '?')})."
+        )
 
 
 # ---------- derive fitness summary ----------
+
 
 def parse_dt(s):
     return datetime.fromisoformat(s.replace("Z", "+00:00"))
@@ -299,8 +344,10 @@ def compute_summary(acts):
     # ---- totals by sport ----
     by_sport = {}
     for a in acts:
-        s = by_sport.setdefault(sport_of(a), {
-            "count": 0, "distance_km": 0.0, "moving_hours": 0.0, "elevation_m": 0.0})
+        s = by_sport.setdefault(
+            sport_of(a),
+            {"count": 0, "distance_km": 0.0, "moving_hours": 0.0, "elevation_m": 0.0},
+        )
         s["count"] += 1
         s["distance_km"] += (a.get("distance") or 0) / 1000
         s["moving_hours"] += (a.get("moving_time") or 0) / 3600
@@ -322,15 +369,18 @@ def compute_summary(acts):
         if sport_of(a) == "Run":
             w["run_km"] += (a.get("distance") or 0) / 1000
     last_12_weeks = [
-        {"week_start": k,
-         "all_moving_hours": round(v["all_moving_hours"], 1),
-         "run_km": round(v["run_km"], 1)}
+        {
+            "week_start": k,
+            "all_moving_hours": round(v["all_moving_hours"], 1),
+            "run_km": round(v["run_km"], 1),
+        }
         for k, v in sorted(weekly.items())
     ]
 
     # ---- running fitness: Riegel-equivalent 5K from recent runs ----
     recent_runs = [
-        a for a in acts
+        a
+        for a in acts
         if sport_of(a) == "Run"
         and parse_dt(a["start_date"]) > now - timedelta(days=60)
         and (a.get("distance") or 0) >= 2000
@@ -346,18 +396,20 @@ def compute_summary(acts):
     if equivs:
         best_eq, best_a = equivs[0]
         median_eq = equivs[len(equivs) // 2][0]
-        running_fitness.update({
-            "window_days": 60,
-            "best_equiv_5k": fmt_mmss(best_eq),
-            "best_equiv_5k_sec": round(best_eq),
-            "median_equiv_5k": fmt_mmss(median_eq),
-            "best_from": {
-                "name": best_a.get("name"),
-                "date": best_a["start_date"][:10],
-                "distance_km": round(best_a["distance"] / 1000, 2),
-                "time": fmt_mmss(best_a["moving_time"]),
-            },
-        })
+        running_fitness.update(
+            {
+                "window_days": 60,
+                "best_equiv_5k": fmt_mmss(best_eq),
+                "best_equiv_5k_sec": round(best_eq),
+                "median_equiv_5k": fmt_mmss(median_eq),
+                "best_from": {
+                    "name": best_a.get("name"),
+                    "date": best_a["start_date"][:10],
+                    "distance_km": round(best_a["distance"] / 1000, 2),
+                    "time": fmt_mmss(best_a["moving_time"]),
+                },
+            }
+        )
 
     # ---- running form trends by month: cadence + HR efficiency ----
     form = {}
@@ -377,8 +429,12 @@ def compute_summary(acts):
             f["eff"].append(spd / hr * 1000)  # metres per heartbeat ×1000
     running_form = {
         m: {
-            "avg_cadence_spm": round(sum(v["cad"]) / len(v["cad"]), 1) if v["cad"] else None,
-            "efficiency_m_per_beat_x1000": round(sum(v["eff"]) / len(v["eff"]), 1) if v["eff"] else None,
+            "avg_cadence_spm": round(sum(v["cad"]) / len(v["cad"]), 1)
+            if v["cad"]
+            else None,
+            "efficiency_m_per_beat_x1000": round(sum(v["eff"]) / len(v["eff"]), 1)
+            if v["eff"]
+            else None,
             "runs": max(len(v["cad"]), len(v["eff"])),
         }
         for m, v in sorted(form.items())
@@ -400,8 +456,10 @@ def compute_summary(acts):
 
 # ---------- per-run details: shoes + best-effort PRs ----------
 
+
 class Tokens:
     """Keeps a fresh access token across a long backfill (tokens expire ~6h)."""
+
     def __init__(self, cfg):
         self.cfg = cfg
         t = load_json(TOKENS_PATH)
@@ -414,12 +472,15 @@ class Tokens:
 
     def refresh(self):
         t = load_json(TOKENS_PATH)
-        new = http_post(TOKEN_URL, {
-            "client_id": self.cfg["client_id"],
-            "client_secret": self.cfg["client_secret"],
-            "grant_type": "refresh_token",
-            "refresh_token": t["refresh_token"],
-        })
+        new = http_post(
+            TOKEN_URL,
+            {
+                "client_id": self.cfg["client_id"],
+                "client_secret": self.cfg["client_secret"],
+                "grant_type": "refresh_token",
+                "refresh_token": t["refresh_token"],
+            },
+        )
         save_tokens(new)
         self.access = new["access_token"]
         self.expires_at = new["expires_at"]
@@ -442,7 +503,9 @@ def api_get(tm, url, params=None):
             elif e.code == 429:
                 now = time.time()
                 wait = (900 - (now % 900)) + 5
-                print(f"  rate limited — sleeping {int(wait)}s for the window to reset ...")
+                print(
+                    f"  rate limited — sleeping {int(wait)}s for the window to reset ..."
+                )
                 time.sleep(wait)
             else:
                 raise
@@ -478,15 +541,20 @@ def details(cfg, limit=None):
     activities = load_json(RAW_PATH, []) or []
     if not activities:
         sys.exit("No activities yet. Run:  python scripts/sync_strava.py sync")
-    runs = [a for a in activities
-            if (a.get("sport_type") or a.get("type")) in RUN_TYPES and a.get("distance")]
+    runs = [
+        a
+        for a in activities
+        if (a.get("sport_type") or a.get("type")) in RUN_TYPES and a.get("distance")
+    ]
     cache = load_json(DETAILS_PATH, {}) or {}
 
     todo = [a for a in runs if str(a["id"]) not in cache]
     batch = todo[:limit] if limit else todo
-    print(f"Runs: {len(runs)} total, {len(cache)} already detailed, "
-          f"{len(todo)} remaining. Fetching {len(batch)} now"
-          + (" (rate limits may pause this) ..." if batch else "."))
+    print(
+        f"Runs: {len(runs)} total, {len(cache)} already detailed, "
+        f"{len(todo)} remaining. Fetching {len(batch)} now"
+        + (" (rate limits may pause this) ..." if batch else ".")
+    )
 
     for i, a in enumerate(batch):
         d = api_get(tm, f"{ACTIVITY_URL}/{a['id']}")
@@ -494,15 +562,21 @@ def details(cfg, limit=None):
             "gear_id": d.get("gear_id"),
             "photo": photo_url(d),
             "best_efforts": [
-                {"name": be["name"], "distance": be["distance"],
-                 "elapsed_time": be["elapsed_time"]}
+                {
+                    "name": be["name"],
+                    "distance": be["distance"],
+                    "elapsed_time": be["elapsed_time"],
+                }
                 for be in (d.get("best_efforts") or [])
             ],
         }
         if (a.get("distance") or 0) >= min(STREAM_RECORDS.values()):
             try:
-                st = api_get(tm, f"{ACTIVITY_URL}/{a['id']}/streams",
-                             {"keys": "time,distance", "key_by_type": "true"})
+                st = api_get(
+                    tm,
+                    f"{ACTIVITY_URL}/{a['id']}/streams",
+                    {"keys": "time,distance", "key_by_type": "true"},
+                )
                 times = (st.get("time") or {}).get("data")
                 dists = (st.get("distance") or {}).get("data")
                 entry["windows"] = {
@@ -522,11 +596,18 @@ def details(cfg, limit=None):
     recompute_records(activities, cache)
 
     remaining = len(todo) - len(batch)
-    print(f"Done. {len(cache)} runs detailed"
-          + (f", {remaining} still remaining — run `details` again to continue."
-             if remaining else "."))
-    print(f"Wrote {os.path.relpath(RECORDS_PATH, ROOT)} and "
-          f"{os.path.relpath(GEAR_PATH, ROOT)}.")
+    print(
+        f"Done. {len(cache)} runs detailed"
+        + (
+            f", {remaining} still remaining — run `details` again to continue."
+            if remaining
+            else "."
+        )
+    )
+    print(
+        f"Wrote {os.path.relpath(RECORDS_PATH, ROOT)} and "
+        f"{os.path.relpath(GEAR_PATH, ROOT)}."
+    )
 
 
 def fetch_gear(tm, cache):
@@ -590,6 +671,7 @@ def recompute_records(activities, cache):
 
 
 # ---------- entry ----------
+
 
 def main():
     args = sys.argv[1:]
