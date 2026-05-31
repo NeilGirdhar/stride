@@ -39,6 +39,30 @@
       ]
     },
     {
+      "id": "recovery",
+      "label": "Aerobic efficiency",
+      "unit": "Grade-adjusted distance per heartbeat in high zone 2",
+      "higher_better": true,
+      "compute": "recovery_efficiency",
+      "targets": [
+        { "tier": "a", "type": "recovery", "gain": 0.1 },
+        { "tier": "b", "type": "recovery", "gain": 0.06 },
+        { "tier": "c", "type": "recovery", "gain": 0.02 }
+      ]
+    },
+    {
+      "id": "aerobic_power",
+      "label": "Aerobic power",
+      "unit": "Grade-adjusted distance per heartbeat in high zone 3",
+      "higher_better": true,
+      "compute": "aerobic_power",
+      "targets": [
+        { "tier": "a", "type": "recovery", "gain": 0.1 },
+        { "tier": "b", "type": "recovery", "gain": 0.06 },
+        { "tier": "c", "type": "recovery", "gain": 0.02 }
+      ]
+    },
+    {
       "id": "volume",
       "label": "Volume",
       "unit": "",
@@ -88,18 +112,6 @@
         { "tier": "a", "type": "line", "start": 1380, "end": 1200 },
         { "tier": "b", "type": "line", "start": 1380, "end": 1260 },
         { "tier": "c", "type": "line", "start": 1380, "end": 1320 }
-      ]
-    },
-    {
-      "id": "recovery",
-      "label": "Recovery / injury resistance",
-      "unit": "distance/heartbeat",
-      "higher_better": true,
-      "compute": "recovery_efficiency",
-      "targets": [
-        { "tier": "a", "type": "recovery", "gain": 0.1 },
-        { "tier": "b", "type": "recovery", "gain": 0.06 },
-        { "tier": "c", "type": "recovery", "gain": 0.02 }
       ]
     }
   ]

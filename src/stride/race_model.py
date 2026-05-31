@@ -23,6 +23,7 @@ IMPORTED_DIR = DATA_DIR / "imported"
 GENERATED_DIR = DATA_DIR / "generated"
 ENTERED_DIR = DATA_DIR / "entered"
 ACTIVITIES_PATH = IMPORTED_DIR / "strava-activities.json"
+DETAILS_PATH = IMPORTED_DIR / "strava-run-details.json"
 RACES_PATH = ENTERED_DIR / "races.json"
 MARATHON_GOAL_PATH = ENTERED_DIR / "marathon-goal.json"
 MODEL_PATH = GENERATED_DIR / "race-model.json"
@@ -55,6 +56,8 @@ class Run:
     pace_sec: float
     elevation_m: float
     hr: float | None
+    aerobic_efficiency: float | None
+    aerobic_power: float | None
     load: float
 
 
@@ -68,6 +71,8 @@ class RawRun:
     pace_sec: float
     elevation_m: float
     hr: object
+    aerobic_efficiency: object
+    aerobic_power: object
 
 
 JsonDict = dict[str, Any]
@@ -126,7 +131,7 @@ def optional_float(value: object) -> float | None:
     return float(value)
 
 
-def normalize_runs(activities: list[JsonDict]) -> list[Run]:
+def normalize_runs(activities: list[JsonDict], details: dict[str, JsonDict]) -> list[Run]:
     raw: list[RawRun] = []
     for activity in activities:
         sport = activity.get("sport_type") or activity.get("type")
@@ -145,6 +150,10 @@ def normalize_runs(activities: list[JsonDict]) -> list[Run]:
                 pace_sec=moving_time / km,
                 elevation_m=float(activity.get("total_elevation_gain") or 0),
                 hr=activity.get("average_heartrate"),
+                aerobic_efficiency=details.get(str(activity["id"]), {}).get(
+                    "aerobic_efficiency_m_per_beat"
+                ),
+                aerobic_power=details.get(str(activity["id"]), {}).get("aerobic_power_m_per_beat"),
             )
         )
     raw.sort(key=operator.attrgetter("ts"))
@@ -168,6 +177,8 @@ def normalize_runs(activities: list[JsonDict]) -> list[Run]:
                 pace_sec=run.pace_sec,
                 elevation_m=run.elevation_m,
                 hr=optional_float(run.hr),
+                aerobic_efficiency=optional_float(run.aerobic_efficiency),
+                aerobic_power=optional_float(run.aerobic_power),
                 load=load,
             )
         )
@@ -236,10 +247,15 @@ def factors_at(runs: list[Run], ts: float, exclude_id: int | None = None) -> dic
     state = state_at(runs, ts, exclude_id)
     r28 = recent_runs(runs, ts, 28, exclude_id)
     r56 = recent_runs(runs, ts, 56, exclude_id)
-    easy_hr = [
-        1_000_000.0 / (run.pace_sec * run.hr)
+    aerobic_efficiency = [
+        run.aerobic_efficiency
         for run in recent_runs(runs, ts, 75, exclude_id)
-        if run.hr and run.pace_sec > 300
+        if run.aerobic_efficiency is not None
+    ]
+    aerobic_power = [
+        run.aerobic_power
+        for run in recent_runs(runs, ts, 75, exclude_id)
+        if run.aerobic_power is not None
     ]
 
     volume_28 = sum(run.km for run in r28) / 4.0
@@ -271,7 +287,8 @@ def factors_at(runs: list[Run], ts: float, exclude_id: int | None = None) -> dic
         "longest_run_56d_km": longest_56,
         "long_run_durability": long_run_durability,
         "mp_specificity": mp_specificity,
-        "aerobic_efficiency": float(np.median(easy_hr)) if easy_hr else 0.0,
+        "aerobic_efficiency": float(np.median(aerobic_efficiency)) if aerobic_efficiency else 0.0,
+        "aerobic_power": float(np.median(aerobic_power)) if aerobic_power else 0.0,
         "consistency_runs_per_week": consistency,
     }
     factors["fitness_score"] = fitness_score(factors)
@@ -533,8 +550,9 @@ def clamp(value: float, lo: float, hi: float) -> float:
 
 def main() -> None:
     activities = cast("list[JsonDict]", load_json(ACTIVITIES_PATH, []))
+    details = cast("dict[str, JsonDict]", load_json(DETAILS_PATH, {}))
     races = cast("list[JsonDict]", load_json(RACES_PATH, []))
-    runs = normalize_runs(activities)
+    runs = normalize_runs(activities, details)
     if not runs:
         msg = "No runs found. Run `uv run stride-sync sync` first."
         raise SystemExit(msg)

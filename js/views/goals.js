@@ -16,13 +16,19 @@ import {
 } from "../lib/ranges.js";
 
 const ACTS_URL = "./data/imported/strava-activities.json";
+const DETAILS_URL = "./data/imported/strava-run-details.json";
 const RACE_MODEL_URL = "./data/generated/race-model.json";
 const MARATHON_GOAL_URL = "./data/entered/marathon-goal.json";
 const RECORDS_URL = "./data/generated/records.json";
 const TRAINING_CONFIG_URL = "./data/entered/training-config.json";
 const RUN_TYPES = new Set(["Run", "TrailRun"]);
+const HIGH_ZONE2_HR_MIN = 135;
+const HIGH_ZONE2_HR_MAX = 145;
+const HIGH_ZONE3_HR_MIN = 155;
+const HIGH_ZONE3_HR_MAX = 165;
 
 let RUNS = null;
+let DETAILS = {};
 let RACE_MODEL = null;
 let GOAL = null;
 let RECORDS = {};
@@ -35,7 +41,7 @@ let TARGET_RAMP_PEAK = null;
 let RECOVERY_BASELINE_END = null;
 let SERIOUS_START = null;
 let SECTIONS = [];
-let GRID = null; // daily timestamps RANGE_START .. min(today, race)
+let GRID = null; // daily timestamps first run .. min(today, race)
 let SERIES = {}; // sectionId -> [{ t, v }]
 let progressionTab = "fitness";
 let selectedFitness = "volume";
@@ -57,15 +63,17 @@ export async function renderGoals() {
   if (RUNS === null) {
     root.innerHTML = `<div class="hero"><div class="date">Loading…</div></div>`;
     try {
-      const [acts, raceModel, goal, records, trainingConfig] =
+      const [acts, details, raceModel, goal, records, trainingConfig] =
         await Promise.all([
           fetchJSON(ACTS_URL),
+          fetchJSON(DETAILS_URL).catch(() => ({})),
           fetchJSON(RACE_MODEL_URL).catch(() => null),
           fetchJSON(MARATHON_GOAL_URL),
           fetchJSON(RECORDS_URL).catch(() => ({})),
           fetchJSON(TRAINING_CONFIG_URL).catch(() => null),
         ]);
       loadGoal(goal);
+      DETAILS = details || {};
       RACE_MODEL = raceModel;
       RECORDS = records || {};
       SERIOUS_START = trainingConfig?.serious_start
@@ -156,7 +164,9 @@ const FOCUS_MSG = {
   fitness: (pct) =>
     `<b>Race fitness</b> is behind (~${pct}% off pace). Do a threshold session or a short time trial to move it.`,
   recovery: (pct) =>
-    `<b>Recovery</b> is slipping (~${pct}% off). Keep easy runs easy and protect sleep before adding load.`,
+    `<b>Aerobic efficiency</b> is slipping (~${pct}% off). Keep easy runs steady in high zone 2.`,
+  aerobic_power: (pct) =>
+    `<b>Aerobic power</b> is slipping (~${pct}% off). Keep steady aerobic work controlled in high zone 3.`,
 };
 
 function focusBox() {
@@ -298,11 +308,12 @@ function chart(s, W) {
     padB = 28;
   const sourcePts = s.directSeries || SERIES[s.id] || [];
   const end = goalOn ? MARATHON : Math.min(Date.now(), MARATHON);
+  const dataStart = sourcePts[0]?.t ?? RANGE_START;
   const start = Math.max(
-    RANGE_START,
+    dataStart,
     rangeStart(view, {
       seriousStart: SERIOUS_START,
-      allStart: RANGE_START,
+      allStart: dataStart,
       fallbackStart: RANGE_START,
     }),
   );
@@ -387,8 +398,9 @@ function chart(s, W) {
 
 function buildGrid() {
   const end = Math.min(Date.now(), MARATHON);
+  const start = RUNS[0]?.t ?? RANGE_START;
   const grid = [];
-  for (let t = RANGE_START; t <= end; t += DAY) grid.push(t);
+  for (let t = start; t <= end; t += DAY) grid.push(t);
   return grid;
 }
 
@@ -468,10 +480,18 @@ function raceModelSeries(key) {
     .sort((a, b) => a.t - b.t);
 }
 
-// Aerobic efficiency on easy runs: metres per heartbeat (×1000), Gaussian
-// smoothed. Pace-based; GAP would be better for hilly routes.
+// Grade-adjusted metres per heartbeat by HR band. Prefer stream-derived detail
+// data; fall back to whole-activity average HR for older cached runs.
 function recoveryEff(runs, grid) {
-  const easy = runs.filter((r) => r.hr && r.paceSec > 300); // slower than 5:00/km
+  return aerobicMetric(runs, grid, (r) => r.aerobicEfficiency, inHighZone2);
+}
+
+function aerobicPower(runs, grid) {
+  return aerobicMetric(runs, grid, (r) => r.aerobicPower, inHighZone3);
+}
+
+function aerobicMetric(runs, grid, valueFor, fallbackPredicate) {
+  const easy = runs.filter((r) => valueFor(r) != null || fallbackPredicate(r));
   const sigma = 16 * DAY;
   const raw = grid.map((t) => {
     let sw = 0,
@@ -479,9 +499,10 @@ function recoveryEff(runs, grid) {
     for (const r of easy) {
       const z = (t - r.t) / sigma;
       if (Math.abs(z) > 4) continue;
+      const efficiency = valueFor(r) ?? (1000 / r.paceSec / r.hr) * 60;
       const w = Math.exp(-0.5 * z * z);
       sw += w;
-      swv += w * (1e6 / (r.paceSec * r.hr)); // (m/s)/hr ×1000
+      swv += w * efficiency;
     }
     return { t, v: sw ? swv / sw : null };
   });
@@ -510,8 +531,8 @@ function rampTarget(startVal, endVal) {
   };
 }
 
-function recoveryBaseline() {
-  const s = SERIES.recovery || [];
+function recoveryBaseline(sectionId = "recovery") {
+  const s = SERIES[sectionId] || [];
   const early = s.filter((p) => p.v != null && p.t < RECOVERY_BASELINE_END);
   if (!early.length) return s.find((p) => p.v != null)?.v ?? 0;
   return median(early.map((p) => p.v));
@@ -539,7 +560,7 @@ function buildSection(section) {
     higherBetter: section.higher_better,
     fmt: formatterFor(section.id),
     compute: computeFor(section),
-    targets: section.targets.map(buildTarget),
+    targets: section.targets.map((target) => buildTarget(target, section.id)),
   };
 }
 
@@ -547,7 +568,8 @@ function formatterFor(id) {
   if (id === "race") return hms;
   if (id === "fitness") return clock;
   if (id === "volume") return (v) => `${v.toFixed(0)} km/wk`;
-  if (id === "recovery") return (v) => `${v.toFixed(1)} m/beat`;
+  if (id === "recovery" || id === "aerobic_power")
+    return (v) => `${v.toFixed(2)} m/beat`;
   return (v) => `${v.toFixed(1)} km/wk`;
 }
 
@@ -555,6 +577,7 @@ function computeFor(section) {
   if (section.compute === "race_prediction") return racePrediction;
   if (section.compute === "race_fitness") return raceFitness;
   if (section.compute === "recovery_efficiency") return recoveryEff;
+  if (section.compute === "aerobic_power") return aerobicPower;
   if (section.compute === "ewma_marathon_pace") {
     return (runs, grid) => ewmaRate(runs, grid, section.tau_days, mpKm);
   }
@@ -568,7 +591,7 @@ function computeFor(section) {
     ewmaRate(runs, grid, section.tau_days, (run) => run.km);
 }
 
-function buildTarget(target) {
+function buildTarget(target, sectionId) {
   if (target.type === "line") {
     return { tier: target.tier, at: rampLine(target.start, target.end) };
   }
@@ -577,7 +600,7 @@ function buildTarget(target) {
   }
   return {
     tier: target.tier,
-    at: (t) => recoveryBaseline() * (1 + target.gain * frac(t)),
+    at: (t) => recoveryBaseline(sectionId) * (1 + target.gain * frac(t)),
   };
 }
 
@@ -591,12 +614,33 @@ function normalizeRuns(acts) {
     )
     .map((a) => ({
       t: new Date(a.start_date_local || a.start_date).getTime(),
+      id: a.id,
       km: a.distance / 1000,
       movingTime: a.moving_time,
       paceSec: a.moving_time / (a.distance / 1000),
       hr: a.average_heartrate || null,
+      aerobicEfficiency: streamAerobicEfficiency(a.id),
+      aerobicPower: streamAerobicPower(a.id),
     }))
     .sort((x, y) => x.t - y.t);
+}
+
+function streamAerobicEfficiency(activityId) {
+  const value = DETAILS[String(activityId)]?.aerobic_efficiency_m_per_beat;
+  return Number.isFinite(value) ? value : null;
+}
+
+function streamAerobicPower(activityId) {
+  const value = DETAILS[String(activityId)]?.aerobic_power_m_per_beat;
+  return Number.isFinite(value) ? value : null;
+}
+
+function inHighZone2(run) {
+  return run.hr >= HIGH_ZONE2_HR_MIN && run.hr <= HIGH_ZONE2_HR_MAX;
+}
+
+function inHighZone3(run) {
+  return run.hr >= HIGH_ZONE3_HR_MIN && run.hr <= HIGH_ZONE3_HR_MAX;
 }
 
 function fillForward(raw) {

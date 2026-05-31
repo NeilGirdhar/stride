@@ -78,6 +78,10 @@ BEST_EFFORT_KEYS = {
 # Fallback for 30k/marathon on long runs where Strava didn't flag a best effort
 # — found as the fastest window from the distance/time streams.
 STREAM_RECORDS = {"30k": 30000, "marathon": 42195}
+HIGH_ZONE2_HR_MIN = 135.0
+HIGH_ZONE2_HR_MAX = 145.0
+HIGH_ZONE3_HR_MIN = 155.0
+HIGH_ZONE3_HR_MAX = 165.0
 JsonDict = dict[str, Any]
 
 
@@ -596,6 +600,40 @@ def best_window(
     return best
 
 
+def grade_cost_factor(grade_pct: float) -> float:
+    """Approximate flat-equivalent cost multiplier from grade percent."""
+    grade = max(-0.3, min(0.3, grade_pct / 100.0))
+    cost = (
+        155.4 * grade**5 - 30.4 * grade**4 - 43.3 * grade**3 + 46.3 * grade**2 + 19.5 * grade + 3.6
+    )
+    return max(0.45, min(5.0, cost / 3.6))
+
+
+def aerobic_metric_from_streams(st: JsonDict, hr_min: float, hr_max: float) -> float | None:
+    times = (st.get("time") or {}).get("data") or []
+    dists = (st.get("distance") or {}).get("data") or []
+    hrs = (st.get("heartrate") or {}).get("data") or []
+    grades = (st.get("grade_smooth") or {}).get("data") or []
+    n = min(len(times), len(dists), len(hrs), len(grades))
+    if n < 2:
+        return None
+
+    adjusted_m = 0.0
+    beats = 0.0
+    for i in range(1, n):
+        hr = hrs[i]
+        if not (hr_min <= hr <= hr_max):
+            continue
+        dt = max(0.0, float(times[i]) - float(times[i - 1]))
+        dd = max(0.0, float(dists[i]) - float(dists[i - 1]))
+        if dt <= 0 or dd <= 0:
+            continue
+        adjusted_m += dd * grade_cost_factor(float(grades[i]))
+        beats += float(hr) * dt / 60.0
+
+    return adjusted_m / beats if beats > 0 else None
+
+
 def details(cfg: JsonDict, limit: int | None = None) -> None:
     tm = Tokens(cfg)
     activities = cast("list[JsonDict]", load_json(RAW_PATH, []) or [])
@@ -608,7 +646,13 @@ def details(cfg: JsonDict, limit: int | None = None) -> None:
     ]
     cache = cast("dict[str, JsonDict]", load_json(DETAILS_PATH, {}) or {})
 
-    todo = [a for a in runs if str(a["id"]) not in cache]
+    todo = [
+        a
+        for a in runs
+        if str(a["id"]) not in cache
+        or "aerobic_efficiency_m_per_beat" not in cache[str(a["id"])]
+        or "aerobic_power_m_per_beat" not in cache[str(a["id"])]
+    ]
     batch = todo[:limit] if limit else todo
     print(
         f"Runs: {len(runs)} total, {len(cache)} already detailed, "
@@ -617,6 +661,7 @@ def details(cfg: JsonDict, limit: int | None = None) -> None:
     )
 
     for i, a in enumerate(batch):
+        previous = cache.get(str(a["id"]), {})
         d = cast("JsonDict", api_get(tm, f"{ACTIVITY_URL}/{a['id']}"))
         entry = {
             "gear_id": d.get("gear_id"),
@@ -630,16 +675,31 @@ def details(cfg: JsonDict, limit: int | None = None) -> None:
                 for be in (d.get("best_efforts") or [])
             ],
         }
-        if (a.get("distance") or 0) >= min(STREAM_RECORDS.values()):
+        try:
+            st = cast(
+                "JsonDict",
+                api_get(
+                    tm,
+                    f"{ACTIVITY_URL}/{a['id']}/streams",
+                    {
+                        "keys": "time,distance,grade_smooth,heartrate",
+                        "key_by_type": "true",
+                    },
+                ),
+            )
+            efficiency = aerobic_metric_from_streams(st, HIGH_ZONE2_HR_MIN, HIGH_ZONE2_HR_MAX)
+            power = aerobic_metric_from_streams(st, HIGH_ZONE3_HR_MIN, HIGH_ZONE3_HR_MAX)
+            entry["aerobic_efficiency_m_per_beat"] = (
+                round(efficiency, 4) if efficiency is not None else None
+            )
+            entry["aerobic_power_m_per_beat"] = round(power, 4) if power is not None else None
+        except Exception:  # noqa: BLE001
+            st = {}
+            entry["aerobic_efficiency_m_per_beat"] = None
+            entry["aerobic_power_m_per_beat"] = None
+
+        if st and (a.get("distance") or 0) >= min(STREAM_RECORDS.values()):
             try:
-                st = cast(
-                    "JsonDict",
-                    api_get(
-                        tm,
-                        f"{ACTIVITY_URL}/{a['id']}/streams",
-                        {"keys": "time,distance", "key_by_type": "true"},
-                    ),
-                )
                 times = (st.get("time") or {}).get("data")
                 dists = (st.get("distance") or {}).get("data")
                 entry["windows"] = {
@@ -649,6 +709,8 @@ def details(cfg: JsonDict, limit: int | None = None) -> None:
                 }
             except Exception:  # noqa: BLE001
                 entry["windows"] = {}
+        elif previous.get("windows"):
+            entry["windows"] = previous["windows"]
         cache[str(a["id"])] = entry
         if (i + 1) % 10 == 0:
             save_json(DETAILS_PATH, cache)
