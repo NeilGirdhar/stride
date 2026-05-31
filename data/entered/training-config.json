@@ -1,3 +1,7 @@
 {
-  "serious_start": "2024-06-05"
+  "serious_start": "2024-06-05",
+  "hr_zones": {
+    "high_zone2": { "min": 135, "max": 145 },
+    "high_zone3": { "min": 155, "max": 165 }
+  }
 }

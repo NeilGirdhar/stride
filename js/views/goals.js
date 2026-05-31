@@ -29,10 +29,14 @@ const MARATHON_GOAL_URL = "./data/entered/marathon-goal.json";
 const RECORDS_URL = "./data/generated/records.json";
 const TRAINING_CONFIG_URL = "./data/entered/training-config.json";
 const RUN_TYPES = new Set(["Run", "TrailRun"]);
-const HIGH_ZONE2_HR_MIN = 135;
-const HIGH_ZONE2_HR_MAX = 145;
-const HIGH_ZONE3_HR_MIN = 155;
-const HIGH_ZONE3_HR_MAX = 165;
+// High zone 2 / high zone 3 HR bands; defaults below, overridden per field from
+// training-config.json's `hr_zones` (shared with the offline Python models).
+const DEFAULT_HR_ZONES = {
+  high_zone2: { min: 135, max: 145 },
+  high_zone3: { min: 155, max: 165 },
+};
+let HIGH_ZONE2 = DEFAULT_HR_ZONES.high_zone2;
+let HIGH_ZONE3 = DEFAULT_HR_ZONES.high_zone3;
 
 let RUNS = null;
 let DETAILS = {};
@@ -97,6 +101,7 @@ export async function renderGoals() {
       SERIOUS_START = trainingConfig?.serious_start
         ? parseLocalDate(trainingConfig.serious_start)
         : RANGE_START;
+      loadHrZones(trainingConfig);
       RUNS = normalizeRuns(acts || []);
       GRID = buildGrid();
       for (const s of SECTIONS) SERIES[s.id] = s.compute(RUNS, GRID);
@@ -722,12 +727,23 @@ function streamGradeAdjustedKm(activityId) {
   return Number.isFinite(value) ? value : null;
 }
 
+function loadHrZones(cfg) {
+  const zones = cfg?.hr_zones || {};
+  const band = (name) => {
+    const def = DEFAULT_HR_ZONES[name];
+    const z = zones[name] || {};
+    return { min: Number(z.min ?? def.min), max: Number(z.max ?? def.max) };
+  };
+  HIGH_ZONE2 = band("high_zone2");
+  HIGH_ZONE3 = band("high_zone3");
+}
+
 function inHighZone2(run) {
-  return run.hr >= HIGH_ZONE2_HR_MIN && run.hr <= HIGH_ZONE2_HR_MAX;
+  return run.hr >= HIGH_ZONE2.min && run.hr <= HIGH_ZONE2.max;
 }
 
 function inHighZone3(run) {
-  return run.hr >= HIGH_ZONE3_HR_MIN && run.hr <= HIGH_ZONE3_HR_MAX;
+  return run.hr >= HIGH_ZONE3.min && run.hr <= HIGH_ZONE3.max;
 }
 
 function fillForward(raw) {

@@ -5,18 +5,24 @@
   "range_start": "2026-01-01",
   "marathon_pace_sec": 256,
   "race_distance_km": 42.195,
-  "model_series_start": "2026-02-01",
   "target_ramp": {
     "start": "2026-06-01",
     "peak": "2026-09-07"
   },
   "recovery_baseline_end": "2026-03-01",
   "prediction_distances": {
+    "400m": 0.4,
+    "1k": 1.0,
     "5k": 5.0,
     "10k": 10.0,
     "half": 21.097,
     "30k": 30.0,
     "marathon": 42.195
+  },
+  "goal_conditions": {
+    "elevation_gain_per_km": 5.0,
+    "temp_c": 9.0,
+    "surface": "road"
   },
   "fitness_score_weights": {
     "fitness": 1.0,

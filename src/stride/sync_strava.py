@@ -55,6 +55,7 @@ GEAR_PATH = IMPORTED_DIR / "strava-gear.json"  # gear_id -> shoe
 RECORDS_PATH = GENERATED_DIR / "records.json"  # best efforts
 CLUB_OVERRIDES_PATH = ENTERED_DIR / "club-overrides.json"
 CLUB_PATTERNS_PATH = ENTERED_DIR / "club-patterns.json"
+TRAINING_CONFIG_PATH = ENTERED_DIR / "training-config.json"
 
 AUTH_URL = "https://www.strava.com/oauth/authorize"
 TOKEN_URL = "https://www.strava.com/oauth/token"  # noqa: S105
@@ -78,10 +79,13 @@ BEST_EFFORT_KEYS = {
 # Fallback for 30k/marathon on long runs where Strava didn't flag a best effort
 # — found as the fastest window from the distance/time streams.
 STREAM_RECORDS = {"30k": 30000, "marathon": 42195}
-HIGH_ZONE2_HR_MIN = 135.0
-HIGH_ZONE2_HR_MAX = 145.0
-HIGH_ZONE3_HR_MIN = 155.0
-HIGH_ZONE3_HR_MAX = 165.0
+# High zone 2 / high zone 3 heart-rate bands, used to pick the runs that feed the
+# aerobic efficiency / power metrics. These are personal, so they live in
+# data/entered/training-config.json; the defaults below apply when it is absent.
+DEFAULT_HR_ZONES = {
+    "high_zone2": {"min": 135.0, "max": 145.0},
+    "high_zone3": {"min": 155.0, "max": 165.0},
+}
 JsonDict = dict[str, Any]
 
 
@@ -94,6 +98,27 @@ def load_json(path: str | os.PathLike[str], default: object = None) -> object:
             return json.load(f)
     except FileNotFoundError, json.JSONDecodeError:
         return default
+
+
+def load_hr_zones() -> dict[str, dict[str, float]]:
+    """High-zone HR bands from training-config.json, falling back per field."""
+    cfg = cast("JsonDict | None", load_json(TRAINING_CONFIG_PATH)) or {}
+    configured = cast("JsonDict", cfg.get("hr_zones") or {})
+    zones: dict[str, dict[str, float]] = {}
+    for name, default in DEFAULT_HR_ZONES.items():
+        band = cast("JsonDict", configured.get(name) or {})
+        zones[name] = {
+            "min": float(band.get("min", default["min"])),
+            "max": float(band.get("max", default["max"])),
+        }
+    return zones
+
+
+HR_ZONES = load_hr_zones()
+HIGH_ZONE2_HR_MIN = HR_ZONES["high_zone2"]["min"]
+HIGH_ZONE2_HR_MAX = HR_ZONES["high_zone2"]["max"]
+HIGH_ZONE3_HR_MIN = HR_ZONES["high_zone3"]["min"]
+HIGH_ZONE3_HR_MAX = HR_ZONES["high_zone3"]["max"]
 
 
 def save_json(path: str | os.PathLike[str], obj: object) -> None:
