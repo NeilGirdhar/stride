@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 """Build Stride's supervised race prediction artifact.
 
-Runtime stays static: this script reads Strava exports plus a manually editable
-race registry and writes data/race-model.json for the browser.
+Runtime stays static: this script reads Strava imports plus a manually editable
+race registry and writes data/generated/race-model.json for the browser.
 """
 
 from __future__ import annotations
@@ -19,9 +19,12 @@ import numpy as np
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(ROOT, "data")
-ACTIVITIES_PATH = os.path.join(DATA_DIR, "strava-activities.json")
-RACES_PATH = os.path.join(DATA_DIR, "races.json")
-MODEL_PATH = os.path.join(DATA_DIR, "race-model.json")
+IMPORTED_DIR = os.path.join(DATA_DIR, "imported")
+GENERATED_DIR = os.path.join(DATA_DIR, "generated")
+ENTERED_DIR = os.path.join(DATA_DIR, "entered")
+ACTIVITIES_PATH = os.path.join(IMPORTED_DIR, "strava-activities.json")
+RACES_PATH = os.path.join(ENTERED_DIR, "races.json")
+MODEL_PATH = os.path.join(GENERATED_DIR, "race-model.json")
 
 RUN_TYPES = {"Run", "TrailRun"}
 DAY_SEC = 86400
@@ -294,7 +297,7 @@ def build_dataset(runs: list[Run], races: list[dict[str, Any]]) -> list[dict[str
 
 def fit_ridge(rows: list[dict[str, Any]]) -> dict[str, Any]:
     if not rows:
-        raise SystemExit("No race labels available. Add races to data/races.json.")
+        raise SystemExit("No race labels available. Add races to data/entered/races.json.")
 
     x_raw = np.array(
         [[row["features"][name] for name in MODEL_FEATURES] for row in rows],
@@ -531,7 +534,7 @@ def main() -> None:
         "prediction_components": prediction_components(current_factors, model),
         "series": series,
         "notes": [
-            "Race labels are manually registered in data/races.json.",
+            "Race labels are manually registered in data/entered/races.json.",
             "Training features for each race use only runs before the race start and exclude the race activity itself.",
             "Ordinary run pace is used only inside load/specificity factors, not as a race-performance label.",
         ],

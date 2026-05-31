@@ -7,8 +7,8 @@
 // so the curves are smooth and reward frequency + magnitude, not a single best
 // run. (A 30 km run twice in a week beats once; "longest run" couldn't see that.)
 
-const ACTS_URL = './data/strava-activities.json';
-const RACE_MODEL_URL = './data/race-model.json';
+const ACTS_URL = './data/imported/strava-activities.json';
+const RACE_MODEL_URL = './data/generated/race-model.json';
 const RUN_TYPES = new Set(['Run', 'TrailRun']);
 const DAY = 86400000;
 const RANGE_START = new Date(2026, 0, 1).getTime();   // Jan 1, 2026

@@ -26,13 +26,23 @@ python -m http.server 8000   # then open http://localhost:8000
 
 `scripts/sync_strava.py` pulls your full Strava history (all sports) once, then
 incrementally fetches new activities. Python 3 standard library only — no
-third-party packages. It writes under `data/`:
+third-party packages. Data is grouped by source:
 
-- `data/strava-activities.json` — raw activity list, deduped by id
-- `data/fitness-summary.json` — compact derived metrics
-- `data/strava-run-details.json`, `data/strava-gear.json`, `data/records.json`
-  — per-run shoes + best-effort PRs (written by `details`)
-- `data/strava-tokens.json` — OAuth tokens (gitignored, never committed)
+- `data/imported/` — Strava data downloaded by `sync` / `details`
+- `data/generated/` — reproducible outputs from local scripts
+- `data/entered/` — manually maintained labels and overrides
+- `data/private/` — OAuth tokens and other local secrets (gitignored)
+
+Key files:
+
+- `data/imported/strava-activities.json` — raw activity list, deduped by id
+- `data/imported/strava-run-details.json`, `data/imported/strava-gear.json`
+  — per-run shoes, photos, and gear details
+- `data/generated/fitness-summary.json`, `data/generated/records.json`
+  — compact derived metrics and best-effort PRs
+- `data/entered/races.json`, `data/entered/club-overrides.json`
+  — manually entered race labels and club overrides
+- `data/private/strava-tokens.json` — OAuth tokens (gitignored, never committed)
 
 ### One-time setup
 
@@ -68,18 +78,18 @@ The first `sync` does a full history pull; later runs are incremental. Re-run
 ## Update race predictions
 
 The Goals pane reads a precomputed supervised race model from
-`data/race-model.json`. The browser does not fit the model at runtime; rebuild
-the JSON after syncing Strava or editing race labels:
+`data/generated/race-model.json`. The browser does not fit the model at runtime;
+rebuild the JSON after syncing Strava or editing race labels:
 
 ```sh
 python scripts/sync_strava.py sync
 python scripts/race_model.py
 ```
 
-Race labels live in `data/races.json`. Add only true performance labels there:
-races, time trials, or deliberate benchmark efforts. Ordinary easy, workout, and
-long runs should stay out of the registry; they are used only as training-load
-features for the model.
+Race labels live in `data/entered/races.json`. Add only true performance labels
+there: races, time trials, or deliberate benchmark efforts. Ordinary easy,
+workout, and long runs should stay out of the registry; they are used only as
+training-load features for the model.
 
 Update the model:
 

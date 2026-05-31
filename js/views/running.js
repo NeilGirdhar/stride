@@ -5,10 +5,12 @@
 // biased low). Horizontally zoomable. Hover a run for stats; click for detail.
 // Best-efforts table pulls records.json; clicking a row frames + highlights it.
 
-const ACTS_URL = './data/strava-activities.json';
-const DETAILS_URL = './data/strava-run-details.json';
-const GEAR_URL = './data/strava-gear.json';
-const RECORDS_URL = './data/records.json';
+const ACTS_URL = './data/imported/strava-activities.json';
+const DETAILS_URL = './data/imported/strava-run-details.json';
+const GEAR_URL = './data/imported/strava-gear.json';
+const RECORDS_URL = './data/generated/records.json';
+const RACES_URL = './data/entered/races.json';
+const CLUB_OVERRIDES_URL = './data/entered/club-overrides.json';
 
 const RUN_TYPES = new Set(['Run', 'TrailRun']);
 const DAY = 86400000;
@@ -18,7 +20,7 @@ const SERIOUS_START = new Date(2024, 5, 5).getTime(); // Jun 5, 2024 — first 6
 const padL = 48, padR = 56, padT = 22, padB = 34;
 
 let RUNS = null;
-let DETAILS = {}, GEAR = {}, RECORDS = {};
+let DETAILS = {}, GEAR = {}, RECORDS = {}, RACE_IDS = new Set(), CLUB_OVERRIDES = new Map();
 let view = 'serious';
 let detailTab = 'clubs';
 let highlightedRecordKey = null;
@@ -54,8 +56,8 @@ const REC_LABEL = { '400m': '400 m', '1k': '1 km', '5k': '5 km', '10k': '10 km',
                     half: 'half marathon', '30k': '30 km', marathon: 'marathon' };
 const CLUBS = [
   { id: 'mrrc', label: 'MRRC', re: /\bMRRC\b/i },
-  { id: 'cose', label: 'Cosé', re: /\bCos[ée]\b/i, ids: [17977643954, 18532982439] },
-  { id: 'zab', label: 'ZAB', re: /\bZAB\b/i },
+  { id: 'cose', label: 'Cosé', re: /\bCos[ée]\b/i },
+  { id: 'zab', label: 'Zab', re: /\bZAB\b/i },
   { id: 'le-quartier', label: 'Le Quartier', re: /\bLe\s+Quartier\b/i },
   { id: 'run-sip', label: 'Run & Sip', re: /\bRun\s*(?:&|and)\s*Sip\b/i },
   { id: '6am-mile-end', label: '6am Mile End', re: /\b6\s*am\s+Mile\s+End\b/i },
@@ -66,8 +68,10 @@ const CLUBS = [
   { id: '6am-laurier-est', label: '6am Laurier Est', re: /\b6\s*am\s+Laurier(?:\s+E(?:st|ast))?\b/i },
   { id: '6am-verdun', label: '6am Verdun', re: /\b6\s*am\s+Verdun\b/i },
 ];
-// Bucket for runs that match no club above (solo / non-club outings).
-const SOLO = { id: 'solo', label: 'Solo' };
+// Buckets that are not running clubs, but still useful in the Clubs table.
+const RACES = { id: 'races', label: 'Races', nonClub: true };
+const SOLO = { id: 'solo', label: 'Solo', nonClub: true };
+const CLUB_BY_ID = new Map(CLUBS.map(club => [club.id, club]));
 
 export async function renderRunning() {
   const root = document.getElementById('page-running');
@@ -76,11 +80,19 @@ export async function renderRunning() {
   if (RUNS === null) {
     root.innerHTML = `<div class="hero"><h1>Loading runs…</h1></div>`;
     try {
-      const [acts, details, gear, records] = await Promise.all([
+      const [acts, details, gear, records, races, clubOverrides] = await Promise.all([
         fetchJSON(ACTS_URL), fetchJSON(DETAILS_URL, {}),
         fetchJSON(GEAR_URL, {}), fetchJSON(RECORDS_URL, {}),
+        fetchJSON(RACES_URL, []),
+        fetchJSON(CLUB_OVERRIDES_URL, []),
       ]);
       DETAILS = details || {}; GEAR = gear || {}; RECORDS = records || {};
+      RACE_IDS = new Set((races || []).map(r => Number(r.activity_id)).filter(Boolean));
+      CLUB_OVERRIDES = new Map(
+        (clubOverrides || [])
+          .map(row => [Number(row.activity_id), CLUB_BY_ID.get(row.club)])
+          .filter(([, club]) => club)
+      );
       RUNS = (acts || [])
         .filter(a => RUN_TYPES.has(a.sport_type || a.type) && a.distance > 0)
         .map(a => ({
@@ -222,10 +234,11 @@ function drawGraph(root) {
     const recordHl = hl && highlightedRecordKey;
     const shoeHl = highlightedShoeId && p.gearId === highlightedShoeId;
     const clubHl = highlightedClubId && p.club?.id === highlightedClubId;
-    const cls = `rg-dot${hl ? ' hl' : ''}${recordHl ? ' record-hl' : ''}${shoeHl ? ' shoe-hl' : ''}${clubHl ? ' club-hl' : ''}`;
+    const race = p.club?.id === RACES.id;
+    const cls = `rg-dot${race ? ' race' : ''}${hl ? ' hl' : ''}${recordHl ? ' record-hl' : ''}${shoeHl ? ' shoe-hl' : ''}${clubHl ? ' club-hl' : ''}`;
     const cx = p.px.toFixed(1);
     const cy = p.py.toFixed(1);
-    if (!recordHl) return `<circle class="${cls}" cx="${cx}" cy="${cy}" r="3" />`;
+    if (!recordHl) return `<circle class="${cls}" cx="${cx}" cy="${cy}" r="${race ? 5 : 3}" />`;
     return `<g class="rg-record-marker">
       <circle class="rg-record-hit" cx="${cx}" cy="${cy}" r="18" />
       <circle class="rg-record-halo" cx="${cx}" cy="${cy}" r="12" />
@@ -337,7 +350,7 @@ function clubsTable() {
     <table class="rg-table">
       <thead><tr><th>club</th><th>visible km</th><th>runs</th></tr></thead>
       <tbody>
-        ${rows.map(row => `<tr class="rg-club${row.id === highlightedClubId ? ' active' : ''}" data-club="${esc(row.id)}">
+        ${rows.map(row => `<tr class="rg-club${row.id === highlightedClubId ? ' active' : ''}${row.nonClub ? ' non-club' : ''}" data-club="${esc(row.id)}">
           <td>${esc(row.label)}</td>
           <td class="rg-rec-time">${row.km.toFixed(1)}</td>
           <td class="rg-rec-when">${row.runs}</td>
@@ -354,8 +367,11 @@ function detailPanel() {
 }
 
 function classifyClub(name, id) {
+  if (RACE_IDS.has(Number(id))) return RACES;
+  const manualClub = CLUB_OVERRIDES.get(Number(id));
+  if (manualClub) return manualClub;
   return CLUBS.find(club =>
-    (club.ids && club.ids.includes(id)) || club.re.test(name || '')) || SOLO;
+    club.re.test(name || '')) || SOLO;
 }
 
 function clearHighlights() {

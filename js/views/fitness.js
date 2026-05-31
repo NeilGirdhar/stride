@@ -2,7 +2,7 @@
 // Fitness is slow-decaying load, fatigue is fast-decaying load, and form is the
 // difference between them. Values are shown as weekly km-equivalent load.
 
-const ACTS_URL = './data/strava-activities.json';
+const ACTS_URL = './data/imported/strava-activities.json';
 const RUN_TYPES = new Set(['Run', 'TrailRun']);
 const DAY = 86400000;
 const SERIOUS_START = new Date(2024, 5, 5).getTime();

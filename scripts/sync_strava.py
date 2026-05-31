@@ -1,18 +1,18 @@
 #!/usr/bin/env python
 """Stride — Strava sync.
 
-Pulls your Strava activity history (all sports) and writes, under data/:
-  strava-activities.json  raw activity list, deduped by id (gitignored)
-  fitness-summary.json    compact derived metrics — the small file Claude reads
-  strava-tokens.json      OAuth tokens (gitignored)
+Pulls your Strava activity history (all sports) and writes under data/:
+  imported/strava-activities.json  raw activity list, deduped by id
+  generated/fitness-summary.json   compact derived metrics
+  private/strava-tokens.json       OAuth tokens (gitignored)
 
 The raw history is fetched in full once; subsequent syncs only pull activities
 newer than the latest one already stored, then merge.
 
 Also writes (after `details`):
-  strava-run-details.json  per-run cache: shoes (gear_id), photos, best efforts
-  strava-gear.json         gear_id -> shoe name + mileage
-  records.json             best efforts: 400m, 1k, 5k, 10k, half, 30k, marathon
+  imported/strava-run-details.json  per-run cache: shoes (gear_id), photos, best efforts
+  imported/strava-gear.json         gear_id -> shoe name + mileage
+  generated/records.json            best efforts: 400m, 1k, 5k, 10k, half, 30k, marathon
 
 Usage:
   python scripts/sync_strava.py auth            one-time browser authorization
@@ -26,6 +26,7 @@ No third-party dependencies — Python 3 standard library only.
 
 import json
 import os
+import re
 import sys
 import time
 import urllib.parse
@@ -36,13 +37,18 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(ROOT, "data")
+IMPORTED_DIR = os.path.join(DATA_DIR, "imported")
+GENERATED_DIR = os.path.join(DATA_DIR, "generated")
+ENTERED_DIR = os.path.join(DATA_DIR, "entered")
+PRIVATE_DIR = os.path.join(DATA_DIR, "private")
 CONFIG_PATH = os.path.join(ROOT, "scripts", "strava_config.json")
-TOKENS_PATH = os.path.join(DATA_DIR, "strava-tokens.json")
-RAW_PATH = os.path.join(DATA_DIR, "strava-activities.json")
-SUMMARY_PATH = os.path.join(DATA_DIR, "fitness-summary.json")
-DETAILS_PATH = os.path.join(DATA_DIR, "strava-run-details.json")  # cache: id -> detail
-GEAR_PATH = os.path.join(DATA_DIR, "strava-gear.json")  # gear_id -> shoe
-RECORDS_PATH = os.path.join(DATA_DIR, "records.json")  # best efforts
+TOKENS_PATH = os.path.join(PRIVATE_DIR, "strava-tokens.json")
+RAW_PATH = os.path.join(IMPORTED_DIR, "strava-activities.json")
+SUMMARY_PATH = os.path.join(GENERATED_DIR, "fitness-summary.json")
+DETAILS_PATH = os.path.join(IMPORTED_DIR, "strava-run-details.json")  # cache: id -> detail
+GEAR_PATH = os.path.join(IMPORTED_DIR, "strava-gear.json")  # gear_id -> shoe
+RECORDS_PATH = os.path.join(GENERATED_DIR, "records.json")  # best efforts
+CLUB_OVERRIDES_PATH = os.path.join(ENTERED_DIR, "club-overrides.json")
 
 AUTH_URL = "https://www.strava.com/oauth/authorize"
 TOKEN_URL = "https://www.strava.com/oauth/token"
@@ -66,6 +72,20 @@ BEST_EFFORT_KEYS = {
 # Fallback for 30k/marathon on long runs where Strava didn't flag a best effort
 # — found as the fastest window from the distance/time streams.
 STREAM_RECORDS = {"30k": 30000, "marathon": 42195}
+CLUB_PATTERNS = {
+    "mrrc": re.compile(r"\bMRRC\b", re.I),
+    "cose": re.compile(r"\bCos[ée]\b", re.I),
+    "zab": re.compile(r"\bZAB\b", re.I),
+    "le-quartier": re.compile(r"\bLe\s+Quartier\b", re.I),
+    "run-sip": re.compile(r"\bRun\s*(?:&|and)\s*Sip\b", re.I),
+    "6am-mile-end": re.compile(r"\b6\s*am\s+Mile\s+End\b", re.I),
+    "6am-villeray": re.compile(r"\b6\s*am\s+Villeray\b", re.I),
+    "6am-outremont": re.compile(r"\b6\s*am\s+Outrem[eo]nt\b", re.I),
+    "6am-rosemont": re.compile(r"\b6\s*am\s+Rosemont\b", re.I),
+    "6am-plateau": re.compile(r"\b6\s*am\s+Plateau\b", re.I),
+    "6am-laurier-est": re.compile(r"\b6\s*am\s+Laurier(?:\s+E(?:st|ast))?\b", re.I),
+    "6am-verdun": re.compile(r"\b6\s*am\s+Verdun\b", re.I),
+}
 
 
 # ---------- small IO helpers ----------
@@ -178,7 +198,7 @@ def auth(cfg):
         },
     )
     save_tokens(tok)
-    print("Authorized. Tokens saved to data/strava-tokens.json")
+    print("Authorized. Tokens saved to data/private/strava-tokens.json")
     print("Now run:  python scripts/sync_strava.py sync")
 
 
@@ -296,6 +316,7 @@ def sync(cfg, full=False):
 
     activities = sorted(existing.values(), key=lambda a: a["start_date"])
     save_json(RAW_PATH, activities)
+    prune_club_overrides(activities)
 
     summary = compute_summary(activities)
     save_json(SUMMARY_PATH, summary)
@@ -311,6 +332,35 @@ def sync(cfg, full=False):
             f"Best recent equivalent 5K: {rf['best_equiv_5k']} "
             f"(from {rf.get('best_from', {}).get('name', '?')})."
         )
+
+
+def prune_club_overrides(activities):
+    overrides = load_json(CLUB_OVERRIDES_PATH, []) or []
+    if not overrides:
+        return
+
+    activities_by_id = {int(a["id"]): a for a in activities}
+    kept = []
+    removed = []
+    for row in overrides:
+        activity_id = int(row.get("activity_id") or 0)
+        club_id = row.get("club")
+        activity = activities_by_id.get(activity_id)
+        pattern = CLUB_PATTERNS.get(club_id)
+        if activity and pattern and pattern.search(activity.get("name") or ""):
+            removed.append(row)
+        else:
+            kept.append(row)
+
+    if len(kept) == len(overrides):
+        return
+
+    save_json(CLUB_OVERRIDES_PATH, kept)
+    removed_ids = ", ".join(str(row.get("activity_id")) for row in removed)
+    print(
+        f"Removed {len(removed)} redundant club override(s) from "
+        f"{os.path.relpath(CLUB_OVERRIDES_PATH, ROOT)}: {removed_ids}."
+    )
 
 
 # ---------- derive fitness summary ----------

@@ -1,5 +1,14 @@
 [
   {
+    "activity_id": 12417799602,
+    "name": "BougeBouge Verdun",
+    "date": "2024-09-15",
+    "distance_km": 10,
+    "time_sec": 3544,
+    "type": "race",
+    "notes": "Seeded from Strava 10K best effort."
+  },
+  {
     "activity_id": 12590639809,
     "name": "Lachine 10k",
     "date": "2024-10-06",

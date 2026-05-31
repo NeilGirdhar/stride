@@ -1,7 +1,7 @@
 # Strava history IS committed (public repo, so the deployed site has data).
 # The slimmed activity data has no GPS/route coordinates.
 # But NEVER commit OAuth tokens or API secrets:
-data/strava-tokens.json
+data/private/
 scripts/strava_config.json
 *.env
 

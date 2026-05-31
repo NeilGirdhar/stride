@@ -1,9 +1,31 @@
 {
-  "generated_at": "2026-05-31T13:36:50.829155+00:00",
-  "as_of": "2026-05-31T13:36:50.757161+00:00",
+  "generated_at": "2026-05-31T14:24:05.643019+00:00",
+  "as_of": "2026-05-31T14:24:05.580508+00:00",
   "schema_version": 1,
-  "label_count": 6,
+  "label_count": 7,
   "labels": [
+    {
+      "activity_id": 12417799602,
+      "name": "BougeBouge Verdun",
+      "date": "2024-09-15",
+      "distance_km": 10.0,
+      "time_sec": 3544.0,
+      "type": "race",
+      "effort": null,
+      "features": {
+        "fitness": 17.170992836516728,
+        "fatigue": 8.396408676323189,
+        "form": 8.77458416019354,
+        "volume_28d_km_per_week": 16.317575,
+        "volume_56d_km_per_week": 19.3093875,
+        "longest_run_56d_km": 7.76,
+        "long_run_durability": 0.0,
+        "mp_specificity": 0.0,
+        "aerobic_efficiency": 16.223906741220656,
+        "consistency_runs_per_week": 3.0,
+        "fitness_score": 24.701802376565112
+      }
+    },
     {
       "activity_id": 12590639809,
       "name": "Lachine 10k",
@@ -158,18 +180,42 @@
       "consistency_runs_per_week": 0.8
     },
     "feature_means": {
-      "fitness_score": 45.52571186587641
+      "fitness_score": 42.55086765311764
     },
     "feature_scales": {
-      "fitness_score": 12.99487229845503
+      "fitness_score": 14.065599149833929
     },
-    "intercept": 5.581998723200033,
+    "intercept": 5.6034662074787835,
     "coefficients": {
-      "fitness_score": -0.020429274411958537
+      "fitness_score": -0.032091014180698194
     },
-    "training_rmse_log": 0.06817294188999345,
-    "training_rmse_pct": 0.07055043548585195,
+    "training_rmse_log": 0.07089900762018043,
+    "training_rmse_pct": 0.07347280782021783,
     "rows": [
+      {
+        "activity_id": 12417799602,
+        "name": "BougeBouge Verdun",
+        "date": "2024-09-15",
+        "distance_km": 10.0,
+        "time_sec": 3544.0,
+        "type": "race",
+        "effort": null,
+        "features": {
+          "fitness": 17.170992836516728,
+          "fatigue": 8.396408676323189,
+          "form": 8.77458416019354,
+          "volume_28d_km_per_week": 16.317575,
+          "volume_56d_km_per_week": 19.3093875,
+          "longest_run_56d_km": 7.76,
+          "long_run_durability": 0.0,
+          "mp_specificity": 0.0,
+          "aerobic_efficiency": 16.223906741220656,
+          "consistency_runs_per_week": 3.0,
+          "fitness_score": 24.701802376565112
+        },
+        "predicted_time_sec": 3245.1910164896995,
+        "residual_sec": 298.80898351030055
+      },
       {
         "activity_id": 12590639809,
         "name": "Lachine 10k",
@@ -191,8 +237,8 @@
           "consistency_runs_per_week": 2.875,
           "fitness_score": 25.9093359257021
         },
-        "predicted_time_sec": 3145.0273965371207,
-        "residual_sec": 64.9726034628793
+        "predicted_time_sec": 3236.2627618208444,
+        "residual_sec": -26.26276182084439
       },
       {
         "activity_id": 14291864922,
@@ -215,8 +261,8 @@
           "consistency_runs_per_week": 3.5,
           "fitness_score": 38.498801240427994
         },
-        "predicted_time_sec": 6803.037278051283,
-        "residual_sec": 88.96272194871744
+        "predicted_time_sec": 6938.145501887709,
+        "residual_sec": -46.14550188770863
       },
       {
         "activity_id": 15412365665,
@@ -239,8 +285,8 @@
           "consistency_runs_per_week": 2.75,
           "fitness_score": 36.23875671408101
         },
-        "predicted_time_sec": 6827.2516121133685,
-        "residual_sec": 533.7483878866315
+        "predicted_time_sec": 6974.013387214851,
+        "residual_sec": 386.9866127851492
       },
       {
         "activity_id": 15888965889,
@@ -263,8 +309,8 @@
           "consistency_runs_per_week": 4.125,
           "fitness_score": 60.529336910679355
         },
-        "predicted_time_sec": 6571.45260950135,
-        "residual_sec": -270.4526095013498
+        "predicted_time_sec": 6598.031224227716,
+        "residual_sec": -297.03122422771594
       },
       {
         "activity_id": 16044666433,
@@ -287,8 +333,8 @@
           "consistency_runs_per_week": 4.5,
           "fitness_score": 60.92372461059843
         },
-        "predicted_time_sec": 13692.880422429364,
-        "residual_sec": 855.1195775706365
+        "predicted_time_sec": 13744.41600609813,
+        "residual_sec": 803.5839939018697
       },
       {
         "activity_id": 18172734023,
@@ -311,3413 +357,3453 @@
           "consistency_runs_per_week": 3.875,
           "fitness_score": 51.05431579376954
         },
-        "predicted_time_sec": 6670.0717173890935,
-        "residual_sec": -797.0717173890935
+        "predicted_time_sec": 6742.216992210763,
+        "residual_sec": -869.2169922107632
       }
     ]
   },
   "current_factors": {
-    "fitness": 54.02435334095088,
-    "fatigue": 56.7112202603596,
-    "form": -2.686866919408722,
+    "fitness": 53.98216592543015,
+    "fatigue": 56.446024978115965,
+    "form": -2.4638590526858124,
     "volume_28d_km_per_week": 55.544875,
     "volume_56d_km_per_week": 53.7985875,
     "longest_run_56d_km": 23.710900000000002,
-    "long_run_durability": 0.8290952244207955,
-    "mp_specificity": 0.18295228260990726,
+    "long_run_durability": 0.8281242579975054,
+    "mp_specificity": 0.1826666606671995,
     "aerobic_efficiency": 20.26902579154066,
     "consistency_runs_per_week": 5.625,
-    "fitness_score": 68.75644625865796
+    "fitness_score": 68.76921433059314
   },
   "current_predictions": {
     "5k": {
       "distance_km": 5.0,
-      "time_sec": 1298.2331919676722,
-      "model_time_sec": 1410.192937435501,
-      "race_evidence_time_sec": 1241.6752731409304,
+      "time_sec": 1286.8304888847217,
+      "model_time_sec": 1407.6157361922087,
+      "race_evidence_time_sec": 1226.1437488896565,
       "race_evidence": {
-        "time_sec": 1241.6752731409304,
+        "time_sec": 1226.1437488896565,
         "source": {
           "activity_id": 18172734023,
           "name": "Montreal 21k",
           "date": "2026-04-19",
           "source_distance_km": 21.097,
-          "adjusted_time_sec": 1241.6752731409304,
-          "confidence": 1.1124012168231143
+          "adjusted_time_sec": 1226.1437488896565,
+          "confidence": 1.1123012257269032
         },
         "candidates": [
+          {
+            "activity_id": 12417799602,
+            "name": "BougeBouge Verdun",
+            "date": "2024-09-15",
+            "source_distance_km": 10.0,
+            "adjusted_time_sec": 1537.2254341013538,
+            "confidence": 0.22642312937351058
+          },
           {
             "activity_id": 12590639809,
             "name": "Lachine 10k",
             "date": "2024-10-06",
             "source_distance_km": 10.0,
-            "adjusted_time_sec": 1439.3258812791826,
-            "confidence": 0.2398538167491669
+            "adjusted_time_sec": 1396.1927215807254,
+            "confidence": 0.23983225686078805
           },
           {
             "activity_id": 14291864922,
             "name": "Montreal 21k",
             "date": "2025-04-26",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 1428.6339068230834,
-            "confidence": 0.41715351620338037
+            "adjusted_time_sec": 1398.2537049990103,
+            "confidence": 0.4171160192672546
           },
           {
             "activity_id": 15412365665,
             "name": "Tremblant Half",
             "date": "2025-08-10",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 1520.440552395208,
-            "confidence": 0.5577245805732778
+            "adjusted_time_sec": 1485.7240528253162,
+            "confidence": 0.557674448038944
           },
           {
             "activity_id": 15888965889,
             "name": "Beneva Montreal Half",
             "date": "2025-09-21",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 1352.1554862822563,
-            "confidence": 0.5686314676145637
+            "adjusted_time_sec": 1344.2474659985053,
+            "confidence": 0.5686859400568768
           },
           {
             "activity_id": 16044666433,
             "name": "Marathon",
             "date": "2025-10-05",
             "source_distance_km": 42.195,
-            "adjusted_time_sec": 1498.259403493121,
-            "confidence": 0.5870407240101231
+            "adjusted_time_sec": 1489.913701756303,
+            "confidence": 0.5870969599798069
           },
           {
             "activity_id": 18172734023,
             "name": "Montreal 21k",
             "date": "2026-04-19",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 1241.6752731409304,
-            "confidence": 1.1124012168231143
+            "adjusted_time_sec": 1226.1437488896565,
+            "confidence": 1.1123012257269032
           }
         ]
       },
       "blend_weight": 0.65,
-      "low_sec": 1212.6782157428108,
-      "high_sec": 1389.824109023179
+      "low_sec": 1198.7546209929114,
+      "high_sec": 1381.377538091746
     },
     "10k": {
       "distance_km": 10.0,
-      "time_sec": 2706.7273044275535,
-      "model_time_sec": 2940.1557069129535,
-      "race_evidence_time_sec": 2588.8079166649345,
+      "time_sec": 2682.9534493375268,
+      "model_time_sec": 2934.7824188030945,
+      "race_evidence_time_sec": 2556.4257521736813,
       "race_evidence": {
-        "time_sec": 2588.8079166649345,
+        "time_sec": 2556.4257521736813,
         "source": {
           "activity_id": 18172734023,
           "name": "Montreal 21k",
           "date": "2026-04-19",
           "source_distance_km": 21.097,
-          "adjusted_time_sec": 2588.8079166649345,
-          "confidence": 1.1124012168231143
+          "adjusted_time_sec": 2556.4257521736813,
+          "confidence": 1.1123012257269032
         },
         "candidates": [
+          {
+            "activity_id": 12417799602,
+            "name": "BougeBouge Verdun",
+            "date": "2024-09-15",
+            "source_distance_km": 10.0,
+            "adjusted_time_sec": 3205.009763489582,
+            "confidence": 0.22642312937351058
+          },
           {
             "activity_id": 12590639809,
             "name": "Lachine 10k",
             "date": "2024-10-06",
             "source_distance_km": 10.0,
-            "adjusted_time_sec": 3000.895899852041,
-            "confidence": 0.2398538167491669
+            "adjusted_time_sec": 2910.966215566974,
+            "confidence": 0.23983225686078805
           },
           {
             "activity_id": 14291864922,
             "name": "Montreal 21k",
             "date": "2025-04-26",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 2978.603865279499,
-            "confidence": 0.41715351620338037
+            "adjusted_time_sec": 2915.263224861421,
+            "confidence": 0.4171160192672546
           },
           {
             "activity_id": 15412365665,
             "name": "Tremblant Half",
             "date": "2025-08-10",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 3170.014434532731,
-            "confidence": 0.5577245805732778
+            "adjusted_time_sec": 3097.6329102569957,
+            "confidence": 0.557674448038944
           },
           {
             "activity_id": 15888965889,
             "name": "Beneva Montreal Half",
             "date": "2025-09-21",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 2819.1515955654577,
-            "confidence": 0.5686314676145637
+            "adjusted_time_sec": 2802.6639148017625,
+            "confidence": 0.5686859400568768
           },
           {
             "activity_id": 16044666433,
             "name": "Marathon",
             "date": "2025-10-05",
             "source_distance_km": 42.195,
-            "adjusted_time_sec": 3123.7682579996426,
-            "confidence": 0.5870407240101231
+            "adjusted_time_sec": 3106.3680413779925,
+            "confidence": 0.5870969599798069
           },
           {
             "activity_id": 18172734023,
             "name": "Montreal 21k",
             "date": "2026-04-19",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 2588.8079166649345,
-            "confidence": 1.1124012168231143
+            "adjusted_time_sec": 2556.4257521736813,
+            "confidence": 1.1123012257269032
           }
         ]
       },
       "blend_weight": 0.65,
-      "low_sec": 2528.3510376595655,
-      "high_sec": 2897.6880944963636
+      "low_sec": 2499.321296070371,
+      "high_sec": 2880.0775725112935
     },
     "half": {
       "distance_km": 21.097,
-      "time_sec": 5971.9814355469025,
-      "model_time_sec": 6487.005643523776,
-      "race_evidence_time_sec": 5711.8102711087595,
+      "time_sec": 5919.528046165275,
+      "model_time_sec": 6475.150301913473,
+      "race_evidence_time_sec": 5640.363958483082,
       "race_evidence": {
-        "time_sec": 5711.8102711087595,
+        "time_sec": 5640.363958483082,
         "source": {
           "activity_id": 18172734023,
           "name": "Montreal 21k",
           "date": "2026-04-19",
           "source_distance_km": 21.097,
-          "adjusted_time_sec": 5711.8102711087595,
-          "confidence": 1.1124012168231143
+          "adjusted_time_sec": 5640.363958483082,
+          "confidence": 1.1123012257269032
         },
         "candidates": [
+          {
+            "activity_id": 12417799602,
+            "name": "BougeBouge Verdun",
+            "date": "2024-09-15",
+            "source_distance_km": 10.0,
+            "adjusted_time_sec": 7071.365769650118,
+            "confidence": 0.22642312937351058
+          },
           {
             "activity_id": 12590639809,
             "name": "Lachine 10k",
             "date": "2024-10-06",
             "source_distance_km": 10.0,
-            "adjusted_time_sec": 6621.01962566021,
-            "confidence": 0.2398538167491669
+            "adjusted_time_sec": 6422.603477799094,
+            "confidence": 0.23983225686078805
           },
           {
             "activity_id": 14291864922,
             "name": "Montreal 21k",
             "date": "2025-04-26",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 6571.8356474995635,
-            "confidence": 0.41715351620338037
+            "adjusted_time_sec": 6432.084174170995,
+            "confidence": 0.4171160192672546
           },
           {
             "activity_id": 15412365665,
             "name": "Tremblant Half",
             "date": "2025-08-10",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 6994.153907738756,
-            "confidence": 0.5577245805732778
+            "adjusted_time_sec": 6834.455101529426,
+            "confidence": 0.557674448038944
           },
           {
             "activity_id": 15888965889,
             "name": "Beneva Montreal Half",
             "date": "2025-09-21",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 6220.028506443859,
-            "confidence": 0.5686314676145637
+            "adjusted_time_sec": 6183.650950686784,
+            "confidence": 0.5686859400568768
           },
           {
             "activity_id": 16044666433,
             "name": "Marathon",
             "date": "2025-10-05",
             "source_distance_km": 42.195,
-            "adjusted_time_sec": 6892.118764682838,
-            "confidence": 0.5870407240101231
+            "adjusted_time_sec": 6853.727837577248,
+            "confidence": 0.5870969599798069
           },
           {
             "activity_id": 18172734023,
             "name": "Montreal 21k",
             "date": "2026-04-19",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 5711.8102711087595,
-            "confidence": 1.1124012168231143
+            "adjusted_time_sec": 5640.363958483082,
+            "confidence": 1.1123012257269032
           }
         ]
       },
       "blend_weight": 0.65,
-      "low_sec": 5578.4213780050595,
-      "high_sec": 6393.30732653816
+      "low_sec": 5514.37167578134,
+      "high_sec": 6354.452392687565
     },
     "30k": {
       "distance_km": 30.0,
-      "time_sec": 8673.47306133937,
-      "model_time_sec": 9421.47414641238,
-      "race_evidence_time_sec": 8295.610603050443,
+      "time_sec": 8597.291803127551,
+      "model_time_sec": 9404.2559103546,
+      "race_evidence_time_sec": 8191.844763424371,
       "race_evidence": {
-        "time_sec": 8295.610603050443,
+        "time_sec": 8191.844763424371,
         "source": {
           "activity_id": 18172734023,
           "name": "Montreal 21k",
           "date": "2026-04-19",
           "source_distance_km": 21.097,
-          "adjusted_time_sec": 8295.610603050443,
-          "confidence": 1.1124012168231143
+          "adjusted_time_sec": 8191.844763424371,
+          "confidence": 1.1123012257269032
         },
         "candidates": [
+          {
+            "activity_id": 12417799602,
+            "name": "BougeBouge Verdun",
+            "date": "2024-09-15",
+            "source_distance_km": 10.0,
+            "adjusted_time_sec": 10270.17601643311,
+            "confidence": 0.22642312937351058
+          },
           {
             "activity_id": 12590639809,
             "name": "Lachine 10k",
             "date": "2024-10-06",
             "source_distance_km": 10.0,
-            "adjusted_time_sec": 9616.11083047581,
-            "confidence": 0.2398538167491669
+            "adjusted_time_sec": 9327.93895117885,
+            "confidence": 0.23983225686078805
           },
           {
             "activity_id": 14291864922,
             "name": "Montreal 21k",
             "date": "2025-04-26",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 9544.677937686383,
-            "confidence": 0.41715351620338037
+            "adjusted_time_sec": 9341.7083450512,
+            "confidence": 0.4171160192672546
           },
           {
             "activity_id": 15412365665,
             "name": "Tremblant Half",
             "date": "2025-08-10",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 10158.036517753852,
-            "confidence": 0.5577245805732778
+            "adjusted_time_sec": 9926.09619634898,
+            "confidence": 0.557674448038944
           },
           {
             "activity_id": 15888965889,
             "name": "Beneva Montreal Half",
             "date": "2025-09-21",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 9033.726958741481,
-            "confidence": 0.5686314676145637
+            "adjusted_time_sec": 8980.893614682791,
+            "confidence": 0.5686859400568768
           },
           {
             "activity_id": 16044666433,
             "name": "Marathon",
             "date": "2025-10-05",
             "source_distance_km": 42.195,
-            "adjusted_time_sec": 10009.844653101085,
-            "confidence": 0.5870407240101231
+            "adjusted_time_sec": 9954.087166972919,
+            "confidence": 0.5870969599798069
           },
           {
             "activity_id": 18172734023,
             "name": "Montreal 21k",
             "date": "2026-04-19",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 8295.610603050443,
-            "confidence": 1.1124012168231143
+            "adjusted_time_sec": 8191.844763424371,
+            "confidence": 1.1123012257269032
           }
         ]
       },
       "blend_weight": 0.65,
-      "low_sec": 8101.881773933476,
-      "high_sec": 9285.390362991668
+      "low_sec": 8008.858482950414,
+      "high_sec": 9228.958971553076
     },
     "marathon": {
       "distance_km": 42.195,
-      "time_sec": 12451.48514113505,
-      "model_time_sec": 13525.302322611515,
-      "race_evidence_time_sec": 11909.032452171401,
+      "time_sec": 12342.120668800948,
+      "model_time_sec": 13500.584126231146,
+      "race_evidence_time_sec": 11760.068040669334,
       "race_evidence": {
-        "time_sec": 11909.032452171401,
+        "time_sec": 11760.068040669334,
         "source": {
           "activity_id": 18172734023,
           "name": "Montreal 21k",
           "date": "2026-04-19",
           "source_distance_km": 21.097,
-          "adjusted_time_sec": 11909.032452171401,
-          "confidence": 1.1124012168231143
+          "adjusted_time_sec": 11760.068040669334,
+          "confidence": 1.1123012257269032
         },
         "candidates": [
+          {
+            "activity_id": 12417799602,
+            "name": "BougeBouge Verdun",
+            "date": "2024-09-15",
+            "source_distance_km": 10.0,
+            "adjusted_time_sec": 14743.683777085622,
+            "confidence": 0.22642312937351058
+          },
           {
             "activity_id": 12590639809,
             "name": "Lachine 10k",
             "date": "2024-10-06",
             "source_distance_km": 10.0,
-            "adjusted_time_sec": 13804.719317671783,
-            "confidence": 0.2398538167491669
+            "adjusted_time_sec": 13391.02484398364,
+            "confidence": 0.23983225686078805
           },
           {
             "activity_id": 14291864922,
             "name": "Montreal 21k",
             "date": "2025-04-26",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 13702.17151509424,
-            "confidence": 0.41715351620338037
+            "adjusted_time_sec": 13410.791943274951,
+            "confidence": 0.4171160192672546
           },
           {
             "activity_id": 15412365665,
             "name": "Tremblant Half",
             "date": "2025-08-10",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 14582.698288151218,
-            "confidence": 0.5577245805732778
+            "adjusted_time_sec": 14249.728848437886,
+            "confidence": 0.557674448038944
           },
           {
             "activity_id": 15888965889,
             "name": "Beneva Montreal Half",
             "date": "2025-09-21",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 12968.659290269457,
-            "confidence": 0.5686314676145637
+            "adjusted_time_sec": 12892.81267221336,
+            "confidence": 0.5686859400568768
           },
           {
             "activity_id": 16044666433,
             "name": "Marathon",
             "date": "2025-10-05",
             "source_distance_km": 42.195,
-            "adjusted_time_sec": 14369.956657698041,
-            "confidence": 0.5870407240101231
+            "adjusted_time_sec": 14289.912192796606,
+            "confidence": 0.5870969599798069
           },
           {
             "activity_id": 18172734023,
             "name": "Montreal 21k",
             "date": "2026-04-19",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 11909.032452171401,
-            "confidence": 1.1124012168231143
+            "adjusted_time_sec": 11760.068040669334,
+            "confidence": 1.1123012257269032
           }
         ]
       },
       "blend_weight": 0.65,
-      "low_sec": 11630.91875768015,
-      "high_sec": 13329.942840287742
+      "low_sec": 11497.376159776906,
+      "high_sec": 13248.930928793698
     }
   },
   "prediction_components": {
-    "fitness_score": -0.03652110130838925
+    "fitness_score": -0.05981780982513366
   },
   "series": {
     "5k": [
       {
         "date": "2026-01-01",
-        "time_sec": 1329.3536606299467
+        "time_sec": 1331.8774718562686
       },
       {
         "date": "2026-01-02",
-        "time_sec": 1331.2614240260423
+        "time_sec": 1334.65228085483
       },
       {
         "date": "2026-01-03",
-        "time_sec": 1331.8187260402315
+        "time_sec": 1335.4632058629204
       },
       {
         "date": "2026-01-04",
-        "time_sec": 1333.993024482062
+        "time_sec": 1338.6284713502957
       },
       {
         "date": "2026-01-05",
-        "time_sec": 1333.7808399004568
+        "time_sec": 1338.3194780841911
       },
       {
         "date": "2026-01-06",
-        "time_sec": 1333.995022885857
+        "time_sec": 1338.6313816262561
       },
       {
         "date": "2026-01-07",
-        "time_sec": 1333.998594597843
+        "time_sec": 1338.6365831162348
       },
       {
         "date": "2026-01-08",
-        "time_sec": 1334.5187786423921
+        "time_sec": 1339.394195090739
       },
       {
         "date": "2026-01-09",
-        "time_sec": 1334.7567365268324
+        "time_sec": 1339.7408086705293
       },
       {
         "date": "2026-01-10",
-        "time_sec": 1334.5461432212953
+        "time_sec": 1339.4340533916666
       },
       {
         "date": "2026-01-11",
-        "time_sec": 1333.917851909785
+        "time_sec": 1338.5189989429548
       },
       {
         "date": "2026-01-12",
-        "time_sec": 1333.1826080895858
+        "time_sec": 1337.4484239407682
       },
       {
         "date": "2026-01-13",
-        "time_sec": 1333.114090289022
+        "time_sec": 1337.3486700000565
       },
       {
         "date": "2026-01-14",
-        "time_sec": 1333.9483353101948
+        "time_sec": 1338.5633910117788
       },
       {
         "date": "2026-01-15",
-        "time_sec": 1334.290271237817
+        "time_sec": 1339.061373492966
       },
       {
         "date": "2026-01-16",
-        "time_sec": 1334.6292204982553
+        "time_sec": 1339.5550631446783
       },
       {
         "date": "2026-01-17",
-        "time_sec": 1334.1880843274496
+        "time_sec": 1338.9125463287107
       },
       {
         "date": "2026-01-18",
-        "time_sec": 1335.0755225352987
+        "time_sec": 1340.2052015993615
       },
       {
         "date": "2026-01-19",
-        "time_sec": 1334.7226258653736
+        "time_sec": 1339.6911207774506
       },
       {
         "date": "2026-01-20",
-        "time_sec": 1334.9243744511432
+        "time_sec": 1339.9850097199678
       },
       {
         "date": "2026-01-21",
-        "time_sec": 1335.034315235676
+        "time_sec": 1340.1451698669441
       },
       {
         "date": "2026-01-22",
-        "time_sec": 1334.8404070024021
+        "time_sec": 1339.8626911623762
       },
       {
         "date": "2026-01-23",
-        "time_sec": 1334.267760925638
+        "time_sec": 1339.028588559405
       },
       {
         "date": "2026-01-24",
-        "time_sec": 1333.1788449667124
+        "time_sec": 1337.4429452119282
       },
       {
         "date": "2026-01-25",
-        "time_sec": 1332.8056835919353
+        "time_sec": 1336.8996943985653
       },
       {
         "date": "2026-01-26",
-        "time_sec": 1332.5909890228306
+        "time_sec": 1336.5871717175585
       },
       {
         "date": "2026-01-27",
-        "time_sec": 1332.348755334377
+        "time_sec": 1336.2345886715864
       },
       {
         "date": "2026-01-28",
-        "time_sec": 1332.406565052897
+        "time_sec": 1336.3187309320672
       },
       {
         "date": "2026-01-29",
-        "time_sec": 1333.2608219436095
+        "time_sec": 1337.5622970342527
       },
       {
         "date": "2026-01-30",
-        "time_sec": 1332.7741063269677
+        "time_sec": 1336.8537271554599
       },
       {
         "date": "2026-01-31",
-        "time_sec": 1332.8826886205277
+        "time_sec": 1337.011793212031
       },
       {
         "date": "2026-02-01",
-        "time_sec": 1332.6964481068094
+        "time_sec": 1336.7406816375994
       },
       {
         "date": "2026-02-02",
-        "time_sec": 1334.4267496671982
+        "time_sec": 1339.2601515684453
       },
       {
         "date": "2026-02-03",
-        "time_sec": 1335.1604882114486
+        "time_sec": 1340.328984170523
       },
       {
         "date": "2026-02-04",
-        "time_sec": 1335.2849625389117
+        "time_sec": 1340.510331490168
       },
       {
         "date": "2026-02-05",
-        "time_sec": 1335.6798615017146
+        "time_sec": 1341.0857124114284
       },
       {
         "date": "2026-02-06",
-        "time_sec": 1335.660494277547
+        "time_sec": 1341.0574919314417
       },
       {
         "date": "2026-02-07",
-        "time_sec": 1336.9174527686798
+        "time_sec": 1342.889421285529
       },
       {
         "date": "2026-02-08",
-        "time_sec": 1336.7122188795493
+        "time_sec": 1342.5902540891468
       },
       {
         "date": "2026-02-09",
-        "time_sec": 1336.140899852036
+        "time_sec": 1341.7575577523667
       },
       {
         "date": "2026-02-10",
-        "time_sec": 1336.712655084721
+        "time_sec": 1342.5908899186777
       },
       {
         "date": "2026-02-11",
-        "time_sec": 1337.01311938776
+        "time_sec": 1343.0288805522987
       },
       {
         "date": "2026-02-12",
-        "time_sec": 1337.7173010177016
+        "time_sec": 1344.0555490955205
       },
       {
         "date": "2026-02-13",
-        "time_sec": 1339.0860253860758
+        "time_sec": 1346.0517919922559
       },
       {
         "date": "2026-02-14",
-        "time_sec": 1340.613569608366
+        "time_sec": 1348.2807562615917
       },
       {
         "date": "2026-02-15",
-        "time_sec": 1341.3389423265958
+        "time_sec": 1349.3396081936605
       },
       {
         "date": "2026-02-16",
-        "time_sec": 1342.0410080938082
+        "time_sec": 1350.3646842581106
       },
       {
         "date": "2026-02-17",
-        "time_sec": 1343.759208336419
+        "time_sec": 1352.8744243469102
       },
       {
         "date": "2026-02-18",
-        "time_sec": 1344.749042413397
+        "time_sec": 1354.320912493362
       },
       {
         "date": "2026-02-19",
-        "time_sec": 1346.6012144069564
+        "time_sec": 1357.0288637515453
       },
       {
         "date": "2026-02-20",
-        "time_sec": 1348.8168613466112
+        "time_sec": 1360.2704387189829
       },
       {
         "date": "2026-02-21",
-        "time_sec": 1351.1403621017537
+        "time_sec": 1363.6723899542
       },
       {
         "date": "2026-02-22",
-        "time_sec": 1352.4564200052946
+        "time_sec": 1365.6004665140558
       },
       {
         "date": "2026-02-23",
-        "time_sec": 1353.8166986934345
+        "time_sec": 1367.594218243597
       },
       {
         "date": "2026-02-24",
-        "time_sec": 1355.7998383869985
+        "time_sec": 1370.5025132262463
       },
       {
         "date": "2026-02-25",
-        "time_sec": 1357.218460949183
+        "time_sec": 1372.5841161972153
       },
       {
         "date": "2026-02-26",
-        "time_sec": 1359.6386560282237
+        "time_sec": 1376.1376340895458
       },
       {
         "date": "2026-02-27",
-        "time_sec": 1362.1786959673111
+        "time_sec": 1379.8701885528844
       },
       {
         "date": "2026-02-28",
-        "time_sec": 1364.6992412267716
+        "time_sec": 1383.5772018699518
       },
       {
         "date": "2026-03-01",
-        "time_sec": 1366.1499834598246
+        "time_sec": 1385.7122374447579
       },
       {
         "date": "2026-03-02",
-        "time_sec": 1367.8105107675717
+        "time_sec": 1388.157266555105
       },
       {
         "date": "2026-03-03",
-        "time_sec": 1369.5233720310669
+        "time_sec": 1390.6807581639869
       },
       {
         "date": "2026-03-04",
-        "time_sec": 1370.593223716437
+        "time_sec": 1392.2576517351351
       },
       {
         "date": "2026-03-05",
-        "time_sec": 1372.4289175512408
+        "time_sec": 1394.964642358982
       },
       {
         "date": "2026-03-06",
-        "time_sec": 1372.3090339000123
+        "time_sec": 1394.7878070354186
       },
       {
         "date": "2026-03-07",
-        "time_sec": 1371.8789895803661
+        "time_sec": 1394.1535241321365
       },
       {
         "date": "2026-03-08",
-        "time_sec": 1373.9011256322615
+        "time_sec": 1397.1368027831425
       },
       {
         "date": "2026-03-09",
-        "time_sec": 1373.815191865779
+        "time_sec": 1397.0099834539399
       },
       {
         "date": "2026-03-10",
-        "time_sec": 1373.6248135356022
+        "time_sec": 1396.7290396820665
       },
       {
         "date": "2026-03-11",
-        "time_sec": 1373.558553319177
+        "time_sec": 1396.6312627427544
       },
       {
         "date": "2026-03-12",
-        "time_sec": 1374.204747701027
+        "time_sec": 1397.5849108084883
       },
       {
         "date": "2026-03-13",
-        "time_sec": 1374.2557255806748
+        "time_sec": 1397.6601521345594
       },
       {
         "date": "2026-03-14",
-        "time_sec": 1373.8880345498903
+        "time_sec": 1397.117482995196
       },
       {
         "date": "2026-03-15",
-        "time_sec": 1373.1313025423428
+        "time_sec": 1396.0008409178074
       },
       {
         "date": "2026-03-16",
-        "time_sec": 1372.4056479856274
+        "time_sec": 1394.9303178578232
       },
       {
         "date": "2026-03-17",
-        "time_sec": 1371.667200984201
+        "time_sec": 1393.8411849135234
       },
       {
         "date": "2026-03-18",
-        "time_sec": 1371.1611319550282
+        "time_sec": 1393.094938216225
       },
       {
         "date": "2026-03-19",
-        "time_sec": 1370.5326550416353
+        "time_sec": 1392.168362509934
       },
       {
         "date": "2026-03-20",
-        "time_sec": 1370.2881696884792
+        "time_sec": 1391.8079648043183
       },
       {
         "date": "2026-03-21",
-        "time_sec": 1369.5866158677104
+        "time_sec": 1390.7739601165076
       },
       {
         "date": "2026-03-22",
-        "time_sec": 1369.0271345126253
+        "time_sec": 1389.9495241845937
       },
       {
         "date": "2026-03-23",
-        "time_sec": 1368.0640319600277
+        "time_sec": 1388.5306795643248
       },
       {
         "date": "2026-03-24",
-        "time_sec": 1367.0764930274788
+        "time_sec": 1387.0763031853853
       },
       {
         "date": "2026-03-25",
-        "time_sec": 1365.7090143168202
+        "time_sec": 1385.0631614920683
       },
       {
         "date": "2026-03-26",
-        "time_sec": 1364.400087370765
+        "time_sec": 1383.137068952282
       },
       {
         "date": "2026-03-27",
-        "time_sec": 1363.5985552814552
+        "time_sec": 1381.958021996203
       },
       {
         "date": "2026-03-28",
-        "time_sec": 1363.1538179650433
+        "time_sec": 1381.3039520297464
       },
       {
         "date": "2026-03-29",
-        "time_sec": 1362.7986104212334
+        "time_sec": 1380.78162161521
       },
       {
         "date": "2026-03-30",
-        "time_sec": 1362.7015732487228
+        "time_sec": 1380.6389397585979
       },
       {
         "date": "2026-03-31",
-        "time_sec": 1363.0862383365018
+        "time_sec": 1381.204571887885
       },
       {
         "date": "2026-04-01",
-        "time_sec": 1363.025474599261
+        "time_sec": 1381.115216845984
       },
       {
         "date": "2026-04-02",
-        "time_sec": 1363.589997614797
+        "time_sec": 1381.9454354275383
       },
       {
         "date": "2026-04-03",
-        "time_sec": 1363.7453431394815
+        "time_sec": 1382.1739223131356
       },
       {
         "date": "2026-04-04",
-        "time_sec": 1363.5137982747287
+        "time_sec": 1381.8333634324983
       },
       {
         "date": "2026-04-05",
-        "time_sec": 1358.621921341011
+        "time_sec": 1374.6444374758257
       },
       {
         "date": "2026-04-06",
-        "time_sec": 1356.4833163854007
+        "time_sec": 1371.5052858471095
       },
       {
         "date": "2026-04-07",
-        "time_sec": 1354.962786023849
+        "time_sec": 1369.2747329367728
       },
       {
         "date": "2026-04-08",
-        "time_sec": 1353.4764400225172
+        "time_sec": 1367.0954184777304
       },
       {
         "date": "2026-04-09",
-        "time_sec": 1352.8568772362191
+        "time_sec": 1366.1873201616515
       },
       {
         "date": "2026-04-10",
-        "time_sec": 1350.6997682289923
+        "time_sec": 1363.0270918984868
       },
       {
         "date": "2026-04-11",
-        "time_sec": 1349.1576650915429
+        "time_sec": 1360.7692607990507
       },
       {
         "date": "2026-04-12",
-        "time_sec": 1347.7561712807078
+        "time_sec": 1358.7183091237405
       },
       {
         "date": "2026-04-13",
-        "time_sec": 1345.0109388878698
+        "time_sec": 1354.7037137509124
       },
       {
         "date": "2026-04-14",
-        "time_sec": 1342.9027436731737
+        "time_sec": 1351.6232227332341
       },
       {
         "date": "2026-04-15",
-        "time_sec": 1340.972179135869
+        "time_sec": 1348.8041988300365
       },
       {
         "date": "2026-04-16",
-        "time_sec": 1339.7396345433065
+        "time_sec": 1347.0053860201847
       },
       {
         "date": "2026-04-17",
-        "time_sec": 1337.9715108601683
+        "time_sec": 1344.4262367615138
       },
       {
         "date": "2026-04-18",
-        "time_sec": 1337.0347213737393
+        "time_sec": 1343.0603717534548
       },
       {
         "date": "2026-04-19",
-        "time_sec": 1335.306603747264
+        "time_sec": 1340.5418614619196
       },
       {
         "date": "2026-04-20",
-        "time_sec": 1333.777471581316
+        "time_sec": 1338.3145731567172
       },
       {
         "date": "2026-04-21",
-        "time_sec": 1331.7328302647875
+        "time_sec": 1335.3382097306996
       },
       {
         "date": "2026-04-22",
-        "time_sec": 1330.1328591316776
+        "time_sec": 1333.0105857175072
       },
       {
         "date": "2026-04-23",
-        "time_sec": 1328.6328196817872
+        "time_sec": 1330.8294886496087
       },
       {
         "date": "2026-04-24",
-        "time_sec": 1326.6528924911047
+        "time_sec": 1327.9523231005999
       },
       {
         "date": "2026-04-25",
-        "time_sec": 1323.985413042495
+        "time_sec": 1324.0790921433895
       },
       {
         "date": "2026-04-26",
-        "time_sec": 1321.670632541402
+        "time_sec": 1320.7208391110346
       },
       {
         "date": "2026-04-27",
-        "time_sec": 1319.5660589099841
+        "time_sec": 1317.6698540047
       },
       {
         "date": "2026-04-28",
-        "time_sec": 1317.8124760090807
+        "time_sec": 1315.1293739717014
       },
       {
         "date": "2026-04-29",
-        "time_sec": 1315.571689433415
+        "time_sec": 1311.885283673387
       },
       {
         "date": "2026-04-30",
-        "time_sec": 1314.5222087764223
+        "time_sec": 1310.366758934358
       },
       {
         "date": "2026-05-01",
-        "time_sec": 1314.4462338612534
+        "time_sec": 1310.256849801913
       },
       {
         "date": "2026-05-02",
-        "time_sec": 1314.473231177041
+        "time_sec": 1310.2959051480673
       },
       {
         "date": "2026-05-03",
-        "time_sec": 1316.306207326252
+        "time_sec": 1312.9484046851353
       },
       {
         "date": "2026-05-04",
-        "time_sec": 1315.7624991140538
+        "time_sec": 1312.161430614897
       },
       {
         "date": "2026-05-05",
-        "time_sec": 1315.6931486376193
+        "time_sec": 1312.061061908246
       },
       {
         "date": "2026-05-06",
-        "time_sec": 1315.0817103075717
+        "time_sec": 1311.1762502630065
       },
       {
         "date": "2026-05-07",
-        "time_sec": 1315.1693388762528
+        "time_sec": 1311.3030460616594
       },
       {
         "date": "2026-05-08",
-        "time_sec": 1315.8062403844037
+        "time_sec": 1312.2247371716765
       },
       {
         "date": "2026-05-09",
-        "time_sec": 1316.2896620006559
+        "time_sec": 1312.9244544877586
       },
       {
         "date": "2026-05-10",
-        "time_sec": 1316.587069280037
+        "time_sec": 1313.3549873236332
       },
       {
         "date": "2026-05-11",
-        "time_sec": 1316.196180398193
+        "time_sec": 1312.7891376823443
       },
       {
         "date": "2026-05-12",
-        "time_sec": 1315.4975083247293
+        "time_sec": 1311.777930863658
       },
       {
         "date": "2026-05-13",
-        "time_sec": 1314.215775158748
+        "time_sec": 1309.9234741916532
       },
       {
         "date": "2026-05-14",
-        "time_sec": 1313.803609690968
+        "time_sec": 1309.3273120445697
       },
       {
         "date": "2026-05-15",
-        "time_sec": 1313.700928133524
+        "time_sec": 1309.178805071894
       },
       {
         "date": "2026-05-16",
-        "time_sec": 1313.2753509829004
+        "time_sec": 1308.563354337167
       },
       {
         "date": "2026-05-17",
-        "time_sec": 1310.5873827485182
+        "time_sec": 1304.6782141822393
       },
       {
         "date": "2026-05-18",
-        "time_sec": 1311.1141679885866
+        "time_sec": 1305.4393369047223
       },
       {
         "date": "2026-05-19",
-        "time_sec": 1310.1688912980903
+        "time_sec": 1304.0736575284916
       },
       {
         "date": "2026-05-20",
-        "time_sec": 1309.1759474923197
+        "time_sec": 1302.6395903058724
       },
       {
         "date": "2026-05-21",
-        "time_sec": 1308.2834964568237
+        "time_sec": 1301.3510793320575
       },
       {
         "date": "2026-05-22",
-        "time_sec": 1307.8908999122284
+        "time_sec": 1300.7843783584515
       },
       {
         "date": "2026-05-23",
-        "time_sec": 1306.5802384809895
+        "time_sec": 1298.8930350451383
       },
       {
         "date": "2026-05-24",
-        "time_sec": 1305.1221437540025
+        "time_sec": 1296.7899446806134
       },
       {
         "date": "2026-05-25",
-        "time_sec": 1304.9627221795793
+        "time_sec": 1296.5600664318779
       },
       {
         "date": "2026-05-26",
-        "time_sec": 1304.3123625020442
+        "time_sec": 1295.6224103386135
       },
       {
         "date": "2026-05-27",
-        "time_sec": 1303.208799729601
+        "time_sec": 1294.0318313759258
       },
       {
         "date": "2026-05-28",
-        "time_sec": 1302.2864508767743
+        "time_sec": 1292.7029045109643
       },
       {
         "date": "2026-05-29",
-        "time_sec": 1300.663533039447
+        "time_sec": 1290.365623900881
       },
       {
         "date": "2026-05-30",
-        "time_sec": 1299.4164655013972
+        "time_sec": 1288.5705261738785
       },
       {
         "date": "2026-05-31",
-        "time_sec": 1298.218055768506
+        "time_sec": 1286.846201517366
       }
     ],
     "10k": [
       {
         "date": "2026-01-01",
-        "time_sec": 2771.6113505110566
+        "time_sec": 2776.8733240915885
       },
       {
         "date": "2026-01-02",
-        "time_sec": 2775.588906551488
+        "time_sec": 2782.658610839339
       },
       {
         "date": "2026-01-03",
-        "time_sec": 2776.7508430879634
+        "time_sec": 2784.349333950425
       },
       {
         "date": "2026-01-04",
-        "time_sec": 2781.284106446885
+        "time_sec": 2790.948695739549
       },
       {
         "date": "2026-01-05",
-        "time_sec": 2780.8417161242787
+        "time_sec": 2790.30446593906
       },
       {
         "date": "2026-01-06",
-        "time_sec": 2781.288272981948
+        "time_sec": 2790.954763465633
       },
       {
         "date": "2026-01-07",
-        "time_sec": 2781.295719756856
+        "time_sec": 2790.9656082160495
       },
       {
         "date": "2026-01-08",
-        "time_sec": 2782.380267868413
+        "time_sec": 2792.5451773028994
       },
       {
         "date": "2026-01-09",
-        "time_sec": 2782.876393762513
+        "time_sec": 2793.2678428812446
       },
       {
         "date": "2026-01-10",
-        "time_sec": 2782.437321141543
+        "time_sec": 2792.6282791308995
       },
       {
         "date": "2026-01-11",
-        "time_sec": 2781.127376781374
+        "time_sec": 2790.720453266727
       },
       {
         "date": "2026-01-12",
-        "time_sec": 2779.5944437645207
+        "time_sec": 2788.488377698343
       },
       {
         "date": "2026-01-13",
-        "time_sec": 2779.4515888423316
+        "time_sec": 2788.280397562941
       },
       {
         "date": "2026-01-14",
-        "time_sec": 2781.190932583779
+        "time_sec": 2790.8130076903335
       },
       {
         "date": "2026-01-15",
-        "time_sec": 2781.9038455776767
+        "time_sec": 2791.8512670626033
       },
       {
         "date": "2026-01-16",
-        "time_sec": 2782.610531575013
+        "time_sec": 2792.880576179387
       },
       {
         "date": "2026-01-17",
-        "time_sec": 2781.690792867146
+        "time_sec": 2791.5409726165676
       },
       {
         "date": "2026-01-18",
-        "time_sec": 2783.541040760236
+        "time_sec": 2794.236070337016
       },
       {
         "date": "2026-01-19",
-        "time_sec": 2782.8052753692095
+        "time_sec": 2793.1642470267193
       },
       {
         "date": "2026-01-20",
-        "time_sec": 2783.2259073551377
+        "time_sec": 2793.776985346847
       },
       {
         "date": "2026-01-21",
-        "time_sec": 2783.455126362329
+        "time_sec": 2794.1109082857956
       },
       {
         "date": "2026-01-22",
-        "time_sec": 2783.0508409744625
+        "time_sec": 2793.52195953044
       },
       {
         "date": "2026-01-23",
-        "time_sec": 2781.8569131182494
+        "time_sec": 2791.7829127211858
       },
       {
         "date": "2026-01-24",
-        "time_sec": 2779.586597911025
+        "time_sec": 2788.4769549238854
       },
       {
         "date": "2026-01-25",
-        "time_sec": 2778.8085819980756
+        "time_sec": 2787.344314178928
       },
       {
         "date": "2026-01-26",
-        "time_sec": 2778.360958523417
+        "time_sec": 2786.6927257900516
       },
       {
         "date": "2026-01-27",
-        "time_sec": 2777.8559178707424
+        "time_sec": 2785.9576142834962
       },
       {
         "date": "2026-01-28",
-        "time_sec": 2777.9764471751464
+        "time_sec": 2786.133045134678
       },
       {
         "date": "2026-01-29",
-        "time_sec": 2779.7575142942046
+        "time_sec": 2788.7257953004223
       },
       {
         "date": "2026-01-30",
-        "time_sec": 2778.742745562976
+        "time_sec": 2787.248475624813
       },
       {
         "date": "2026-01-31",
-        "time_sec": 2778.9691322095155
+        "time_sec": 2787.5780325286637
       },
       {
         "date": "2026-02-01",
-        "time_sec": 2778.58083349185
+        "time_sec": 2787.0127834612385
       },
       {
         "date": "2026-02-02",
-        "time_sec": 2782.1883937571233
+        "time_sec": 2792.265705737992
       },
       {
         "date": "2026-02-03",
-        "time_sec": 2783.7181883767016
+        "time_sec": 2794.4941485214654
       },
       {
         "date": "2026-02-04",
-        "time_sec": 2783.9777088256697
+        "time_sec": 2794.8722452645634
       },
       {
         "date": "2026-02-05",
-        "time_sec": 2784.8010461210997
+        "time_sec": 2796.071875084274
       },
       {
         "date": "2026-02-06",
-        "time_sec": 2784.76066678494
+        "time_sec": 2796.0130373159923
       },
       {
         "date": "2026-02-07",
-        "time_sec": 2787.3813391645513
+        "time_sec": 2799.832484571824
       },
       {
         "date": "2026-02-08",
-        "time_sec": 2786.953440559788
+        "time_sec": 2799.2087414538337
       },
       {
         "date": "2026-02-09",
-        "time_sec": 2785.762279510386
+        "time_sec": 2797.472626613291
       },
       {
         "date": "2026-02-10",
-        "time_sec": 2786.9543500177006
+        "time_sec": 2799.210067114865
       },
       {
         "date": "2026-02-11",
-        "time_sec": 2787.5807975142448
+        "time_sec": 2800.123247593103
       },
       {
         "date": "2026-02-12",
-        "time_sec": 2789.0489679914995
+        "time_sec": 2802.263781201186
       },
       {
         "date": "2026-02-13",
-        "time_sec": 2791.9026645716194
+        "time_sec": 2806.4258109415237
       },
       {
         "date": "2026-02-14",
-        "time_sec": 2795.0874896714336
+        "time_sec": 2811.0730488073677
       },
       {
         "date": "2026-02-15",
-        "time_sec": 2796.599842116639
+        "time_sec": 2813.280682577332
       },
       {
         "date": "2026-02-16",
-        "time_sec": 2798.0636011649945
+        "time_sec": 2815.417895976221
       },
       {
         "date": "2026-02-17",
-        "time_sec": 2801.645931011376
+        "time_sec": 2820.6505321985915
       },
       {
         "date": "2026-02-18",
-        "time_sec": 2803.7096672797024
+        "time_sec": 2823.666360930868
       },
       {
         "date": "2026-02-19",
-        "time_sec": 2807.571319052654
+        "time_sec": 2829.312253868234
       },
       {
         "date": "2026-02-20",
-        "time_sec": 2812.1907911980566
+        "time_sec": 2836.0707156977405
       },
       {
         "date": "2026-02-21",
-        "time_sec": 2817.035131163108
+        "time_sec": 2843.163551063273
       },
       {
         "date": "2026-02-22",
-        "time_sec": 2819.779021770559
+        "time_sec": 2847.183458659131
       },
       {
         "date": "2026-02-23",
-        "time_sec": 2822.6151096857325
+        "time_sec": 2851.340294486462
       },
       {
         "date": "2026-02-24",
-        "time_sec": 2826.7498201447434
+        "time_sec": 2857.4038903701353
       },
       {
         "date": "2026-02-25",
-        "time_sec": 2829.707551042014
+        "time_sec": 2861.743890019936
       },
       {
         "date": "2026-02-26",
-        "time_sec": 2834.753492050924
+        "time_sec": 2869.1527314865157
       },
       {
         "date": "2026-02-27",
-        "time_sec": 2840.049301386259
+        "time_sec": 2876.934851943531
       },
       {
         "date": "2026-02-28",
-        "time_sec": 2845.304465649537
+        "time_sec": 2884.6637208595776
       },
       {
         "date": "2026-03-01",
-        "time_sec": 2848.3291638610626
+        "time_sec": 2889.115123829402
       },
       {
         "date": "2026-03-02",
-        "time_sec": 2851.791249587601
+        "time_sec": 2894.212842093
       },
       {
         "date": "2026-03-03",
-        "time_sec": 2855.362448028131
+        "time_sec": 2899.4741492930557
       },
       {
         "date": "2026-03-04",
-        "time_sec": 2857.5930155304836
+        "time_sec": 2902.761864405881
       },
       {
         "date": "2026-03-05",
-        "time_sec": 2861.4203114708216
+        "time_sec": 2908.405754486438
       },
       {
         "date": "2026-03-06",
-        "time_sec": 2861.1703622674436
+        "time_sec": 2908.0370649461934
       },
       {
         "date": "2026-03-07",
-        "time_sec": 2860.27374930969
+        "time_sec": 2906.714628527479
       },
       {
         "date": "2026-03-08",
-        "time_sec": 2864.489764505422
+        "time_sec": 2912.9345602249227
       },
       {
         "date": "2026-03-09",
-        "time_sec": 2864.3105984869007
+        "time_sec": 2912.6701506079103
       },
       {
         "date": "2026-03-10",
-        "time_sec": 2863.913672705273
+        "time_sec": 2912.084402082111
       },
       {
         "date": "2026-03-11",
-        "time_sec": 2863.775524691411
+        "time_sec": 2911.8805438592426
       },
       {
         "date": "2026-03-12",
-        "time_sec": 2865.122795727264
+        "time_sec": 2913.8688347720854
       },
       {
         "date": "2026-03-13",
-        "time_sec": 2865.2290811154508
+        "time_sec": 2914.0257077845417
       },
       {
         "date": "2026-03-14",
-        "time_sec": 2864.462470495128
+        "time_sec": 2912.8942797900418
       },
       {
         "date": "2026-03-15",
-        "time_sec": 2862.884736079127
+        "time_sec": 2910.5661575244567
       },
       {
         "date": "2026-03-16",
-        "time_sec": 2861.3717960199806
+        "time_sec": 2908.3341902520106
       },
       {
         "date": "2026-03-17",
-        "time_sec": 2859.8321845896126
+        "time_sec": 2906.0634226451352
       },
       {
         "date": "2026-03-18",
-        "time_sec": 2858.7770653185435
+        "time_sec": 2904.507549382984
       },
       {
         "date": "2026-03-19",
-        "time_sec": 2857.4667339911607
+        "time_sec": 2902.575702485715
       },
       {
         "date": "2026-03-20",
-        "time_sec": 2856.956998771776
+        "time_sec": 2901.8242979489355
       },
       {
         "date": "2026-03-21",
-        "time_sec": 2855.494307096699
+        "time_sec": 2899.668468981749
       },
       {
         "date": "2026-03-22",
-        "time_sec": 2854.3278267836854
+        "time_sec": 2897.949576519694
       },
       {
         "date": "2026-03-23",
-        "time_sec": 2852.319823913165
+        "time_sec": 2894.991382646529
       },
       {
         "date": "2026-03-24",
-        "time_sec": 2850.260872863805
+        "time_sec": 2891.9591074896875
       },
       {
         "date": "2026-03-25",
-        "time_sec": 2847.4097733947237
+        "time_sec": 2887.761844915678
       },
       {
         "date": "2026-03-26",
-        "time_sec": 2844.6807503453138
+        "time_sec": 2883.7460738657987
       },
       {
         "date": "2026-03-27",
-        "time_sec": 2843.0096108266694
+        "time_sec": 2881.287841701528
       },
       {
         "date": "2026-03-28",
-        "time_sec": 2842.0823639768164
+        "time_sec": 2879.9241506110748
       },
       {
         "date": "2026-03-29",
-        "time_sec": 2841.341780571985
+        "time_sec": 2878.835127465074
       },
       {
         "date": "2026-03-30",
-        "time_sec": 2841.1394647122456
+        "time_sec": 2878.5376455646515
       },
       {
         "date": "2026-03-31",
-        "time_sec": 2841.941465079047
+        "time_sec": 2879.7169498206813
       },
       {
         "date": "2026-04-01",
-        "time_sec": 2841.8147768479034
+        "time_sec": 2879.5306506772004
       },
       {
         "date": "2026-04-02",
-        "time_sec": 2842.991768677707
+        "time_sec": 2881.2615995677693
       },
       {
         "date": "2026-04-03",
-        "time_sec": 2843.315653458874
+        "time_sec": 2881.7379790778396
       },
       {
         "date": "2026-04-04",
-        "time_sec": 2842.832898271665
+        "time_sec": 2881.02793713261
       },
       {
         "date": "2026-04-05",
-        "time_sec": 2832.6336698523664
+        "time_sec": 2866.0395187985037
       },
       {
         "date": "2026-04-06",
-        "time_sec": 2828.174824967991
+        "time_sec": 2859.4946026164557
       },
       {
         "date": "2026-04-07",
-        "time_sec": 2825.0046232875143
+        "time_sec": 2854.8440525429123
       },
       {
         "date": "2026-04-08",
-        "time_sec": 2821.9056936572088
+        "time_sec": 2850.3003311315993
       },
       {
         "date": "2026-04-09",
-        "time_sec": 2820.6139476743997
+        "time_sec": 2848.4070083276147
       },
       {
         "date": "2026-04-10",
-        "time_sec": 2816.116523109523
+        "time_sec": 2841.818148806034
       },
       {
         "date": "2026-04-11",
-        "time_sec": 2812.9013436685723
+        "time_sec": 2837.1107255761876
       },
       {
         "date": "2026-04-12",
-        "time_sec": 2809.9793250449193
+        "time_sec": 2832.834631778887
       },
       {
         "date": "2026-04-13",
-        "time_sec": 2804.255703494748
+        "time_sec": 2824.4644753392745
       },
       {
         "date": "2026-04-14",
-        "time_sec": 2799.8602608377737
+        "time_sec": 2818.041862514256
       },
       {
         "date": "2026-04-15",
-        "time_sec": 2795.8351659793
+        "time_sec": 2812.1643907181087
       },
       {
         "date": "2026-04-16",
-        "time_sec": 2793.2653949063874
+        "time_sec": 2808.413989189243
       },
       {
         "date": "2026-04-17",
-        "time_sec": 2789.57897810518
+        "time_sec": 2803.036639600714
       },
       {
         "date": "2026-04-18",
-        "time_sec": 2787.625836175743
+        "time_sec": 2800.1889045910516
       },
       {
         "date": "2026-04-19",
-        "time_sec": 2784.022829263128
+        "time_sec": 2794.937983096546
       },
       {
         "date": "2026-04-20",
-        "time_sec": 2780.8346934095293
+        "time_sec": 2790.294239501158
       },
       {
         "date": "2026-04-21",
-        "time_sec": 2776.5717562781656
+        "time_sec": 2784.088725574269
       },
       {
         "date": "2026-04-22",
-        "time_sec": 2773.235926028961
+        "time_sec": 2779.2357888985393
       },
       {
         "date": "2026-04-23",
-        "time_sec": 2770.1084464961195
+        "time_sec": 2774.6883508698297
       },
       {
         "date": "2026-04-24",
-        "time_sec": 2765.980433885628
+        "time_sec": 2768.6896577236053
       },
       {
         "date": "2026-04-25",
-        "time_sec": 2760.4189218997844
+        "time_sec": 2760.6142364101593
       },
       {
         "date": "2026-04-26",
-        "time_sec": 2755.5927630672777
+        "time_sec": 2753.6125088052227
       },
       {
         "date": "2026-04-27",
-        "time_sec": 2751.204871163433
+        "time_sec": 2747.251413784838
       },
       {
         "date": "2026-04-28",
-        "time_sec": 2747.5487708974542
+        "time_sec": 2741.9546868838347
       },
       {
         "date": "2026-04-29",
-        "time_sec": 2742.8768843324888
+        "time_sec": 2735.1909807616953
       },
       {
         "date": "2026-04-30",
-        "time_sec": 2740.688789029326
+        "time_sec": 2732.0249606668417
       },
       {
         "date": "2026-05-01",
-        "time_sec": 2740.530386533841
+        "time_sec": 2731.795807652084
       },
       {
         "date": "2026-05-02",
-        "time_sec": 2740.5866740885203
+        "time_sec": 2731.877235374374
       },
       {
         "date": "2026-05-03",
-        "time_sec": 2744.4083038405065
+        "time_sec": 2737.4075152704545
       },
       {
         "date": "2026-05-04",
-        "time_sec": 2743.274709450297
+        "time_sec": 2735.7667282246675
       },
       {
         "date": "2026-05-05",
-        "time_sec": 2743.1301184559325
+        "time_sec": 2735.557466344381
       },
       {
         "date": "2026-05-06",
-        "time_sec": 2741.855311408049
+        "time_sec": 2733.7126946544695
       },
       {
         "date": "2026-05-07",
-        "time_sec": 2742.038010973095
+        "time_sec": 2733.977055211893
       },
       {
         "date": "2026-05-08",
-        "time_sec": 2743.365907003646
+        "time_sec": 2735.8987180604267
       },
       {
         "date": "2026-05-09",
-        "time_sec": 2744.373807969635
+        "time_sec": 2737.357580748991
       },
       {
         "date": "2026-05-10",
-        "time_sec": 2744.9938817811944
+        "time_sec": 2738.255212229625
       },
       {
         "date": "2026-05-11",
-        "time_sec": 2744.1789052299628
+        "time_sec": 2737.0754544759716
       },
       {
         "date": "2026-05-12",
-        "time_sec": 2742.7222218006764
+        "time_sec": 2734.96715750475
       },
       {
         "date": "2026-05-13",
-        "time_sec": 2740.049895920537
+        "time_sec": 2731.1007423336932
       },
       {
         "date": "2026-05-14",
-        "time_sec": 2739.1905591446107
+        "time_sec": 2729.8577850812053
       },
       {
         "date": "2026-05-15",
-        "time_sec": 2738.976475128803
+        "time_sec": 2729.548158212684
       },
       {
         "date": "2026-05-16",
-        "time_sec": 2738.089175912562
+        "time_sec": 2728.2649855758095
       },
       {
         "date": "2026-05-17",
-        "time_sec": 2732.4849462114157
+        "time_sec": 2720.1647344006446
       },
       {
         "date": "2026-05-18",
-        "time_sec": 2733.583257363594
+        "time_sec": 2721.7516231566206
       },
       {
         "date": "2026-05-19",
-        "time_sec": 2731.612420194864
+        "time_sec": 2718.904275176606
       },
       {
         "date": "2026-05-20",
-        "time_sec": 2729.5422003549584
+        "time_sec": 2715.9143432199558
       },
       {
         "date": "2026-05-21",
-        "time_sec": 2727.68150105949
+        "time_sec": 2713.227886074618
       },
       {
         "date": "2026-05-22",
-        "time_sec": 2726.862964148365
+        "time_sec": 2712.046353351376
       },
       {
         "date": "2026-05-23",
-        "time_sec": 2724.1303248161166
+        "time_sec": 2708.1030320591267
       },
       {
         "date": "2026-05-24",
-        "time_sec": 2721.090297158223
+        "time_sec": 2703.718232665185
       },
       {
         "date": "2026-05-25",
-        "time_sec": 2720.7579140924745
+        "time_sec": 2703.2389522582444
       },
       {
         "date": "2026-05-26",
-        "time_sec": 2719.4019587003477
+        "time_sec": 2701.284003512903
       },
       {
         "date": "2026-05-27",
-        "time_sec": 2717.1011058899235
+        "time_sec": 2697.967755295868
       },
       {
         "date": "2026-05-28",
-        "time_sec": 2715.1780716926805
+        "time_sec": 2695.1970337851
       },
       {
         "date": "2026-05-29",
-        "time_sec": 2711.794399136536
+        "time_sec": 2690.3239637661204
       },
       {
         "date": "2026-05-30",
-        "time_sec": 2709.1943487167896
+        "time_sec": 2686.581307930595
       },
       {
         "date": "2026-05-31",
-        "time_sec": 2706.6957464887937
+        "time_sec": 2682.986209100613
       }
     ],
     "half": [
       {
         "date": "2026-01-01",
-        "time_sec": 6115.1381983430665
+        "time_sec": 6126.747941402833
       },
       {
         "date": "2026-01-02",
-        "time_sec": 6123.914069777724
+        "time_sec": 6139.512295240898
       },
       {
         "date": "2026-01-03",
-        "time_sec": 6126.477705727948
+        "time_sec": 6143.242618208991
       },
       {
         "date": "2026-01-04",
-        "time_sec": 6136.479660700524
+        "time_sec": 6157.803104604002
       },
       {
         "date": "2026-01-05",
-        "time_sec": 6135.503593850513
+        "time_sec": 6156.381709695668
       },
       {
         "date": "2026-01-06",
-        "time_sec": 6136.488853525387
+        "time_sec": 6157.816492117212
       },
       {
         "date": "2026-01-07",
-        "time_sec": 6136.505283699712
+        "time_sec": 6157.840419406831
       },
       {
         "date": "2026-01-08",
-        "time_sec": 6138.898173880255
+        "time_sec": 6161.325497954419
       },
       {
         "date": "2026-01-09",
-        "time_sec": 6139.992800082322
+        "time_sec": 6162.919949457147
       },
       {
         "date": "2026-01-10",
-        "time_sec": 6139.02405323553
+        "time_sec": 6161.5088494775955
       },
       {
         "date": "2026-01-11",
-        "time_sec": 6136.1338605708725
+        "time_sec": 6157.299522359762
       },
       {
         "date": "2026-01-12",
-        "time_sec": 6132.751677406864
+        "time_sec": 6152.374787668046
       },
       {
         "date": "2026-01-13",
-        "time_sec": 6132.436489784566
+        "time_sec": 6151.915911184423
       },
       {
         "date": "2026-01-14",
-        "time_sec": 6136.27408676633
+        "time_sec": 6157.503729595064
       },
       {
         "date": "2026-01-15",
-        "time_sec": 6137.84702067725
+        "time_sec": 6159.79449072432
       },
       {
         "date": "2026-01-16",
-        "time_sec": 6139.406215668899
+        "time_sec": 6162.06550447839
       },
       {
         "date": "2026-01-17",
-        "time_sec": 6137.376952329384
+        "time_sec": 6159.109873301558
       },
       {
         "date": "2026-01-18",
-        "time_sec": 6141.459242425859
+        "time_sec": 6165.056195831787
       },
       {
         "date": "2026-01-19",
-        "time_sec": 6139.835888182174
+        "time_sec": 6162.691380986638
       },
       {
         "date": "2026-01-20",
-        "time_sec": 6140.763948577126
+        "time_sec": 6164.043294741181
       },
       {
         "date": "2026-01-21",
-        "time_sec": 6141.269685395675
+        "time_sec": 6164.780044833826
       },
       {
         "date": "2026-01-22",
-        "time_sec": 6140.377691278986
+        "time_sec": 6163.480619129687
       },
       {
         "date": "2026-01-23",
-        "time_sec": 6137.743471355529
+        "time_sec": 6159.643677283559
       },
       {
         "date": "2026-01-24",
-        "time_sec": 6132.7343667264
+        "time_sec": 6152.349585056442
       },
       {
         "date": "2026-01-25",
-        "time_sec": 6131.017793142852
+        "time_sec": 6149.850585807061
       },
       {
         "date": "2026-01-26",
-        "time_sec": 6130.030180140082
+        "time_sec": 6148.412955294513
       },
       {
         "date": "2026-01-27",
-        "time_sec": 6128.915884881369
+        "time_sec": 6146.7910437472965
       },
       {
         "date": "2026-01-28",
-        "time_sec": 6129.181814429268
+        "time_sec": 6147.1781051940725
       },
       {
         "date": "2026-01-29",
-        "time_sec": 6133.111467687318
+        "time_sec": 6152.89861343718
       },
       {
         "date": "2026-01-30",
-        "time_sec": 6130.8725350787845
+        "time_sec": 6149.639132638118
       },
       {
         "date": "2026-01-31",
-        "time_sec": 6131.372022725047
+        "time_sec": 6150.366249739478
       },
       {
         "date": "2026-02-01",
-        "time_sec": 6130.515300760647
+        "time_sec": 6149.11911378617
       },
       {
         "date": "2026-02-02",
-        "time_sec": 6138.474832885143
+        "time_sec": 6160.7088865231
       },
       {
         "date": "2026-02-03",
-        "time_sec": 6141.850091653685
+        "time_sec": 6165.625606028353
       },
       {
         "date": "2026-02-04",
-        "time_sec": 6142.422683987176
+        "time_sec": 6166.4598188901155
       },
       {
         "date": "2026-02-05",
-        "time_sec": 6144.23925229661
+        "time_sec": 6169.106619327352
       },
       {
         "date": "2026-02-06",
-        "time_sec": 6144.150161443049
+        "time_sec": 6168.976802755394
       },
       {
         "date": "2026-02-07",
-        "time_sec": 6149.9322757971995
+        "time_sec": 6177.4038312442135
       },
       {
         "date": "2026-02-08",
-        "time_sec": 6148.988182714835
+        "time_sec": 6176.027637079735
       },
       {
         "date": "2026-02-09",
-        "time_sec": 6146.3600673290875
+        "time_sec": 6172.197164175883
       },
       {
         "date": "2026-02-10",
-        "time_sec": 6148.990189295161
+        "time_sec": 6176.03056194884
       },
       {
         "date": "2026-02-11",
-        "time_sec": 6150.37235025892
+        "time_sec": 6178.045355553803
       },
       {
         "date": "2026-02-12",
-        "time_sec": 6153.61164474567
+        "time_sec": 6182.768116856242
       },
       {
         "date": "2026-02-13",
-        "time_sec": 6159.907891497711
+        "time_sec": 6191.951001405736
       },
       {
         "date": "2026-02-14",
-        "time_sec": 6166.9347228820325
+        "time_sec": 6202.204423764156
       },
       {
         "date": "2026-02-15",
-        "time_sec": 6170.271498150084
+        "time_sec": 6207.075231351287
       },
       {
         "date": "2026-02-16",
-        "time_sec": 6173.501059491051
+        "time_sec": 6211.790667117984
       },
       {
         "date": "2026-02-17",
-        "time_sec": 6181.404924540036
+        "time_sec": 6223.335681766425
       },
       {
         "date": "2026-02-18",
-        "time_sec": 6185.958244212154
+        "time_sec": 6229.989648411871
       },
       {
         "date": "2026-02-19",
-        "time_sec": 6194.478390538268
+        "time_sec": 6242.446451043551
       },
       {
         "date": "2026-02-20",
-        "time_sec": 6204.670552064568
+        "time_sec": 6257.357967439241
       },
       {
         "date": "2026-02-21",
-        "time_sec": 6215.358850176984
+        "time_sec": 6273.007228101394
       },
       {
         "date": "2026-02-22",
-        "time_sec": 6221.412826778942
+        "time_sec": 6281.876541790969
       },
       {
         "date": "2026-02-23",
-        "time_sec": 6227.670222694403
+        "time_sec": 6291.047966762669
       },
       {
         "date": "2026-02-24",
-        "time_sec": 6236.792831411653
+        "time_sec": 6304.426367309603
       },
       {
         "date": "2026-02-25",
-        "time_sec": 6243.3186140351745
+        "time_sec": 6314.001915351152
       },
       {
         "date": "2026-02-26",
-        "time_sec": 6254.451714137568
+        "time_sec": 6330.34839533269
       },
       {
         "date": "2026-02-27",
-        "time_sec": 6266.136110635528
+        "time_sec": 6347.518458538712
       },
       {
         "date": "2026-02-28",
-        "time_sec": 6277.730829974159
+        "time_sec": 6364.571030332302
       },
       {
         "date": "2026-03-01",
-        "time_sec": 6284.404365774323
+        "time_sec": 6374.3923728275095
       },
       {
         "date": "2026-03-02",
-        "time_sec": 6292.042930491693
+        "time_sec": 6385.639711554266
       },
       {
         "date": "2026-03-03",
-        "time_sec": 6299.922235789502
+        "time_sec": 6397.247984347045
       },
       {
         "date": "2026-03-04",
-        "time_sec": 6304.843643163268
+        "time_sec": 6404.501826870085
       },
       {
         "date": "2026-03-05",
-        "time_sec": 6313.287988578745
+        "time_sec": 6416.954210503356
       },
       {
         "date": "2026-03-06",
-        "time_sec": 6312.736513740492
+        "time_sec": 6416.1407532015255
       },
       {
         "date": "2026-03-07",
-        "time_sec": 6310.758273845449
+        "time_sec": 6413.222998712804
       },
       {
         "date": "2026-03-08",
-        "time_sec": 6320.0602690777505
+        "time_sec": 6426.9463304155315
       },
       {
         "date": "2026-03-09",
-        "time_sec": 6319.664966553281
+        "time_sec": 6426.362950877594
       },
       {
         "date": "2026-03-10",
-        "time_sec": 6318.789210286554
+        "time_sec": 6425.070585992425
       },
       {
         "date": "2026-03-11",
-        "time_sec": 6318.484407740389
+        "time_sec": 6424.620803880857
       },
       {
         "date": "2026-03-12",
-        "time_sec": 6321.456956028353
+        "time_sec": 6429.0076648699605
       },
       {
         "date": "2026-03-13",
-        "time_sec": 6321.691458545148
+        "time_sec": 6429.35378127283
       },
       {
         "date": "2026-03-14",
-        "time_sec": 6320.000049002186
+        "time_sec": 6426.857457772574
       },
       {
         "date": "2026-03-15",
-        "time_sec": 6316.519018376318
+        "time_sec": 6421.720810675902
       },
       {
         "date": "2026-03-16",
-        "time_sec": 6313.1809466276345
+        "time_sec": 6416.796314922674
       },
       {
         "date": "2026-03-17",
-        "time_sec": 6309.784028561651
+        "time_sec": 6411.786212142642
       },
       {
         "date": "2026-03-18",
-        "time_sec": 6307.456068634238
+        "time_sec": 6408.353414822276
       },
       {
         "date": "2026-03-19",
-        "time_sec": 6304.565022185372
+        "time_sec": 6404.091088954435
       },
       {
         "date": "2026-03-20",
-        "time_sec": 6303.440369080398
+        "time_sec": 6402.4332293182315
       },
       {
         "date": "2026-03-21",
-        "time_sec": 6300.2131627359795
+        "time_sec": 6397.676721136133
       },
       {
         "date": "2026-03-22",
-        "time_sec": 6297.63950163505
+        "time_sec": 6393.884246786647
       },
       {
         "date": "2026-03-23",
-        "time_sec": 6293.209149214359
+        "time_sec": 6387.357442677337
       },
       {
         "date": "2026-03-24",
-        "time_sec": 6288.666387398883
+        "time_sec": 6380.667189501664
       },
       {
         "date": "2026-03-25",
-        "time_sec": 6282.375870776682
+        "time_sec": 6371.4065690723
       },
       {
         "date": "2026-03-26",
-        "time_sec": 6276.354697176532
+        "time_sec": 6362.546382041257
       },
       {
         "date": "2026-03-27",
-        "time_sec": 6272.66758242166
+        "time_sec": 6357.122667274976
       },
       {
         "date": "2026-03-28",
-        "time_sec": 6270.621753510708
+        "time_sec": 6354.113890638093
       },
       {
         "date": "2026-03-29",
-        "time_sec": 6268.987769053566
+        "time_sec": 6351.711126975795
       },
       {
         "date": "2026-03-30",
-        "time_sec": 6268.5413899312625
+        "time_sec": 6351.054778482987
       },
       {
         "date": "2026-03-31",
-        "time_sec": 6270.310881558292
+        "time_sec": 6353.6567336604885
       },
       {
         "date": "2026-04-01",
-        "time_sec": 6270.03136327683
+        "time_sec": 6353.245692982511
       },
       {
         "date": "2026-04-02",
-        "time_sec": 6272.628216438177
+        "time_sec": 6357.064768004748
       },
       {
         "date": "2026-04-03",
-        "time_sec": 6273.342818864955
+        "time_sec": 6358.115826818759
       },
       {
         "date": "2026-04-04",
-        "time_sec": 6272.2776930906675
+        "time_sec": 6356.549227439341
       },
       {
         "date": "2026-04-05",
-        "time_sec": 6249.774649404915
+        "time_sec": 6323.4795658250705
       },
       {
         "date": "2026-04-06",
-        "time_sec": 6239.936887458998
+        "time_sec": 6309.039205367462
       },
       {
         "date": "2026-04-07",
-        "time_sec": 6232.9423204216055
+        "time_sec": 6298.778475127342
       },
       {
         "date": "2026-04-08",
-        "time_sec": 6226.105004304839
+        "time_sec": 6288.753446055418
       },
       {
         "date": "2026-04-09",
-        "time_sec": 6223.254963587343
+        "time_sec": 6284.576117730402
       },
       {
         "date": "2026-04-10",
-        "time_sec": 6213.332081453907
+        "time_sec": 6270.038802988737
       },
       {
         "date": "2026-04-11",
-        "time_sec": 6206.238277840253
+        "time_sec": 6259.652590793693
       },
       {
         "date": "2026-04-12",
-        "time_sec": 6199.791288907813
+        "time_sec": 6250.218041279833
       },
       {
         "date": "2026-04-13",
-        "time_sec": 6187.162989933696
+        "time_sec": 6231.750566263706
       },
       {
         "date": "2026-04-14",
-        "time_sec": 6177.465115343391
+        "time_sec": 6217.580049530838
       },
       {
         "date": "2026-04-15",
-        "time_sec": 6168.584356749139
+        "time_sec": 6204.612303427585
       },
       {
         "date": "2026-04-16",
-        "time_sec": 6162.914548373565
+        "time_sec": 6196.337613816409
       },
       {
         "date": "2026-04-17",
-        "time_sec": 6154.781031316077
+        "time_sec": 6184.473311172174
       },
       {
         "date": "2026-04-18",
-        "time_sec": 6150.471721204009
+        "time_sec": 6178.190217717122
       },
       {
         "date": "2026-04-19",
-        "time_sec": 6142.522235358473
+        "time_sec": 6166.6048594014255
       },
       {
         "date": "2026-04-20",
-        "time_sec": 6135.488099300303
+        "time_sec": 6156.359146618404
       },
       {
         "date": "2026-04-21",
-        "time_sec": 6126.082577965461
+        "time_sec": 6142.667625529908
       },
       {
         "date": "2026-04-22",
-        "time_sec": 6118.722576724177
+        "time_sec": 6131.960360085043
       },
       {
         "date": "2026-04-23",
-        "time_sec": 6111.822269596958
+        "time_sec": 6121.927130863058
       },
       {
         "date": "2026-04-24",
-        "time_sec": 6102.714438662074
+        "time_sec": 6108.691928318554
       },
       {
         "date": "2026-04-25",
-        "time_sec": 6090.443809744747
+        "time_sec": 6090.874741456329
       },
       {
         "date": "2026-04-26",
-        "time_sec": 6079.795625531451
+        "time_sec": 6075.42649618793
       },
       {
         "date": "2026-04-27",
-        "time_sec": 6070.114410527598
+        "time_sec": 6061.391709118941
       },
       {
         "date": "2026-04-28",
-        "time_sec": 6062.047782286471
+        "time_sec": 6049.705288152111
       },
       {
         "date": "2026-04-29",
-        "time_sec": 6051.73997632859
+        "time_sec": 6034.782201023667
       },
       {
         "date": "2026-04-30",
-        "time_sec": 6046.912277391821
+        "time_sec": 6027.796860017895
       },
       {
         "date": "2026-05-01",
-        "time_sec": 6046.562786417666
+        "time_sec": 6027.291268801596
       },
       {
         "date": "2026-05-02",
-        "time_sec": 6046.686976331838
+        "time_sec": 6027.470926665563
       },
       {
         "date": "2026-05-03",
-        "time_sec": 6055.1188201659215
+        "time_sec": 6039.672646734943
       },
       {
         "date": "2026-05-04",
-        "time_sec": 6052.617716843576
+        "time_sec": 6036.05250008733
       },
       {
         "date": "2026-05-05",
-        "time_sec": 6052.298698842509
+        "time_sec": 6035.590795628888
       },
       {
         "date": "2026-05-06",
-        "time_sec": 6049.486031304342
+        "time_sec": 6031.52058794046
       },
       {
         "date": "2026-05-07",
-        "time_sec": 6049.889130060893
+        "time_sec": 6032.103859235888
       },
       {
         "date": "2026-05-08",
-        "time_sec": 6052.818930351382
+        "time_sec": 6036.343715551682
       },
       {
         "date": "2026-05-09",
-        "time_sec": 6055.042710282179
+        "time_sec": 6039.562473820706
       },
       {
         "date": "2026-05-10",
-        "time_sec": 6056.410808681042
+        "time_sec": 6041.542960931299
       },
       {
         "date": "2026-05-11",
-        "time_sec": 6054.612687079932
+        "time_sec": 6038.940005180368
       },
       {
         "date": "2026-05-12",
-        "time_sec": 6051.398737014512
+        "time_sec": 6034.288369106
       },
       {
         "date": "2026-05-13",
-        "time_sec": 6045.502657080694
+        "time_sec": 6025.757713067655
       },
       {
         "date": "2026-05-14",
-        "time_sec": 6043.606661401974
+        "time_sec": 6023.015317250796
       },
       {
         "date": "2026-05-15",
-        "time_sec": 6043.134317636136
+        "time_sec": 6022.332172736116
       },
       {
         "date": "2026-05-16",
-        "time_sec": 6041.176627092827
+        "time_sec": 6019.5010478003005
       },
       {
         "date": "2026-05-17",
-        "time_sec": 6028.811748044609
+        "time_sec": 6001.629077630936
       },
       {
         "date": "2026-05-18",
-        "time_sec": 6031.235004277526
+        "time_sec": 6005.130305913326
       },
       {
         "date": "2026-05-19",
-        "time_sec": 6026.886652315772
+        "time_sec": 5998.848066380228
       },
       {
         "date": "2026-05-20",
-        "time_sec": 6022.319027630706
+        "time_sec": 5992.251237024909
       },
       {
         "date": "2026-05-21",
-        "time_sec": 6018.213678107134
+        "time_sec": 5986.323978607296
       },
       {
         "date": "2026-05-22",
-        "time_sec": 6016.4077011143445
+        "time_sec": 5983.717106656391
       },
       {
         "date": "2026-05-23",
-        "time_sec": 6010.3785487370305
+        "time_sec": 5975.016768978037
       },
       {
         "date": "2026-05-24",
-        "time_sec": 6003.671190848867
+        "time_sec": 5965.342377126151
       },
       {
         "date": "2026-05-25",
-        "time_sec": 6002.937838251831
+        "time_sec": 5964.284917925165
       },
       {
         "date": "2026-05-26",
-        "time_sec": 5999.946129254783
+        "time_sec": 5959.971621349059
       },
       {
         "date": "2026-05-27",
-        "time_sec": 5994.869648056515
+        "time_sec": 5952.654824878497
       },
       {
         "date": "2026-05-28",
-        "time_sec": 5990.626766068704
+        "time_sec": 5946.541649975981
       },
       {
         "date": "2026-05-29",
-        "time_sec": 5983.161208065804
+        "time_sec": 5935.78996337651
       },
       {
         "date": "2026-05-30",
-        "time_sec": 5977.424592924396
+        "time_sec": 5927.532363457652
       },
       {
         "date": "2026-05-31",
-        "time_sec": 5971.9118077627845
+        "time_sec": 5919.600325591669
       }
     ],
     "30k": [
       {
         "date": "2026-01-01",
-        "time_sec": 8881.388363666038
+        "time_sec": 8898.249901961966
       },
       {
         "date": "2026-01-02",
-        "time_sec": 8894.134097272175
+        "time_sec": 8916.78835194791
       },
       {
         "date": "2026-01-03",
-        "time_sec": 8897.857422200983
+        "time_sec": 8922.20612762639
       },
       {
         "date": "2026-01-04",
-        "time_sec": 8912.383871747359
+        "time_sec": 8943.353210528443
       },
       {
         "date": "2026-01-05",
-        "time_sec": 8910.966270299497
+        "time_sec": 8941.288831966667
       },
       {
         "date": "2026-01-06",
-        "time_sec": 8912.397223047872
+        "time_sec": 8943.372654030796
       },
       {
         "date": "2026-01-07",
-        "time_sec": 8912.421085592663
+        "time_sec": 8943.407405093616
       },
       {
         "date": "2026-01-08",
-        "time_sec": 8915.896426020909
+        "time_sec": 8948.4689973349
       },
       {
         "date": "2026-01-09",
-        "time_sec": 8917.486218450495
+        "time_sec": 8950.78471654898
       },
       {
         "date": "2026-01-10",
-        "time_sec": 8916.07924828999
+        "time_sec": 8948.735289940494
       },
       {
         "date": "2026-01-11",
-        "time_sec": 8911.881645117637
+        "time_sec": 8942.621827305533
       },
       {
         "date": "2026-01-12",
-        "time_sec": 8906.969494120827
+        "time_sec": 8935.469334595378
       },
       {
         "date": "2026-01-13",
-        "time_sec": 8906.511727903557
+        "time_sec": 8934.802880276648
       },
       {
         "date": "2026-01-14",
-        "time_sec": 8912.085304178203
+        "time_sec": 8942.918409934504
       },
       {
         "date": "2026-01-15",
-        "time_sec": 8914.369772080654
+        "time_sec": 8946.245422109441
       },
       {
         "date": "2026-01-16",
-        "time_sec": 8916.634286112303
+        "time_sec": 8949.54375396637
       },
       {
         "date": "2026-01-17",
-        "time_sec": 8913.687063134535
+        "time_sec": 8945.251110449597
       },
       {
         "date": "2026-01-18",
-        "time_sec": 8919.616022151318
+        "time_sec": 8953.887317517
       },
       {
         "date": "2026-01-19",
-        "time_sec": 8917.258325722825
+        "time_sec": 8950.452752611562
       },
       {
         "date": "2026-01-20",
-        "time_sec": 8918.606204466538
+        "time_sec": 8952.41621945382
       },
       {
         "date": "2026-01-21",
-        "time_sec": 8919.34071690921
+        "time_sec": 8953.486246571363
       },
       {
         "date": "2026-01-22",
-        "time_sec": 8918.045219422256
+        "time_sec": 8951.599011327633
       },
       {
         "date": "2026-01-23",
-        "time_sec": 8914.219381081944
+        "time_sec": 8946.02638654648
       },
       {
         "date": "2026-01-24",
-        "time_sec": 8906.944352763274
+        "time_sec": 8935.43273130463
       },
       {
         "date": "2026-01-25",
-        "time_sec": 8904.451268199064
+        "time_sec": 8931.803282200719
       },
       {
         "date": "2026-01-26",
-        "time_sec": 8903.01689756898
+        "time_sec": 8929.715323680199
       },
       {
         "date": "2026-01-27",
-        "time_sec": 8901.398538568179
+        "time_sec": 8927.359722567824
       },
       {
         "date": "2026-01-28",
-        "time_sec": 8901.784764278142
+        "time_sec": 8927.921875526272
       },
       {
         "date": "2026-01-29",
-        "time_sec": 8907.492039500268
+        "time_sec": 8936.230118724823
       },
       {
         "date": "2026-01-30",
-        "time_sec": 8904.24030104866
+        "time_sec": 8931.49617586016
       },
       {
         "date": "2026-01-31",
-        "time_sec": 8904.965737437098
+        "time_sec": 8932.552212396635
       },
       {
         "date": "2026-02-01",
-        "time_sec": 8903.721467849276
+        "time_sec": 8930.74092074888
       },
       {
         "date": "2026-02-02",
-        "time_sec": 8915.28158206056
+        "time_sec": 8947.57345492629
       },
       {
         "date": "2026-02-03",
-        "time_sec": 8920.183676335308
+        "time_sec": 8954.714306692029
       },
       {
         "date": "2026-02-04",
-        "time_sec": 8921.015287121989
+        "time_sec": 8955.925884936538
       },
       {
         "date": "2026-02-05",
-        "time_sec": 8923.65360012847
+        "time_sec": 8959.7699947247
       },
       {
         "date": "2026-02-06",
-        "time_sec": 8923.524208045352
+        "time_sec": 8959.581454195573
       },
       {
         "date": "2026-02-07",
-        "time_sec": 8931.921925558288
+        "time_sec": 8971.820541904362
       },
       {
         "date": "2026-02-08",
-        "time_sec": 8930.550761564284
+        "time_sec": 8969.821811141113
       },
       {
         "date": "2026-02-09",
-        "time_sec": 8926.733789216614
+        "time_sec": 8964.258581599592
       },
       {
         "date": "2026-02-10",
-        "time_sec": 8930.553675843337
+        "time_sec": 8969.826059106997
       },
       {
         "date": "2026-02-11",
-        "time_sec": 8932.561072553286
+        "time_sec": 8972.752266806303
       },
       {
         "date": "2026-02-12",
-        "time_sec": 8937.26569760477
+        "time_sec": 8979.611421238384
       },
       {
         "date": "2026-02-13",
-        "time_sec": 8946.410120972583
+        "time_sec": 8992.948284827937
       },
       {
         "date": "2026-02-14",
-        "time_sec": 8956.615616983627
+        "time_sec": 9007.839955803842
       },
       {
         "date": "2026-02-15",
-        "time_sec": 8961.461819322252
+        "time_sec": 9014.914126889267
       },
       {
         "date": "2026-02-16",
-        "time_sec": 8966.152308332148
+        "time_sec": 9021.762641998757
       },
       {
         "date": "2026-02-17",
-        "time_sec": 8977.63157385278
+        "time_sec": 9038.530171273025
       },
       {
         "date": "2026-02-18",
-        "time_sec": 8984.244637865439
+        "time_sec": 9048.194133070829
       },
       {
         "date": "2026-02-19",
-        "time_sec": 8996.618966291571
+        "time_sec": 9066.285907672336
       },
       {
         "date": "2026-02-20",
-        "time_sec": 9011.421664422713
+        "time_sec": 9087.942812864976
       },
       {
         "date": "2026-02-21",
-        "time_sec": 9026.944931993154
+        "time_sec": 9110.671189074441
       },
       {
         "date": "2026-02-22",
-        "time_sec": 9035.737491638167
+        "time_sec": 9123.552634569416
       },
       {
         "date": "2026-02-23",
-        "time_sec": 9044.82548956526
+        "time_sec": 9136.8728547149
       },
       {
         "date": "2026-02-24",
-        "time_sec": 9058.074810885524
+        "time_sec": 9156.303122206516
       },
       {
         "date": "2026-02-25",
-        "time_sec": 9067.552603206237
+        "time_sec": 9170.210274946725
       },
       {
         "date": "2026-02-26",
-        "time_sec": 9083.721883849432
+        "time_sec": 9193.951265319498
       },
       {
         "date": "2026-02-27",
-        "time_sec": 9100.691845889154
+        "time_sec": 9218.888395865884
       },
       {
         "date": "2026-02-28",
-        "time_sec": 9117.53156431807
+        "time_sec": 9243.65488646443
       },
       {
         "date": "2026-03-01",
-        "time_sec": 9127.22394759342
+        "time_sec": 9257.919021488613
       },
       {
         "date": "2026-03-02",
-        "time_sec": 9138.317901253266
+        "time_sec": 9274.254217857027
       },
       {
         "date": "2026-03-03",
-        "time_sec": 9149.761497148578
+        "time_sec": 9291.113620794476
       },
       {
         "date": "2026-03-04",
-        "time_sec": 9156.909157391803
+        "time_sec": 9301.648818934962
       },
       {
         "date": "2026-03-05",
-        "time_sec": 9169.173395529873
+        "time_sec": 9319.734175555423
       },
       {
         "date": "2026-03-06",
-        "time_sec": 9168.37245497016
+        "time_sec": 9318.552741877165
       },
       {
         "date": "2026-03-07",
-        "time_sec": 9165.499336454386
+        "time_sec": 9314.315108985846
       },
       {
         "date": "2026-03-08",
-        "time_sec": 9179.009191756955
+        "time_sec": 9334.246341043441
       },
       {
         "date": "2026-03-09",
-        "time_sec": 9178.435069778536
+        "time_sec": 9333.399063341483
       },
       {
         "date": "2026-03-10",
-        "time_sec": 9177.163155511902
+        "time_sec": 9331.522082955993
       },
       {
         "date": "2026-03-11",
-        "time_sec": 9176.720472174462
+        "time_sec": 9330.868836948743
       },
       {
         "date": "2026-03-12",
-        "time_sec": 9181.037685444036
+        "time_sec": 9337.240142858442
       },
       {
         "date": "2026-03-13",
-        "time_sec": 9181.378267758968
+        "time_sec": 9337.742828831042
       },
       {
         "date": "2026-03-14",
-        "time_sec": 9178.921730466494
+        "time_sec": 9334.117265880866
       },
       {
         "date": "2026-03-15",
-        "time_sec": 9173.866017268954
+        "time_sec": 9326.656999853698
       },
       {
         "date": "2026-03-16",
-        "time_sec": 9169.017931972374
+        "time_sec": 9319.504854168488
       },
       {
         "date": "2026-03-17",
-        "time_sec": 9164.084380578273
+        "time_sec": 9312.228376174367
       },
       {
         "date": "2026-03-18",
-        "time_sec": 9160.703342318842
+        "time_sec": 9307.242715149687
       },
       {
         "date": "2026-03-19",
-        "time_sec": 9156.504499143584
+        "time_sec": 9301.052279196014
       },
       {
         "date": "2026-03-20",
-        "time_sec": 9154.871096810619
+        "time_sec": 9298.644468480361
       },
       {
         "date": "2026-03-21",
-        "time_sec": 9150.184028105887
+        "time_sec": 9291.736301395662
       },
       {
         "date": "2026-03-22",
-        "time_sec": 9146.446143038953
+        "time_sec": 9286.22825947338
       },
       {
         "date": "2026-03-23",
-        "time_sec": 9140.011671869255
+        "time_sec": 9276.748983586538
       },
       {
         "date": "2026-03-24",
-        "time_sec": 9133.413941676024
+        "time_sec": 9267.032320646591
       },
       {
         "date": "2026-03-25",
-        "time_sec": 9124.277840525458
+        "time_sec": 9253.582556495068
       },
       {
         "date": "2026-03-26",
-        "time_sec": 9115.532922681643
+        "time_sec": 9240.71436620319
       },
       {
         "date": "2026-03-27",
-        "time_sec": 9110.177900927876
+        "time_sec": 9232.837174281995
       },
       {
         "date": "2026-03-28",
-        "time_sec": 9107.206618759828
+        "time_sec": 9228.467344370541
       },
       {
         "date": "2026-03-29",
-        "time_sec": 9104.833483423687
+        "time_sec": 9224.97766408226
       },
       {
         "date": "2026-03-30",
-        "time_sec": 9104.185179785385
+        "time_sec": 9224.024409114414
       },
       {
         "date": "2026-03-31",
-        "time_sec": 9106.75512045331
+        "time_sec": 9227.80338739533
       },
       {
         "date": "2026-04-01",
-        "time_sec": 9106.349158996383
+        "time_sec": 9227.206407936146
       },
       {
         "date": "2026-04-02",
-        "time_sec": 9110.120727307854
+        "time_sec": 9232.753083638709
       },
       {
         "date": "2026-04-03",
-        "time_sec": 9111.158588018778
+        "time_sec": 9234.279600492035
       },
       {
         "date": "2026-04-04",
-        "time_sec": 9109.611640860632
+        "time_sec": 9232.004332616216
       },
       {
         "date": "2026-04-05",
-        "time_sec": 9076.929097334165
+        "time_sec": 9183.975245075588
       },
       {
         "date": "2026-04-06",
-        "time_sec": 9062.641115339784
+        "time_sec": 9163.002628402723
       },
       {
         "date": "2026-04-07",
-        "time_sec": 9052.482478808639
+        "time_sec": 9148.100343744312
       },
       {
         "date": "2026-04-08",
-        "time_sec": 9042.552227385277
+        "time_sec": 9133.540382275425
       },
       {
         "date": "2026-04-09",
-        "time_sec": 9038.412939335956
+        "time_sec": 9127.473393439905
       },
       {
         "date": "2026-04-10",
-        "time_sec": 9024.00133209905
+        "time_sec": 9106.359964143956
       },
       {
         "date": "2026-04-11",
-        "time_sec": 9013.698568232567
+        "time_sec": 9091.275434385247
       },
       {
         "date": "2026-04-12",
-        "time_sec": 9004.33521279758
+        "time_sec": 9077.573062410785
       },
       {
         "date": "2026-04-13",
-        "time_sec": 8985.994363592878
+        "time_sec": 9050.751621521866
       },
       {
         "date": "2026-04-14",
-        "time_sec": 8971.909548541294
+        "time_sec": 9030.170915356855
       },
       {
         "date": "2026-04-15",
-        "time_sec": 8959.011480912834
+        "time_sec": 9011.337066372773
       },
       {
         "date": "2026-04-16",
-        "time_sec": 8950.77687222571
+        "time_sec": 8999.31922971203
       },
       {
         "date": "2026-04-17",
-        "time_sec": 8938.964069079326
+        "time_sec": 8982.087978997848
       },
       {
         "date": "2026-04-18",
-        "time_sec": 8932.705395040672
+        "time_sec": 8972.962658965891
       },
       {
         "date": "2026-04-19",
-        "time_sec": 8921.159871653352
+        "time_sec": 8956.136536121781
       },
       {
         "date": "2026-04-20",
-        "time_sec": 8910.943766618733
+        "time_sec": 8941.256062232696
       },
       {
         "date": "2026-04-21",
-        "time_sec": 8897.28355404002
+        "time_sec": 8921.371030671316
       },
       {
         "date": "2026-04-22",
-        "time_sec": 8886.594175115024
+        "time_sec": 8905.820215686565
       },
       {
         "date": "2026-04-23",
-        "time_sec": 8876.57243800334
+        "time_sec": 8891.248344639338
       },
       {
         "date": "2026-04-24",
-        "time_sec": 8863.344579358178
+        "time_sec": 8872.026052344901
       },
       {
         "date": "2026-04-25",
-        "time_sec": 8845.523196202726
+        "time_sec": 8846.149064623773
       },
       {
         "date": "2026-04-26",
-        "time_sec": 8830.05818849581
+        "time_sec": 8823.712635337026
       },
       {
         "date": "2026-04-27",
-        "time_sec": 8815.997569178218
+        "time_sec": 8803.329057645384
       },
       {
         "date": "2026-04-28",
-        "time_sec": 8804.281912741513
+        "time_sec": 8786.356155346
       },
       {
         "date": "2026-04-29",
-        "time_sec": 8789.311257145526
+        "time_sec": 8764.682445272114
       },
       {
         "date": "2026-04-30",
-        "time_sec": 8782.299695383614
+        "time_sec": 8754.537208269683
       },
       {
         "date": "2026-05-01",
-        "time_sec": 8781.792108315212
+        "time_sec": 8753.80290729406
       },
       {
         "date": "2026-05-02",
-        "time_sec": 8781.972476905872
+        "time_sec": 8754.063835372988
       },
       {
         "date": "2026-05-03",
-        "time_sec": 8794.218558234428
+        "time_sec": 8771.785138003608
       },
       {
         "date": "2026-05-04",
-        "time_sec": 8790.586053256973
+        "time_sec": 8766.527378118544
       },
       {
         "date": "2026-05-05",
-        "time_sec": 8790.122723946894
+        "time_sec": 8765.8568165594
       },
       {
         "date": "2026-05-06",
-        "time_sec": 8786.037715246484
+        "time_sec": 8759.945405561102
       },
       {
         "date": "2026-05-07",
-        "time_sec": 8786.623160168532
+        "time_sec": 8760.792526055873
       },
       {
         "date": "2026-05-08",
-        "time_sec": 8790.878287912801
+        "time_sec": 8766.950328107985
       },
       {
         "date": "2026-05-09",
-        "time_sec": 8794.108019205903
+        "time_sec": 8771.625127157286
       },
       {
         "date": "2026-05-10",
-        "time_sec": 8796.094991994698
+        "time_sec": 8774.501509441367
       },
       {
         "date": "2026-05-11",
-        "time_sec": 8793.483470268371
+        "time_sec": 8770.721077966617
       },
       {
         "date": "2026-05-12",
-        "time_sec": 8788.81565446657
+        "time_sec": 8763.965223043486
       },
       {
         "date": "2026-05-13",
-        "time_sec": 8780.252417787873
+        "time_sec": 8751.575630720956
       },
       {
         "date": "2026-05-14",
-        "time_sec": 8777.498747566126
+        "time_sec": 8747.592681929544
       },
       {
         "date": "2026-05-15",
-        "time_sec": 8776.81273389162
+        "time_sec": 8746.600509464002
       },
       {
         "date": "2026-05-16",
-        "time_sec": 8773.9694604533
+        "time_sec": 8742.488693958696
       },
       {
         "date": "2026-05-17",
-        "time_sec": 8756.011192081418
+        "time_sec": 8716.53214109762
       },
       {
         "date": "2026-05-18",
-        "time_sec": 8759.53063498051
+        "time_sec": 8721.61718858423
       },
       {
         "date": "2026-05-19",
-        "time_sec": 8753.21525808116
+        "time_sec": 8712.493108755234
       },
       {
         "date": "2026-05-20",
-        "time_sec": 8746.581418025258
+        "time_sec": 8702.91213093053
       },
       {
         "date": "2026-05-21",
-        "time_sec": 8740.618968395383
+        "time_sec": 8694.303611837227
       },
       {
         "date": "2026-05-22",
-        "time_sec": 8737.996037804354
+        "time_sec": 8690.517492626264
       },
       {
         "date": "2026-05-23",
-        "time_sec": 8729.239531895599
+        "time_sec": 8677.881461303648
       },
       {
         "date": "2026-05-24",
-        "time_sec": 8719.498026737936
+        "time_sec": 8663.830751666019
       },
       {
         "date": "2026-05-25",
-        "time_sec": 8718.432934010589
+        "time_sec": 8662.294939140093
       },
       {
         "date": "2026-05-26",
-        "time_sec": 8714.087892474003
+        "time_sec": 8656.030475316455
       },
       {
         "date": "2026-05-27",
-        "time_sec": 8706.715009052501
+        "time_sec": 8645.403845316403
       },
       {
         "date": "2026-05-28",
-        "time_sec": 8700.5528126323
+        "time_sec": 8636.525308367089
       },
       {
         "date": "2026-05-29",
-        "time_sec": 8689.71012718109
+        "time_sec": 8620.909977828804
       },
       {
         "date": "2026-05-30",
-        "time_sec": 8681.378490951276
+        "time_sec": 8608.916961571045
       },
       {
         "date": "2026-05-31",
-        "time_sec": 8673.371936659665
+        "time_sec": 8597.396778949156
       }
     ],
     "marathon": [
       {
         "date": "2026-01-01",
-        "time_sec": 12749.964686667337
+        "time_sec": 12774.170814024124
       },
       {
         "date": "2026-01-02",
-        "time_sec": 12768.26223731252
+        "time_sec": 12800.784286263812
       },
       {
         "date": "2026-01-03",
-        "time_sec": 12773.6073769929
+        "time_sec": 12808.561949592162
       },
       {
         "date": "2026-01-04",
-        "time_sec": 12794.46129207409
+        "time_sec": 12838.9203292944
       },
       {
         "date": "2026-01-05",
-        "time_sec": 12792.426208406996
+        "time_sec": 12835.956743795738
       },
       {
         "date": "2026-01-06",
-        "time_sec": 12794.480458965918
+        "time_sec": 12838.948242043874
       },
       {
         "date": "2026-01-07",
-        "time_sec": 12794.514715614876
+        "time_sec": 12838.99813005751
       },
       {
         "date": "2026-01-08",
-        "time_sec": 12799.503853114542
+        "time_sec": 12846.264462717692
       },
       {
         "date": "2026-01-09",
-        "time_sec": 12801.786131121804
+        "time_sec": 12849.588868429364
       },
       {
         "date": "2026-01-10",
-        "time_sec": 12799.766309543567
+        "time_sec": 12846.64674769146
       },
       {
         "date": "2026-01-11",
-        "time_sec": 12793.740304371302
+        "time_sec": 12837.870368423115
       },
       {
         "date": "2026-01-12",
-        "time_sec": 12786.688506929258
+        "time_sec": 12827.602375881655
       },
       {
         "date": "2026-01-13",
-        "time_sec": 12786.031345811452
+        "time_sec": 12826.64562580145
       },
       {
         "date": "2026-01-14",
-        "time_sec": 12794.032673731163
+        "time_sec": 12838.296137220877
       },
       {
         "date": "2026-01-15",
-        "time_sec": 12797.31221561036
+        "time_sec": 12843.07233729294
       },
       {
         "date": "2026-01-16",
-        "time_sec": 12800.563112064128
+        "time_sec": 12847.807364405684
       },
       {
         "date": "2026-01-17",
-        "time_sec": 12796.332130673427
+        "time_sec": 12841.644920989176
       },
       {
         "date": "2026-01-18",
-        "time_sec": 12804.843639797602
+        "time_sec": 12854.042907725843
       },
       {
         "date": "2026-01-19",
-        "time_sec": 12801.458972336359
+        "time_sec": 12849.112306848448
       },
       {
         "date": "2026-01-20",
-        "time_sec": 12803.393963317538
+        "time_sec": 12851.93102526016
       },
       {
         "date": "2026-01-21",
-        "time_sec": 12804.44841644161
+        "time_sec": 12853.46713734127
       },
       {
         "date": "2026-01-22",
-        "time_sec": 12802.588623069902
+        "time_sec": 12850.757855669563
       },
       {
         "date": "2026-01-23",
-        "time_sec": 12797.096316941794
+        "time_sec": 12842.75789369713
       },
       {
         "date": "2026-01-24",
-        "time_sec": 12786.652414439228
+        "time_sec": 12827.549828842213
       },
       {
         "date": "2026-01-25",
-        "time_sec": 12783.073386155249
+        "time_sec": 12822.33945564243
       },
       {
         "date": "2026-01-26",
-        "time_sec": 12781.014228945553
+        "time_sec": 12819.34201917036
       },
       {
         "date": "2026-01-27",
-        "time_sec": 12778.690941271861
+        "time_sec": 12815.960359708026
       },
       {
         "date": "2026-01-28",
-        "time_sec": 12779.245400097609
+        "time_sec": 12816.767376592687
       },
       {
         "date": "2026-01-29",
-        "time_sec": 12787.438663871197
+        "time_sec": 12828.694544176435
       },
       {
         "date": "2026-01-30",
-        "time_sec": 12782.770525430376
+        "time_sec": 12821.898579189688
       },
       {
         "date": "2026-01-31",
-        "time_sec": 12783.811949130846
+        "time_sec": 12823.414606639064
       },
       {
         "date": "2026-02-01",
-        "time_sec": 12782.025697628736
+        "time_sec": 12820.81434825597
       },
       {
         "date": "2026-02-02",
-        "time_sec": 12798.621193955718
+        "time_sec": 12844.97883781113
       },
       {
         "date": "2026-02-03",
-        "time_sec": 12805.658554144746
+        "time_sec": 12855.230118817864
       },
       {
         "date": "2026-02-04",
-        "time_sec": 12806.852399941043
+        "time_sec": 12856.969439203382
       },
       {
         "date": "2026-02-05",
-        "time_sec": 12810.639915618502
+        "time_sec": 12862.487975500146
       },
       {
         "date": "2026-02-06",
-        "time_sec": 12810.454162623259
+        "time_sec": 12862.21731003775
       },
       {
         "date": "2026-02-07",
-        "time_sec": 12822.509777956617
+        "time_sec": 12879.787528757435
       },
       {
         "date": "2026-02-08",
-        "time_sec": 12820.541359080273
+        "time_sec": 12876.918186081932
       },
       {
         "date": "2026-02-09",
-        "time_sec": 12815.061780815025
+        "time_sec": 12868.931711750012
       },
       {
         "date": "2026-02-10",
-        "time_sec": 12820.545542767946
+        "time_sec": 12876.924284386925
       },
       {
         "date": "2026-02-11",
-        "time_sec": 12823.42732612388
+        "time_sec": 12881.125096614058
       },
       {
         "date": "2026-02-12",
-        "time_sec": 12830.181202974465
+        "time_sec": 12890.971977890773
       },
       {
         "date": "2026-02-13",
-        "time_sec": 12843.30877607965
+        "time_sec": 12910.118144327247
       },
       {
         "date": "2026-02-14",
-        "time_sec": 12857.959606380353
+        "time_sec": 12931.496364859211
       },
       {
         "date": "2026-02-15",
-        "time_sec": 12864.916729090437
+        "time_sec": 12941.651920255865
       },
       {
         "date": "2026-02-16",
-        "time_sec": 12871.650312488728
+        "time_sec": 12951.483527908484
       },
       {
         "date": "2026-02-17",
-        "time_sec": 12888.129743859581
+        "time_sec": 12975.55469756977
       },
       {
         "date": "2026-02-18",
-        "time_sec": 12897.623342065132
+        "time_sec": 12989.42811089323
       },
       {
         "date": "2026-02-19",
-        "time_sec": 12915.387709976332
+        "time_sec": 13015.400343819338
       },
       {
         "date": "2026-02-20",
-        "time_sec": 12936.63820265961
+        "time_sec": 13046.490615421275
       },
       {
         "date": "2026-02-21",
-        "time_sec": 12958.92313213691
+        "time_sec": 13079.119071940673
       },
       {
         "date": "2026-02-22",
-        "time_sec": 12971.545575879823
+        "time_sec": 13097.611448182914
       },
       {
         "date": "2026-02-23",
-        "time_sec": 12984.59214561626
+        "time_sec": 13116.73372158426
       },
       {
         "date": "2026-02-24",
-        "time_sec": 13003.612637913024
+        "time_sec": 13144.627471325472
       },
       {
         "date": "2026-02-25",
-        "time_sec": 13017.2187896146
+        "time_sec": 13164.592334820818
       },
       {
         "date": "2026-02-26",
-        "time_sec": 13040.431124079438
+        "time_sec": 13198.674482395569
       },
       {
         "date": "2026-02-27",
-        "time_sec": 13064.7929026529
+        "time_sec": 13234.473787733254
       },
       {
         "date": "2026-02-28",
-        "time_sec": 13088.967705792964
+        "time_sec": 13270.028125367668
       },
       {
         "date": "2026-03-01",
-        "time_sec": 13102.881920488937
+        "time_sec": 13290.505466341543
       },
       {
         "date": "2026-03-02",
-        "time_sec": 13118.808204939825
+        "time_sec": 13313.955986498855
       },
       {
         "date": "2026-03-03",
-        "time_sec": 13135.236429624902
+        "time_sec": 13338.159048372621
       },
       {
         "date": "2026-03-04",
-        "time_sec": 13145.497484761985
+        "time_sec": 13353.283193242554
       },
       {
         "date": "2026-03-05",
-        "time_sec": 13163.103808994914
+        "time_sec": 13379.24621262813
       },
       {
         "date": "2026-03-06",
-        "time_sec": 13161.953992836186
+        "time_sec": 13377.550167250918
       },
       {
         "date": "2026-03-07",
-        "time_sec": 13157.829394505752
+        "time_sec": 13371.466696119262
       },
       {
         "date": "2026-03-08",
-        "time_sec": 13177.223904798157
+        "time_sec": 13400.079621766758
       },
       {
         "date": "2026-03-09",
-        "time_sec": 13176.399705399235
+        "time_sec": 13398.863284822868
       },
       {
         "date": "2026-03-10",
-        "time_sec": 13174.573767683216
+        "time_sec": 13396.168724845007
       },
       {
         "date": "2026-03-11",
-        "time_sec": 13173.93825928196
+        "time_sec": 13395.230936384114
       },
       {
         "date": "2026-03-12",
-        "time_sec": 13180.135974602807
+        "time_sec": 13404.377470915691
       },
       {
         "date": "2026-03-13",
-        "time_sec": 13180.624908574666
+        "time_sec": 13405.099118043
       },
       {
         "date": "2026-03-14",
-        "time_sec": 13177.098346910201
+        "time_sec": 13399.89432373706
       },
       {
         "date": "2026-03-15",
-        "time_sec": 13169.840454101655
+        "time_sec": 13389.18449724319
       },
       {
         "date": "2026-03-16",
-        "time_sec": 13162.880628250303
+        "time_sec": 13378.917002884607
       },
       {
         "date": "2026-03-17",
-        "time_sec": 13155.79810877486
+        "time_sec": 13368.471019253479
       },
       {
         "date": "2026-03-18",
-        "time_sec": 13150.944349807582
+        "time_sec": 13361.313692110323
       },
       {
         "date": "2026-03-19",
-        "time_sec": 13144.916564509012
+        "time_sec": 13352.42681130154
       },
       {
         "date": "2026-03-20",
-        "time_sec": 13142.57168089266
+        "time_sec": 13348.970200652453
       },
       {
         "date": "2026-03-21",
-        "time_sec": 13135.84300762421
+        "time_sec": 13339.052957674987
       },
       {
         "date": "2026-03-22",
-        "time_sec": 13130.47696566602
+        "time_sec": 13331.145709717102
       },
       {
         "date": "2026-03-23",
-        "time_sec": 13121.239752199885
+        "time_sec": 13317.5374282341
       },
       {
         "date": "2026-03-24",
-        "time_sec": 13111.768166955399
+        "time_sec": 13303.588358079372
       },
       {
         "date": "2026-03-25",
-        "time_sec": 13098.652541078694
+        "time_sec": 13284.280113584911
       },
       {
         "date": "2026-03-26",
-        "time_sec": 13086.098491066357
+        "time_sec": 13265.806766278743
       },
       {
         "date": "2026-03-27",
-        "time_sec": 13078.410916166898
+        "time_sec": 13254.498408315676
       },
       {
         "date": "2026-03-28",
-        "time_sec": 13074.145395826441
+        "time_sec": 13248.225157470606
       },
       {
         "date": "2026-03-29",
-        "time_sec": 13070.738564541338
+        "time_sec": 13243.215433920474
       },
       {
         "date": "2026-03-30",
-        "time_sec": 13069.807871258246
+        "time_sec": 13241.846957880492
       },
       {
         "date": "2026-03-31",
-        "time_sec": 13073.497232810876
+        "time_sec": 13247.271992532762
       },
       {
         "date": "2026-04-01",
-        "time_sec": 13072.91444169444
+        "time_sec": 13246.414979337147
       },
       {
         "date": "2026-04-02",
-        "time_sec": 13078.32883872515
+        "time_sec": 13254.377689269457
       },
       {
         "date": "2026-04-03",
-        "time_sec": 13079.818773279514
+        "time_sec": 13256.569129974057
       },
       {
         "date": "2026-04-04",
-        "time_sec": 13077.5980031892
+        "time_sec": 13253.30279549103
       },
       {
         "date": "2026-04-05",
-        "time_sec": 13030.679519415013
+        "time_sec": 13184.353083463902
       },
       {
         "date": "2026-04-06",
-        "time_sec": 13010.167944150813
+        "time_sec": 13154.245164407013
       },
       {
         "date": "2026-04-07",
-        "time_sec": 12995.584384493985
+        "time_sec": 13132.851707059435
       },
       {
         "date": "2026-04-08",
-        "time_sec": 12981.328690474844
+        "time_sec": 13111.949682852608
       },
       {
         "date": "2026-04-09",
-        "time_sec": 12975.386401465988
+        "time_sec": 13103.240020552092
       },
       {
         "date": "2026-04-10",
-        "time_sec": 12954.697351981271
+        "time_sec": 13072.92995337396
       },
       {
         "date": "2026-04-11",
-        "time_sec": 12939.90688566072
+        "time_sec": 13051.274868170687
       },
       {
         "date": "2026-04-12",
-        "time_sec": 12926.465017536451
+        "time_sec": 13031.603984335377
       },
       {
         "date": "2026-04-13",
-        "time_sec": 12900.135217497518
+        "time_sec": 12993.099596262644
       },
       {
         "date": "2026-04-14",
-        "time_sec": 12879.915305117536
+        "time_sec": 12963.554297027216
       },
       {
         "date": "2026-04-15",
-        "time_sec": 12861.399066433292
+        "time_sec": 12936.516755189357
       },
       {
         "date": "2026-04-16",
-        "time_sec": 12849.577607257057
+        "time_sec": 12919.264160576824
       },
       {
         "date": "2026-04-17",
-        "time_sec": 12832.619355146036
+        "time_sec": 12894.527280584984
       },
       {
         "date": "2026-04-18",
-        "time_sec": 12823.634512944487
+        "time_sec": 12881.427131892246
       },
       {
         "date": "2026-04-19",
-        "time_sec": 12807.059962947367
+        "time_sec": 12857.271846334237
       },
       {
         "date": "2026-04-20",
-        "time_sec": 12792.3939025193
+        "time_sec": 12835.909700142895
       },
       {
         "date": "2026-04-21",
-        "time_sec": 12772.783541969873
+        "time_sec": 12807.36309911393
       },
       {
         "date": "2026-04-22",
-        "time_sec": 12757.438057881636
+        "time_sec": 12785.038623053902
       },
       {
         "date": "2026-04-23",
-        "time_sec": 12743.051028619886
+        "time_sec": 12764.119501666206
       },
       {
         "date": "2026-04-24",
-        "time_sec": 12724.061347761426
+        "time_sec": 12736.524317454523
       },
       {
         "date": "2026-04-25",
-        "time_sec": 12698.477284032253
+        "time_sec": 12699.375769712653
       },
       {
         "date": "2026-04-26",
-        "time_sec": 12676.275991388764
+        "time_sec": 12667.166427052756
       },
       {
         "date": "2026-04-27",
-        "time_sec": 12656.090813978284
+        "time_sec": 12637.904121981224
       },
       {
         "date": "2026-04-28",
-        "time_sec": 12639.272023972431
+        "time_sec": 12613.538122422788
       },
       {
         "date": "2026-04-29",
-        "time_sec": 12617.780414511217
+        "time_sec": 12582.423726029354
       },
       {
         "date": "2026-04-30",
-        "time_sec": 12607.714739956516
+        "time_sec": 12567.859402499933
       },
       {
         "date": "2026-05-01",
-        "time_sec": 12606.986056902388
+        "time_sec": 12566.805252954253
       },
       {
         "date": "2026-05-02",
-        "time_sec": 12607.244990873894
+        "time_sec": 12567.17983670804
       },
       {
         "date": "2026-05-03",
-        "time_sec": 12624.825249510925
+        "time_sec": 12592.62022659869
       },
       {
         "date": "2026-05-04",
-        "time_sec": 12619.61048935291
+        "time_sec": 12585.072279124668
       },
       {
         "date": "2026-05-05",
-        "time_sec": 12618.94534195704
+        "time_sec": 12584.109632762473
       },
       {
         "date": "2026-05-06",
-        "time_sec": 12613.080975425337
+        "time_sec": 12575.623315264544
       },
       {
         "date": "2026-05-07",
-        "time_sec": 12613.921429842647
+        "time_sec": 12576.839426524564
       },
       {
         "date": "2026-05-08",
-        "time_sec": 12620.03001627702
+        "time_sec": 12585.679458679122
       },
       {
         "date": "2026-05-09",
-        "time_sec": 12624.666561628752
+        "time_sec": 12592.390517846368
       },
       {
         "date": "2026-05-10",
-        "time_sec": 12627.519024763245
+        "time_sec": 12596.519801585091
       },
       {
         "date": "2026-05-11",
-        "time_sec": 12623.769970175661
+        "time_sec": 12591.09268075333
       },
       {
         "date": "2026-05-12",
-        "time_sec": 12617.068936035494
+        "time_sec": 12581.394094432011
       },
       {
         "date": "2026-05-13",
-        "time_sec": 12604.77570430343
+        "time_sec": 12563.607813940023
       },
       {
         "date": "2026-05-14",
-        "time_sec": 12600.822583839761
+        "time_sec": 12557.88996281586
       },
       {
         "date": "2026-05-15",
-        "time_sec": 12599.837754692993
+        "time_sec": 12556.465617501732
       },
       {
         "date": "2026-05-16",
-        "time_sec": 12595.75600143002
+        "time_sec": 12550.562767593128
       },
       {
         "date": "2026-05-17",
-        "time_sec": 12569.975427695412
+        "time_sec": 12513.299997537913
       },
       {
         "date": "2026-05-18",
-        "time_sec": 12575.027877925371
+        "time_sec": 12520.600002135116
       },
       {
         "date": "2026-05-19",
-        "time_sec": 12565.961634095822
+        "time_sec": 12507.501633855903
       },
       {
         "date": "2026-05-20",
-        "time_sec": 12556.438210168571
+        "time_sec": 12493.747350862437
       },
       {
         "date": "2026-05-21",
-        "time_sec": 12547.87862251019
+        "time_sec": 12481.389112493634
       },
       {
         "date": "2026-05-22",
-        "time_sec": 12544.113189557385
+        "time_sec": 12475.953826447954
       },
       {
         "date": "2026-05-23",
-        "time_sec": 12531.542503923147
+        "time_sec": 12457.813762468533
       },
       {
         "date": "2026-05-24",
-        "time_sec": 12517.557770718224
+        "time_sec": 12437.642811220048
       },
       {
         "date": "2026-05-25",
-        "time_sec": 12516.028742360757
+        "time_sec": 12435.438025811609
       },
       {
         "date": "2026-05-26",
-        "time_sec": 12509.791077269992
+        "time_sec": 12426.444871896725
       },
       {
         "date": "2026-05-27",
-        "time_sec": 12499.20669570557
+        "time_sec": 12411.189469059796
       },
       {
         "date": "2026-05-28",
-        "time_sec": 12490.360355073572
+        "time_sec": 12398.443597813344
       },
       {
         "date": "2026-05-29",
-        "time_sec": 12474.794786836836
+        "time_sec": 12376.026504361122
       },
       {
         "date": "2026-05-30",
-        "time_sec": 12462.834036629485
+        "time_sec": 12358.809541481918
       },
       {
         "date": "2026-05-31",
-        "time_sec": 12451.339968326207
+        "time_sec": 12342.271370241266
       }
     ]
   },
   "notes": [
-    "Race labels are manually registered in data/races.json.",
+    "Race labels are manually registered in data/entered/races.json.",
     "Training features for each race use only runs before the race start and exclude the race activity itself.",
     "Ordinary run pace is used only inside load/specificity factors, not as a race-performance label."
   ]
