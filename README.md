@@ -1,58 +1,22 @@
 # Stride
 
-A running-first, multi-sport training app — a static, client-side PWA (vanilla
-JS ES modules, no build step, no backend, state-free). Three panes:
+Stride is a running-training app with three panes:
 
-- **Log** — your full running history: distance over time with a smoothed
-  weekly-volume trend, per-run details, shoes, and best efforts.
-- **Fitness** — a running Fitness & Form (PMC-style) model from per-run load.
-- **Goals** — progress toward a sub-3:00 marathon across six tracked buckets
-  (volume, long-run durability, marathon-pace control, race fitness, recovery,
-  and the resulting race prediction).
+- **Log** — past runs, with clubs, shoes, and best efforts.
+- **Fitness** — how hard to run, based on recent training.
+- **Progression** — progress tracked with advanced running metrics.
 
-Colour follows the viewer's OS light/dark setting (Catppuccin Latte / Mocha).
-Training data is your own Strava history, pulled locally by the script below.
+It's a client-side PWA — vanilla JS ES modules, no build step, no backend.
+Training data comes from your Strava history, pulled locally by the bundled
+Python tools (`uv run stride-…`).
 
-## Run the app
+## Setup
 
-It's fully static — serve the folder over HTTP (ES modules + `fetch` of the
-data files need a real origin, not `file://`):
+1. **Create Strava API credentials** at <https://www.strava.com/settings/api>
+   (any app name; website `http://localhost`; set **Authorization Callback
+   Domain** to exactly `localhost`). Note the **Client ID** and **Client Secret**.
 
-```sh
-python -m http.server 8000   # then open http://localhost:8000
-```
-
-## Sync your Strava data
-
-`stride-sync` pulls your full Strava history (all sports) once, then
-incrementally fetches new activities. Python 3 standard library only — no
-third-party packages. Data is grouped by source:
-
-- `data/imported/` — Strava data downloaded by `sync` / `details`
-- `data/generated/` — reproducible outputs from local scripts
-- `data/entered/` — manually maintained labels and overrides
-- `data/private/` — OAuth tokens and other local secrets (gitignored)
-
-Key files:
-
-- `data/imported/strava-activities.json` — raw activity list, deduped by id
-- `data/imported/strava-run-details.json`, `data/imported/strava-gear.json`
-  — per-run shoes, photos, and gear details
-- `data/generated/fitness-summary.json`, `data/generated/records.json`
-  — compact derived metrics and best-effort PRs
-- `data/entered/races.json`, `data/entered/club-overrides.json`
-  — manually entered race labels and club overrides
-- `data/private/strava-config.json`, `data/private/strava-tokens.json`
-  — API credentials and OAuth tokens (gitignored, never committed)
-
-### One-time setup
-
-1. **Get Strava API credentials** at <https://www.strava.com/settings/api>. If
-   you already have an app, note its **Client ID** and **Client Secret**; if
-   not, create one (any name; website can be `http://localhost`). Set the
-   **Authorization Callback Domain** to exactly `localhost`.
-
-2. **Authorize.** `auth` prompts for your Client ID and Secret (saved to
+2. **Authorize.** `auth` prompts for those two values (saved to
    `data/private/strava-config.json`, gitignored), then opens your browser to
    click *Authorize*:
 
@@ -60,40 +24,60 @@ Key files:
    uv run stride-sync auth
    ```
 
-### Pulling data
+## Pull your Strava data
 
 ```sh
-uv run stride-sync sync            # new activities + recompute summary
-uv run stride-sync sync --full     # ignore checkpoint, refetch all
-uv run stride-sync details         # backfill shoes + best-effort PRs (resumable)
-uv run stride-durability-model     # build stream-based durability metric
+uv run stride-sync sync       # activities — full history first run, incremental after
+uv run stride-sync details    # per-run shoes, photos, best-effort PRs
+uv run stride-sync streams    # per-run HR/grade streams for the durability model
 ```
 
-The first `sync` does a full history pull; later runs are incremental. Re-run
-`sync` (and occasionally `details`) to pull in recent activities.
+Every command is resumable and fetches only what's missing, so the first run is
+the slow one — `streams` most of all (one request per run, cached in
+`data/private/strava-durability-samples.json`); if rate limits pause it, just
+re-run. Re-run any command later to pull recent activity, or `stride-sync sync
+--full` to ignore the checkpoint and refetch everything.
 
-## Update race predictions
+## Rebuild models
 
-The Goals pane reads a precomputed supervised race model from
-`data/generated/race-model.json`. The browser does not fit the model at runtime;
-rebuild the JSON after syncing Strava or editing race labels:
+The Progression pane reads two precomputed artifacts rather than fitting them in
+the browser: a race model (`data/generated/race-model.json`) and a durability
+model (`data/generated/durability-model.json`). Both are offline computations
+over already-pulled data, so rebuild them after syncing or editing race labels:
 
 ```sh
-uv run stride-sync sync
 uv run stride-race-model
 uv run stride-durability-model
 ```
 
-Race labels live in `data/entered/races.json`. Add only true performance labels
-there: races, time trials, or deliberate benchmark efforts. Ordinary easy,
-workout, and long runs should stay out of the registry; they are used only as
-training-load features for the model.
+Race labels live in `data/entered/races.json` — add only true efforts (races,
+time trials, deliberate benchmarks); ordinary runs stay out and serve only as
+training-load features. Rebuild the race model after each new race, and weekly
+during training so load factors and predictions stay current.
 
-Update the model:
+## Run the app
 
-- after each race or time trial, by adding/checking the race row and running
-  `uv run stride-race-model`
-- weekly during training, after syncing Strava, so current load factors and
-  predictions stay fresh
-- before relying on the Goals race prediction if recent activities have not yet
-  been synced and rebuilt
+Serve the folder over HTTP (it's fully static):
+
+```sh
+python -m http.server 8000   # then open http://localhost:8000
+```
+
+## Project layout
+
+Data is grouped by source:
+
+- `data/imported/` — pulled from Strava by `sync` / `details` / `streams`
+- `data/generated/` — reproducible outputs from the model scripts
+- `data/entered/` — hand-maintained labels and overrides
+- `data/private/` — credentials, tokens, and stream cache (gitignored)
+
+Key files:
+
+- `data/imported/strava-activities.json` — activity list, deduped by id
+- `data/imported/strava-run-details.json`, `strava-gear.json` — per-run shoes, photos, gear
+- `data/generated/fitness-summary.json`, `records.json` — derived metrics and best-effort PRs
+- `data/generated/race-model.json`, `durability-model.json` — the Progression-pane models
+- `data/entered/races.json`, `club-overrides.json` — race labels and club overrides
+- `data/private/strava-config.json`, `strava-tokens.json`, `strava-durability-samples.json`
+  — secrets and the stream cache (never committed)
