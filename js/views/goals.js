@@ -8,6 +8,7 @@
 // run. (A 30 km run twice in a week beats once; "longest run" couldn't see that.)
 
 const ACTS_URL = './data/strava-activities.json';
+const RACE_MODEL_URL = './data/race-model.json';
 const RUN_TYPES = new Set(['Run', 'TrailRun']);
 const DAY = 86400000;
 const RANGE_START = new Date(2026, 0, 1).getTime();   // Jan 1, 2026
@@ -15,6 +16,7 @@ const MARATHON = new Date(2026, 9, 11).getTime();      // Oct 11, 2026
 const MP_SEC = 256;                                    // 4:16/km marathon pace
 
 let RUNS = null;
+let RACE_MODEL = null;
 let GRID = null;          // daily timestamps RANGE_START .. min(today, race)
 let SERIES = {};          // sectionId -> [{ t, v }]
 let selected = 'race';
@@ -95,7 +97,11 @@ export async function renderGoals() {
   if (RUNS === null) {
     root.innerHTML = `<div class="hero"><div class="date">Loading…</div></div>`;
     try {
-      const acts = await fetchJSON(ACTS_URL);
+      const [acts, raceModel] = await Promise.all([
+        fetchJSON(ACTS_URL),
+        fetchJSON(RACE_MODEL_URL).catch(() => null),
+      ]);
+      RACE_MODEL = raceModel;
       RUNS = normalizeRuns(acts || []);
       GRID = buildGrid();
       for (const s of SECTIONS) SERIES[s.id] = s.compute(RUNS, GRID);
@@ -307,9 +313,23 @@ function raceFitness(runs, grid) {
   return fillAndSmooth(raw, 7);
 }
 
-// Marathon prediction = Riegel(5K fitness → 42.195 km).
+// Prefer the supervised offline artifact. Fallback keeps the static app usable
+// before scripts/race_model.py has been run.
 function racePrediction(runs, grid) {
+  const modeled = raceModelSeries('marathon');
+  if (modeled.length) return modeled;
   return raceFitness(runs, grid).map(p => ({ t: p.t, v: p.v * (42.195 / 5) ** 1.06 }));
+}
+
+function raceModelSeries(key) {
+  const rows = RACE_MODEL?.series?.[key] || [];
+  return rows
+    .map(p => ({
+      t: new Date(`${p.date}T00:00:00`).getTime(),
+      v: p.time_sec,
+    }))
+    .filter(p => Number.isFinite(p.t) && Number.isFinite(p.v) && p.t >= RANGE_START && p.t <= MARATHON)
+    .sort((a, b) => a.t - b.t);
 }
 
 // Aerobic efficiency on easy runs: metres per heartbeat (×1000), Gaussian

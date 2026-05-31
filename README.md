@@ -64,3 +64,28 @@ python scripts/sync_strava.py details         # backfill shoes + best-effort PRs
 
 The first `sync` does a full history pull; later runs are incremental. Re-run
 `sync` (and occasionally `details`) to pull in recent activities.
+
+## Update race predictions
+
+The Goals pane reads a precomputed supervised race model from
+`data/race-model.json`. The browser does not fit the model at runtime; rebuild
+the JSON after syncing Strava or editing race labels:
+
+```sh
+python scripts/sync_strava.py sync
+python scripts/race_model.py
+```
+
+Race labels live in `data/races.json`. Add only true performance labels there:
+races, time trials, or deliberate benchmark efforts. Ordinary easy, workout, and
+long runs should stay out of the registry; they are used only as training-load
+features for the model.
+
+Update the model:
+
+- after each race or time trial, by adding/checking the race row and running
+  `python scripts/race_model.py`
+- weekly during training, after syncing Strava, so current load factors and
+  predictions stay fresh
+- before relying on the Goals race prediction if recent activities have not yet
+  been synced and rebuilt

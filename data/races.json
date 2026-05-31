@@ -1,0 +1,56 @@
+[
+  {
+    "activity_id": 12590639809,
+    "name": "Lachine 10k",
+    "date": "2024-10-06",
+    "distance_km": 10,
+    "time_sec": 3210,
+    "type": "race",
+    "notes": "Seeded from Strava 10K best effort."
+  },
+  {
+    "activity_id": 14291864922,
+    "name": "Montreal 21k",
+    "date": "2025-04-26",
+    "distance_km": 21.097,
+    "time_sec": 6892,
+    "type": "race",
+    "notes": "Seeded from Strava Half-Marathon best effort."
+  },
+  {
+    "activity_id": 15412365665,
+    "name": "Tremblant Half",
+    "date": "2025-08-10",
+    "distance_km": 21.097,
+    "time_sec": 7361,
+    "type": "race",
+    "notes": "Seeded from Strava Half-Marathon best effort; activity title was informal."
+  },
+  {
+    "activity_id": 15888965889,
+    "name": "Beneva Montreal Half",
+    "date": "2025-09-21",
+    "distance_km": 21.097,
+    "time_sec": 6301,
+    "type": "race",
+    "notes": "Seeded from Strava Half-Marathon best effort."
+  },
+  {
+    "activity_id": 16044666433,
+    "name": "Marathon",
+    "date": "2025-10-05",
+    "distance_km": 42.195,
+    "time_sec": 14548,
+    "type": "race",
+    "notes": "Seeded from Strava Marathon best effort."
+  },
+  {
+    "activity_id": 18172734023,
+    "name": "Montreal 21k",
+    "date": "2026-04-19",
+    "distance_km": 21.097,
+    "time_sec": 5873,
+    "type": "race",
+    "notes": "Manual seed from known race result."
+  }
+]
