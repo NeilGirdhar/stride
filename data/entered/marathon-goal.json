@@ -1,0 +1,106 @@
+{
+  "name": "Montreal Beneva",
+  "summary_goal": "sub-3:00",
+  "race_date": "2026-10-11",
+  "range_start": "2026-01-01",
+  "marathon_pace_sec": 256,
+  "race_distance_km": 42.195,
+  "model_series_start": "2026-02-01",
+  "target_ramp": {
+    "start": "2026-06-01",
+    "peak": "2026-09-07"
+  },
+  "recovery_baseline_end": "2026-03-01",
+  "prediction_distances": {
+    "5k": 5.0,
+    "10k": 10.0,
+    "half": 21.097,
+    "30k": 30.0,
+    "marathon": 42.195
+  },
+  "fitness_score_weights": {
+    "fitness": 1.0,
+    "form": 0.25,
+    "volume_28d_km_per_week": 0.18,
+    "long_run_durability_log": 1.5,
+    "consistency_runs_per_week": 0.8
+  },
+  "sections": [
+    {
+      "id": "race",
+      "label": "Race prediction",
+      "unit": "",
+      "higher_better": false,
+      "compute": "race_prediction",
+      "targets": [
+        { "tier": "a", "type": "line", "start": 12600, "end": 10800 },
+        { "tier": "b", "type": "line", "start": 12600, "end": 11400 },
+        { "tier": "c", "type": "line", "start": 12600, "end": 12000 }
+      ]
+    },
+    {
+      "id": "volume",
+      "label": "Volume",
+      "unit": "",
+      "higher_better": true,
+      "compute": "ewma_km",
+      "tau_days": 9,
+      "targets": [
+        { "tier": "a", "type": "ramp", "start": 70, "end": 95 },
+        { "tier": "b", "type": "ramp", "start": 62, "end": 85 },
+        { "tier": "c", "type": "ramp", "start": 55, "end": 75 }
+      ]
+    },
+    {
+      "id": "durability",
+      "label": "Long-run durability",
+      "unit": "km/week beyond 20 km",
+      "higher_better": true,
+      "compute": "ewma_km_beyond",
+      "tau_days": 20,
+      "threshold_km": 20,
+      "targets": [
+        { "tier": "a", "type": "ramp", "start": 8, "end": 20 },
+        { "tier": "b", "type": "ramp", "start": 7, "end": 16 },
+        { "tier": "c", "type": "ramp", "start": 6, "end": 12 }
+      ]
+    },
+    {
+      "id": "mp",
+      "label": "Marathon-pace control",
+      "unit": "km/week at marathon pace",
+      "higher_better": true,
+      "compute": "ewma_marathon_pace",
+      "tau_days": 14,
+      "targets": [
+        { "tier": "a", "type": "ramp", "start": 4, "end": 20 },
+        { "tier": "b", "type": "ramp", "start": 3, "end": 14 },
+        { "tier": "c", "type": "ramp", "start": 2, "end": 8 }
+      ]
+    },
+    {
+      "id": "fitness",
+      "label": "Threshold / race fitness",
+      "unit": "equivalent 5K",
+      "higher_better": false,
+      "compute": "race_fitness",
+      "targets": [
+        { "tier": "a", "type": "line", "start": 1380, "end": 1200 },
+        { "tier": "b", "type": "line", "start": 1380, "end": 1260 },
+        { "tier": "c", "type": "line", "start": 1380, "end": 1320 }
+      ]
+    },
+    {
+      "id": "recovery",
+      "label": "Recovery / injury resistance",
+      "unit": "distance/heartbeat",
+      "higher_better": true,
+      "compute": "recovery_efficiency",
+      "targets": [
+        { "tier": "a", "type": "recovery", "gain": 0.1 },
+        { "tier": "b", "type": "recovery", "gain": 0.06 },
+        { "tier": "c", "type": "recovery", "gain": 0.02 }
+      ]
+    }
+  ]
+}

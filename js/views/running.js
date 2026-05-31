@@ -12,10 +12,10 @@ const RECORDS_URL = "./data/generated/records.json";
 const RACES_URL = "./data/entered/races.json";
 const CLUB_OVERRIDES_URL = "./data/entered/club-overrides.json";
 const CLUB_PATTERNS_URL = "./data/entered/club-patterns.json";
+const TRAINING_CONFIG_URL = "./data/entered/training-config.json";
 
 const RUN_TYPES = new Set(["Run", "TrailRun"]);
 const DAY = 86400000;
-const SERIOUS_START = new Date(2024, 5, 5).getTime(); // Jun 5, 2024 — first 6am block
 
 // Plot margins (in the same pixel units as the measured svg).
 const padL = 48,
@@ -31,6 +31,7 @@ let DETAILS = {},
   CLUB_OVERRIDES = new Map();
 let CLUBS = [],
   CLUB_BY_ID = new Map();
+let SERIOUS_START = null;
 let view = "serious";
 let detailTab = "clubs";
 let highlightedRecordKey = null;
@@ -95,21 +96,31 @@ export async function renderRunning() {
   if (RUNS === null) {
     root.innerHTML = `<div class="hero"><h1>Loading runs…</h1></div>`;
     try {
-      const [acts, details, gear, records, races, clubOverrides, clubPatterns] =
-        await Promise.all([
-          fetchJSON(ACTS_URL),
-          fetchJSON(DETAILS_URL, {}),
-          fetchJSON(GEAR_URL, {}),
-          fetchJSON(RECORDS_URL, {}),
-          fetchJSON(RACES_URL, []),
-          fetchJSON(CLUB_OVERRIDES_URL, []),
-          fetchJSON(CLUB_PATTERNS_URL, []),
-        ]);
+      const [
+        acts,
+        details,
+        gear,
+        records,
+        races,
+        clubOverrides,
+        clubPatterns,
+        trainingConfig,
+      ] = await Promise.all([
+        fetchJSON(ACTS_URL),
+        fetchJSON(DETAILS_URL, {}),
+        fetchJSON(GEAR_URL, {}),
+        fetchJSON(RECORDS_URL, {}),
+        fetchJSON(RACES_URL, []),
+        fetchJSON(CLUB_OVERRIDES_URL, []),
+        fetchJSON(CLUB_PATTERNS_URL, []),
+        fetchJSON(TRAINING_CONFIG_URL),
+      ]);
       DETAILS = details || {};
       GEAR = gear || {};
       RECORDS = records || {};
       CLUBS = loadClubs(clubPatterns || []);
       CLUB_BY_ID = new Map(CLUBS.map((club) => [club.id, club]));
+      SERIOUS_START = parseLocalDate(trainingConfig.serious_start);
       RACE_IDS = new Set(
         (races || []).map((r) => Number(r.activity_id)).filter(Boolean),
       );
@@ -178,6 +189,11 @@ function loadClubs(rows) {
     }));
 }
 
+function parseLocalDate(value) {
+  const [year, month, day] = String(value).split("-").map(Number);
+  return new Date(year, month - 1, day).getTime();
+}
+
 function draw(root) {
   currentRoot = root;
   curNow = Date.now();
@@ -197,7 +213,7 @@ function draw(root) {
           (v) =>
             `<button class="rg-btn ${v === view ? "on" : ""}" data-view="${v}"${
               v === "serious"
-                ? ' title="Since start of serious running · Jun 5, 2024"'
+                ? ` title="Since start of serious running · ${fmtDate(SERIOUS_START)}"`
                 : ""
             }>${BTN_LABEL[v]}</button>`,
         ).join("")}

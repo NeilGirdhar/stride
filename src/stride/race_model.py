@@ -13,7 +13,7 @@ import pathlib
 from collections.abc import Callable
 from dataclasses import dataclass
 from datetime import UTC, datetime
-from typing import Any, cast
+from typing import Any, SupportsFloat, cast
 
 import numpy as np
 
@@ -24,6 +24,7 @@ GENERATED_DIR = DATA_DIR / "generated"
 ENTERED_DIR = DATA_DIR / "entered"
 ACTIVITIES_PATH = IMPORTED_DIR / "strava-activities.json"
 RACES_PATH = ENTERED_DIR / "races.json"
+MARATHON_GOAL_PATH = ENTERED_DIR / "marathon-goal.json"
 MODEL_PATH = GENERATED_DIR / "race-model.json"
 
 RUN_TYPES = {"Run", "TrailRun"}
@@ -31,25 +32,16 @@ DAY_SEC = 86400
 FITNESS_TAU = 42.0
 FATIGUE_TAU = 7.0
 RIEGEL_EXPONENT = 1.06
-MARATHON_PACE_SEC = 256.0
-
-PREDICTION_DISTANCES = {
-    "5k": 5.0,
-    "10k": 10.0,
-    "half": 21.097,
-    "30k": 30.0,
-    "marathon": 42.195,
-}
 
 MODEL_FEATURES = ["fitness_score"]
 
-FITNESS_SCORE_WEIGHTS = {
-    "fitness": 1.0,
-    "form": 0.25,
-    "volume_28d_km_per_week": 0.18,
-    "long_run_durability_log": 1.5,
-    "consistency_runs_per_week": 0.8,
-}
+
+@dataclass
+class MarathonGoal:
+    pace_seconds: float
+    prediction_distances: dict[str, float]
+    fitness_score_weights: dict[str, float]
+    model_series_start: str
 
 
 @dataclass(frozen=True)
@@ -87,6 +79,26 @@ def load_json(path: pathlib.Path, default: object) -> object:
             return json.load(f)
     except FileNotFoundError, json.JSONDecodeError:
         return default
+
+
+def load_marathon_goal() -> MarathonGoal:
+    goal = cast("JsonDict", load_json(MARATHON_GOAL_PATH, {}))
+    pace_seconds = float(goal["marathon_pace_sec"])
+    prediction_distances = {
+        str(key): float(value)
+        for key, value in cast("dict[str, SupportsFloat]", goal["prediction_distances"]).items()
+    }
+    fitness_score_weights = {
+        str(key): float(value)
+        for key, value in cast("dict[str, SupportsFloat]", goal["fitness_score_weights"]).items()
+    }
+    model_series_start = str(goal["model_series_start"])
+    return MarathonGoal(
+        pace_seconds, prediction_distances, fitness_score_weights, model_series_start
+    )
+
+
+MARATHON_GOAL = load_marathon_goal()
 
 
 def save_json(path: pathlib.Path, obj: object) -> None:
@@ -239,7 +251,7 @@ def factors_at(runs: list[Run], ts: float, exclude_id: int | None = None) -> dic
         21.0,
         lambda run: (
             run.km
-            * math.exp(-0.5 * ((run.pace_sec - MARATHON_PACE_SEC) / 12.0) ** 2)
+            * math.exp(-0.5 * ((run.pace_sec - MARATHON_GOAL.pace_seconds) / 12.0) ** 2)
             * clamp((run.km - 12.0) / 4.0, 0.0, 1.0)
         ),
         exclude_id,
@@ -273,13 +285,13 @@ def fitness_score(factors: dict[str, float]) -> float:
     race labels, learning every component independently is unstable, so this
     first version learns how strongly this aggregate score moves race times.
     """
+    weights = MARATHON_GOAL.fitness_score_weights
     return (
-        FITNESS_SCORE_WEIGHTS["fitness"] * factors["fitness"]
-        + FITNESS_SCORE_WEIGHTS["form"] * factors["form"]
-        + FITNESS_SCORE_WEIGHTS["volume_28d_km_per_week"] * factors["volume_28d_km_per_week"]
-        + FITNESS_SCORE_WEIGHTS["long_run_durability_log"]
-        * math.log1p(factors["long_run_durability"])
-        + FITNESS_SCORE_WEIGHTS["consistency_runs_per_week"] * factors["consistency_runs_per_week"]
+        weights["fitness"] * factors["fitness"]
+        + weights["form"] * factors["form"]
+        + weights["volume_28d_km_per_week"] * factors["volume_28d_km_per_week"]
+        + weights["long_run_durability_log"] * math.log1p(factors["long_run_durability"])
+        + weights["consistency_runs_per_week"] * factors["consistency_runs_per_week"]
     )
 
 
@@ -346,7 +358,7 @@ def fit_ridge(rows: list[JsonDict]) -> JsonDict:
         "distance_curve": {"type": "riegel", "exponent": RIEGEL_EXPONENT},
         "regularization": {"l2": 6.0, "intercept_penalized": False},
         "features": MODEL_FEATURES,
-        "fixed_factor_score_weights": FITNESS_SCORE_WEIGHTS,
+        "fixed_factor_score_weights": MARATHON_GOAL.fitness_score_weights,
         "feature_means": dict(zip(MODEL_FEATURES, map(float, means), strict=False)),
         "feature_scales": dict(zip(MODEL_FEATURES, map(float, scales), strict=False)),
         "intercept": float(beta[0]),
@@ -503,12 +515,12 @@ def build_series(
     start: float,
     end: float,
 ) -> dict[str, list[dict[str, float | str]]]:
-    out = {key: [] for key in PREDICTION_DISTANCES}
+    out = {key: [] for key in MARATHON_GOAL.prediction_distances}
     t = start
     while t <= end:
         factors = factors_at(runs, t)
         date = date_from_ts(t)
-        for key, km in PREDICTION_DISTANCES.items():
+        for key, km in MARATHON_GOAL.prediction_distances.items():
             pred = blended_prediction(km, factors, beta, means, scales, model, t)
             out[key].append({"date": date, "time_sec": pred["time_sec"]})
         t += DAY_SEC
@@ -549,13 +561,13 @@ def main() -> None:
     current_factors = factors_at(runs, as_of)
     current_predictions = {
         key: blended_prediction(km, current_factors, beta, means, scales, model, as_of)
-        for key, km in PREDICTION_DISTANCES.items()
+        for key, km in MARATHON_GOAL.prediction_distances.items()
     }
     for pred in current_predictions.values():
         pred["low_sec"] = float(pred["time_sec"]) / math.exp(float(model["training_rmse_log"]))
         pred["high_sec"] = float(pred["time_sec"]) * math.exp(float(model["training_rmse_log"]))
 
-    start = datetime(2026, 1, 1, tzinfo=UTC).timestamp()
+    start = datetime.fromisoformat(MARATHON_GOAL.model_series_start).replace(tzinfo=UTC).timestamp()
     series = build_series(runs, model, beta, means, scales, start, as_of)
 
     artifact = {

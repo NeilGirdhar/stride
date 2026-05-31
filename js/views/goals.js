@@ -1,5 +1,5 @@
-// Goals pane — sub-3:00 marathon (Montreal Beneva, Oct 11 2026).
-// Familiar layout: one big graph (fixed range Jan 1 → race day) on the left,
+// Goals pane.
+// Familiar layout: one big graph (fixed range start → race day) on the left,
 // a selectable list of metric sections on the right. Selecting a section swaps
 // the main graph to that metric's smooth curve + target.
 //
@@ -9,106 +9,27 @@
 
 const ACTS_URL = "./data/imported/strava-activities.json";
 const RACE_MODEL_URL = "./data/generated/race-model.json";
+const MARATHON_GOAL_URL = "./data/entered/marathon-goal.json";
 const RUN_TYPES = new Set(["Run", "TrailRun"]);
 const DAY = 86400000;
-const RANGE_START = new Date(2026, 0, 1).getTime(); // Jan 1, 2026
-const MARATHON = new Date(2026, 9, 11).getTime(); // Oct 11, 2026
-const MP_SEC = 256; // 4:16/km marathon pace
 
 let RUNS = null;
 let RACE_MODEL = null;
+let GOAL = null;
+let RANGE_START = null;
+let MARATHON = null;
+let MP_SEC = null;
+let RACE_DISTANCE_KM = null;
+let TARGET_RAMP_START = null;
+let TARGET_RAMP_PEAK = null;
+let RECOVERY_BASELINE_END = null;
+let SECTIONS = [];
 let GRID = null; // daily timestamps RANGE_START .. min(today, race)
 let SERIES = {}; // sectionId -> [{ t, v }]
 let selected = "race";
 let currentRoot = null,
   resizeWired = false,
   rzT = null;
-
-// ---- metric sections ------------------------------------------------------
-// compute(runs, grid) -> [{t,v}] (smooth). target(t) -> number. band(t) -> [lo,hi].
-// fmt(v) -> label string. higherBetter drives the on-track check.
-// Every section carries three target trajectories — A (orange), B (green),
-// C (blue) — drawn as dotted diagonals from a higher start to the goal value.
-const SECTIONS = [
-  {
-    id: "race",
-    label: "Race prediction",
-    unit: "",
-    higherBetter: false,
-    fmt: hms,
-    compute: racePrediction,
-    targets: [
-      { at: rampLine(12600, 10800), tier: "a" }, // 3:30 → 3:00 (A)
-      { at: rampLine(12600, 11400), tier: "b" }, // 3:30 → 3:10 (B)
-      { at: rampLine(12600, 12000), tier: "c" }, // 3:30 → 3:20 (C)
-    ],
-  },
-  {
-    id: "volume",
-    label: "Volume",
-    unit: "",
-    higherBetter: true,
-    fmt: (v) => `${v.toFixed(0)} km/wk`,
-    compute: (r, g) => ewmaRate(r, g, 9, (run) => run.km),
-    targets: [
-      { at: rampTarget(70, 95), tier: "a" }, // A
-      { at: rampTarget(62, 85), tier: "b" }, // B
-      { at: rampTarget(55, 75), tier: "c" }, // C
-    ],
-  },
-  {
-    id: "durability",
-    label: "Long-run durability",
-    unit: "km/week beyond 20 km",
-    higherBetter: true,
-    fmt: (v) => `${v.toFixed(1)} km/wk`,
-    compute: (r, g) => ewmaRate(r, g, 20, (run) => Math.max(0, run.km - 20)),
-    targets: [
-      { at: rampTarget(8, 20), tier: "a" }, // A
-      { at: rampTarget(7, 16), tier: "b" }, // B
-      { at: rampTarget(6, 12), tier: "c" }, // C
-    ],
-  },
-  {
-    id: "mp",
-    label: "Marathon-pace control",
-    unit: "km/week at marathon pace",
-    higherBetter: true,
-    fmt: (v) => `${v.toFixed(1)} km/wk`,
-    compute: (r, g) => ewmaRate(r, g, 14, mpKm),
-    targets: [
-      { at: rampTarget(4, 20), tier: "a" }, // A
-      { at: rampTarget(3, 14), tier: "b" }, // B
-      { at: rampTarget(2, 8), tier: "c" }, // C
-    ],
-  },
-  {
-    id: "fitness",
-    label: "Threshold / race fitness",
-    unit: "equivalent 5K",
-    higherBetter: false,
-    fmt: clock,
-    compute: raceFitness,
-    targets: [
-      { at: rampLine(1380, 1200), tier: "a" }, // 23:00 → 20:00 (A)
-      { at: rampLine(1380, 1260), tier: "b" }, // → 21:00 (B)
-      { at: rampLine(1380, 1320), tier: "c" }, // → 22:00 (C)
-    ],
-  },
-  {
-    id: "recovery",
-    label: "Recovery / injury resistance",
-    unit: "distance/heartbeat",
-    higherBetter: true,
-    fmt: (v) => `${v.toFixed(1)} m/beat`,
-    compute: recoveryEff,
-    targets: [
-      { at: (t) => recoveryBaseline() * (1 + 0.1 * frac(t)), tier: "a" }, // A
-      { at: (t) => recoveryBaseline() * (1 + 0.06 * frac(t)), tier: "b" }, // B
-      { at: (t) => recoveryBaseline() * (1 + 0.02 * frac(t)), tier: "c" }, // C
-    ],
-  },
-];
 
 export async function renderGoals() {
   const root = document.getElementById("page-goals");
@@ -117,10 +38,12 @@ export async function renderGoals() {
   if (RUNS === null) {
     root.innerHTML = `<div class="hero"><div class="date">Loading…</div></div>`;
     try {
-      const [acts, raceModel] = await Promise.all([
+      const [acts, raceModel, goal] = await Promise.all([
         fetchJSON(ACTS_URL),
         fetchJSON(RACE_MODEL_URL).catch(() => null),
+        fetchJSON(MARATHON_GOAL_URL),
       ]);
+      loadGoal(goal);
       RACE_MODEL = raceModel;
       RUNS = normalizeRuns(acts || []);
       GRID = buildGrid();
@@ -138,7 +61,7 @@ export async function renderGoals() {
   const days = Math.max(0, Math.round((MARATHON - Date.now()) / DAY));
   root.innerHTML = `
     <div class="hero">
-      <div class="date">Montreal Beneva · sub-3:00 · ${days} days · 4:16/km</div>
+      <div class="date">${esc(GOAL.name)} · ${esc(GOAL.summary_goal)} · ${days} days · ${paceLabel(MP_SEC)}</div>
     </div>
 
     <section class="rg-shell">
@@ -180,7 +103,7 @@ const FOCUS_MSG = {
   durability: (pct) =>
     `<b>Long-run durability</b> is lagging (~${pct}% under). Get a longer long run in this week — and repeat it, don't rely on one.`,
   mp: (pct) =>
-    `<b>Marathon-pace control</b> is the gap (~${pct}% under). Put a 4:16/km block inside your next long run.`,
+    `<b>Marathon-pace control</b> is the gap (~${pct}% under). Put a ${paceLabel(MP_SEC)} block inside your next long run.`,
   fitness: (pct) =>
     `<b>Race fitness</b> is behind (~${pct}% off pace). Do a threshold session or a short time trial to move it.`,
   recovery: (pct) =>
@@ -299,12 +222,16 @@ function chart(s, W) {
 
   // month ticks
   const months = [];
-  for (let m = 0; m <= 9; m++) {
-    const t = new Date(2026, m, 1).getTime();
-    if (t < RANGE_START || t > MARATHON) continue;
-    months.push(
-      `<text class="goal-xlab" x="${x(t).toFixed(1)}" y="${H - 8}">${new Date(t).toLocaleDateString(undefined, { month: "short" })}</text>`,
-    );
+  const startMonth = new Date(RANGE_START);
+  const tick = new Date(startMonth.getFullYear(), startMonth.getMonth(), 1);
+  while (tick.getTime() <= MARATHON) {
+    const t = tick.getTime();
+    if (t >= RANGE_START) {
+      months.push(
+        `<text class="goal-xlab" x="${x(t).toFixed(1)}" y="${H - 8}">${new Date(t).toLocaleDateString(undefined, { month: "short" })}</text>`,
+      );
+    }
+    tick.setMonth(tick.getMonth() + 1);
   }
 
   const todayX = x(now);
@@ -350,7 +277,7 @@ function ewmaRate(runs, grid, tau, contrib) {
   return out;
 }
 
-// MP-weighted km for one run: full credit near 4:16/km, ramped up by length
+// MP-weighted km for one run: full credit near configured pace, ramped up by length
 // (MP control is about holding pace in *long* efforts). Proxy — without splits
 // it misses MP blocks buried inside slower-average runs; streams would fix it.
 function mpKm(run) {
@@ -382,7 +309,7 @@ function racePrediction(runs, grid) {
   if (modeled.length) return modeled;
   return raceFitness(runs, grid).map((p) => ({
     t: p.t,
-    v: p.v * (42.195 / 5) ** 1.06,
+    v: p.v * (RACE_DISTANCE_KM / 5) ** 1.06,
   }));
 }
 
@@ -404,7 +331,7 @@ function raceModelSeries(key) {
 }
 
 // Aerobic efficiency on easy runs: metres per heartbeat (×1000), Gaussian
-// smoothed. Pace-based (note: GAP would be better, but Neil rarely runs hills).
+// smoothed. Pace-based; GAP would be better for hilly routes.
 function recoveryEff(runs, grid) {
   const easy = runs.filter((r) => r.hr && r.paceSec > 300); // slower than 5:00/km
   const sigma = 16 * DAY;
@@ -425,35 +352,101 @@ function recoveryEff(runs, grid) {
 
 // ---- targets --------------------------------------------------------------
 
-// 0→1 fraction of the way from Jan 1 to race day.
+// 0→1 fraction of the way from range start to race day.
 function frac(t) {
   return clamp((t - RANGE_START) / (MARATHON - RANGE_START), 0, 1);
 }
-// Straight diagonal from startVal (Jan 1) to endVal (race day).
+// Straight diagonal from startVal at range start to endVal on race day.
 function rampLine(startVal, endVal) {
   return (t) => startVal + (endVal - startVal) * frac(t);
 }
 
 function rampTarget(startVal, endVal) {
-  const t0 = new Date(2026, 5, 1).getTime(); // June 1
-  const t1 = new Date(2026, 8, 7).getTime(); // Sep 7 (peak)
   return (t) => {
-    const f = clamp((t - t0) / (t1 - t0), 0, 1);
+    const f = clamp(
+      (t - TARGET_RAMP_START) / (TARGET_RAMP_PEAK - TARGET_RAMP_START),
+      0,
+      1,
+    );
     return startVal + (endVal - startVal) * f;
   };
 }
 
 function recoveryBaseline() {
-  // "stay at or above" the Jan–Feb easy-efficiency baseline.
   const s = SERIES.recovery || [];
-  const early = s.filter(
-    (p) => p.v != null && p.t < new Date(2026, 2, 1).getTime(),
-  );
+  const early = s.filter((p) => p.v != null && p.t < RECOVERY_BASELINE_END);
   if (!early.length) return s.find((p) => p.v != null)?.v ?? 0;
   return median(early.map((p) => p.v));
 }
 
 // ---- helpers --------------------------------------------------------------
+
+function loadGoal(goal) {
+  GOAL = goal;
+  RANGE_START = parseLocalDate(goal.range_start);
+  MARATHON = parseLocalDate(goal.race_date);
+  MP_SEC = Number(goal.marathon_pace_sec);
+  RACE_DISTANCE_KM = Number(goal.race_distance_km);
+  TARGET_RAMP_START = parseLocalDate(goal.target_ramp.start);
+  TARGET_RAMP_PEAK = parseLocalDate(goal.target_ramp.peak);
+  RECOVERY_BASELINE_END = parseLocalDate(goal.recovery_baseline_end);
+  SECTIONS = goal.sections.map(buildSection);
+}
+
+function buildSection(section) {
+  return {
+    id: section.id,
+    label: section.label,
+    unit: section.unit,
+    higherBetter: section.higher_better,
+    fmt: formatterFor(section.id),
+    compute: computeFor(section),
+    targets: section.targets.map(buildTarget),
+  };
+}
+
+function formatterFor(id) {
+  if (id === "race") return hms;
+  if (id === "fitness") return clock;
+  if (id === "volume") return (v) => `${v.toFixed(0)} km/wk`;
+  if (id === "recovery") return (v) => `${v.toFixed(1)} m/beat`;
+  return (v) => `${v.toFixed(1)} km/wk`;
+}
+
+function computeFor(section) {
+  if (section.compute === "race_prediction") return racePrediction;
+  if (section.compute === "race_fitness") return raceFitness;
+  if (section.compute === "recovery_efficiency") return recoveryEff;
+  if (section.compute === "ewma_marathon_pace") {
+    return (runs, grid) => ewmaRate(runs, grid, section.tau_days, mpKm);
+  }
+  if (section.compute === "ewma_km_beyond") {
+    return (runs, grid) =>
+      ewmaRate(runs, grid, section.tau_days, (run) =>
+        Math.max(0, run.km - section.threshold_km),
+      );
+  }
+  return (runs, grid) =>
+    ewmaRate(runs, grid, section.tau_days, (run) => run.km);
+}
+
+function buildTarget(target) {
+  if (target.type === "line") {
+    return { tier: target.tier, at: rampLine(target.start, target.end) };
+  }
+  if (target.type === "ramp") {
+    return { tier: target.tier, at: rampTarget(target.start, target.end) };
+  }
+  return {
+    tier: target.tier,
+    at: (t) => recoveryBaseline() * (1 + target.gain * frac(t)),
+  };
+}
+
+function parseLocalDate(value) {
+  const [year, month, day] = String(value).split("-").map(Number);
+  return new Date(year, month - 1, day).getTime();
+}
 
 function normalizeRuns(acts) {
   return acts
@@ -525,6 +518,22 @@ function hms(sec) {
     m = Math.floor((sec % 3600) / 60),
     s = Math.round(sec % 60);
   return `${h}:${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
+}
+function paceLabel(sec) {
+  return `${Math.floor(sec / 60)}:${String(Math.round(sec % 60)).padStart(2, "0")}/km`;
+}
+function esc(s) {
+  return String(s).replace(
+    /[&<>"']/g,
+    (c) =>
+      ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;",
+      })[c],
+  );
 }
 
 async function fetchJSON(url) {

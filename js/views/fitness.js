@@ -3,9 +3,9 @@
 // difference between them. Values are shown as weekly km-equivalent load.
 
 const ACTS_URL = "./data/imported/strava-activities.json";
+const TRAINING_CONFIG_URL = "./data/entered/training-config.json";
 const RUN_TYPES = new Set(["Run", "TrailRun"]);
 const DAY = 86400000;
-const SERIOUS_START = new Date(2024, 5, 5).getTime();
 const FITNESS_TAU = 42;
 const FATIGUE_TAU = 7;
 const FITNESS_MOMENTUM_TAU = 14;
@@ -33,6 +33,7 @@ const BTN_LABEL = {
 
 let RUNS = null;
 let MODEL = null;
+let SERIOUS_START = null;
 let view = "serious";
 let currentRoot = null;
 let resizeWired = false,
@@ -45,7 +46,11 @@ export async function renderFitness() {
   if (RUNS === null) {
     root.innerHTML = `<div class="hero"><div class="date">Loading runs…</div></div>`;
     try {
-      const acts = await fetchJSON(ACTS_URL);
+      const [acts, trainingConfig] = await Promise.all([
+        fetchJSON(ACTS_URL),
+        fetchJSON(TRAINING_CONFIG_URL),
+      ]);
+      SERIOUS_START = parseLocalDate(trainingConfig.serious_start);
       RUNS = normalizeRuns(acts || []);
       MODEL = buildModel(RUNS);
     } catch {
@@ -76,7 +81,7 @@ export async function renderFitness() {
           (v) =>
             `<button class="rg-btn ${v === view ? "on" : ""}" data-view="${v}"${
               v === "serious"
-                ? ' title="Since start of serious running · Jun 5, 2024"'
+                ? ` title="Since start of serious running · ${fmtDate(SERIOUS_START)}"`
                 : ""
             }>${BTN_LABEL[v]}</button>`,
         ).join("")}
@@ -134,6 +139,11 @@ async function fetchJSON(url) {
   const res = await fetch(`${url}?t=${Date.now()}`);
   if (!res.ok) throw new Error(res.status);
   return res.json();
+}
+
+function parseLocalDate(value) {
+  const [year, month, day] = String(value).split("-").map(Number);
+  return new Date(year, month - 1, day).getTime();
 }
 
 function normalizeRuns(acts) {
