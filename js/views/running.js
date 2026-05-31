@@ -54,14 +54,20 @@ const REC_LABEL = { '400m': '400 m', '1k': '1 km', '5k': '5 km', '10k': '10 km',
                     half: 'half marathon', '30k': '30 km', marathon: 'marathon' };
 const CLUBS = [
   { id: 'mrrc', label: 'MRRC', re: /\bMRRC\b/i },
-  { id: 'cose', label: 'Cosé', re: /\bCos[ée]\b/i },
+  { id: 'cose', label: 'Cosé', re: /\bCos[ée]\b/i, ids: [17977643954, 18532982439] },
+  { id: 'zab', label: 'ZAB', re: /\bZAB\b/i },
+  { id: 'le-quartier', label: 'Le Quartier', re: /\bLe\s+Quartier\b/i },
+  { id: 'run-sip', label: 'Run & Sip', re: /\bRun\s*(?:&|and)\s*Sip\b/i },
   { id: '6am-mile-end', label: '6am Mile End', re: /\b6\s*am\s+Mile\s+End\b/i },
   { id: '6am-villeray', label: '6am Villeray', re: /\b6\s*am\s+Villeray\b/i },
   { id: '6am-outremont', label: '6am Outremont', re: /\b6\s*am\s+Outrem[eo]nt\b/i },
   { id: '6am-rosemont', label: '6am Rosemont', re: /\b6\s*am\s+Rosemont\b/i },
   { id: '6am-plateau', label: '6am Plateau', re: /\b6\s*am\s+Plateau\b/i },
-  { id: '6am-laurier-east', label: '6am Laurier East', re: /\b6\s*am\s+Laurier\s+East\b/i },
+  { id: '6am-laurier-est', label: '6am Laurier Est', re: /\b6\s*am\s+Laurier(?:\s+E(?:st|ast))?\b/i },
+  { id: '6am-verdun', label: '6am Verdun', re: /\b6\s*am\s+Verdun\b/i },
 ];
+// Bucket for runs that match no club above (solo / non-club outings).
+const SOLO = { id: 'solo', label: 'Solo' };
 
 export async function renderRunning() {
   const root = document.getElementById('page-running');
@@ -86,7 +92,7 @@ export async function renderRunning() {
           hr: a.average_heartrate || null,
           cad: a.average_cadence ? Math.round(a.average_cadence * 2) : null,
           gearId: DETAILS[a.id]?.gear_id || null,
-          club: classifyClub(a.name),
+          club: classifyClub(a.name, a.id),
         }))
         .sort((x, y) => x.t - y.t);
     } catch (e) {
@@ -311,7 +317,6 @@ function shoesTable() {
 function clubsTable() {
   const clubs = new Map();
   for (const run of winPts) {
-    if (!run.club) continue;
     const current = clubs.get(run.club.id) || { ...run.club, km: 0, runs: 0 };
     current.km += run.km;
     current.runs += 1;
@@ -339,8 +344,9 @@ function detailPanel() {
   return bestEffortsTable();
 }
 
-function classifyClub(name) {
-  return CLUBS.find(club => club.re.test(name || '')) || null;
+function classifyClub(name, id) {
+  return CLUBS.find(club =>
+    (club.ids && club.ids.includes(id)) || club.re.test(name || '')) || SOLO;
 }
 
 function clearHighlights() {
