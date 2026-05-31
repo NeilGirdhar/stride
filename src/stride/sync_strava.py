@@ -634,6 +634,36 @@ def aerobic_metric_from_streams(st: JsonDict, hr_min: float, hr_max: float) -> f
     return adjusted_m / beats if beats > 0 else None
 
 
+def best_grade_adjusted_speed(st: JsonDict, seconds: float = 60.0) -> float | None:
+    times = (st.get("time") or {}).get("data") or []
+    dists = (st.get("distance") or {}).get("data") or []
+    grades = (st.get("grade_smooth") or {}).get("data") or []
+    n = min(len(times), len(dists), len(grades))
+    if n < 2:
+        return None
+
+    adjusted = [0.0]
+    for i in range(1, n):
+        dd = max(0.0, float(dists[i]) - float(dists[i - 1]))
+        adjusted.append(adjusted[-1] + dd * grade_cost_factor(float(grades[i])))
+
+    best = None
+    j = 0
+    for i in range(n):
+        j = max(j, i + 1)
+        while j < n and float(times[j]) - float(times[i]) < seconds:
+            j += 1
+        if j >= n:
+            break
+        distance_m = adjusted[j] - adjusted[i]
+        if distance_m <= 0:
+            continue
+        span = float(times[j]) - float(times[i])
+        speed = distance_m / span
+        best = speed if best is None else max(best, speed)
+    return best
+
+
 def details(cfg: JsonDict, limit: int | None = None) -> None:
     tm = Tokens(cfg)
     activities = cast("list[JsonDict]", load_json(RAW_PATH, []) or [])
@@ -652,6 +682,7 @@ def details(cfg: JsonDict, limit: int | None = None) -> None:
         if str(a["id"]) not in cache
         or "aerobic_efficiency_m_per_beat" not in cache[str(a["id"])]
         or "aerobic_power_m_per_beat" not in cache[str(a["id"])]
+        or "best_60s_grade_adjusted_speed_mps" not in cache[str(a["id"])]
     ]
     batch = todo[:limit] if limit else todo
     print(
@@ -687,16 +718,22 @@ def details(cfg: JsonDict, limit: int | None = None) -> None:
                     },
                 ),
             )
-            efficiency = aerobic_metric_from_streams(st, HIGH_ZONE2_HR_MIN, HIGH_ZONE2_HR_MAX)
-            power = aerobic_metric_from_streams(st, HIGH_ZONE3_HR_MIN, HIGH_ZONE3_HR_MAX)
-            entry["aerobic_efficiency_m_per_beat"] = (
-                round(efficiency, 4) if efficiency is not None else None
-            )
-            entry["aerobic_power_m_per_beat"] = round(power, 4) if power is not None else None
         except Exception:  # noqa: BLE001
             st = {}
             entry["aerobic_efficiency_m_per_beat"] = None
             entry["aerobic_power_m_per_beat"] = None
+            entry["best_60s_grade_adjusted_speed_mps"] = None
+        else:
+            efficiency = aerobic_metric_from_streams(st, HIGH_ZONE2_HR_MIN, HIGH_ZONE2_HR_MAX)
+            power = aerobic_metric_from_streams(st, HIGH_ZONE3_HR_MIN, HIGH_ZONE3_HR_MAX)
+            best_60s = best_grade_adjusted_speed(st)
+            entry["aerobic_efficiency_m_per_beat"] = (
+                round(efficiency, 4) if efficiency is not None else None
+            )
+            entry["aerobic_power_m_per_beat"] = round(power, 4) if power is not None else None
+            entry["best_60s_grade_adjusted_speed_mps"] = (
+                round(best_60s, 4) if best_60s is not None else None
+            )
 
         if st and (a.get("distance") or 0) >= min(STREAM_RECORDS.values()):
             try:

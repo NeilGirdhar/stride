@@ -63,6 +63,14 @@
       ]
     },
     {
+      "id": "anaerobic_power",
+      "label": "Anaerobic power",
+      "unit": "Best 1-minute grade-adjusted pace",
+      "higher_better": true,
+      "compute": "anaerobic_power",
+      "targets": []
+    },
+    {
       "id": "volume",
       "label": "Volume",
       "unit": "",

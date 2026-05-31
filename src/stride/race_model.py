@@ -58,6 +58,7 @@ class Run:
     hr: float | None
     aerobic_efficiency: float | None
     aerobic_power: float | None
+    anaerobic_power: float | None
     load: float
 
 
@@ -73,6 +74,7 @@ class RawRun:
     hr: object
     aerobic_efficiency: object
     aerobic_power: object
+    anaerobic_power: object
 
 
 JsonDict = dict[str, Any]
@@ -154,6 +156,9 @@ def normalize_runs(activities: list[JsonDict], details: dict[str, JsonDict]) -> 
                     "aerobic_efficiency_m_per_beat"
                 ),
                 aerobic_power=details.get(str(activity["id"]), {}).get("aerobic_power_m_per_beat"),
+                anaerobic_power=details.get(str(activity["id"]), {}).get(
+                    "best_60s_grade_adjusted_speed_mps"
+                ),
             )
         )
     raw.sort(key=operator.attrgetter("ts"))
@@ -179,6 +184,7 @@ def normalize_runs(activities: list[JsonDict], details: dict[str, JsonDict]) -> 
                 hr=optional_float(run.hr),
                 aerobic_efficiency=optional_float(run.aerobic_efficiency),
                 aerobic_power=optional_float(run.aerobic_power),
+                anaerobic_power=optional_float(run.anaerobic_power),
                 load=load,
             )
         )
@@ -257,6 +263,11 @@ def factors_at(runs: list[Run], ts: float, exclude_id: int | None = None) -> dic
         for run in recent_runs(runs, ts, 75, exclude_id)
         if run.aerobic_power is not None
     ]
+    anaerobic_power = [
+        run.anaerobic_power
+        for run in recent_runs(runs, ts, 75, exclude_id)
+        if run.anaerobic_power is not None
+    ]
 
     volume_28 = sum(run.km for run in r28) / 4.0
     consistency = len({date_from_ts(run.ts) for run in r56}) / 8.0
@@ -289,6 +300,7 @@ def factors_at(runs: list[Run], ts: float, exclude_id: int | None = None) -> dic
         "mp_specificity": mp_specificity,
         "aerobic_efficiency": float(np.median(aerobic_efficiency)) if aerobic_efficiency else 0.0,
         "aerobic_power": float(np.median(aerobic_power)) if aerobic_power else 0.0,
+        "anaerobic_power": max(anaerobic_power) if anaerobic_power else 0.0,
         "consistency_runs_per_week": consistency,
     }
     factors["fitness_score"] = fitness_score(factors)

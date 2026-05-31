@@ -176,6 +176,7 @@ function focusBox() {
     if (s.id === "race") continue;
     const series = SERIES[s.id];
     if (!series.length) continue;
+    if (!s.targets.length) continue;
     const cur = series[series.length - 1].v;
     const tgt = s.targets[0].at(Date.now());
     if (tgt == null) continue;
@@ -198,7 +199,7 @@ function focusBox() {
 function sectionRow(s) {
   const series = SERIES[s.id];
   const cur = series.length ? series[series.length - 1].v : null;
-  const tgt = s.targets[0].at(Date.now());
+  const tgt = s.targets[0]?.at(Date.now());
   const ok =
     cur != null &&
     tgt != null &&
@@ -490,6 +491,19 @@ function aerobicPower(runs, grid) {
   return aerobicMetric(runs, grid, (r) => r.aerobicPower, inHighZone3);
 }
 
+function anaerobicPower(runs, grid) {
+  const win = 35 * DAY;
+  return fillForward(
+    grid.map((t) => {
+      const best = runs
+        .filter((r) => r.anaerobicPower != null && r.t <= t && r.t >= t - win)
+        .map((r) => r.anaerobicPower)
+        .sort((a, b) => b - a)[0];
+      return { t, v: best ?? null };
+    }),
+  );
+}
+
 function aerobicMetric(runs, grid, valueFor, fallbackPredicate) {
   const easy = runs.filter((r) => valueFor(r) != null || fallbackPredicate(r));
   const sigma = 16 * DAY;
@@ -567,6 +581,7 @@ function buildSection(section) {
 function formatterFor(id) {
   if (id === "race") return hms;
   if (id === "fitness") return clock;
+  if (id === "anaerobic_power") return speedPaceLabel;
   if (id === "volume") return (v) => `${v.toFixed(0)} km/wk`;
   if (id === "recovery" || id === "aerobic_power")
     return (v) => `${v.toFixed(2)} m/beat`;
@@ -578,6 +593,7 @@ function computeFor(section) {
   if (section.compute === "race_fitness") return raceFitness;
   if (section.compute === "recovery_efficiency") return recoveryEff;
   if (section.compute === "aerobic_power") return aerobicPower;
+  if (section.compute === "anaerobic_power") return anaerobicPower;
   if (section.compute === "ewma_marathon_pace") {
     return (runs, grid) => ewmaRate(runs, grid, section.tau_days, mpKm);
   }
@@ -621,6 +637,7 @@ function normalizeRuns(acts) {
       hr: a.average_heartrate || null,
       aerobicEfficiency: streamAerobicEfficiency(a.id),
       aerobicPower: streamAerobicPower(a.id),
+      anaerobicPower: streamAnaerobicPower(a.id),
     }))
     .sort((x, y) => x.t - y.t);
 }
@@ -632,6 +649,11 @@ function streamAerobicEfficiency(activityId) {
 
 function streamAerobicPower(activityId) {
   const value = DETAILS[String(activityId)]?.aerobic_power_m_per_beat;
+  return Number.isFinite(value) ? value : null;
+}
+
+function streamAnaerobicPower(activityId) {
+  const value = DETAILS[String(activityId)]?.best_60s_grade_adjusted_speed_mps;
   return Number.isFinite(value) ? value : null;
 }
 
@@ -701,6 +723,9 @@ function hms(sec) {
 }
 function paceLabel(sec) {
   return `${Math.floor(sec / 60)}:${String(Math.round(sec % 60)).padStart(2, "0")}/km`;
+}
+function speedPaceLabel(speed) {
+  return speed > 0 ? paceLabel(1000 / speed) : "—";
 }
 function esc(s) {
   return String(s).replace(
