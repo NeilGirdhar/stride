@@ -160,7 +160,7 @@ function draw(root) {
   `;
 
   root.querySelectorAll('.rg-btn').forEach(b =>
-    b.addEventListener('click', () => { view = b.dataset.view; clearHighlights(); draw(root); }));
+    b.addEventListener('click', () => { view = b.dataset.view; draw(root); }));
   root.querySelectorAll('.rg-detail-tab').forEach(b =>
     b.addEventListener('click', () => { detailTab = b.dataset.detail; clearHighlights(); draw(root); }));
   root.querySelectorAll('tr.rg-rec').forEach(tr =>
