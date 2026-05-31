@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-05-31T14:24:05.643019+00:00",
-  "as_of": "2026-05-31T14:24:05.580508+00:00",
+  "generated_at": "2026-05-31T15:06:47.106426+00:00",
+  "as_of": "2026-05-31T15:06:47.039385+00:00",
   "schema_version": 1,
   "label_count": 7,
   "labels": [
@@ -64,7 +64,7 @@
         "volume_56d_km_per_week": 30.0660125,
         "longest_run_56d_km": 14.008899999999999,
         "long_run_durability": 0.03450189472263306,
-        "mp_specificity": 9.513823397051457e-09,
+        "mp_specificity": 9.513823397051457e-9,
         "aerobic_efficiency": 18.315078798949767,
         "consistency_runs_per_week": 3.5,
         "fitness_score": 38.498801240427994
@@ -152,7 +152,7 @@
         "volume_56d_km_per_week": 35.7149875,
         "longest_run_56d_km": 26.360799999999998,
         "long_run_durability": 0.9903788876088317,
-        "mp_specificity": 4.489338378170797e-07,
+        "mp_specificity": 4.489338378170797e-7,
         "aerobic_efficiency": 18.817636906487973,
         "consistency_runs_per_week": 3.875,
         "fitness_score": 51.05431579376954
@@ -169,9 +169,7 @@
       "l2": 6.0,
       "intercept_penalized": false
     },
-    "features": [
-      "fitness_score"
-    ],
+    "features": ["fitness_score"],
     "fixed_factor_score_weights": {
       "fitness": 1.0,
       "form": 0.25,
@@ -256,7 +254,7 @@
           "volume_56d_km_per_week": 30.0660125,
           "longest_run_56d_km": 14.008899999999999,
           "long_run_durability": 0.03450189472263306,
-          "mp_specificity": 9.513823397051457e-09,
+          "mp_specificity": 9.513823397051457e-9,
           "aerobic_efficiency": 18.315078798949767,
           "consistency_runs_per_week": 3.5,
           "fitness_score": 38.498801240427994
@@ -352,7 +350,7 @@
           "volume_56d_km_per_week": 35.7149875,
           "longest_run_56d_km": 26.360799999999998,
           "long_run_durability": 0.9903788876088317,
-          "mp_specificity": 4.489338378170797e-07,
+          "mp_specificity": 4.489338378170797e-7,
           "aerobic_efficiency": 18.817636906487973,
           "consistency_runs_per_week": 3.875,
           "fitness_score": 51.05431579376954
@@ -363,33 +361,33 @@
     ]
   },
   "current_factors": {
-    "fitness": 53.98216592543015,
-    "fatigue": 56.446024978115965,
-    "form": -2.4638590526858124,
+    "fitness": 53.94407501156878,
+    "fatigue": 56.2074693714568,
+    "form": -2.263394359888025,
     "volume_28d_km_per_week": 55.544875,
     "volume_56d_km_per_week": 53.7985875,
     "longest_run_56d_km": 23.710900000000002,
-    "long_run_durability": 0.8281242579975054,
-    "mp_specificity": 0.1826666606671995,
+    "long_run_durability": 0.8272479006656261,
+    "mp_specificity": 0.18240896499732046,
     "aerobic_efficiency": 20.26902579154066,
     "consistency_runs_per_week": 5.625,
-    "fitness_score": 68.76921433059314
+    "fitness_score": 68.7805203548077
   },
   "current_predictions": {
     "5k": {
       "distance_km": 5.0,
-      "time_sec": 1286.8304888847217,
-      "model_time_sec": 1407.6157361922087,
-      "race_evidence_time_sec": 1226.1437488896565,
+      "time_sec": 1286.7972955520886,
+      "model_time_sec": 1407.5794272472833,
+      "race_evidence_time_sec": 1226.1121209497974,
       "race_evidence": {
-        "time_sec": 1226.1437488896565,
+        "time_sec": 1226.1121209497974,
         "source": {
           "activity_id": 18172734023,
           "name": "Montreal 21k",
           "date": "2026-04-19",
           "source_distance_km": 21.097,
-          "adjusted_time_sec": 1226.1437488896565,
-          "confidence": 1.1123012257269032
+          "adjusted_time_sec": 1226.1121209497974,
+          "confidence": 1.1122108845883785
         },
         "candidates": [
           {
@@ -397,77 +395,77 @@
             "name": "BougeBouge Verdun",
             "date": "2024-09-15",
             "source_distance_km": 10.0,
-            "adjusted_time_sec": 1537.2254341013538,
-            "confidence": 0.22642312937351058
+            "adjusted_time_sec": 1537.1857819205845,
+            "confidence": 0.22640473928023128
           },
           {
             "activity_id": 12590639809,
             "name": "Lachine 10k",
             "date": "2024-10-06",
             "source_distance_km": 10.0,
-            "adjusted_time_sec": 1396.1927215807254,
-            "confidence": 0.23983225686078805
+            "adjusted_time_sec": 1396.15670728838,
+            "confidence": 0.23981277767777673
           },
           {
             "activity_id": 14291864922,
             "name": "Montreal 21k",
             "date": "2025-04-26",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 1398.2537049990103,
-            "confidence": 0.4171160192672546
+            "adjusted_time_sec": 1398.2176375443341,
+            "confidence": 0.4170821410918054
           },
           {
             "activity_id": 15412365665,
             "name": "Tremblant Half",
             "date": "2025-08-10",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 1485.7240528253162,
-            "confidence": 0.557674448038944
+            "adjusted_time_sec": 1485.685729104274,
+            "confidence": 0.5576291537037434
           },
           {
             "activity_id": 15888965889,
             "name": "Beneva Montreal Half",
             "date": "2025-09-21",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 1344.2474659985053,
-            "confidence": 0.5686859400568768
+            "adjusted_time_sec": 1344.212791615466,
+            "confidence": 0.5687332387643405
           },
           {
             "activity_id": 16044666433,
             "name": "Marathon",
             "date": "2025-10-05",
             "source_distance_km": 42.195,
-            "adjusted_time_sec": 1489.913701756303,
-            "confidence": 0.5870969599798069
+            "adjusted_time_sec": 1489.8752699647637,
+            "confidence": 0.5871457899673393
           },
           {
             "activity_id": 18172734023,
             "name": "Montreal 21k",
             "date": "2026-04-19",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 1226.1437488896565,
-            "confidence": 1.1123012257269032
+            "adjusted_time_sec": 1226.1121209497974,
+            "confidence": 1.1122108845883785
           }
         ]
       },
       "blend_weight": 0.65,
-      "low_sec": 1198.7546209929114,
-      "high_sec": 1381.377538091746
+      "low_sec": 1198.7236995458181,
+      "high_sec": 1381.3419059517632
     },
     "10k": {
       "distance_km": 10.0,
-      "time_sec": 2682.9534493375268,
-      "model_time_sec": 2934.7824188030945,
-      "race_evidence_time_sec": 2556.4257521736813,
+      "time_sec": 2682.884243512013,
+      "model_time_sec": 2934.7067171393005,
+      "race_evidence_time_sec": 2556.359810084903,
       "race_evidence": {
-        "time_sec": 2556.4257521736813,
+        "time_sec": 2556.359810084903,
         "source": {
           "activity_id": 18172734023,
           "name": "Montreal 21k",
           "date": "2026-04-19",
           "source_distance_km": 21.097,
-          "adjusted_time_sec": 2556.4257521736813,
-          "confidence": 1.1123012257269032
+          "adjusted_time_sec": 2556.359810084903,
+          "confidence": 1.1122108845883785
         },
         "candidates": [
           {
@@ -475,77 +473,77 @@
             "name": "BougeBouge Verdun",
             "date": "2024-09-15",
             "source_distance_km": 10.0,
-            "adjusted_time_sec": 3205.009763489582,
-            "confidence": 0.22642312937351058
+            "adjusted_time_sec": 3204.9270914079925,
+            "confidence": 0.22640473928023128
           },
           {
             "activity_id": 12590639809,
             "name": "Lachine 10k",
             "date": "2024-10-06",
             "source_distance_km": 10.0,
-            "adjusted_time_sec": 2910.966215566974,
-            "confidence": 0.23983225686078805
+            "adjusted_time_sec": 2910.891128233631,
+            "confidence": 0.23981277767777673
           },
           {
             "activity_id": 14291864922,
             "name": "Montreal 21k",
             "date": "2025-04-26",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 2915.263224861421,
-            "confidence": 0.4171160192672546
+            "adjusted_time_sec": 2915.1880266882595,
+            "confidence": 0.4170821410918054
           },
           {
             "activity_id": 15412365665,
             "name": "Tremblant Half",
             "date": "2025-08-10",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 3097.6329102569957,
-            "confidence": 0.557674448038944
+            "adjusted_time_sec": 3097.5530079229666,
+            "confidence": 0.5576291537037434
           },
           {
             "activity_id": 15888965889,
             "name": "Beneva Montreal Half",
             "date": "2025-09-21",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 2802.6639148017625,
-            "confidence": 0.5686859400568768
+            "adjusted_time_sec": 2802.5916210875685,
+            "confidence": 0.5687332387643405
           },
           {
             "activity_id": 16044666433,
             "name": "Marathon",
             "date": "2025-10-05",
             "source_distance_km": 42.195,
-            "adjusted_time_sec": 3106.3680413779925,
-            "confidence": 0.5870969599798069
+            "adjusted_time_sec": 3106.2879137243776,
+            "confidence": 0.5871457899673393
           },
           {
             "activity_id": 18172734023,
             "name": "Montreal 21k",
             "date": "2026-04-19",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 2556.4257521736813,
-            "confidence": 1.1123012257269032
+            "adjusted_time_sec": 2556.359810084903,
+            "confidence": 1.1122108845883785
           }
         ]
       },
       "blend_weight": 0.65,
-      "low_sec": 2499.321296070371,
-      "high_sec": 2880.0775725112935
+      "low_sec": 2499.2568269706326,
+      "high_sec": 2880.003281939462
     },
     "half": {
       "distance_km": 21.097,
-      "time_sec": 5919.528046165275,
-      "model_time_sec": 6475.150301913473,
-      "race_evidence_time_sec": 5640.363958483082,
+      "time_sec": 5919.37535405457,
+      "model_time_sec": 6474.983277725224,
+      "race_evidence_time_sec": 5640.218467310269,
       "race_evidence": {
-        "time_sec": 5640.363958483082,
+        "time_sec": 5640.218467310269,
         "source": {
           "activity_id": 18172734023,
           "name": "Montreal 21k",
           "date": "2026-04-19",
           "source_distance_km": 21.097,
-          "adjusted_time_sec": 5640.363958483082,
-          "confidence": 1.1123012257269032
+          "adjusted_time_sec": 5640.218467310269,
+          "confidence": 1.1122108845883785
         },
         "candidates": [
           {
@@ -553,77 +551,77 @@
             "name": "BougeBouge Verdun",
             "date": "2024-09-15",
             "source_distance_km": 10.0,
-            "adjusted_time_sec": 7071.365769650118,
-            "confidence": 0.22642312937351058
+            "adjusted_time_sec": 7071.183366296931,
+            "confidence": 0.22640473928023128
           },
           {
             "activity_id": 12590639809,
             "name": "Lachine 10k",
             "date": "2024-10-06",
             "source_distance_km": 10.0,
-            "adjusted_time_sec": 6422.603477799094,
-            "confidence": 0.23983225686078805
+            "adjusted_time_sec": 6422.437809037402,
+            "confidence": 0.23981277767777673
           },
           {
             "activity_id": 14291864922,
             "name": "Montreal 21k",
             "date": "2025-04-26",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 6432.084174170995,
-            "confidence": 0.4171160192672546
+            "adjusted_time_sec": 6431.918260858128,
+            "confidence": 0.4170821410918054
           },
           {
             "activity_id": 15412365665,
             "name": "Tremblant Half",
             "date": "2025-08-10",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 6834.455101529426,
-            "confidence": 0.557674448038944
+            "adjusted_time_sec": 6834.278809202268,
+            "confidence": 0.5576291537037434
           },
           {
             "activity_id": 15888965889,
             "name": "Beneva Montreal Half",
             "date": "2025-09-21",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 6183.650950686784,
-            "confidence": 0.5686859400568768
+            "adjusted_time_sec": 6183.491445620142,
+            "confidence": 0.5687332387643405
           },
           {
             "activity_id": 16044666433,
             "name": "Marathon",
             "date": "2025-10-05",
             "source_distance_km": 42.195,
-            "adjusted_time_sec": 6853.727837577248,
-            "confidence": 0.5870969599798069
+            "adjusted_time_sec": 6853.55104811675,
+            "confidence": 0.5871457899673393
           },
           {
             "activity_id": 18172734023,
             "name": "Montreal 21k",
             "date": "2026-04-19",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 5640.363958483082,
-            "confidence": 1.1123012257269032
+            "adjusted_time_sec": 5640.218467310269,
+            "confidence": 1.1122108845883785
           }
         ]
       },
       "blend_weight": 0.65,
-      "low_sec": 5514.37167578134,
-      "high_sec": 6354.452392687565
+      "low_sec": 5514.2294345344335,
+      "high_sec": 6354.288481858755
     },
     "30k": {
       "distance_km": 30.0,
-      "time_sec": 8597.291803127551,
-      "model_time_sec": 9404.2559103546,
-      "race_evidence_time_sec": 8191.844763424371,
+      "time_sec": 8597.070039057591,
+      "model_time_sec": 9404.013330933847,
+      "race_evidence_time_sec": 8191.633457715927,
       "race_evidence": {
-        "time_sec": 8191.844763424371,
+        "time_sec": 8191.633457715927,
         "source": {
           "activity_id": 18172734023,
           "name": "Montreal 21k",
           "date": "2026-04-19",
           "source_distance_km": 21.097,
-          "adjusted_time_sec": 8191.844763424371,
-          "confidence": 1.1123012257269032
+          "adjusted_time_sec": 8191.633457715927,
+          "confidence": 1.1122108845883785
         },
         "candidates": [
           {
@@ -631,77 +629,77 @@
             "name": "BougeBouge Verdun",
             "date": "2024-09-15",
             "source_distance_km": 10.0,
-            "adjusted_time_sec": 10270.17601643311,
-            "confidence": 0.22642312937351058
+            "adjusted_time_sec": 10269.911100912652,
+            "confidence": 0.22640473928023128
           },
           {
             "activity_id": 12590639809,
             "name": "Lachine 10k",
             "date": "2024-10-06",
             "source_distance_km": 10.0,
-            "adjusted_time_sec": 9327.93895117885,
-            "confidence": 0.23983225686078805
+            "adjusted_time_sec": 9327.698340326797,
+            "confidence": 0.23981277767777673
           },
           {
             "activity_id": 14291864922,
             "name": "Montreal 21k",
             "date": "2025-04-26",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 9341.7083450512,
-            "confidence": 0.4171160192672546
+            "adjusted_time_sec": 9341.467379022553,
+            "confidence": 0.4170821410918054
           },
           {
             "activity_id": 15412365665,
             "name": "Tremblant Half",
             "date": "2025-08-10",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 9926.09619634898,
-            "confidence": 0.557674448038944
+            "adjusted_time_sec": 9925.84015624453,
+            "confidence": 0.5576291537037434
           },
           {
             "activity_id": 15888965889,
             "name": "Beneva Montreal Half",
             "date": "2025-09-21",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 8980.893614682791,
-            "confidence": 0.5686859400568768
+            "adjusted_time_sec": 8980.661955741183,
+            "confidence": 0.5687332387643405
           },
           {
             "activity_id": 16044666433,
             "name": "Marathon",
             "date": "2025-10-05",
             "source_distance_km": 42.195,
-            "adjusted_time_sec": 9954.087166972919,
-            "confidence": 0.5870969599798069
+            "adjusted_time_sec": 9953.830404851384,
+            "confidence": 0.5871457899673393
           },
           {
             "activity_id": 18172734023,
             "name": "Montreal 21k",
             "date": "2026-04-19",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 8191.844763424371,
-            "confidence": 1.1123012257269032
+            "adjusted_time_sec": 8191.633457715927,
+            "confidence": 1.1122108845883785
           }
         ]
       },
       "blend_weight": 0.65,
-      "low_sec": 8008.858482950414,
-      "high_sec": 9228.958971553076
+      "low_sec": 8008.651897307681,
+      "high_sec": 9228.720913854222
     },
     "marathon": {
       "distance_km": 42.195,
-      "time_sec": 12342.120668800948,
-      "model_time_sec": 13500.584126231146,
-      "race_evidence_time_sec": 11760.068040669334,
+      "time_sec": 12341.802308208551,
+      "model_time_sec": 13500.235883487821,
+      "race_evidence_time_sec": 11759.7646939165,
       "race_evidence": {
-        "time_sec": 11760.068040669334,
+        "time_sec": 11759.7646939165,
         "source": {
           "activity_id": 18172734023,
           "name": "Montreal 21k",
           "date": "2026-04-19",
           "source_distance_km": 21.097,
-          "adjusted_time_sec": 11760.068040669334,
-          "confidence": 1.1123012257269032
+          "adjusted_time_sec": 11759.7646939165,
+          "confidence": 1.1122108845883785
         },
         "candidates": [
           {
@@ -709,66 +707,66 @@
             "name": "BougeBouge Verdun",
             "date": "2024-09-15",
             "source_distance_km": 10.0,
-            "adjusted_time_sec": 14743.683777085622,
-            "confidence": 0.22642312937351058
+            "adjusted_time_sec": 14743.303469031016,
+            "confidence": 0.22640473928023128
           },
           {
             "activity_id": 12590639809,
             "name": "Lachine 10k",
             "date": "2024-10-06",
             "source_distance_km": 10.0,
-            "adjusted_time_sec": 13391.02484398364,
-            "confidence": 0.23983225686078805
+            "adjusted_time_sec": 13390.679427282863,
+            "confidence": 0.23981277767777673
           },
           {
             "activity_id": 14291864922,
             "name": "Montreal 21k",
             "date": "2025-04-26",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 13410.791943274951,
-            "confidence": 0.4171160192672546
+            "adjusted_time_sec": 13410.446016688911,
+            "confidence": 0.4170821410918054
           },
           {
             "activity_id": 15412365665,
             "name": "Tremblant Half",
             "date": "2025-08-10",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 14249.728848437886,
-            "confidence": 0.557674448038944
+            "adjusted_time_sec": 14249.36128177416,
+            "confidence": 0.5576291537037434
           },
           {
             "activity_id": 15888965889,
             "name": "Beneva Montreal Half",
             "date": "2025-09-21",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 12892.81267221336,
-            "confidence": 0.5686859400568768
+            "adjusted_time_sec": 12892.480106717525,
+            "confidence": 0.5687332387643405
           },
           {
             "activity_id": 16044666433,
             "name": "Marathon",
             "date": "2025-10-05",
             "source_distance_km": 42.195,
-            "adjusted_time_sec": 14289.912192796606,
-            "confidence": 0.5870969599798069
+            "adjusted_time_sec": 14289.543589617871,
+            "confidence": 0.5871457899673393
           },
           {
             "activity_id": 18172734023,
             "name": "Montreal 21k",
             "date": "2026-04-19",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 11760.068040669334,
-            "confidence": 1.1123012257269032
+            "adjusted_time_sec": 11759.7646939165,
+            "confidence": 1.1122108845883785
           }
         ]
       },
       "blend_weight": 0.65,
-      "low_sec": 11497.376159776906,
-      "high_sec": 13248.930928793698
+      "low_sec": 11497.079589067263,
+      "high_sec": 13248.58917735468
     }
   },
   "prediction_components": {
-    "fitness_score": -0.05981780982513366
+    "fitness_score": -0.05984360480048679
   },
   "series": {
     "5k": [

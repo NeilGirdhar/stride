@@ -1,0 +1,124 @@
+[build-system]
+requires = ["uv_build>=0.11.3,<0.12"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+  "lefthook>=2",
+  "pytest>=8.3.4",
+  "ruff>=0.15",
+  "toml-sort>=0.24",
+  "ty>=0.0.34",
+  "vulture>=2.14"
+]
+
+[project]
+name = "stride"
+version = "0.1"
+description = "A static, Strava-backed running log and marathon training dashboard."
+readme = "README.md"
+requires-python = ">=3.14, <3.15"
+authors = [{name = "Neil Girdhar", email = "mistersheik@gmail.com"}]
+maintainers = [{name = "Neil Girdhar", email = "mistersheik@gmail.com"}]
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+dependencies = [
+  "numpy>=2"
+]
+
+[project.scripts]
+stride-race-model = "stride.race_model:main"
+stride-sync = "stride.sync_strava:main"
+
+[project.urls]
+Changelog = "https://github.com/NeilGirdhar/stride/blob/main/CHANGELOG.md"
+Documentation = "https://github.com/NeilGirdhar/stride#readme"
+Issues = "https://github.com/NeilGirdhar/stride/issues"
+Source = "https://github.com/NeilGirdhar/stride"
+
+[tool.pytest]
+addopts = ["--disable-warnings"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+preview = true
+select = ["ALL"]
+ignore = [
+  "ARG001", # Unused function arg.
+  "ARG002", # Unused method arg.
+  "ARG003", # Unused class method arg.
+  "ARG004", # Unused static method arg.
+  "COM812", # Missing trailing comma.
+  "CPY001", # Missing copyright notice.
+  "D100", # Missing module docstring.
+  "D101", # Missing class docstring.
+  "D102", # Missing method docstring.
+  "D103", # Missing function docstring.
+  "D105", # Missing magic method docstring.
+  "D107", # Missing __init__ docstring.
+  "DOC201", # Missing return doc.
+  "DOC202", # Extraneous returns section.
+  "DOC402", # Missing yield doc.
+  "DOC501", # Missing raised exception doc.
+  "ERA001", # Commented-out code.
+  "FIX002", # TODO comment.
+  "G004", # Logging uses f-string.
+  "PD008", # Prefer .loc over .at.
+  "PGH003", # Use specific type-ignore codes.
+  "PLR0913", # Too many function arguments.
+  "PLR6301", # Method does not use self.
+  "RUF002", # Ambiguous Unicode character.
+  "RUF003", # Ambiguous minus sign.
+  "RUF021", # Parenthesize mixed and/or.
+  "RUF069", # Float equality comparison.
+  "S101", # Assert used.
+  "TC001", # Move app import into TYPE_CHECKING.
+  "TC002", # Move third-party import into TYPE_CHECKING.
+  "TC003", # Move stdlib import into TYPE_CHECKING.
+  "TD002", # TODO missing author.
+  "TD003", # TODO missing issue link.
+  "T201", "PLR2004", "PLR0912", "C901", "S310",
+]
+
+[tool.ruff.lint.flake8-errmsg]
+max-string-length = 40
+
+[tool.ruff.lint.flake8-import-conventions.extend-aliases]
+"array_api_extra" = "xpx"
+"ctypes" = "ct"
+"datetime" = "dt"
+"equinox" = "eqx"
+"itertools" = "it"
+"jax.numpy" = "jnp"
+"jax.random" = "jr"
+"jax.scipy.special" = "jss"
+"networkx" = "nx"
+"numpy.typing" = "npt"
+"optimistix" = "optx"
+"optype" = "op"
+"optype.numpy" = "onp"
+"optype.numpy.compat" = "npc"
+"optype.typing" = "opt"
+"pyqtgraph" = "pg"
+"scipy.special" = "sc"
+"seaborn" = "sns"
+
+[tool.ruff.lint.isort]
+combine-as-imports = true
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.pylint]
+max-args = 8
+max-locals = 25
+
+[tool.uv]
+environments = ["sys_platform == 'linux'"]
+
+[tool.vulture]
+ignore_decorators = ["@pytest.fixture", "@cli.command"]
+sort_by_size = true

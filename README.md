@@ -24,7 +24,7 @@ python -m http.server 8000   # then open http://localhost:8000
 
 ## Sync your Strava data
 
-`scripts/sync_strava.py` pulls your full Strava history (all sports) once, then
+`stride-sync` pulls your full Strava history (all sports) once, then
 incrementally fetches new activities. Python 3 standard library only — no
 third-party packages. Data is grouped by source:
 
@@ -61,15 +61,15 @@ Key files:
 3. **Authorize** (opens your browser; click *Authorize*):
 
    ```sh
-   python scripts/sync_strava.py auth
+   uv run stride-sync auth
    ```
 
 ### Pulling data
 
 ```sh
-python scripts/sync_strava.py sync            # new activities + recompute summary
-python scripts/sync_strava.py sync --full     # ignore checkpoint, refetch all
-python scripts/sync_strava.py details         # backfill shoes + best-effort PRs (resumable)
+uv run stride-sync sync            # new activities + recompute summary
+uv run stride-sync sync --full     # ignore checkpoint, refetch all
+uv run stride-sync details         # backfill shoes + best-effort PRs (resumable)
 ```
 
 The first `sync` does a full history pull; later runs are incremental. Re-run
@@ -82,8 +82,8 @@ The Goals pane reads a precomputed supervised race model from
 rebuild the JSON after syncing Strava or editing race labels:
 
 ```sh
-python scripts/sync_strava.py sync
-python scripts/race_model.py
+uv run stride-sync sync
+uv run stride-race-model
 ```
 
 Race labels live in `data/entered/races.json`. Add only true performance labels
@@ -94,7 +94,7 @@ training-load features for the model.
 Update the model:
 
 - after each race or time trial, by adding/checking the race row and running
-  `python scripts/race_model.py`
+  `uv run stride-race-model`
 - weekly during training, after syncing Strava, so current load factors and
   predictions stay fresh
 - before relying on the Goals race prediction if recent activities have not yet

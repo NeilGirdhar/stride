@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 """Stride — Strava sync.
 
 Pulls your Strava activity history (all sports) and writes under data/:
@@ -15,43 +14,49 @@ Also writes (after `details`):
   generated/records.json            best efforts: 400m, 1k, 5k, 10k, half, 30k, marathon
 
 Usage:
-  python scripts/sync_strava.py auth            one-time browser authorization
-  python scripts/sync_strava.py sync            fetch new activities + recompute summary
-  python scripts/sync_strava.py sync --full     ignore checkpoint, refetch everything
-  python scripts/sync_strava.py details         backfill per-run shoes + PRs (resumable)
-  python scripts/sync_strava.py details --limit=100   do it in chunks (rate limits)
+  uv run stride-sync auth            one-time browser authorization
+  uv run stride-sync sync            fetch new activities + recompute summary
+  uv run stride-sync sync --full     ignore checkpoint, refetch everything
+  uv run stride-sync details         backfill per-run shoes + PRs (resumable)
+  uv run stride-sync details --limit=100   do it in chunks (rate limits)
 
 No third-party dependencies — Python 3 standard library only.
 """
 
 import json
+import operator
 import os
+import pathlib
 import re
 import sys
 import time
+import urllib.error
 import urllib.parse
 import urllib.request
-import urllib.error
-from datetime import datetime, timezone, timedelta
+from collections.abc import Mapping
+from datetime import UTC, datetime, timedelta
 from http.server import BaseHTTPRequestHandler, HTTPServer
+from typing import Any, cast
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DATA_DIR = os.path.join(ROOT, "data")
-IMPORTED_DIR = os.path.join(DATA_DIR, "imported")
-GENERATED_DIR = os.path.join(DATA_DIR, "generated")
-ENTERED_DIR = os.path.join(DATA_DIR, "entered")
-PRIVATE_DIR = os.path.join(DATA_DIR, "private")
-CONFIG_PATH = os.path.join(ROOT, "scripts", "strava_config.json")
-TOKENS_PATH = os.path.join(PRIVATE_DIR, "strava-tokens.json")
-RAW_PATH = os.path.join(IMPORTED_DIR, "strava-activities.json")
-SUMMARY_PATH = os.path.join(GENERATED_DIR, "fitness-summary.json")
-DETAILS_PATH = os.path.join(IMPORTED_DIR, "strava-run-details.json")  # cache: id -> detail
-GEAR_PATH = os.path.join(IMPORTED_DIR, "strava-gear.json")  # gear_id -> shoe
-RECORDS_PATH = os.path.join(GENERATED_DIR, "records.json")  # best efforts
-CLUB_OVERRIDES_PATH = os.path.join(ENTERED_DIR, "club-overrides.json")
+ROOT = pathlib.Path(
+    pathlib.Path(pathlib.Path(pathlib.Path(__file__).resolve()).parent).parent
+).parent
+DATA_DIR = ROOT / "data"
+IMPORTED_DIR = DATA_DIR / "imported"
+GENERATED_DIR = DATA_DIR / "generated"
+ENTERED_DIR = DATA_DIR / "entered"
+PRIVATE_DIR = DATA_DIR / "private"
+CONFIG_PATH = ROOT / "scripts" / "strava_config.json"
+TOKENS_PATH = PRIVATE_DIR / "strava-tokens.json"
+RAW_PATH = IMPORTED_DIR / "strava-activities.json"
+SUMMARY_PATH = GENERATED_DIR / "fitness-summary.json"
+DETAILS_PATH = IMPORTED_DIR / "strava-run-details.json"  # cache: id -> detail
+GEAR_PATH = IMPORTED_DIR / "strava-gear.json"  # gear_id -> shoe
+RECORDS_PATH = GENERATED_DIR / "records.json"  # best efforts
+CLUB_OVERRIDES_PATH = ENTERED_DIR / "club-overrides.json"
 
 AUTH_URL = "https://www.strava.com/oauth/authorize"
-TOKEN_URL = "https://www.strava.com/oauth/token"
+TOKEN_URL = "https://www.strava.com/oauth/token"  # noqa: S105
 ACTIVITIES_URL = "https://www.strava.com/api/v3/athlete/activities"
 ACTIVITY_URL = "https://www.strava.com/api/v3/activities"
 GEAR_URL = "https://www.strava.com/api/v3/gear"
@@ -73,40 +78,42 @@ BEST_EFFORT_KEYS = {
 # — found as the fastest window from the distance/time streams.
 STREAM_RECORDS = {"30k": 30000, "marathon": 42195}
 CLUB_PATTERNS = {
-    "mrrc": re.compile(r"\bMRRC\b", re.I),
-    "cose": re.compile(r"\bCos[ée]\b", re.I),
-    "zab": re.compile(r"\bZAB\b", re.I),
-    "le-quartier": re.compile(r"\bLe\s+Quartier\b", re.I),
-    "run-sip": re.compile(r"\bRun\s*(?:&|and)\s*Sip\b", re.I),
-    "6am-mile-end": re.compile(r"\b6\s*am\s+Mile\s+End\b", re.I),
-    "6am-villeray": re.compile(r"\b6\s*am\s+Villeray\b", re.I),
-    "6am-outremont": re.compile(r"\b6\s*am\s+Outrem[eo]nt\b", re.I),
-    "6am-rosemont": re.compile(r"\b6\s*am\s+Rosemont\b", re.I),
-    "6am-plateau": re.compile(r"\b6\s*am\s+Plateau\b", re.I),
-    "6am-laurier-est": re.compile(r"\b6\s*am\s+Laurier(?:\s+E(?:st|ast))?\b", re.I),
-    "6am-verdun": re.compile(r"\b6\s*am\s+Verdun\b", re.I),
+    "mrrc": re.compile(r"\bMRRC\b", re.IGNORECASE),
+    "cose": re.compile(r"\bCos[ée]\b", re.IGNORECASE),
+    "zab": re.compile(r"\bZAB\b", re.IGNORECASE),
+    "le-quartier": re.compile(r"\bLe\s+Quartier\b", re.IGNORECASE),
+    "run-sip": re.compile(r"\bRun\s*(?:&|and)\s*Sip\b", re.IGNORECASE),
+    "6am-mile-end": re.compile(r"\b6\s*am\s+Mile\s+End\b", re.IGNORECASE),
+    "6am-villeray": re.compile(r"\b6\s*am\s+Villeray\b", re.IGNORECASE),
+    "6am-outremont": re.compile(r"\b6\s*am\s+Outrem[eo]nt\b", re.IGNORECASE),
+    "6am-rosemont": re.compile(r"\b6\s*am\s+Rosemont\b", re.IGNORECASE),
+    "6am-plateau": re.compile(r"\b6\s*am\s+Plateau\b", re.IGNORECASE),
+    "6am-laurier-est": re.compile(r"\b6\s*am\s+Laurier(?:\s+E(?:st|ast))?\b", re.IGNORECASE),
+    "6am-verdun": re.compile(r"\b6\s*am\s+Verdun\b", re.IGNORECASE),
 }
+
+JsonDict = dict[str, Any]
 
 
 # ---------- small IO helpers ----------
 
 
-def load_json(path, default=None):
+def load_json(path: str | os.PathLike[str], default: object = None) -> object:
     try:
-        with open(path) as f:
+        with pathlib.Path(path).open(encoding="utf-8") as f:
             return json.load(f)
-    except (FileNotFoundError, json.JSONDecodeError):
+    except FileNotFoundError, json.JSONDecodeError:
         return default
 
 
-def save_json(path, obj):
-    os.makedirs(os.path.dirname(path), exist_ok=True)
-    with open(path, "w") as f:
+def save_json(path: str | os.PathLike[str], obj: object) -> None:
+    pathlib.Path(pathlib.Path(path).parent).mkdir(exist_ok=True, parents=True)
+    with pathlib.Path(path).open("w", encoding="utf-8") as f:
         json.dump(obj, f, indent=2)
 
 
-def load_config():
-    cfg = load_json(CONFIG_PATH)
+def load_config() -> JsonDict:
+    cfg = cast("JsonDict | None", load_json(CONFIG_PATH))
     if not cfg or cfg.get("client_id", "").startswith("YOUR_"):
         sys.exit(
             "Missing or unfilled scripts/strava_config.json.\n"
@@ -120,14 +127,14 @@ def load_config():
 # ---------- HTTP ----------
 
 
-def http_post(url, data):
+def http_post(url: str, data: dict[str, object]) -> JsonDict:
     body = urllib.parse.urlencode(data).encode()
     req = urllib.request.Request(url, data=body, method="POST")
     with urllib.request.urlopen(req) as resp:
-        return json.load(resp)
+        return cast("JsonDict", json.load(resp))
 
 
-def http_get(url, params, token):
+def http_get(url: str, params: Mapping[str, object], token: str) -> object:
     qs = urllib.parse.urlencode(params)
     req = urllib.request.Request(f"{url}?{qs}")
     req.add_header("Authorization", f"Bearer {token}")
@@ -138,9 +145,12 @@ def http_get(url, params, token):
 # ---------- OAuth ----------
 
 
-def auth(cfg):
-    """One-time browser authorization. Spins up a localhost server to catch
-    Strava's redirect, exchanges the code for tokens, and saves them."""
+def auth(cfg: JsonDict) -> None:
+    """One-time browser authorization.
+
+    Spins up a localhost server to catch Strava's redirect, exchanges the code for tokens, and saves
+    them.
+    """
     port = cfg.get("redirect_port", 8721)
     redirect_uri = f"http://localhost:{port}/"
     params = {
@@ -155,7 +165,7 @@ def auth(cfg):
     captured = {}
 
     class Handler(BaseHTTPRequestHandler):
-        def do_GET(self):
+        def do_GET(self) -> None:
             q = urllib.parse.urlparse(self.path).query
             captured.update(urllib.parse.parse_qs(q))
             self.send_response(200)
@@ -166,16 +176,16 @@ def auth(cfg):
                 b"<p>You can close this tab and return to the terminal.</p>"
             )
 
-        def log_message(self, format: str, *args: object):
+        def log_message(self, format: str, *args: object) -> None:  # noqa: A002
             pass
 
     print("\nOpen this URL in your browser and click Authorize:\n")
     print(f"  {url}\n")
     try:
-        import webbrowser
+        import webbrowser  # noqa: PLC0415
 
         webbrowser.open(url)
-    except Exception:
+    except Exception:  # noqa: BLE001, S110
         pass
 
     print(f"Waiting for the Strava redirect on http://localhost:{port}/ ...")
@@ -199,10 +209,10 @@ def auth(cfg):
     )
     save_tokens(tok)
     print("Authorized. Tokens saved to data/private/strava-tokens.json")
-    print("Now run:  python scripts/sync_strava.py sync")
+    print("Now run:  uv run stride-sync sync")
 
 
-def save_tokens(tok):
+def save_tokens(tok: JsonDict) -> None:
     save_json(
         TOKENS_PATH,
         {
@@ -213,10 +223,10 @@ def save_tokens(tok):
     )
 
 
-def valid_access_token(cfg):
-    tokens = load_json(TOKENS_PATH)
+def valid_access_token(cfg: JsonDict) -> str:
+    tokens = cast("JsonDict | None", load_json(TOKENS_PATH))
     if not tokens:
-        sys.exit("Not authorized yet. Run:  python scripts/sync_strava.py auth")
+        sys.exit("Not authorized yet. Run:  uv run stride-sync auth")
     if time.time() > tokens["expires_at"] - 60:
         tok = http_post(
             TOKEN_URL,
@@ -235,10 +245,12 @@ def valid_access_token(cfg):
 # ---------- fetch ----------
 
 
-def fetch_activities(token, after_epoch=None):
-    """Page through /athlete/activities. If after_epoch is given, only newer
-    activities are returned."""
-    out = []
+def fetch_activities(token: str, after_epoch: float | None = None) -> list[JsonDict]:
+    """Fetch activities.
+
+    Page through /athlete/activities. If after_epoch is given, only newer activities are returned.
+    """
+    out: list[JsonDict] = []
     page = 1
     while True:
         params = {"per_page": 200, "page": page}
@@ -246,7 +258,7 @@ def fetch_activities(token, after_epoch=None):
             params["after"] = int(after_epoch)
         for attempt in range(4):
             try:
-                batch = http_get(ACTIVITIES_URL, params, token)
+                batch = cast("list[JsonDict]", http_get(ACTIVITIES_URL, params, token))
                 break
             except urllib.error.HTTPError as e:
                 if e.code == 429:  # rate limited — back off
@@ -291,13 +303,13 @@ KEEP = (
 )
 
 
-def slim(a):
+def slim(a: JsonDict) -> JsonDict:
     return {k: a.get(k) for k in KEEP if a.get(k) is not None}
 
 
-def sync(cfg, full=False):
+def sync(cfg: JsonDict, *, full: bool = False) -> None:
     token = valid_access_token(cfg)
-    existing = {a["id"]: a for a in (load_json(RAW_PATH, []) or [])}
+    existing = {a["id"]: a for a in cast("list[JsonDict]", load_json(RAW_PATH, []) or [])}
 
     after = None
     if existing and not full:
@@ -314,7 +326,7 @@ def sync(cfg, full=False):
     for a in fetched:
         existing[a["id"]] = slim(a)
 
-    activities = sorted(existing.values(), key=lambda a: a["start_date"])
+    activities = sorted(existing.values(), key=operator.itemgetter("start_date"))
     save_json(RAW_PATH, activities)
     prune_club_overrides(activities)
 
@@ -322,10 +334,7 @@ def sync(cfg, full=False):
     save_json(SUMMARY_PATH, summary)
 
     print(f"Fetched {len(fetched)} new; {len(activities)} total stored.")
-    print(
-        f"Wrote {os.path.relpath(RAW_PATH, ROOT)} and "
-        f"{os.path.relpath(SUMMARY_PATH, ROOT)}."
-    )
+    print(f"Wrote {os.path.relpath(RAW_PATH, ROOT)} and {os.path.relpath(SUMMARY_PATH, ROOT)}.")
     rf = summary.get("running_fitness", {})
     if rf.get("best_equiv_5k"):
         print(
@@ -334,8 +343,8 @@ def sync(cfg, full=False):
         )
 
 
-def prune_club_overrides(activities):
-    overrides = load_json(CLUB_OVERRIDES_PATH, []) or []
+def prune_club_overrides(activities: list[JsonDict]) -> None:
+    overrides = cast("list[JsonDict]", load_json(CLUB_OVERRIDES_PATH, []) or [])
     if not overrides:
         return
 
@@ -344,7 +353,7 @@ def prune_club_overrides(activities):
     removed = []
     for row in overrides:
         activity_id = int(row.get("activity_id") or 0)
-        club_id = row.get("club")
+        club_id = str(row.get("club") or "")
         activity = activities_by_id.get(activity_id)
         pattern = CLUB_PATTERNS.get(club_id)
         if activity and pattern and pattern.search(activity.get("name") or ""):
@@ -366,33 +375,37 @@ def prune_club_overrides(activities):
 # ---------- derive fitness summary ----------
 
 
-def parse_dt(s):
-    return datetime.fromisoformat(s.replace("Z", "+00:00"))
+def parse_dt(s: str) -> datetime:
+    return datetime.fromisoformat(s)
 
 
-def sport_of(a):
+def sport_of(a: JsonDict) -> str:
     return a.get("sport_type") or a.get("type") or "Unknown"
 
 
-def fmt_mmss(sec):
+def fmt_mmss(sec: float | None) -> str | None:
     if sec is None:
         return None
     sec = round(sec)
     return f"{sec // 60}:{sec % 60:02d}"
 
 
-def riegel_equiv_5k(dist_km, time_sec, target_km=5.0):
+def riegel_equiv_5k(
+    dist_km: float | None,
+    time_sec: float | None,
+    target_km: float = 5.0,
+) -> float | None:
     """Predicted equivalent time over target_km, given an effort over dist_km."""
     if not dist_km or not time_sec:
         return None
     return time_sec * (target_km / dist_km) ** 1.06
 
 
-def compute_summary(acts):
-    now = datetime.now(timezone.utc)
+def compute_summary(acts: list[JsonDict]) -> JsonDict:
+    now = datetime.now(UTC)
 
     # ---- totals by sport ----
-    by_sport = {}
+    by_sport: dict[str, JsonDict] = {}
     for a in acts:
         s = by_sport.setdefault(
             sport_of(a),
@@ -408,7 +421,7 @@ def compute_summary(acts):
         s["elevation_m"] = round(s["elevation_m"])
 
     # ---- last 12 weeks volume (all sports hours + running km) ----
-    weekly = {}
+    weekly: dict[str, JsonDict] = {}
     for a in acts:
         dt = parse_dt(a["start_date"])
         if dt < now - timedelta(weeks=12):
@@ -436,13 +449,15 @@ def compute_summary(acts):
         and (a.get("distance") or 0) >= 2000
         and (a.get("moving_time") or 0) > 0
     ]
-    equivs = []
+    equivs: list[tuple[float, JsonDict]] = []
     for a in recent_runs:
         eq = riegel_equiv_5k(a["distance"] / 1000, a["moving_time"])
+        if eq is None:
+            continue
         equivs.append((eq, a))
-    equivs.sort(key=lambda x: x[0])
+    equivs.sort(key=operator.itemgetter(0))
 
-    running_fitness = {"recent_runs_considered": len(recent_runs)}
+    running_fitness: JsonDict = {"recent_runs_considered": len(recent_runs)}
     if equivs:
         best_eq, best_a = equivs[0]
         median_eq = equivs[len(equivs) // 2][0]
@@ -462,7 +477,7 @@ def compute_summary(acts):
         )
 
     # ---- running form trends by month: cadence + HR efficiency ----
-    form = {}
+    form: dict[str, dict[str, list[float]]] = {}
     for a in acts:
         if sport_of(a) != "Run":
             continue
@@ -479,9 +494,7 @@ def compute_summary(acts):
             f["eff"].append(spd / hr * 1000)  # metres per heartbeat ×1000
     running_form = {
         m: {
-            "avg_cadence_spm": round(sum(v["cad"]) / len(v["cad"]), 1)
-            if v["cad"]
-            else None,
+            "avg_cadence_spm": round(sum(v["cad"]) / len(v["cad"]), 1) if v["cad"] else None,
             "efficiency_m_per_beat_x1000": round(sum(v["eff"]) / len(v["eff"]), 1)
             if v["eff"]
             else None,
@@ -510,18 +523,18 @@ def compute_summary(acts):
 class Tokens:
     """Keeps a fresh access token across a long backfill (tokens expire ~6h)."""
 
-    def __init__(self, cfg):
+    def __init__(self, cfg: JsonDict) -> None:
         self.cfg = cfg
-        t = load_json(TOKENS_PATH)
+        t = cast("JsonDict | None", load_json(TOKENS_PATH))
         if not t:
-            sys.exit("Not authorized yet. Run:  python scripts/sync_strava.py auth")
+            sys.exit("Not authorized yet. Run:  uv run stride-sync auth")
         self.access = t["access_token"]
         self.expires_at = t["expires_at"]
         if time.time() > self.expires_at - 60:
             self.refresh()
 
-    def refresh(self):
-        t = load_json(TOKENS_PATH)
+    def refresh(self) -> None:
+        t = cast("JsonDict", load_json(TOKENS_PATH))
         new = http_post(
             TOKEN_URL,
             {
@@ -536,13 +549,14 @@ class Tokens:
         self.expires_at = new["expires_at"]
 
 
-def api_get(tm, url, params=None):
+def api_get(tm: Tokens, url: str, params: dict[str, object] | None = None) -> object:
     """GET with auto token-refresh on 401 and back-off on 429.
 
     Strava's short limit is 100 requests per 15-minute window that resets on the
     quarter hour, so on 429 we sleep to just past the next boundary and retry.
-    Up to ~24 windows (~6h) — comfortable for a long background backfill."""
-    for attempt in range(24):
+    Up to ~24 windows (~6h) — comfortable for a long background backfill.
+    """
+    for _attempt in range(24):
         if time.time() > tm.expires_at - 60:
             tm.refresh()
         try:
@@ -553,21 +567,22 @@ def api_get(tm, url, params=None):
             elif e.code == 429:
                 now = time.time()
                 wait = (900 - (now % 900)) + 5
-                print(
-                    f"  rate limited — sleeping {int(wait)}s for the window to reset ..."
-                )
+                print(f"  rate limited — sleeping {int(wait)}s for the window to reset ...")
                 time.sleep(wait)
             else:
                 raise
-    raise RuntimeError(f"Repeated failures fetching {url}")
+    msg = f"Repeated failures fetching {url}"
+    raise RuntimeError(msg)
 
 
-def photo_url(detail):
+def photo_url(detail: JsonDict) -> str | None:
     urls = ((detail.get("photos") or {}).get("primary") or {}).get("urls") or {}
     return urls.get("600") or urls.get("100") or None
 
 
-def best_window(times, dists, target_m):
+def best_window(
+    times: list[float] | None, dists: list[float] | None, target_m: int
+) -> float | None:
     """Fastest contiguous stretch covering target_m, via two pointers."""
     if not times or not dists:
         return None
@@ -575,8 +590,7 @@ def best_window(times, dists, target_m):
     j = 0
     best = None
     for i in range(n):
-        if j < i:
-            j = i
+        j = max(j, i)
         while j < n and dists[j] - dists[i] < target_m:
             j += 1
         if j >= n:
@@ -586,17 +600,17 @@ def best_window(times, dists, target_m):
     return best
 
 
-def details(cfg, limit=None):
+def details(cfg: JsonDict, limit: int | None = None) -> None:
     tm = Tokens(cfg)
-    activities = load_json(RAW_PATH, []) or []
+    activities = cast("list[JsonDict]", load_json(RAW_PATH, []) or [])
     if not activities:
-        sys.exit("No activities yet. Run:  python scripts/sync_strava.py sync")
+        sys.exit("No activities yet. Run:  uv run stride-sync sync")
     runs = [
         a
         for a in activities
         if (a.get("sport_type") or a.get("type")) in RUN_TYPES and a.get("distance")
     ]
-    cache = load_json(DETAILS_PATH, {}) or {}
+    cache = cast("dict[str, JsonDict]", load_json(DETAILS_PATH, {}) or {})
 
     todo = [a for a in runs if str(a["id"]) not in cache]
     batch = todo[:limit] if limit else todo
@@ -607,7 +621,7 @@ def details(cfg, limit=None):
     )
 
     for i, a in enumerate(batch):
-        d = api_get(tm, f"{ACTIVITY_URL}/{a['id']}")
+        d = cast("JsonDict", api_get(tm, f"{ACTIVITY_URL}/{a['id']}"))
         entry = {
             "gear_id": d.get("gear_id"),
             "photo": photo_url(d),
@@ -622,10 +636,13 @@ def details(cfg, limit=None):
         }
         if (a.get("distance") or 0) >= min(STREAM_RECORDS.values()):
             try:
-                st = api_get(
-                    tm,
-                    f"{ACTIVITY_URL}/{a['id']}/streams",
-                    {"keys": "time,distance", "key_by_type": "true"},
+                st = cast(
+                    "JsonDict",
+                    api_get(
+                        tm,
+                        f"{ACTIVITY_URL}/{a['id']}/streams",
+                        {"keys": "time,distance", "key_by_type": "true"},
+                    ),
                 )
                 times = (st.get("time") or {}).get("data")
                 dists = (st.get("distance") or {}).get("data")
@@ -634,7 +651,7 @@ def details(cfg, limit=None):
                     for k, m in STREAM_RECORDS.items()
                     if (a.get("distance") or 0) >= m
                 }
-            except Exception:
+            except Exception:  # noqa: BLE001
                 entry["windows"] = {}
         cache[str(a["id"])] = entry
         if (i + 1) % 10 == 0:
@@ -654,21 +671,18 @@ def details(cfg, limit=None):
             else "."
         )
     )
-    print(
-        f"Wrote {os.path.relpath(RECORDS_PATH, ROOT)} and "
-        f"{os.path.relpath(GEAR_PATH, ROOT)}."
-    )
+    print(f"Wrote {os.path.relpath(RECORDS_PATH, ROOT)} and {os.path.relpath(GEAR_PATH, ROOT)}.")
 
 
-def fetch_gear(tm, cache):
-    gear = load_json(GEAR_PATH, {}) or {}
-    ids = {e.get("gear_id") for e in cache.values() if e.get("gear_id")}
+def fetch_gear(tm: Tokens, cache: dict[str, JsonDict]) -> None:
+    gear = cast("dict[str, JsonDict]", load_json(GEAR_PATH, {}) or {})
+    ids = {str(e.get("gear_id")) for e in cache.values() if e.get("gear_id")}
     for gid in ids:
         if gid in gear:
             continue
         try:
-            g = api_get(tm, f"{GEAR_URL}/{gid}")
-        except Exception:
+            g = cast("JsonDict", api_get(tm, f"{GEAR_URL}/{gid}"))
+        except Exception:  # noqa: BLE001, S112
             continue
         gear[gid] = {
             "name": g.get("name") or g.get("nickname") or gid,
@@ -678,7 +692,7 @@ def fetch_gear(tm, cache):
     save_json(GEAR_PATH, gear)
 
 
-def fmt_hms(sec):
+def fmt_hms(sec: float | None) -> str | None:
     if sec is None:
         return None
     sec = round(sec)
@@ -687,11 +701,11 @@ def fmt_hms(sec):
     return f"{h}:{m:02d}:{s:02d}" if h else f"{m}:{s:02d}"
 
 
-def recompute_records(activities, cache):
+def recompute_records(activities: list[JsonDict], cache: dict[str, JsonDict]) -> None:
     by_id = {str(a["id"]): a for a in activities}
-    records = {}
+    records: dict[str, JsonDict] = {}
 
-    def consider(key, sec, aid):
+    def consider(key: str, sec: float | None, aid: str | int) -> None:
         if sec is None:
             return
         if key not in records or sec < records[key]["sec"]:
@@ -723,7 +737,7 @@ def recompute_records(activities, cache):
 # ---------- entry ----------
 
 
-def main():
+def main() -> None:
     args = sys.argv[1:]
     cmd = args[0] if args else ""
     if cmd == "auth":

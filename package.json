@@ -1,0 +1,18 @@
+{
+  "name": "stride",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A static, Strava-backed running log and marathon training dashboard.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "scripts": {
+    "format": "prettier --write \"**/*.{json,js,css,html,md,svg}\"",
+    "lint": "eslint .",
+    "serve": "python -m http.server 8000",
+    "test": "node --check js/app.js && node --check js/views/fitness.js && node --check js/views/goals.js && node --check js/views/running.js"
+  },
+  "devDependencies": {
+    "eslint": "^9.39.1",
+    "prettier": "^3.6.2"
+  }
+}
