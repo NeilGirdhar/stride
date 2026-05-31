@@ -2,10 +2,17 @@
 // Fitness is slow-decaying load, fatigue is fast-decaying load, and form is the
 // difference between them. Values are shown as weekly km-equivalent load.
 
+import {
+  DAY,
+  fmtDate,
+  parseLocalDate,
+  rangeButtonsHTML,
+  rangeStart,
+} from "../lib/ranges.js";
+
 const ACTS_URL = "./data/imported/strava-activities.json";
 const TRAINING_CONFIG_URL = "./data/entered/training-config.json";
 const RUN_TYPES = new Set(["Run", "TrailRun"]);
-const DAY = 86400000;
 const FITNESS_TAU = 42;
 const FATIGUE_TAU = 7;
 const FITNESS_MOMENTUM_TAU = 14;
@@ -13,23 +20,6 @@ const FATIGUE_MOMENTUM_TAU = 5;
 // Gaussian display smooth (σ, symmetric/non-causal) — purely cosmetic, and
 // distinct from the model's exponential time constants (τ) above.
 const CHART_SMOOTH_SIGMA_DAYS = 2;
-const WINDOWS = {
-  d30: { start: () => Date.now() - 30 * DAY },
-  d60: { start: () => Date.now() - 60 * DAY },
-  d90: { start: () => Date.now() - 90 * DAY },
-  year: { start: () => Date.now() - 365 * DAY },
-  serious: { start: () => SERIOUS_START },
-  all: { start: () => RUNS[0].t },
-};
-const BTN_ORDER = ["d30", "d60", "d90", "year", "serious", "all"];
-const BTN_LABEL = {
-  d30: "30d",
-  d60: "60d",
-  d90: "90d",
-  year: "Year",
-  serious: "Serious",
-  all: "All",
-};
 
 let RUNS = null;
 let MODEL = null;
@@ -77,14 +67,7 @@ export async function renderFitness() {
 
     <section class="rg-shell">
       <div class="rg-controls">
-        ${BTN_ORDER.map(
-          (v) =>
-            `<button class="rg-btn ${v === view ? "on" : ""}" data-view="${v}"${
-              v === "serious"
-                ? ` title="Since start of serious running · ${fmtDate(SERIOUS_START)}"`
-                : ""
-            }>${BTN_LABEL[v]}</button>`,
-        ).join("")}
+        ${rangeButtonsHTML({ active: view, seriousStart: SERIOUS_START })}
       </div>
 
       <div class="rg-layout">
@@ -139,11 +122,6 @@ async function fetchJSON(url) {
   const res = await fetch(`${url}?t=${Date.now()}`);
   if (!res.ok) throw new Error(res.status);
   return res.json();
-}
-
-function parseLocalDate(value) {
-  const [year, month, day] = String(value).split("-").map(Number);
-  return new Date(year, month - 1, day).getTime();
 }
 
 function normalizeRuns(acts) {
@@ -220,7 +198,10 @@ function runSignal(today) {
 function drawFitnessChart(root) {
   const host = root.querySelector("#fit-graph");
   if (!host) return;
-  const start = Math.max(WINDOWS[view].start(), MODEL[0].t);
+  const start = Math.max(
+    rangeStart(view, { seriousStart: SERIOUS_START, allStart: MODEL[0].t }),
+    MODEL[0].t,
+  );
   const end = MODEL[MODEL.length - 1].t;
   const points = smoothChartPoints(
     chartPoints(RUNS, start, end),
@@ -387,13 +368,6 @@ function dayStart(t) {
 
 function clamp(v, lo, hi) {
   return Math.max(lo, Math.min(hi, v));
-}
-function fmtDate(t) {
-  return new Date(t).toLocaleDateString(undefined, {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-  });
 }
 function fmtShort(t) {
   return new Date(t).toLocaleDateString(undefined, {

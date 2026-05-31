@@ -5,6 +5,15 @@
 // biased low). Horizontally zoomable. Hover a run for stats; click for detail.
 // Best-efforts table pulls records.json; clicking a row frames + highlights it.
 
+import { REC_KM, REC_LABEL, REC_ORDER } from "../lib/records.js";
+import {
+  DAY,
+  fmtDate,
+  parseLocalDate,
+  rangeButtonsHTML,
+  rangeStart,
+} from "../lib/ranges.js";
+
 const ACTS_URL = "./data/imported/strava-activities.json";
 const DETAILS_URL = "./data/imported/strava-run-details.json";
 const GEAR_URL = "./data/imported/strava-gear.json";
@@ -15,7 +24,6 @@ const CLUB_PATTERNS_URL = "./data/entered/club-patterns.json";
 const TRAINING_CONFIG_URL = "./data/entered/training-config.json";
 
 const RUN_TYPES = new Set(["Run", "TrailRun"]);
-const DAY = 86400000;
 
 // Plot margins (in the same pixel units as the measured svg).
 const padL = 48,
@@ -52,39 +60,12 @@ let resizeWired = false,
 
 // Gaussian bandwidth (σ) for the km/week trend line — one value for every zoom.
 const SMOOTH_SIGMA_DAYS = 9;
-const WINDOWS = {
-  d30: { start: () => Date.now() - 30 * DAY },
-  d60: { start: () => Date.now() - 60 * DAY },
-  d90: { start: () => Date.now() - 90 * DAY },
-  year: { start: () => Date.now() - 365 * DAY },
-  serious: { start: () => SERIOUS_START },
-  all: { start: () => RUNS[0].t },
-};
-const BTN_ORDER = ["d30", "d60", "d90", "year", "serious", "all"];
-const BTN_LABEL = {
-  d30: "30d",
-  d60: "60d",
-  d90: "90d",
-  year: "Year",
-  serious: "Serious",
-  all: "All",
-};
 const DETAIL_TABS = [
   { id: "clubs", label: "Clubs" },
   { id: "shoes", label: "Shoes" },
   { id: "best", label: "Best" },
 ];
 
-const REC_ORDER = ["400m", "1k", "5k", "10k", "half", "30k", "marathon"];
-const REC_LABEL = {
-  "400m": "400 m",
-  "1k": "1 km",
-  "5k": "5 km",
-  "10k": "10 km",
-  half: "half marathon",
-  "30k": "30 km",
-  marathon: "marathon",
-};
 // Buckets that are not running clubs, but still useful in the Clubs table.
 const RACES = { id: "races", label: "Races", nonClub: true };
 const SOLO = { id: "solo", label: "Solo", nonClub: true };
@@ -189,15 +170,13 @@ function loadClubs(rows) {
     }));
 }
 
-function parseLocalDate(value) {
-  const [year, month, day] = String(value).split("-").map(Number);
-  return new Date(year, month - 1, day).getTime();
-}
-
 function draw(root) {
   currentRoot = root;
   curNow = Date.now();
-  curStart = Math.max(WINDOWS[view].start(), RUNS[0].t);
+  curStart = Math.max(
+    rangeStart(view, { seriousStart: SERIOUS_START, allStart: RUNS[0].t }),
+    RUNS[0].t,
+  );
   winPts = RUNS.filter((r) => r.t >= curStart && r.t <= curNow);
   const total = winPts.reduce((s, p) => s + p.km, 0);
   const longest = winPts.reduce((m, p) => Math.max(m, p.km), 0);
@@ -209,14 +188,7 @@ function draw(root) {
 
     <div class="rg-shell">
       <div class="rg-controls">
-        ${BTN_ORDER.map(
-          (v) =>
-            `<button class="rg-btn ${v === view ? "on" : ""}" data-view="${v}"${
-              v === "serious"
-                ? ` title="Since start of serious running · ${fmtDate(SERIOUS_START)}"`
-                : ""
-            }>${BTN_LABEL[v]}</button>`,
-        ).join("")}
+        ${rangeButtonsHTML({ active: view, seriousStart: SERIOUS_START })}
       </div>
 
       <div class="rg-layout">
@@ -400,7 +372,7 @@ function bestEffortsTable() {
             return `<tr class="rg-rec${k === highlightedRecordKey ? " active" : ""}" data-rec="${k}" title="${esc(r.name || "")}">
             <td>${REC_LABEL[k]}</td>
             <td class="rg-rec-time">${r.time}</td>
-            <td>${fmtPace(r.sec / recordDistanceKm(k)).replace("/km", "")}</td>
+            <td>${fmtPace(r.sec / REC_KM[k]).replace("/km", "")}</td>
             <td class="rg-rec-when">${fmtDate(new Date(r.date).getTime())}</td>
           </tr>`;
           })
@@ -651,26 +623,8 @@ function fmtTick(t, span) {
     return d.toLocaleDateString(undefined, { month: "short", day: "numeric" });
   return d.toLocaleDateString(undefined, { weekday: "short", day: "numeric" });
 }
-function fmtDate(t) {
-  return new Date(t).toLocaleDateString(undefined, {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-  });
-}
 function fmtPace(s) {
   return `${Math.floor(s / 60)}:${String(Math.round(s % 60)).padStart(2, "0")}/km`;
-}
-function recordDistanceKm(key) {
-  return {
-    "400m": 0.4,
-    "1k": 1,
-    "5k": 5,
-    "10k": 10,
-    half: 21.0975,
-    "30k": 30,
-    marathon: 42.195,
-  }[key];
 }
 function esc(s) {
   return String(s ?? "").replace(

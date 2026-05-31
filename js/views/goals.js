@@ -1,4 +1,4 @@
-// Goals pane.
+// Progression pane.
 // Familiar layout: one big graph (fixed range start → race day) on the left,
 // a selectable list of metric sections on the right. Selecting a section swaps
 // the main graph to that metric's smooth curve + target.
@@ -7,15 +7,25 @@
 // so the curves are smooth and reward frequency + magnitude, not a single best
 // run. (A 30 km run twice in a week beats once; "longest run" couldn't see that.)
 
+import { REC_KM, REC_LABEL, REC_ORDER } from "../lib/records.js";
+import {
+  DAY,
+  parseLocalDate,
+  rangeButtonsHTML,
+  rangeStart,
+} from "../lib/ranges.js";
+
 const ACTS_URL = "./data/imported/strava-activities.json";
 const RACE_MODEL_URL = "./data/generated/race-model.json";
 const MARATHON_GOAL_URL = "./data/entered/marathon-goal.json";
+const RECORDS_URL = "./data/generated/records.json";
+const TRAINING_CONFIG_URL = "./data/entered/training-config.json";
 const RUN_TYPES = new Set(["Run", "TrailRun"]);
-const DAY = 86400000;
 
 let RUNS = null;
 let RACE_MODEL = null;
 let GOAL = null;
+let RECORDS = {};
 let RANGE_START = null;
 let MARATHON = null;
 let MP_SEC = null;
@@ -23,14 +33,23 @@ let RACE_DISTANCE_KM = null;
 let TARGET_RAMP_START = null;
 let TARGET_RAMP_PEAK = null;
 let RECOVERY_BASELINE_END = null;
+let SERIOUS_START = null;
 let SECTIONS = [];
 let GRID = null; // daily timestamps RANGE_START .. min(today, race)
 let SERIES = {}; // sectionId -> [{ t, v }]
-let selected = "race";
+let progressionTab = "fitness";
+let selectedFitness = "volume";
+let selectedPrediction = "5k";
+let view = "serious";
+let goalOn = true;
 let currentRoot = null,
   resizeWired = false,
   rzT = null;
 
+const PROGRESSION_TABS = [
+  { id: "fitness", label: "Fitness" },
+  { id: "prediction", label: "Prediction" },
+];
 export async function renderGoals() {
   const root = document.getElementById("page-goals");
   if (!root) return;
@@ -38,13 +57,20 @@ export async function renderGoals() {
   if (RUNS === null) {
     root.innerHTML = `<div class="hero"><div class="date">Loading…</div></div>`;
     try {
-      const [acts, raceModel, goal] = await Promise.all([
-        fetchJSON(ACTS_URL),
-        fetchJSON(RACE_MODEL_URL).catch(() => null),
-        fetchJSON(MARATHON_GOAL_URL),
-      ]);
+      const [acts, raceModel, goal, records, trainingConfig] =
+        await Promise.all([
+          fetchJSON(ACTS_URL),
+          fetchJSON(RACE_MODEL_URL).catch(() => null),
+          fetchJSON(MARATHON_GOAL_URL),
+          fetchJSON(RECORDS_URL).catch(() => ({})),
+          fetchJSON(TRAINING_CONFIG_URL).catch(() => null),
+        ]);
       loadGoal(goal);
       RACE_MODEL = raceModel;
+      RECORDS = records || {};
+      SERIOUS_START = trainingConfig?.serious_start
+        ? parseLocalDate(trainingConfig.serious_start)
+        : RANGE_START;
       RUNS = normalizeRuns(acts || []);
       GRID = buildGrid();
       for (const s of SECTIONS) SERIES[s.id] = s.compute(RUNS, GRID);
@@ -65,18 +91,41 @@ export async function renderGoals() {
     </div>
 
     <section class="rg-shell">
+      <div class="rg-controls goal-controls">
+        ${rangeButtonsHTML({ active: view, seriousStart: SERIOUS_START })}
+        <button class="rg-btn goal-toggle ${goalOn ? "on" : ""}" data-goal="toggle">Goal</button>
+      </div>
       <div class="rg-layout">
         <div class="rg-wrap card"><div id="goal-graph" class="rg-graph"></div></div>
         <aside class="rg-side card">
-          ${focusBox()}
-          ${SECTIONS.map(sectionRow).join("")}
+          <div class="rg-detail-tabs goal-tabs">
+            ${PROGRESSION_TABS.map((tab) => `<button class="rg-detail-tab ${tab.id === progressionTab ? "on" : ""}" data-progression-tab="${tab.id}">${tab.label}</button>`).join("")}
+          </div>
+          <div class="rg-detail-body">${progressionPanel()}</div>
         </aside>
       </div>
     </section>`;
 
-  root.querySelectorAll(".goal-row").forEach((el) =>
+  root.querySelectorAll(".rg-btn[data-view]").forEach((b) =>
+    b.addEventListener("click", () => {
+      view = b.dataset.view;
+      renderGoals();
+    }),
+  );
+  root.querySelector(".goal-toggle")?.addEventListener("click", () => {
+    goalOn = !goalOn;
+    renderGoals();
+  });
+  root.querySelectorAll(".rg-detail-tab").forEach((b) =>
+    b.addEventListener("click", () => {
+      progressionTab = b.dataset.progressionTab;
+      renderGoals();
+    }),
+  );
+  root.querySelectorAll(".goal-row, .goal-row-table").forEach((el) =>
     el.addEventListener("click", () => {
-      selected = el.dataset.id;
+      if (progressionTab === "prediction") selectedPrediction = el.dataset.id;
+      else selectedFitness = el.dataset.id;
       renderGoals();
     }),
   );
@@ -145,7 +194,7 @@ function sectionRow(s) {
     tgt != null &&
     (s.higherBetter ? cur >= tgt * 0.92 : cur <= tgt * 1.05);
   return `
-    <button class="goal-row ${s.id === selected ? "on" : ""}" data-id="${s.id}">
+    <button class="goal-row ${s.id === selectedFitness ? "on" : ""}" data-id="${s.id}">
       <span class="goal-dot ${ok ? "ok" : ""}"></span>
       <span class="goal-row-main">
         <span class="goal-row-label">${s.label}</span>
@@ -155,11 +204,88 @@ function sectionRow(s) {
     </button>`;
 }
 
+function progressionPanel() {
+  if (progressionTab === "prediction") return predictionRows();
+  return `${focusBox()}${fitnessSections().map(sectionRow).join("")}`;
+}
+
+function fitnessSections() {
+  return SECTIONS.filter((s) => s.id !== "race");
+}
+
+function predictionRows() {
+  const rows = predictionKeys();
+  if (!rows.length) {
+    return `<div class="rg-note">Predictions appear here once race-model data is generated.</div>`;
+  }
+  if (!rows.includes(selectedPrediction)) selectedPrediction = rows[0];
+  return `
+    <table class="rg-table goal-predictions">
+      <thead><tr><th>distance</th><th>prediction</th><th>best</th></tr></thead>
+      <tbody>
+        ${rows
+          .map((key) => {
+            const predicted = currentPrediction(key);
+            const record = RECORDS[key];
+            return `<tr class="goal-row-table ${key === selectedPrediction ? "active" : ""}" data-id="${key}">
+              <td>${REC_LABEL[key]}</td>
+              <td class="rg-rec-time">${predicted == null ? "—" : timeLabel(predicted)}</td>
+              <td class="rg-rec-when">${record?.time || "—"}</td>
+            </tr>`;
+          })
+          .join("")}
+      </tbody>
+    </table>`;
+}
+
 function drawGoalChart(root) {
   const host = root.querySelector("#goal-graph");
   if (!host) return;
-  const s = SECTIONS.find((x) => x.id === selected);
+  const s = selectedSection();
   host.innerHTML = chart(s, Math.max(300, Math.round(host.clientWidth)));
+}
+
+function selectedSection() {
+  const section =
+    progressionTab === "prediction"
+      ? predictionSection(selectedPrediction)
+      : SECTIONS.find((x) => x.id === selectedFitness) || fitnessSections()[0];
+  return { ...section, targets: goalOn ? section.targets : [] };
+}
+
+function predictionKeys() {
+  const modeled = new Set(Object.keys(RACE_MODEL?.series || {}));
+  return REC_ORDER.filter((key) => RECORDS[key] || modeled.has(key));
+}
+
+function predictionSection(key) {
+  const series = predictionSeries(key);
+  const raceSection = SECTIONS.find((s) => s.id === "race");
+  return {
+    id: `prediction-${key}`,
+    label: REC_LABEL[key],
+    higherBetter: false,
+    fmt: timeLabel,
+    targets: key === "marathon" && raceSection ? raceSection.targets : [],
+    directSeries: series,
+  };
+}
+
+function predictionSeries(key) {
+  const modeled = raceModelSeries(key);
+  if (modeled.length) return modeled;
+  const base5k = raceModelSeries("5k");
+  const base = base5k.length ? base5k : raceFitness(RUNS, GRID);
+  const km = REC_KM[key];
+  if (!km) return [];
+  return base.map((p) => ({ t: p.t, v: p.v * (km / 5) ** 1.06 }));
+}
+
+function currentPrediction(key) {
+  const prediction = RACE_MODEL?.current_predictions?.[key]?.time_sec;
+  if (Number.isFinite(prediction)) return prediction;
+  const series = predictionSeries(key);
+  return series.length ? series[series.length - 1].v : null;
 }
 
 // ---- chart ----------------------------------------------------------------
@@ -170,16 +296,27 @@ function chart(s, W) {
     padR = 16,
     padT = 18,
     padB = 28;
-  const pts = SERIES[s.id];
-  const now = Math.min(Date.now(), MARATHON);
+  const sourcePts = s.directSeries || SERIES[s.id] || [];
+  const end = goalOn ? MARATHON : Math.min(Date.now(), MARATHON);
+  const start = Math.max(
+    RANGE_START,
+    rangeStart(view, {
+      seriousStart: SERIOUS_START,
+      allStart: RANGE_START,
+      fallbackStart: RANGE_START,
+    }),
+  );
+  const pts = sourcePts.filter((p) => p.t >= start && p.t <= end);
+  const now = Math.min(Date.now(), end);
 
   // sample targets across the full range for the y-domain + drawing
   const tgtSamples = [];
-  for (let t = RANGE_START; t <= MARATHON; t += 7 * DAY) {
+  for (let t = start; t <= end; t += 7 * DAY) {
     for (const tg of s.targets) tgtSamples.push(tg.at(t));
   }
 
   const vals = pts.map((p) => p.v).concat(tgtSamples);
+  if (!vals.length) vals.push(0, 1);
   let lo = Math.min(...vals),
     hi = Math.max(...vals);
   const pad = (hi - lo) * 0.12 || 1;
@@ -187,7 +324,7 @@ function chart(s, W) {
   hi += pad;
 
   const x = (t) =>
-    padL + ((W - padL - padR) * (t - RANGE_START)) / (MARATHON - RANGE_START);
+    padL + ((W - padL - padR) * (t - start)) / Math.max(1, end - start);
   const y = (v) => H - padB - ((H - padT - padB) * (v - lo)) / (hi - lo);
   const line = (ps) =>
     "M " +
@@ -197,19 +334,20 @@ function chart(s, W) {
   const targetPaths = s.targets
     .map((tg) => {
       const tp = [];
-      for (let t = RANGE_START; t <= MARATHON; t += 3.5 * DAY)
-        tp.push({ t, v: tg.at(t) });
+      for (let t = start; t <= end; t += 3.5 * DAY) tp.push({ t, v: tg.at(t) });
       return `<path class="goal-target tier-${tg.tier}" d="${line(tp)}" />`;
     })
     .join("");
 
   // legend: colour + each tier's race-day goal value, in the metric's own units
-  const legend = `<div class="goal-legend">${s.targets
-    .map(
-      (tg) =>
-        `<span><i class="goal-leg-dot tier-${tg.tier}"></i>${s.fmt(tg.at(MARATHON))}</span>`,
-    )
-    .join("")}</div>`;
+  const legend = s.targets.length
+    ? `<div class="goal-legend">${s.targets
+        .map(
+          (tg) =>
+            `<span><i class="goal-leg-dot tier-${tg.tier}"></i>${s.fmt(tg.at(MARATHON))}</span>`,
+        )
+        .join("")}</div>`
+    : "";
 
   // y ticks
   const ticks = niceTicks(lo, hi, 5)
@@ -222,11 +360,11 @@ function chart(s, W) {
 
   // month ticks
   const months = [];
-  const startMonth = new Date(RANGE_START);
+  const startMonth = new Date(start);
   const tick = new Date(startMonth.getFullYear(), startMonth.getMonth(), 1);
-  while (tick.getTime() <= MARATHON) {
+  while (tick.getTime() <= end) {
     const t = tick.getTime();
-    if (t >= RANGE_START) {
+    if (t >= start) {
       months.push(
         `<text class="goal-xlab" x="${x(t).toFixed(1)}" y="${H - 8}">${new Date(t).toLocaleDateString(undefined, { month: "short" })}</text>`,
       );
@@ -238,8 +376,8 @@ function chart(s, W) {
   return `
     <svg class="goal-svg" viewBox="0 0 ${W} ${H}">
       ${ticks}${targetPaths}
-      <line class="goal-today" x1="${todayX.toFixed(1)}" x2="${todayX.toFixed(1)}" y1="${padT}" y2="${H - padB}" />
-      <path class="goal-line" d="${line(pts)}" />
+      ${now >= start && now <= end ? `<line class="goal-today" x1="${todayX.toFixed(1)}" x2="${todayX.toFixed(1)}" y1="${padT}" y2="${H - padB}" />` : ""}
+      ${pts.length ? `<path class="goal-line" d="${line(pts)}" />` : ""}
       ${months.join("")}
     </svg>
     ${legend}`;
@@ -443,11 +581,6 @@ function buildTarget(target) {
   };
 }
 
-function parseLocalDate(value) {
-  const [year, month, day] = String(value).split("-").map(Number);
-  return new Date(year, month - 1, day).getTime();
-}
-
 function normalizeRuns(acts) {
   return acts
     .filter(
@@ -512,6 +645,9 @@ function clock(sec) {
   const m = Math.floor(sec / 60),
     s = Math.round(sec % 60);
   return `${m}:${String(s).padStart(2, "0")}`;
+}
+function timeLabel(sec) {
+  return sec >= 3600 ? hms(sec) : clock(sec);
 }
 function hms(sec) {
   const h = Math.floor(sec / 3600),
