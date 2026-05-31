@@ -133,7 +133,6 @@ function draw(root) {
 
   root.innerHTML = `
     <div class="hero">
-      <h1>Training log</h1>
       <div class="date">${winPts.length} runs · ${total.toFixed(0)} km · longest ${longest.toFixed(1)} km</div>
     </div>
 

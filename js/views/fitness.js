@@ -34,7 +34,7 @@ export async function renderFitness() {
   if (!root) return;
 
   if (RUNS === null) {
-    root.innerHTML = `<div class="hero"><h1>Fitness &amp; Form</h1><div class="date">Loading runs…</div></div>`;
+    root.innerHTML = `<div class="hero"><div class="date">Loading runs…</div></div>`;
     try {
       const acts = await fetchJSON(ACTS_URL);
       RUNS = normalizeRuns(acts || []);
@@ -45,7 +45,7 @@ export async function renderFitness() {
   }
 
   if (!RUNS.length) {
-    root.innerHTML = `<div class="hero"><h1>Fitness &amp; Form</h1>
+    root.innerHTML = `<div class="hero">
       <div class="date">Run <code>python3 scripts/sync_strava.py sync</code> first.</div></div>`;
     return;
   }
@@ -58,7 +58,6 @@ export async function renderFitness() {
 
   root.innerHTML = `
     <div class="hero">
-      <h1>Fitness &amp; Form</h1>
       <div class="date">${fmtDate(today.t)} · ${recentKm.toFixed(1)} km last 7 days</div>
     </div>
 

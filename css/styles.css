@@ -34,7 +34,7 @@ html, body {
 
 body {
   position: relative;
-  padding: env(safe-area-inset-top) env(safe-area-inset-right) calc(env(safe-area-inset-bottom) + 120px) env(safe-area-inset-left);
+  padding: calc(env(safe-area-inset-top) + 64px) env(safe-area-inset-right) calc(env(safe-area-inset-bottom) + 28px) env(safe-area-inset-left);
   min-height: 100vh;
   background:
     radial-gradient(ellipse 130% 60% at 50% -15%, var(--wash-top) 0%, transparent 72%),
@@ -52,7 +52,7 @@ input, textarea, select { font: inherit; }
 .wrap { max-width: 640px; margin: 0 auto; padding: 20px 18px; }
 
 /* ---------- Hero ---------- */
-.hero { padding: 56px 4px 32px; }
+.hero { padding: 20px 4px 28px; }
 .eyebrow {
   font-family: var(--font-mono);
   font-size: 11px; letter-spacing: 0.22em;
@@ -110,41 +110,34 @@ input, textarea, select { font: inherit; }
 }
 .field input:focus { outline: none; border-color: var(--accent); }
 
-/* ---------- Tabs — flat icon-circle nav ---------- */
+/* ---------- Tabs — top bar, doubles as the header ---------- */
 nav.tabs {
   position: fixed;
-  bottom: 0; left: 0; right: 0;
+  top: 0; left: 0; right: 0;
   display: flex;
-  justify-content: space-around;
-  padding: 26px env(safe-area-inset-right) calc(14px + env(safe-area-inset-bottom)) env(safe-area-inset-left);
-  background: linear-gradient(to bottom, transparent 0%, var(--bg) 35%, var(--bg) 100%);
+  justify-content: center;
+  gap: 6px;
+  padding: calc(env(safe-area-inset-top) + 12px) env(safe-area-inset-right) 16px env(safe-area-inset-left);
+  background: linear-gradient(to bottom, var(--bg) 0%, var(--bg) 55%, transparent 100%);
   z-index: 50;
 }
 nav.tabs button {
-  flex: 1; min-width: 0;
-  padding: 4px 2px;
-  display: flex; flex-direction: column; align-items: center; gap: 6px;
-  color: var(--text);
-  font-family: var(--font-body);
-  font-size: 12px; font-weight: 500;
-  transition: color .18s;
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 9px 18px;
+  border-radius: var(--r-pill);
+  color: var(--text-muted);
+  font-family: var(--font-display);
+  font-size: 15px; font-weight: 600; letter-spacing: -0.01em;
+  transition: background .18s, color .18s;
 }
+nav.tabs button.active { background: var(--accent); color: var(--accent-text); }
 nav.tabs button .tab-icon {
-  width: 44px; height: 44px;
-  border-radius: 50%;
-  border: 1.4px solid var(--text);
-  display: flex; align-items: center; justify-content: center;
-  transition: background .18s, color .18s, border-color .18s;
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 18px; height: 18px;
 }
-nav.tabs button.active .tab-icon {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: var(--accent-text);
-}
-nav.tabs button.active { color: var(--accent); }
 nav.tabs button svg {
-  width: 20px; height: 20px;
-  stroke: currentColor; stroke-width: 1.6;
+  width: 18px; height: 18px;
+  stroke: currentColor; stroke-width: 1.7;
   fill: none; stroke-linecap: round; stroke-linejoin: round;
 }
 
@@ -168,7 +161,7 @@ nav.tabs button svg {
 /* ---------- Mobile ---------- */
 @media (max-width: 480px) {
   .wrap { padding: 8px 18px; }
-  .hero { padding: 30px 2px 18px; }
+  .hero { padding: 12px 2px 16px; }
   .card { margin: 0 0 16px; }
   .section-head { margin: 8px 0 14px; }
 }
