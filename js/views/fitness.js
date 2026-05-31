@@ -281,9 +281,9 @@ function fitnessChart(points, W) {
       ${ticks.map(v => `<line class="fit-grid" x1="${padL}" x2="${W - padR}" y1="${y(v).toFixed(1)}" y2="${y(v).toFixed(1)}" />
         <text class="fit-ylab" x="${padL - 8}" y="${(y(v) + 3).toFixed(1)}">${v}</text>`).join('')}
       <line class="fit-zero" x1="${padL}" x2="${W - padR}" y1="${zero.toFixed(1)}" y2="${zero.toFixed(1)}" />
-      <path class="fit-line fit-fitness" d="${path('fitness')}" />
       <path class="fit-line fit-fatigue" d="${path('fatigue')}" />
       <path class="fit-line fit-form" d="${path('form')}" />
+      <path class="fit-line fit-fitness" d="${path('fitness')}" />
       <text class="fit-xlab" x="${padL}" y="${H - 6}">${fmtShort(points[0].t)}</text>
       <text class="fit-xlab" x="${W - padR}" y="${H - 6}" text-anchor="end">${fmtShort(points[points.length - 1].t)}</text>
     </svg>`;

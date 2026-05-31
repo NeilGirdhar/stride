@@ -41,7 +41,7 @@ svg.rg { width: 100%; height: auto; display: block; overflow: visible; }
 .rg-dot:hover { fill: var(--text); fill-opacity: 1; }
 .rg-dot.shoe-hl,
 .rg-dot.club-hl,
-.rg-dot.hl { fill: var(--highlight); fill-opacity: 1; }
+.rg-dot.hl { fill: var(--emphasis); fill-opacity: 1; }
 .rg-ylab  { fill: var(--text-muted); font: 500 11px var(--font-mono); text-anchor: end; }
 .rg-ylab.rg-wk { fill: var(--info); text-anchor: start; }
 .rg-xlab  { fill: var(--text-muted); font: 500 11px var(--font-mono); text-anchor: middle; }
@@ -149,21 +149,26 @@ tr.rg-club.active td { background: var(--surface-alt); }
 .fit-metric-value {
   margin-top: 8px; font: 600 30px/1 var(--font-display);
 }
-.fit-metric-value.fit-fitness { color: var(--info); }
-.fit-metric-value.fit-fatigue { color: var(--highlight); }
-.fit-metric-value.fit-form { color: var(--danger); }
+.fit-fitness { --fit-c: var(--series-fitness); }
+.fit-fatigue { --fit-c: var(--series-fatigue); }
+.fit-form { --fit-c: var(--series-form); }
+.fit-metric-value.fit-fitness,
+.fit-metric-value.fit-fatigue,
+.fit-metric-value.fit-form { color: var(--fit-c); }
 .fit-chart.card { margin-bottom: 0; }
 .fit-graph { width: 100%; }
 .fit-svg { width: 100%; height: auto; display: block; overflow: visible; }
 .fit-grid { stroke: var(--border); stroke-width: 1; vector-effect: non-scaling-stroke; }
 .fit-zero { stroke: var(--text-subtle); stroke-width: 1; stroke-dasharray: 4 5; vector-effect: non-scaling-stroke; }
 .fit-line {
-  fill: none; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round;
+  fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+  opacity: 0.72;
   vector-effect: non-scaling-stroke;
 }
-.fit-line.fit-fitness { stroke: var(--info); }
-.fit-line.fit-fatigue { stroke: var(--highlight); }
-.fit-line.fit-form { stroke: var(--danger); }
+.fit-line.fit-fitness,
+.fit-line.fit-fatigue,
+.fit-line.fit-form { stroke: var(--fit-c); }
+.fit-line.fit-fitness { stroke-width: 3; opacity: 1; }
 .fit-ylab,
 .fit-xlab { fill: var(--text-muted); font: 500 11px var(--font-mono); }
 .fit-ylab { text-anchor: end; }
@@ -173,9 +178,9 @@ tr.rg-club.active td { background: var(--surface-alt); }
 }
 .fit-legend span { display: inline-flex; align-items: center; gap: 6px; }
 .fit-key { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
-.fit-key.fit-fitness { background: var(--info); }
-.fit-key.fit-fatigue { background: var(--highlight); }
-.fit-key.fit-form { background: var(--danger); }
+.fit-key.fit-fitness,
+.fit-key.fit-fatigue,
+.fit-key.fit-form { background: var(--fit-c); }
 
 @media (max-width: 560px) {
   .fit-score-main { align-items: flex-start; }
@@ -187,15 +192,14 @@ tr.rg-club.active td { background: var(--surface-alt); }
 .goal-svg { width: 100%; height: auto; display: block; overflow: visible; }
 .goal-grid { stroke: var(--border); stroke-width: 1; vector-effect: non-scaling-stroke; }
 .goal-line { fill: none; stroke: var(--accent); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
-.goal-target { fill: none; stroke: var(--c, var(--success)); stroke-width: 1.6; stroke-dasharray: 2 5; stroke-linecap: round; vector-effect: non-scaling-stroke; }
-/* A/B/C goal-tier colours (semantic tokens), shared by the target lines and
-   their legend dots. Class names describe the tier, not the pixel colour. */
-.tier-a { --c: var(--highlight); }
-.tier-b { --c: var(--success); }
-.tier-c { --c: var(--info); }
+.goal-target { fill: none; stroke: var(--goal-c, var(--success)); stroke-width: 1.6; stroke-dasharray: 2 5; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+/* A/B/C goal-tier colours, shared by the target lines and their legend dots. */
+.tier-a { --goal-c: var(--series-goal-a); }
+.tier-b { --goal-c: var(--series-goal-b); }
+.tier-c { --goal-c: var(--series-goal-c); }
 .goal-legend { display: flex; gap: 16px; flex-wrap: wrap; margin: 10px 4px 2px; }
 .goal-legend span { display: inline-flex; align-items: center; gap: 6px; font: 600 12px var(--font-mono); color: var(--text-muted); }
-.goal-leg-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--c, var(--success)); display: inline-block; }
+.goal-leg-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--goal-c, var(--success)); display: inline-block; }
 
 .goal-focus {
   background: var(--accent); color: var(--accent-text);
