@@ -19,12 +19,14 @@ Usage:
   uv run stride-sync sync            fetch new activities + recompute summary
   uv run stride-sync sync --full     ignore checkpoint, refetch everything
   uv run stride-sync details         backfill per-run shoes + PRs (resumable)
+  uv run stride-sync streams         cache per-run streams for the durability model (resumable)
   uv run stride-sync details --limit=100   do it in chunks (rate limits)
 
 No third-party dependencies — Python 3 standard library only.
 """
 
 import json
+import math
 import operator
 import os
 import pathlib
@@ -35,6 +37,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 from collections.abc import Mapping
+from dataclasses import dataclass
 from datetime import UTC, datetime, timedelta
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from typing import Any, cast
@@ -57,6 +60,7 @@ RECORDS_PATH = GENERATED_DIR / "records.json"  # best efforts
 CLUB_OVERRIDES_PATH = ENTERED_DIR / "club-overrides.json"
 CLUB_PATTERNS_PATH = ENTERED_DIR / "club-patterns.json"
 TRAINING_CONFIG_PATH = ENTERED_DIR / "training-config.json"
+SAMPLES_PATH = PRIVATE_DIR / "strava-durability-samples.json"  # cache: id -> segments
 
 AUTH_URL = "https://www.strava.com/oauth/authorize"
 TOKEN_URL = "https://www.strava.com/oauth/token"  # noqa: S105
@@ -732,6 +736,171 @@ def best_grade_adjusted_speed(st: JsonDict, seconds: float = 60.0) -> float | No
     return best
 
 
+# ---------- durability streams ----------
+# Per-run HR/grade/speed streams, segmented and cached for the durability model.
+# `stride-durability-model` reads SAMPLES_PATH offline and does no network I/O.
+WARMUP_SECONDS = 8 * 60
+WARMUP_METRES = 1000.0
+MIN_SPEED_MPS = 1.6
+MAX_SPEED_MPS = 7.5
+MIN_HR = 90.0
+MAX_HR = 205.0
+MIN_SEGMENT_DT = 0.5
+MAX_SEGMENT_DT = 10.0
+
+
+@dataclass(frozen=True)
+class StreamActivity:
+    id: int
+    name: str
+    date: str
+    start_ts: float
+    distance_m: float
+
+
+@dataclass(frozen=True)
+class Segment:
+    run_id: int
+    date: str
+    dt: float
+    speed: float
+    adjusted_speed: float
+    hr: float
+
+
+def parse_ts(value: str) -> float:
+    return datetime.fromisoformat(value).timestamp()
+
+
+def date_from_activity(activity: JsonDict) -> str:
+    raw = str(activity.get("start_date_local") or activity["start_date"])
+    return raw.split("T", 1)[0]
+
+
+def load_stream_activities() -> list[StreamActivity]:
+    activities = cast("list[JsonDict]", load_json(RAW_PATH, []) or [])
+    runs = []
+    for activity in activities:
+        sport = activity.get("sport_type") or activity.get("type")
+        distance = float(activity.get("distance") or 0)
+        if sport not in RUN_TYPES or distance <= 0:
+            continue
+        runs.append(
+            StreamActivity(
+                id=int(activity["id"]),
+                name=str(activity.get("name") or ""),
+                date=date_from_activity(activity),
+                start_ts=parse_ts(str(activity.get("start_date_local") or activity["start_date"])),
+                distance_m=distance,
+            )
+        )
+    return sorted(runs, key=operator.attrgetter("start_ts"))
+
+
+def numeric_stream(streams: JsonDict, key: str) -> list[float]:
+    values = (streams.get(key) or {}).get("data") or []
+    out = []
+    for value in values:
+        if value is None:
+            out.append(float("nan"))
+            continue
+        out.append(float(value))
+    return out
+
+
+def stream_segments(activity: StreamActivity, streams: JsonDict) -> list[Segment]:
+    times = numeric_stream(streams, "time")
+    dists = numeric_stream(streams, "distance")
+    grades = numeric_stream(streams, "grade_smooth")
+    hrs = numeric_stream(streams, "heartrate")
+    n = min(len(times), len(dists), len(grades), len(hrs))
+    segments: list[Segment] = []
+    prev_speed = None
+
+    for i in range(1, n):
+        elapsed = times[i]
+        dist = dists[i]
+        segment_values = (times[i - 1], elapsed, dists[i - 1], dist, grades[i], hrs[i])
+        if not all(math.isfinite(value) for value in segment_values):
+            continue
+        if elapsed < WARMUP_SECONDS or dist < WARMUP_METRES:
+            continue
+        dt = times[i] - times[i - 1]
+        dd = dists[i] - dists[i - 1]
+        if dt < MIN_SEGMENT_DT or dt > MAX_SEGMENT_DT or dd <= 0:
+            continue
+        speed = dd / dt
+        hr = hrs[i]
+        if not (MIN_SPEED_MPS <= speed <= MAX_SPEED_MPS and MIN_HR <= hr <= MAX_HR):
+            continue
+        if prev_speed is not None and abs(speed - prev_speed) > 3.0:
+            prev_speed = speed
+            continue
+        prev_speed = speed
+        adjusted_speed = speed * grade_cost_factor(grades[i])
+        segments.append(
+            Segment(
+                run_id=activity.id,
+                date=activity.date,
+                dt=dt,
+                speed=speed,
+                adjusted_speed=adjusted_speed,
+                hr=hr,
+            )
+        )
+    return segments
+
+
+def streams(cfg: JsonDict, limit: int | None = None) -> None:
+    """Fetch per-run HR/grade/speed streams and cache durability segments.
+
+    Resumable: only activities missing from the cache are fetched. The durability
+    model reads this cache offline; it does no network I/O of its own.
+    """
+    activities = load_stream_activities()
+    if not activities:
+        sys.exit("No activities yet. Run:  uv run stride-sync sync")
+
+    cache = cast("dict[str, JsonDict]", load_json(SAMPLES_PATH, {}) or {})
+    todo = [activity for activity in activities if str(activity.id) not in cache]
+    batch = todo[:limit] if limit else todo
+    print(
+        f"Durability streams: {len(activities)} runs, {len(cache)} cached, "
+        f"{len(todo)} remaining. Fetching {len(batch)} now."
+    )
+    if not batch:
+        return
+
+    tm = Tokens(cfg)
+    for i, activity in enumerate(batch):
+        st = cast(
+            "JsonDict",
+            api_get(
+                tm,
+                f"{ACTIVITY_URL}/{activity.id}/streams",
+                {"keys": "time,distance,grade_smooth,heartrate", "key_by_type": "true"},
+            ),
+        )
+        segments = stream_segments(activity, st)
+        cache[str(activity.id)] = {
+            "date": activity.date,
+            "name": activity.name,
+            "segments": [
+                {
+                    "dt": round(segment.dt, 3),
+                    "speed": round(segment.speed, 4),
+                    "adjusted_speed": round(segment.adjusted_speed, 4),
+                    "hr": round(segment.hr, 2),
+                }
+                for segment in segments
+            ],
+        }
+        if (i + 1) % 10 == 0:
+            save_json(SAMPLES_PATH, cache)
+            print(f"  {i + 1}/{len(batch)} ...")
+    save_json(SAMPLES_PATH, cache)
+
+
 def details(cfg: JsonDict, limit: int | None = None) -> None:
     tm = Tokens(cfg)
     activities = cast("list[JsonDict]", load_json(RAW_PATH, []) or [])
@@ -913,12 +1082,13 @@ def main() -> None:
         auth(ensure_config())
     elif cmd == "sync":
         sync(load_config(), full="--full" in args)
-    elif cmd == "details":
+    elif cmd in {"details", "streams"}:
         limit = None
         for a in args[1:]:
             if a.startswith("--limit="):
                 limit = int(a.split("=", 1)[1])
-        details(load_config(), limit=limit)
+        command = details if cmd == "details" else streams
+        command(load_config(), limit=limit)
     else:
         print(__doc__)
         sys.exit(1)

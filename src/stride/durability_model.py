@@ -1,4 +1,8 @@
-"""Build a runner-specific durability model from Strava stream samples."""
+"""Build a runner-specific durability model from cached Strava stream samples.
+
+Pure computation: reads the segment cache written by `uv run stride-sync streams`
+(data/private/strava-durability-samples.json) and does no network I/O.
+"""
 
 from __future__ import annotations
 
@@ -15,13 +19,8 @@ from typing import Any, cast
 import numpy as np
 
 from stride.sync_strava import (
-    ACTIVITY_URL,
-    RAW_PATH,
-    RUN_TYPES,
-    Tokens,
-    api_get,
-    grade_cost_factor,
-    load_config,
+    SAMPLES_PATH,
+    Segment,
     load_json,
     save_json,
 )
@@ -29,18 +28,8 @@ from stride.sync_strava import (
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 DATA_DIR = ROOT / "data"
 GENERATED_DIR = DATA_DIR / "generated"
-PRIVATE_DIR = DATA_DIR / "private"
-SAMPLES_PATH = PRIVATE_DIR / "strava-durability-samples.json"
 MODEL_PATH = GENERATED_DIR / "durability-model.json"
 
-WARMUP_SECONDS = 8 * 60
-WARMUP_METRES = 1000.0
-MIN_SPEED_MPS = 1.6
-MAX_SPEED_MPS = 7.5
-MIN_HR = 90.0
-MAX_HR = 205.0
-MIN_SEGMENT_DT = 0.5
-MAX_SEGMENT_DT = 10.0
 FRESH_CAE_FLOOR = 1200.0
 FRESH_CAE_CEILING = 4500.0
 RETENTION_THRESHOLD = 0.9
@@ -50,114 +39,12 @@ JsonDict = dict[str, Any]
 
 
 @dataclass(frozen=True)
-class Activity:
-    id: int
-    name: str
-    date: str
-    start_ts: float
-    distance_m: float
-
-
-@dataclass(frozen=True)
-class Segment:
-    run_id: int
-    date: str
-    dt: float
-    speed: float
-    adjusted_speed: float
-    hr: float
-
-
-@dataclass(frozen=True)
 class Sample:
     run_id: int
     date: str
     cae: float
     effort_rate: float
     efficiency: float
-
-
-def parse_ts(value: str) -> float:
-    return datetime.fromisoformat(value).timestamp()
-
-
-def date_from_activity(activity: JsonDict) -> str:
-    raw = str(activity.get("start_date_local") or activity["start_date"])
-    return raw.split("T", 1)[0]
-
-
-def load_activities() -> list[Activity]:
-    activities = cast("list[JsonDict]", load_json(RAW_PATH, []) or [])
-    runs = []
-    for activity in activities:
-        sport = activity.get("sport_type") or activity.get("type")
-        distance = float(activity.get("distance") or 0)
-        if sport not in RUN_TYPES or distance <= 0:
-            continue
-        runs.append(
-            Activity(
-                id=int(activity["id"]),
-                name=str(activity.get("name") or ""),
-                date=date_from_activity(activity),
-                start_ts=parse_ts(str(activity.get("start_date_local") or activity["start_date"])),
-                distance_m=distance,
-            )
-        )
-    return sorted(runs, key=operator.attrgetter("start_ts"))
-
-
-def stream_segments(activity: Activity, streams: JsonDict) -> list[Segment]:
-    times = numeric_stream(streams, "time")
-    dists = numeric_stream(streams, "distance")
-    grades = numeric_stream(streams, "grade_smooth")
-    hrs = numeric_stream(streams, "heartrate")
-    n = min(len(times), len(dists), len(grades), len(hrs))
-    segments: list[Segment] = []
-    prev_speed = None
-
-    for i in range(1, n):
-        elapsed = times[i]
-        dist = dists[i]
-        segment_values = (times[i - 1], elapsed, dists[i - 1], dist, grades[i], hrs[i])
-        if not all(math.isfinite(value) for value in segment_values):
-            continue
-        if elapsed < WARMUP_SECONDS or dist < WARMUP_METRES:
-            continue
-        dt = times[i] - times[i - 1]
-        dd = dists[i] - dists[i - 1]
-        if dt < MIN_SEGMENT_DT or dt > MAX_SEGMENT_DT or dd <= 0:
-            continue
-        speed = dd / dt
-        hr = hrs[i]
-        if not (MIN_SPEED_MPS <= speed <= MAX_SPEED_MPS and MIN_HR <= hr <= MAX_HR):
-            continue
-        if prev_speed is not None and abs(speed - prev_speed) > 3.0:
-            prev_speed = speed
-            continue
-        prev_speed = speed
-        adjusted_speed = speed * grade_cost_factor(grades[i])
-        segments.append(
-            Segment(
-                run_id=activity.id,
-                date=activity.date,
-                dt=dt,
-                speed=speed,
-                adjusted_speed=adjusted_speed,
-                hr=hr,
-            )
-        )
-    return segments
-
-
-def numeric_stream(streams: JsonDict, key: str) -> list[float]:
-    values = (streams.get(key) or {}).get("data") or []
-    out = []
-    for value in values:
-        if value is None:
-            out.append(float("nan"))
-            continue
-        out.append(float(value))
-    return out
 
 
 def samples_from_segments(segments: list[Segment]) -> list[Sample]:
@@ -377,65 +264,27 @@ def rolling_series(rows: list[JsonDict]) -> list[JsonDict]:
     return out
 
 
-def fetch_sample_cache(limit: int | None) -> list[Sample]:
-    activities = load_activities()
-    if not activities:
-        sys.exit("No activities yet. Run:  uv run stride-sync sync")
+def load_samples() -> list[Sample]:
+    """Build samples from the cached stream segments (no network I/O).
 
+    The cache is filled by `uv run stride-sync streams`.
+    """
     cache = cast("dict[str, JsonDict]", load_json(SAMPLES_PATH, {}) or {})
-    todo = [activity for activity in activities if str(activity.id) not in cache]
-    batch = todo[:limit] if limit else todo
-    print(
-        f"Durability streams: {len(activities)} runs, {len(cache)} cached, "
-        f"{len(todo)} remaining. Fetching {len(batch)} now."
-    )
+    if not cache:
+        sys.exit("No durability streams cached yet. Run:  uv run stride-sync streams")
 
-    if batch:
-        tm = Tokens(load_config())
-        for i, activity in enumerate(batch):
-            streams = cast(
-                "JsonDict",
-                api_get(
-                    tm,
-                    f"{ACTIVITY_URL}/{activity.id}/streams",
-                    {
-                        "keys": "time,distance,grade_smooth,heartrate",
-                        "key_by_type": "true",
-                    },
-                ),
-            )
-            segments = stream_segments(activity, streams)
-            cache[str(activity.id)] = {
-                "date": activity.date,
-                "name": activity.name,
-                "segments": [
-                    {
-                        "dt": round(segment.dt, 3),
-                        "speed": round(segment.speed, 4),
-                        "adjusted_speed": round(segment.adjusted_speed, 4),
-                        "hr": round(segment.hr, 2),
-                    }
-                    for segment in segments
-                ],
-            }
-            if (i + 1) % 10 == 0:
-                save_json(SAMPLES_PATH, cache)
-                print(f"  {i + 1}/{len(batch)} ...")
-        save_json(SAMPLES_PATH, cache)
-
-    segments = []
-    for run_id, row in cache.items():
-        for segment in cast("list[JsonDict]", row.get("segments") or []):
-            segments.append(
-                Segment(
-                    run_id=int(run_id),
-                    date=str(row["date"]),
-                    dt=float(segment["dt"]),
-                    speed=float(segment["speed"]),
-                    adjusted_speed=float(segment["adjusted_speed"]),
-                    hr=float(segment["hr"]),
-                )
-            )
+    segments = [
+        Segment(
+            run_id=int(run_id),
+            date=str(row["date"]),
+            dt=float(segment["dt"]),
+            speed=float(segment["speed"]),
+            adjusted_speed=float(segment["adjusted_speed"]),
+            hr=float(segment["hr"]),
+        )
+        for run_id, row in cache.items()
+        for segment in cast("list[JsonDict]", row.get("segments") or [])
+    ]
     return samples_from_segments(segments)
 
 
@@ -478,13 +327,7 @@ def build_model(samples: list[Sample]) -> JsonDict:
 
 
 def main() -> None:
-    args = sys.argv[1:]
-    limit = None
-    for arg in args:
-        if arg.startswith("--limit="):
-            limit = int(arg.split("=", 1)[1])
-
-    samples = fetch_sample_cache(limit)
+    samples = load_samples()
     model = build_model(samples)
     save_json(MODEL_PATH, model)
     summary = cast("JsonDict", model["summary"])
