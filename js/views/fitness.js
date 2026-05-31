@@ -14,14 +14,15 @@ const FATIGUE_MOMENTUM_TAU = 5;
 // distinct from the model's exponential time constants (τ) above.
 const CHART_SMOOTH_SIGMA_DAYS = 2;
 const WINDOWS = {
-  week:    { start: () => Date.now() - 7 * DAY },
-  month:   { start: () => Date.now() - 31 * DAY },
+  d30:     { start: () => Date.now() - 30 * DAY },
+  d60:     { start: () => Date.now() - 60 * DAY },
+  d90:     { start: () => Date.now() - 90 * DAY },
   year:    { start: () => Date.now() - 365 * DAY },
   serious: { start: () => SERIOUS_START },
   all:     { start: () => RUNS[0].t },
 };
-const BTN_ORDER = ['week', 'month', 'year', 'serious', 'all'];
-const BTN_LABEL = { week: 'Week', month: 'Month', year: 'Year', serious: 'Serious', all: 'All' };
+const BTN_ORDER = ['d30', 'd60', 'd90', 'year', 'serious', 'all'];
+const BTN_LABEL = { d30: '30d', d60: '60d', d90: '90d', year: 'Year', serious: 'Serious', all: 'All' };
 
 let RUNS = null;
 let MODEL = null;

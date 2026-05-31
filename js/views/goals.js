@@ -31,9 +31,9 @@ const SECTIONS = [
     higherBetter: false, fmt: hms,
     compute: racePrediction,
     targets: [
-      { at: rampLine(12600, 10800), color: 'orange' },  // 3:30 → 3:00 (A)
-      { at: rampLine(12600, 11400), color: 'green' },   // 3:30 → 3:10 (B)
-      { at: rampLine(12600, 12000), color: 'blue' },    // 3:30 → 3:20 (C)
+      { at: rampLine(12600, 10800), tier: 'a' },  // 3:30 → 3:00 (A)
+      { at: rampLine(12600, 11400), tier: 'b' },   // 3:30 → 3:10 (B)
+      { at: rampLine(12600, 12000), tier: 'c' },    // 3:30 → 3:20 (C)
     ],
   },
   {
@@ -41,9 +41,9 @@ const SECTIONS = [
     higherBetter: true, fmt: v => `${v.toFixed(0)} km/wk`,
     compute: (r, g) => ewmaRate(r, g, 9, run => run.km),
     targets: [
-      { at: rampTarget(70, 95), color: 'orange' },  // A
-      { at: rampTarget(62, 85), color: 'green' },   // B
-      { at: rampTarget(55, 75), color: 'blue' },    // C
+      { at: rampTarget(70, 95), tier: 'a' },  // A
+      { at: rampTarget(62, 85), tier: 'b' },   // B
+      { at: rampTarget(55, 75), tier: 'c' },    // C
     ],
   },
   {
@@ -51,9 +51,9 @@ const SECTIONS = [
     higherBetter: true, fmt: v => `${v.toFixed(1)} km/wk`,
     compute: (r, g) => ewmaRate(r, g, 20, run => Math.max(0, run.km - 20)),
     targets: [
-      { at: rampTarget(8, 20), color: 'orange' },   // A
-      { at: rampTarget(7, 16), color: 'green' },    // B
-      { at: rampTarget(6, 12), color: 'blue' },     // C
+      { at: rampTarget(8, 20), tier: 'a' },   // A
+      { at: rampTarget(7, 16), tier: 'b' },    // B
+      { at: rampTarget(6, 12), tier: 'c' },     // C
     ],
   },
   {
@@ -61,9 +61,9 @@ const SECTIONS = [
     higherBetter: true, fmt: v => `${v.toFixed(1)} km/wk`,
     compute: (r, g) => ewmaRate(r, g, 14, mpKm),
     targets: [
-      { at: rampTarget(4, 20), color: 'orange' },   // A
-      { at: rampTarget(3, 14), color: 'green' },    // B
-      { at: rampTarget(2, 8), color: 'blue' },      // C
+      { at: rampTarget(4, 20), tier: 'a' },   // A
+      { at: rampTarget(3, 14), tier: 'b' },    // B
+      { at: rampTarget(2, 8), tier: 'c' },      // C
     ],
   },
   {
@@ -71,9 +71,9 @@ const SECTIONS = [
     higherBetter: false, fmt: clock,
     compute: raceFitness,
     targets: [
-      { at: rampLine(1380, 1200), color: 'orange' },  // 23:00 → 20:00 (A)
-      { at: rampLine(1380, 1260), color: 'green' },   // → 21:00 (B)
-      { at: rampLine(1380, 1320), color: 'blue' },    // → 22:00 (C)
+      { at: rampLine(1380, 1200), tier: 'a' },  // 23:00 → 20:00 (A)
+      { at: rampLine(1380, 1260), tier: 'b' },   // → 21:00 (B)
+      { at: rampLine(1380, 1320), tier: 'c' },    // → 22:00 (C)
     ],
   },
   {
@@ -81,9 +81,9 @@ const SECTIONS = [
     higherBetter: true, fmt: v => `${v.toFixed(1)} m/beat`,
     compute: recoveryEff,
     targets: [
-      { at: t => recoveryBaseline() * (1 + 0.10 * frac(t)), color: 'orange' },  // A
-      { at: t => recoveryBaseline() * (1 + 0.06 * frac(t)), color: 'green' },   // B
-      { at: t => recoveryBaseline() * (1 + 0.02 * frac(t)), color: 'blue' },    // C
+      { at: t => recoveryBaseline() * (1 + 0.10 * frac(t)), tier: 'a' },  // A
+      { at: t => recoveryBaseline() * (1 + 0.06 * frac(t)), tier: 'b' },   // B
+      { at: t => recoveryBaseline() * (1 + 0.02 * frac(t)), tier: 'c' },    // C
     ],
   },
 ];
@@ -224,12 +224,12 @@ function chart(s, W) {
   const targetPaths = s.targets.map(tg => {
     const tp = [];
     for (let t = RANGE_START; t <= MARATHON; t += 3.5 * DAY) tp.push({ t, v: tg.at(t) });
-    return `<path class="goal-target c-${tg.color}" d="${line(tp)}" />`;
+    return `<path class="goal-target tier-${tg.tier}" d="${line(tp)}" />`;
   }).join('');
 
   // legend: colour + each tier's race-day goal value, in the metric's own units
   const legend = `<div class="goal-legend">${s.targets.map(tg =>
-    `<span><i class="goal-leg-dot c-${tg.color}"></i>${s.fmt(tg.at(MARATHON))}</span>`).join('')}</div>`;
+    `<span><i class="goal-leg-dot tier-${tg.tier}"></i>${s.fmt(tg.at(MARATHON))}</span>`).join('')}</div>`;
 
   // y ticks
   const ticks = niceTicks(lo, hi, 5).map(v =>

@@ -188,10 +188,11 @@ tr.rg-club.active td { background: var(--surface-alt); }
 .goal-grid { stroke: var(--border); stroke-width: 1; vector-effect: non-scaling-stroke; }
 .goal-line { fill: none; stroke: var(--accent); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
 .goal-target { fill: none; stroke: var(--c, var(--success)); stroke-width: 1.6; stroke-dasharray: 2 5; stroke-linecap: round; vector-effect: non-scaling-stroke; }
-/* A/B/C tier colours, shared by the target lines and the legend dots */
-.c-orange { --c: var(--highlight); }
-.c-green  { --c: var(--success); }
-.c-blue   { --c: var(--info); }
+/* A/B/C goal-tier colours (semantic tokens), shared by the target lines and
+   their legend dots. Class names describe the tier, not the pixel colour. */
+.tier-a { --c: var(--highlight); }
+.tier-b { --c: var(--success); }
+.tier-c { --c: var(--info); }
 .goal-legend { display: flex; gap: 16px; flex-wrap: wrap; margin: 10px 4px 2px; }
 .goal-legend span { display: inline-flex; align-items: center; gap: 6px; font: 600 12px var(--font-mono); color: var(--text-muted); }
 .goal-leg-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--c, var(--success)); display: inline-block; }
