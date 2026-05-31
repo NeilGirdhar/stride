@@ -219,9 +219,18 @@ function drawGraph(root) {
   plotted = pts.map(p => ({ ...p, px: x(p.t), py: yKm(p.km) }));
   const dots = plotted.map(p => {
     const hl = p.id === highlightId;
+    const recordHl = hl && highlightedRecordKey;
     const shoeHl = highlightedShoeId && p.gearId === highlightedShoeId;
     const clubHl = highlightedClubId && p.club?.id === highlightedClubId;
-    return `<circle class="rg-dot${hl ? ' hl' : ''}${shoeHl ? ' shoe-hl' : ''}${clubHl ? ' club-hl' : ''}" cx="${p.px.toFixed(1)}" cy="${p.py.toFixed(1)}" r="3" />`;
+    const cls = `rg-dot${hl ? ' hl' : ''}${recordHl ? ' record-hl' : ''}${shoeHl ? ' shoe-hl' : ''}${clubHl ? ' club-hl' : ''}`;
+    const cx = p.px.toFixed(1);
+    const cy = p.py.toFixed(1);
+    if (!recordHl) return `<circle class="${cls}" cx="${cx}" cy="${cy}" r="3" />`;
+    return `<g class="rg-record-marker">
+      <circle class="rg-record-hit" cx="${cx}" cy="${cy}" r="18" />
+      <circle class="rg-record-halo" cx="${cx}" cy="${cy}" r="12" />
+      <circle class="${cls}" cx="${cx}" cy="${cy}" r="8" />
+    </g>`;
   }).join('');
 
   const yL = ticks(maxKm).map(km =>
@@ -363,23 +372,33 @@ function wirePointer(root) {
   const tip = root.querySelector('#rg-tip');
   if (!svg) return;
 
-  const nearest = (clientX) => {
+  const nearest = (clientX, clientY) => {
     const rect = svg.getBoundingClientRect();
     const vx = (clientX - rect.left) * (curW / rect.width);
+    const vy = (clientY - rect.top) * (curH / rect.height);
+
+    if (highlightedRecordKey && highlightId) {
+      const highlighted = plotted.find(p => p.id === highlightId);
+      if (highlighted) {
+        const dx = highlighted.px - vx;
+        const dy = highlighted.py - vy;
+        if (Math.hypot(dx, dy) <= 20) return { p: highlighted, rect };
+      }
+    }
+
     let best = null, bd = Infinity;
     for (const p of plotted) {
-      const d = Math.abs(p.px - vx);
+      const d = Math.hypot(p.px - vx, p.py - vy);
       if (d < bd) { bd = d; best = p; }
     }
-    return bd <= 22 ? { p: best, rect } : null;
+    return bd <= 14 ? { p: best, rect } : null;
   };
 
   svg.addEventListener('mousemove', e => {
-    const hit = nearest(e.clientX);
+    const hit = nearest(e.clientX, e.clientY);
     if (!hit) { tip.hidden = true; return; }
     const { p, rect } = hit;
-    tip.style.left = `${p.px * (rect.width / curW)}px`;
-    tip.style.top = `${p.py * (rect.height / curH)}px`;
+    placeTip(tip, p, rect);
     tip.innerHTML = `
       <div class="rg-tip-name">${esc(p.name)}</div>
       <div class="rg-tip-row"><b>${p.km.toFixed(2)} km</b> · ${fmtDate(p.t)}</div>
@@ -388,9 +407,28 @@ function wirePointer(root) {
   });
   svg.addEventListener('mouseleave', () => { tip.hidden = true; });
   svg.addEventListener('click', e => {
-    const hit = nearest(e.clientX);
+    const hit = nearest(e.clientX, e.clientY);
     if (hit) openRun(hit.p);
   });
+}
+
+function placeTip(tip, p, rect) {
+  const sx = rect.width / curW;
+  const sy = rect.height / curH;
+  const left = p.px * sx;
+  const top = p.py * sy;
+
+  if (highlightedRecordKey && p.id === highlightId) {
+    const roomRight = rect.width - left;
+    tip.style.left = `${left + (roomRight > 260 ? 26 : -26)}px`;
+    tip.style.top = `${top}px`;
+    tip.style.transform = roomRight > 260 ? 'translate(0, -50%)' : 'translate(-100%, -50%)';
+    return;
+  }
+
+  tip.style.left = `${left}px`;
+  tip.style.top = `${top}px`;
+  tip.style.transform = 'translate(-50%, calc(-100% - 12px))';
 }
 
 // ---- run detail overlay ----

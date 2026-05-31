@@ -42,6 +42,16 @@ svg.rg { width: 100%; height: auto; display: block; overflow: visible; }
 .rg-dot.shoe-hl,
 .rg-dot.club-hl,
 .rg-dot.hl { fill: var(--emphasis); fill-opacity: 1; }
+.rg-dot.shoe-hl:hover,
+.rg-dot.club-hl:hover,
+.rg-dot.hl:hover { fill: var(--text); }
+.rg-dot.record-hl { stroke: var(--bg); stroke-width: 2; }
+.rg-record-marker { cursor: pointer; }
+.rg-record-hit { fill: transparent; pointer-events: all; }
+.rg-record-halo {
+  fill: var(--emphasis); fill-opacity: 0.16;
+  stroke: var(--emphasis); stroke-opacity: 0.72; stroke-width: 1.5;
+}
 .rg-ylab  { fill: var(--text-muted); font: 500 11px var(--font-mono); text-anchor: end; }
 .rg-ylab.rg-wk { fill: var(--info); text-anchor: start; }
 .rg-xlab  { fill: var(--text-muted); font: 500 11px var(--font-mono); text-anchor: middle; }
