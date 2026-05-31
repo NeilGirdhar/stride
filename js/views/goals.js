@@ -24,6 +24,7 @@ import { timeAxisLabels } from "../lib/time-axis.js";
 const ACTS_URL = "./data/imported/strava-activities.json";
 const DETAILS_URL = "./data/imported/strava-run-details.json";
 const RACE_MODEL_URL = "./data/generated/race-model.json";
+const DURABILITY_MODEL_URL = "./data/generated/durability-model.json";
 const MARATHON_GOAL_URL = "./data/entered/marathon-goal.json";
 const RECORDS_URL = "./data/generated/records.json";
 const TRAINING_CONFIG_URL = "./data/entered/training-config.json";
@@ -36,6 +37,7 @@ const HIGH_ZONE3_HR_MAX = 165;
 let RUNS = null;
 let DETAILS = {};
 let RACE_MODEL = null;
+let DURABILITY_MODEL = null;
 let GOAL = null;
 let RECORDS = {};
 let RANGE_START = null;
@@ -69,18 +71,28 @@ export async function renderGoals() {
   if (RUNS === null) {
     root.innerHTML = `<div class="hero"><div class="date">Loading…</div></div>`;
     try {
-      const [acts, details, raceModel, goal, records, trainingConfig] =
-        await Promise.all([
-          fetchJSON(ACTS_URL),
-          fetchJSON(DETAILS_URL).catch(() => ({})),
-          fetchJSON(RACE_MODEL_URL).catch(() => null),
-          fetchJSON(MARATHON_GOAL_URL),
-          fetchJSON(RECORDS_URL).catch(() => ({})),
-          fetchJSON(TRAINING_CONFIG_URL).catch(() => null),
-        ]);
+      const [
+        acts,
+        details,
+        raceModel,
+        durabilityModel,
+        goal,
+        records,
+        trainingConfig,
+      ] = await Promise.all([
+        fetchJSON(ACTS_URL),
+        fetchJSON(DETAILS_URL).catch(() => ({})),
+        fetchJSON(RACE_MODEL_URL).catch(() => null),
+        fetchJSON(DURABILITY_MODEL_URL).catch(() => null),
+        fetchJSON(MARATHON_GOAL_URL),
+        fetchJSON(RECORDS_URL).catch(() => ({})),
+        fetchJSON(TRAINING_CONFIG_URL).catch(() => null),
+      ]);
       loadGoal(goal);
       DETAILS = details || {};
       RACE_MODEL = raceModel;
+      DURABILITY_MODEL = durabilityModel;
+      addGeneratedSections();
       RECORDS = records || {};
       SERIOUS_START = trainingConfig?.serious_start
         ? parseLocalDate(trainingConfig.serious_start)
@@ -163,12 +175,6 @@ export async function renderGoals() {
 const FOCUS_MSG = {
   volume: (pct) =>
     `<b>Load tolerance</b> is your biggest gap (~${pct}% under target). Add easy km — raise weekly volume before piling on intensity.`,
-  durability: (pct) =>
-    `<b>Long-run durability</b> is lagging (~${pct}% under). Get a longer long run in this week — and repeat it, don't rely on one.`,
-  mp: (pct) =>
-    `<b>Marathon-pace control</b> is the gap (~${pct}% under). Put a ${paceLabel(MP_SEC)} block inside your next long run.`,
-  fitness: (pct) =>
-    `<b>Race fitness</b> is behind (~${pct}% off pace). Do a threshold session or a short time trial to move it.`,
   recovery: (pct) =>
     `<b>Aerobic efficiency</b> is slipping (~${pct}% off). Keep easy runs steady in high zone 2.`,
   aerobic_power: (pct) =>
@@ -515,6 +521,28 @@ function anaerobicPower(runs, grid) {
   );
 }
 
+function caeDurability() {
+  const series = (DURABILITY_MODEL?.series || [])
+    .map((point) => ({
+      t: parseLocalDate(point.date),
+      v: Number(point.cae_90),
+    }))
+    .filter((point) => Number.isFinite(point.t) && Number.isFinite(point.v))
+    .sort((a, b) => a.t - b.t);
+  const current = Number(DURABILITY_MODEL?.summary?.durability_cae_90);
+  if (Number.isFinite(current) && !series.length) {
+    return [{ t: Math.min(Date.now(), MARATHON), v: current }];
+  }
+  if (
+    Number.isFinite(current) &&
+    series.length &&
+    series[series.length - 1].t < Date.now() - DAY
+  ) {
+    series.push({ t: Math.min(Date.now(), MARATHON), v: current });
+  }
+  return series;
+}
+
 function aerobicMetric(runs, grid, valueFor, fallbackPredicate) {
   const easy = runs.filter((r) => valueFor(r) != null || fallbackPredicate(r));
   return gaussianObservationLine(
@@ -584,6 +612,7 @@ function formatterFor(id) {
   if (id === "race") return hms;
   if (id === "fitness") return clock;
   if (id === "anaerobic_power") return speedPaceLabel;
+  if (id === "cae_durability") return (v) => `${v.toFixed(0)} CAE`;
   if (id === "volume") return (v) => `${v.toFixed(0)} km/wk`;
   if (id === "recovery" || id === "aerobic_power")
     return (v) => `${v.toFixed(2)} m/beat`;
@@ -596,6 +625,7 @@ function computeFor(section) {
   if (section.compute === "recovery_efficiency") return recoveryEff;
   if (section.compute === "aerobic_power") return aerobicPower;
   if (section.compute === "anaerobic_power") return anaerobicPower;
+  if (section.compute === "cae_durability") return caeDurability;
   if (section.compute === "ewma_marathon_pace") {
     return (runs, grid) => ewmaRate(runs, grid, section.tau_days, mpKm);
   }
@@ -611,6 +641,29 @@ function computeFor(section) {
   }
   return (runs, grid) =>
     ewmaRate(runs, grid, section.tau_days, (run) => run.km);
+}
+
+function addGeneratedSections() {
+  if (!DURABILITY_MODEL?.summary) return;
+  const section = buildSection({
+    id: "cae_durability",
+    label: "Durability",
+    unit: "How much cumulative active exertion you can absorb before grade-adjusted metres per heartbeat drops by 10%.",
+    higher_better: true,
+    compute: "cae_durability",
+    targets: [],
+  });
+  const existing = SECTIONS.findIndex((s) => s.id === section.id);
+  if (existing >= 0) {
+    SECTIONS[existing] = section;
+    return;
+  }
+  const volumeIndex = SECTIONS.findIndex((s) => s.id === "volume");
+  SECTIONS.splice(
+    volumeIndex >= 0 ? volumeIndex + 1 : SECTIONS.length,
+    0,
+    section,
+  );
 }
 
 function buildTarget(target, sectionId) {

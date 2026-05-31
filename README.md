@@ -70,6 +70,7 @@ Key files:
 uv run stride-sync sync            # new activities + recompute summary
 uv run stride-sync sync --full     # ignore checkpoint, refetch all
 uv run stride-sync details         # backfill shoes + best-effort PRs (resumable)
+uv run stride-durability-model     # build stream-based durability metric
 ```
 
 The first `sync` does a full history pull; later runs are incremental. Re-run
@@ -84,6 +85,7 @@ rebuild the JSON after syncing Strava or editing race labels:
 ```sh
 uv run stride-sync sync
 uv run stride-race-model
+uv run stride-durability-model
 ```
 
 Race labels live in `data/entered/races.json`. Add only true performance labels

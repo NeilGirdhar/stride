@@ -27,6 +27,7 @@ dependencies = [
 ]
 
 [project.scripts]
+stride-durability-model = "stride.durability_model:main"
 stride-race-model = "stride.race_model:main"
 stride-sync = "stride.sync_strava:main"
 
