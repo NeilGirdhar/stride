@@ -3180,7 +3180,8 @@
     "average_watts": 241.6,
     "weighted_average_watts": 244,
     "suffer_score": 114.0,
-    "achievement_count": 6
+    "achievement_count": 6,
+    "gear_id": "g18527526"
   },
   {
     "id": 11892518333,
@@ -3201,7 +3202,8 @@
     "average_watts": 253.4,
     "weighted_average_watts": 249,
     "suffer_score": 83.0,
-    "achievement_count": 4
+    "achievement_count": 4,
+    "gear_id": "g18527526"
   },
   {
     "id": 11898410622,
@@ -3241,7 +3243,8 @@
     "average_watts": 246.7,
     "weighted_average_watts": 245,
     "suffer_score": 108.0,
-    "achievement_count": 4
+    "achievement_count": 4,
+    "gear_id": "g18527526"
   },
   {
     "id": 11917878724,
@@ -3262,7 +3265,8 @@
     "average_watts": 265.4,
     "weighted_average_watts": 256,
     "suffer_score": 29.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g18527526"
   },
   {
     "id": 11926338066,
@@ -3283,7 +3287,8 @@
     "average_watts": 249.1,
     "weighted_average_watts": 246,
     "suffer_score": 68.0,
-    "achievement_count": 10
+    "achievement_count": 10,
+    "gear_id": "g18527526"
   },
   {
     "id": 11945826906,
@@ -3323,11 +3328,12 @@
     "average_watts": 252.5,
     "weighted_average_watts": 242,
     "suffer_score": 28.0,
-    "achievement_count": 7
+    "achievement_count": 7,
+    "gear_id": "g18527526"
   },
   {
     "id": 11967801048,
-    "name": "6am Laurier East",
+    "name": "6am Laurier Est",
     "sport_type": "Run",
     "type": "Run",
     "start_date": "2024-07-24T10:03:58Z",
@@ -3344,7 +3350,8 @@
     "average_watts": 260.0,
     "weighted_average_watts": 252,
     "suffer_score": 38.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g18527526"
   },
   {
     "id": 11972850654,
@@ -3365,7 +3372,8 @@
     "average_watts": 185.1,
     "weighted_average_watts": 192,
     "suffer_score": 38.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g18527526"
   },
   {
     "id": 11989323766,
@@ -3386,7 +3394,8 @@
     "average_watts": 256.7,
     "weighted_average_watts": 267,
     "suffer_score": 35.0,
-    "achievement_count": 9
+    "achievement_count": 9,
+    "gear_id": "g18527526"
   },
   {
     "id": 11989323981,
@@ -3445,7 +3454,8 @@
     "average_watts": 212.0,
     "weighted_average_watts": 225,
     "suffer_score": 54.0,
-    "achievement_count": 2
+    "achievement_count": 2,
+    "gear_id": "g18527526"
   },
   {
     "id": 12008914517,
@@ -3466,7 +3476,8 @@
     "average_watts": 265.5,
     "weighted_average_watts": 260,
     "suffer_score": 79.0,
-    "achievement_count": 10
+    "achievement_count": 10,
+    "gear_id": "g18527526"
   },
   {
     "id": 12017288694,
@@ -3487,7 +3498,8 @@
     "average_watts": 282.8,
     "weighted_average_watts": 266,
     "suffer_score": 76.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g18527526"
   },
   {
     "id": 12034456394,
@@ -3508,7 +3520,8 @@
     "average_watts": 280.1,
     "weighted_average_watts": 267,
     "suffer_score": 74.0,
-    "achievement_count": 2
+    "achievement_count": 2,
+    "gear_id": "g18527526"
   },
   {
     "id": 12044939282,
@@ -3529,7 +3542,8 @@
     "average_watts": 300.9,
     "weighted_average_watts": 283,
     "suffer_score": 83.0,
-    "achievement_count": 2
+    "achievement_count": 2,
+    "gear_id": "g18527526"
   },
   {
     "id": 12052416601,
@@ -3550,7 +3564,8 @@
     "average_watts": 236.8,
     "weighted_average_watts": 217,
     "suffer_score": 70.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g18527526"
   },
   {
     "id": 12053796087,
@@ -3590,7 +3605,8 @@
     "average_watts": 269.7,
     "weighted_average_watts": 261,
     "suffer_score": 56.0,
-    "achievement_count": 6
+    "achievement_count": 6,
+    "gear_id": "g18527526"
   },
   {
     "id": 12086010462,
@@ -3611,7 +3627,8 @@
     "average_watts": 263.5,
     "weighted_average_watts": 262,
     "suffer_score": 54.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g18527526"
   },
   {
     "id": 12119818401,
@@ -3632,7 +3649,8 @@
     "average_watts": 274.4,
     "weighted_average_watts": 287,
     "suffer_score": 101.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g18527526"
   },
   {
     "id": 12144316421,
@@ -3653,7 +3671,8 @@
     "average_watts": 261.0,
     "weighted_average_watts": 257,
     "suffer_score": 65.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g18527526"
   },
   {
     "id": 12185928208,
@@ -3674,7 +3693,8 @@
     "average_watts": 274.0,
     "weighted_average_watts": 262,
     "suffer_score": 56.0,
-    "achievement_count": 3
+    "achievement_count": 3,
+    "gear_id": "g18527526"
   },
   {
     "id": 12194433915,
@@ -3695,7 +3715,8 @@
     "average_watts": 271.5,
     "weighted_average_watts": 260,
     "suffer_score": 61.0,
-    "achievement_count": 2
+    "achievement_count": 2,
+    "gear_id": "g18527526"
   },
   {
     "id": 12212255535,
@@ -3716,7 +3737,8 @@
     "average_watts": 272.8,
     "weighted_average_watts": 263,
     "suffer_score": 52.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g18527526"
   },
   {
     "id": 12220693371,
@@ -3737,7 +3759,8 @@
     "average_watts": 291.1,
     "weighted_average_watts": 285,
     "suffer_score": 98.0,
-    "achievement_count": 6
+    "achievement_count": 6,
+    "gear_id": "g18527526"
   },
   {
     "id": 12244730541,
@@ -3777,7 +3800,8 @@
     "average_watts": 269.5,
     "weighted_average_watts": 247,
     "suffer_score": 66.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g18527526"
   },
   {
     "id": 12262958240,
@@ -3798,7 +3822,8 @@
     "average_watts": 274.3,
     "weighted_average_watts": 266,
     "suffer_score": 64.0,
-    "achievement_count": 3
+    "achievement_count": 3,
+    "gear_id": "g18527526"
   },
   {
     "id": 12280066194,
@@ -3819,7 +3844,8 @@
     "average_watts": 291.0,
     "weighted_average_watts": 274,
     "suffer_score": 33.0,
-    "achievement_count": 2
+    "achievement_count": 2,
+    "gear_id": "g18527526"
   },
   {
     "id": 12304935977,
@@ -3840,7 +3866,8 @@
     "average_watts": 293.6,
     "weighted_average_watts": 281,
     "suffer_score": 76.0,
-    "achievement_count": 8
+    "achievement_count": 8,
+    "gear_id": "g18527526"
   },
   {
     "id": 12322611310,
@@ -3861,7 +3888,8 @@
     "average_watts": 273.9,
     "weighted_average_watts": 274,
     "suffer_score": 45.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g18527526"
   },
   {
     "id": 12322781136,
@@ -3876,7 +3904,8 @@
     "total_elevation_gain": 18.8,
     "average_speed": 2.776,
     "max_speed": 9.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g18527526"
   },
   {
     "id": 12331462321,
@@ -3897,7 +3926,8 @@
     "average_watts": 284.7,
     "weighted_average_watts": 274,
     "suffer_score": 78.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g18527526"
   },
   {
     "id": 12339807861,
@@ -3918,7 +3948,8 @@
     "average_watts": 279.2,
     "weighted_average_watts": 274,
     "suffer_score": 67.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g18527526"
   },
   {
     "id": 12417799602,
@@ -3939,7 +3970,8 @@
     "average_watts": 288.4,
     "weighted_average_watts": 289,
     "suffer_score": 182.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g18527526"
   },
   {
     "id": 12437293900,
@@ -3954,7 +3986,8 @@
     "total_elevation_gain": 23.4,
     "average_speed": 2.447,
     "max_speed": 4.594,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g19578325"
   },
   {
     "id": 12449129845,
@@ -3975,7 +4008,8 @@
     "average_watts": 267.7,
     "weighted_average_watts": 258,
     "suffer_score": 64.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g19578325"
   },
   {
     "id": 12470543161,
@@ -3996,7 +4030,8 @@
     "average_watts": 266.6,
     "weighted_average_watts": 260,
     "suffer_score": 75.0,
-    "achievement_count": 2
+    "achievement_count": 2,
+    "gear_id": "g19578325"
   },
   {
     "id": 12499350025,
@@ -4017,7 +4052,8 @@
     "average_watts": 272.6,
     "weighted_average_watts": 265,
     "suffer_score": 55.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g19578325"
   },
   {
     "id": 12507323621,
@@ -4038,7 +4074,8 @@
     "average_watts": 333.2,
     "weighted_average_watts": 328,
     "suffer_score": 118.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g19578325"
   },
   {
     "id": 12524171266,
@@ -4059,7 +4096,8 @@
     "average_watts": 263.4,
     "weighted_average_watts": 241,
     "suffer_score": 89.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g19578325"
   },
   {
     "id": 12534394689,
@@ -4080,7 +4118,8 @@
     "average_watts": 229.7,
     "weighted_average_watts": 240,
     "suffer_score": 102.0,
-    "achievement_count": 6
+    "achievement_count": 6,
+    "gear_id": "g19578325"
   },
   {
     "id": 12538785420,
@@ -4101,7 +4140,8 @@
     "average_watts": 280.9,
     "weighted_average_watts": 271,
     "suffer_score": 60.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g19578325"
   },
   {
     "id": 12555241344,
@@ -4122,7 +4162,8 @@
     "average_watts": 286.4,
     "weighted_average_watts": 279,
     "suffer_score": 44.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g19578325"
   },
   {
     "id": 12563624485,
@@ -4143,7 +4184,8 @@
     "average_watts": 282.7,
     "weighted_average_watts": 273,
     "suffer_score": 26.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g19578325"
   },
   {
     "id": 12590639809,
@@ -4164,7 +4206,8 @@
     "average_watts": 320.2,
     "weighted_average_watts": 320,
     "suffer_score": 78.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g19578325"
   },
   {
     "id": 12612575439,
@@ -4185,7 +4228,8 @@
     "average_watts": 286.0,
     "weighted_average_watts": 283,
     "suffer_score": 56.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g19578325"
   },
   {
     "id": 12617485409,
@@ -4206,7 +4250,8 @@
     "average_watts": 280.3,
     "weighted_average_watts": 275,
     "suffer_score": 36.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g19578325"
   },
   {
     "id": 12620355334,
@@ -4227,7 +4272,8 @@
     "average_watts": 285.7,
     "weighted_average_watts": 274,
     "suffer_score": 26.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g19578325"
   },
   {
     "id": 12638349543,
@@ -4248,7 +4294,8 @@
     "average_watts": 299.7,
     "weighted_average_watts": 310,
     "suffer_score": 74.0,
-    "achievement_count": 15
+    "achievement_count": 15,
+    "gear_id": "g19578325"
   },
   {
     "id": 12651987048,
@@ -4269,7 +4316,8 @@
     "average_watts": 285.8,
     "weighted_average_watts": 278,
     "suffer_score": 95.0,
-    "achievement_count": 9
+    "achievement_count": 9,
+    "gear_id": "g19578325"
   },
   {
     "id": 12668540257,
@@ -4290,7 +4338,8 @@
     "average_watts": 291.2,
     "weighted_average_watts": 281,
     "suffer_score": 78.0,
-    "achievement_count": 3
+    "achievement_count": 3,
+    "gear_id": "g19578325"
   },
   {
     "id": 12684376246,
@@ -4311,7 +4360,8 @@
     "average_watts": 302.1,
     "weighted_average_watts": 289,
     "suffer_score": 112.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g19578325"
   },
   {
     "id": 12694067665,
@@ -4332,7 +4382,8 @@
     "average_watts": 295.5,
     "weighted_average_watts": 298,
     "suffer_score": 135.0,
-    "achievement_count": 22
+    "achievement_count": 22,
+    "gear_id": "g19578325"
   },
   {
     "id": 12707461883,
@@ -4350,7 +4401,8 @@
     "average_cadence": 78.7,
     "average_watts": 285.7,
     "weighted_average_watts": 268,
-    "achievement_count": 6
+    "achievement_count": 6,
+    "gear_id": "g19578325"
   },
   {
     "id": 12712691366,
@@ -4371,7 +4423,8 @@
     "average_watts": 311.3,
     "weighted_average_watts": 294,
     "suffer_score": 76.0,
-    "achievement_count": 5
+    "achievement_count": 5,
+    "gear_id": "g19578325"
   },
   {
     "id": 12724191474,
@@ -4392,7 +4445,8 @@
     "average_watts": 291.3,
     "weighted_average_watts": 289,
     "suffer_score": 52.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g19578325"
   },
   {
     "id": 12729774756,
@@ -4413,7 +4467,8 @@
     "average_watts": 318.2,
     "weighted_average_watts": 319,
     "suffer_score": 14.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g19578325"
   },
   {
     "id": 12763901703,
@@ -4434,7 +4489,8 @@
     "average_watts": 281.1,
     "weighted_average_watts": 267,
     "suffer_score": 35.0,
-    "achievement_count": 8
+    "achievement_count": 8,
+    "gear_id": "g19578325"
   },
   {
     "id": 12780197978,
@@ -4455,7 +4511,8 @@
     "average_watts": 273.3,
     "weighted_average_watts": 271,
     "suffer_score": 34.0,
-    "achievement_count": 2
+    "achievement_count": 2,
+    "gear_id": "g19578325"
   },
   {
     "id": 12785642014,
@@ -4476,7 +4533,8 @@
     "average_watts": 369.9,
     "weighted_average_watts": 373,
     "suffer_score": 46.0,
-    "achievement_count": 24
+    "achievement_count": 24,
+    "gear_id": "g19578325"
   },
   {
     "id": 12795684957,
@@ -4497,7 +4555,8 @@
     "average_watts": 299.1,
     "weighted_average_watts": 284,
     "suffer_score": 82.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g19578325"
   },
   {
     "id": 12827686070,
@@ -4518,7 +4577,8 @@
     "average_watts": 279.5,
     "weighted_average_watts": 268,
     "suffer_score": 17.0,
-    "achievement_count": 2
+    "achievement_count": 2,
+    "gear_id": "g19578325"
   },
   {
     "id": 12835904754,
@@ -4539,7 +4599,8 @@
     "average_watts": 292.1,
     "weighted_average_watts": 301,
     "suffer_score": 106.0,
-    "achievement_count": 2
+    "achievement_count": 2,
+    "gear_id": "g19578325"
   },
   {
     "id": 12848608580,
@@ -4560,7 +4621,8 @@
     "average_watts": 361.3,
     "weighted_average_watts": 360,
     "suffer_score": 89.0,
-    "achievement_count": 18
+    "achievement_count": 18,
+    "gear_id": "g19578325"
   },
   {
     "id": 12874534842,
@@ -4581,7 +4643,8 @@
     "average_watts": 284.1,
     "weighted_average_watts": 271,
     "suffer_score": 27.0,
-    "achievement_count": 3
+    "achievement_count": 3,
+    "gear_id": "g19578325"
   },
   {
     "id": 12890511992,
@@ -4602,7 +4665,8 @@
     "average_watts": 294.4,
     "weighted_average_watts": 291,
     "suffer_score": 52.0,
-    "achievement_count": 3
+    "achievement_count": 3,
+    "gear_id": "g19578325"
   },
   {
     "id": 12902865617,
@@ -4623,7 +4687,8 @@
     "average_watts": 336.7,
     "weighted_average_watts": 343,
     "suffer_score": 68.0,
-    "achievement_count": 19
+    "achievement_count": 19,
+    "gear_id": "g19578325"
   },
   {
     "id": 12917103153,
@@ -4644,7 +4709,8 @@
     "average_watts": 238.8,
     "weighted_average_watts": 241,
     "suffer_score": 95.0,
-    "achievement_count": 3
+    "achievement_count": 3,
+    "gear_id": "g19578325"
   },
   {
     "id": 12928226052,
@@ -4665,7 +4731,8 @@
     "average_watts": 300.8,
     "weighted_average_watts": 280,
     "suffer_score": 37.0,
-    "achievement_count": 4
+    "achievement_count": 4,
+    "gear_id": "g19578325"
   },
   {
     "id": 12943102683,
@@ -4686,7 +4753,8 @@
     "average_watts": 295.5,
     "weighted_average_watts": 287,
     "suffer_score": 43.0,
-    "achievement_count": 2
+    "achievement_count": 2,
+    "gear_id": "g19578325"
   },
   {
     "id": 12950664101,
@@ -4707,7 +4775,8 @@
     "average_watts": 282.7,
     "weighted_average_watts": 273,
     "suffer_score": 77.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g18527526"
   },
   {
     "id": 12978984568,
@@ -4728,7 +4797,8 @@
     "average_watts": 296.8,
     "weighted_average_watts": 280,
     "suffer_score": 24.0,
-    "achievement_count": 4
+    "achievement_count": 4,
+    "gear_id": "g18527526"
   },
   {
     "id": 12994017153,
@@ -4749,7 +4819,8 @@
     "average_watts": 288.4,
     "weighted_average_watts": 286,
     "suffer_score": 57.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g19578325"
   },
   {
     "id": 13001454858,
@@ -4770,7 +4841,8 @@
     "average_watts": 284.5,
     "weighted_average_watts": 275,
     "suffer_score": 76.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g19578325"
   },
   {
     "id": 13016263635,
@@ -4791,7 +4863,8 @@
     "average_watts": 372.4,
     "weighted_average_watts": 373,
     "suffer_score": 28.0,
-    "achievement_count": 13
+    "achievement_count": 13,
+    "gear_id": "g18527526"
   },
   {
     "id": 13029565376,
@@ -4812,7 +4885,8 @@
     "average_watts": 288.8,
     "weighted_average_watts": 267,
     "suffer_score": 42.0,
-    "achievement_count": 6
+    "achievement_count": 6,
+    "gear_id": "g19578325"
   },
   {
     "id": 13044333108,
@@ -4833,7 +4907,8 @@
     "average_watts": 284.6,
     "weighted_average_watts": 283,
     "suffer_score": 39.0,
-    "achievement_count": 2
+    "achievement_count": 2,
+    "gear_id": "g19578325"
   },
   {
     "id": 13066239693,
@@ -4854,7 +4929,8 @@
     "average_watts": 290.8,
     "weighted_average_watts": 269,
     "suffer_score": 25.0,
-    "achievement_count": 2
+    "achievement_count": 2,
+    "gear_id": "g19578325"
   },
   {
     "id": 13078054740,
@@ -4875,7 +4951,8 @@
     "average_watts": 282.1,
     "weighted_average_watts": 263,
     "suffer_score": 21.0,
-    "achievement_count": 2
+    "achievement_count": 2,
+    "gear_id": "g19578325"
   },
   {
     "id": 13099694209,
@@ -4896,7 +4973,8 @@
     "average_watts": 275.1,
     "weighted_average_watts": 273,
     "suffer_score": 89.0,
-    "achievement_count": 9
+    "achievement_count": 9,
+    "gear_id": "g19578325"
   },
   {
     "id": 13114138669,
@@ -4917,7 +4995,8 @@
     "average_watts": 289.8,
     "weighted_average_watts": 292,
     "suffer_score": 24.0,
-    "achievement_count": 13
+    "achievement_count": 13,
+    "gear_id": "g19578325"
   },
   {
     "id": 13124193627,
@@ -4956,7 +5035,8 @@
     "average_watts": 264.4,
     "weighted_average_watts": 251,
     "suffer_score": 19.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g19578325"
   },
   {
     "id": 13148390805,
@@ -4977,7 +5057,8 @@
     "average_watts": 296.1,
     "weighted_average_watts": 286,
     "suffer_score": 57.0,
-    "achievement_count": 5
+    "achievement_count": 5,
+    "gear_id": "g19578325"
   },
   {
     "id": 13162787968,
@@ -4998,7 +5079,8 @@
     "average_watts": 309.2,
     "weighted_average_watts": 310,
     "suffer_score": 99.0,
-    "achievement_count": 28
+    "achievement_count": 28,
+    "gear_id": "g19578325"
   },
   {
     "id": 13163090899,
@@ -5019,7 +5101,8 @@
     "average_watts": 277.6,
     "weighted_average_watts": 278,
     "suffer_score": 4.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g19578325"
   },
   {
     "id": 13195052625,
@@ -5058,7 +5141,8 @@
     "average_watts": 271.7,
     "weighted_average_watts": 284,
     "suffer_score": 74.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g19578325"
   },
   {
     "id": 13254584930,
@@ -5097,7 +5181,8 @@
     "average_watts": 281.0,
     "weighted_average_watts": 258,
     "suffer_score": 37.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g19578325"
   },
   {
     "id": 13289825215,
@@ -5136,7 +5221,8 @@
     "average_watts": 278.9,
     "weighted_average_watts": 271,
     "suffer_score": 62.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g19578325"
   },
   {
     "id": 13307393640,
@@ -5157,7 +5243,8 @@
     "average_watts": 267.4,
     "weighted_average_watts": 254,
     "suffer_score": 83.0,
-    "achievement_count": 7
+    "achievement_count": 7,
+    "gear_id": "g19578325"
   },
   {
     "id": 13326875221,
@@ -5178,7 +5265,8 @@
     "average_watts": 261.5,
     "weighted_average_watts": 272,
     "suffer_score": 84.0,
-    "achievement_count": 9
+    "achievement_count": 9,
+    "gear_id": "g19578325"
   },
   {
     "id": 13333913681,
@@ -5199,7 +5287,8 @@
     "average_watts": 183.8,
     "weighted_average_watts": 266,
     "suffer_score": 45.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g18527526"
   },
   {
     "id": 13342152856,
@@ -5220,7 +5309,8 @@
     "average_watts": 267.4,
     "weighted_average_watts": 248,
     "suffer_score": 51.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g19578325"
   },
   {
     "id": 13360470551,
@@ -5241,7 +5331,8 @@
     "average_watts": 279.6,
     "weighted_average_watts": 271,
     "suffer_score": 79.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g19578325"
   },
   {
     "id": 13369869437,
@@ -5262,7 +5353,8 @@
     "average_watts": 277.1,
     "weighted_average_watts": 264,
     "suffer_score": 80.0,
-    "achievement_count": 3
+    "achievement_count": 3,
+    "gear_id": "g19578325"
   },
   {
     "id": 13389668867,
@@ -5283,7 +5375,8 @@
     "average_watts": 285.0,
     "weighted_average_watts": 289,
     "suffer_score": 126.0,
-    "achievement_count": 14
+    "achievement_count": 14,
+    "gear_id": "g19578325"
   },
   {
     "id": 13391178471,
@@ -5322,7 +5415,8 @@
     "average_watts": 267.0,
     "weighted_average_watts": 268,
     "suffer_score": 105.0,
-    "achievement_count": 6
+    "achievement_count": 6,
+    "gear_id": "g21409049"
   },
   {
     "id": 13450994075,
@@ -5343,7 +5437,8 @@
     "average_watts": 286.6,
     "weighted_average_watts": 289,
     "suffer_score": 86.0,
-    "achievement_count": 32
+    "achievement_count": 32,
+    "gear_id": "g21409049"
   },
   {
     "id": 13465257524,
@@ -5364,7 +5459,8 @@
     "average_watts": 290.6,
     "weighted_average_watts": 278,
     "suffer_score": 13.0,
-    "achievement_count": 5
+    "achievement_count": 5,
+    "gear_id": "g21409049"
   },
   {
     "id": 13478786336,
@@ -5400,7 +5496,8 @@
     "average_watts": 249.4,
     "weighted_average_watts": 250,
     "suffer_score": 52.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g21409049"
   },
   {
     "id": 13511662520,
@@ -5421,7 +5518,8 @@
     "average_watts": 331.3,
     "weighted_average_watts": 332,
     "suffer_score": 161.0,
-    "achievement_count": 52
+    "achievement_count": 52,
+    "gear_id": "g21409049"
   },
   {
     "id": 13512555164,
@@ -5442,7 +5540,8 @@
     "average_watts": 234.1,
     "weighted_average_watts": 249,
     "suffer_score": 9.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g21409049"
   },
   {
     "id": 13542212570,
@@ -5482,7 +5581,8 @@
     "average_watts": 288.9,
     "weighted_average_watts": 281,
     "suffer_score": 32.0,
-    "achievement_count": 2
+    "achievement_count": 2,
+    "gear_id": "g21409049"
   },
   {
     "id": 13575123061,
@@ -5503,7 +5603,8 @@
     "average_watts": 273.1,
     "weighted_average_watts": 271,
     "suffer_score": 286.0,
-    "achievement_count": 12
+    "achievement_count": 12,
+    "gear_id": "g21409049"
   },
   {
     "id": 13589467595,
@@ -5524,7 +5625,8 @@
     "average_watts": 267.7,
     "weighted_average_watts": 264,
     "suffer_score": 17.0,
-    "achievement_count": 2
+    "achievement_count": 2,
+    "gear_id": "g21409049"
   },
   {
     "id": 13604408509,
@@ -5563,7 +5665,8 @@
     "average_watts": 280.2,
     "weighted_average_watts": 278,
     "suffer_score": 24.0,
-    "achievement_count": 2
+    "achievement_count": 2,
+    "gear_id": "g21409049"
   },
   {
     "id": 13635357353,
@@ -5584,7 +5687,8 @@
     "average_watts": 246.6,
     "weighted_average_watts": 282,
     "suffer_score": 144.0,
-    "achievement_count": 20
+    "achievement_count": 20,
+    "gear_id": "g21409049"
   },
   {
     "id": 13708457562,
@@ -5624,7 +5728,8 @@
     "average_watts": 278.0,
     "weighted_average_watts": 269,
     "suffer_score": 32.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g21409049"
   },
   {
     "id": 13736932082,
@@ -5682,7 +5787,8 @@
     "average_watts": 213.5,
     "weighted_average_watts": 246,
     "suffer_score": 21.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g19578325"
   },
   {
     "id": 13776178940,
@@ -5703,7 +5809,8 @@
     "average_watts": 265.3,
     "weighted_average_watts": 252,
     "suffer_score": 36.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g21409049"
   },
   {
     "id": 13794831650,
@@ -5724,7 +5831,8 @@
     "average_watts": 278.1,
     "weighted_average_watts": 274,
     "suffer_score": 93.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g21409049"
   },
   {
     "id": 13804710943,
@@ -5745,7 +5853,8 @@
     "average_watts": 316.3,
     "weighted_average_watts": 300,
     "suffer_score": 154.0,
-    "achievement_count": 21
+    "achievement_count": 21,
+    "gear_id": "g21409049"
   },
   {
     "id": 13825370216,
@@ -5766,7 +5875,8 @@
     "average_watts": 287.8,
     "weighted_average_watts": 293,
     "suffer_score": 143.0,
-    "achievement_count": 3
+    "achievement_count": 3,
+    "gear_id": "g21409049"
   },
   {
     "id": 13826208117,
@@ -5787,7 +5897,8 @@
     "average_watts": 240.3,
     "weighted_average_watts": 242,
     "suffer_score": 16.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g21409049"
   },
   {
     "id": 13828171410,
@@ -5827,7 +5938,8 @@
     "average_watts": 274.8,
     "weighted_average_watts": 261,
     "suffer_score": 60.0,
-    "achievement_count": 3
+    "achievement_count": 3,
+    "gear_id": "g21409049"
   },
   {
     "id": 13845639300,
@@ -5866,7 +5978,8 @@
     "average_watts": 299.4,
     "weighted_average_watts": 282,
     "suffer_score": 85.0,
-    "achievement_count": 5
+    "achievement_count": 5,
+    "gear_id": "g21409049"
   },
   {
     "id": 13876365996,
@@ -5905,7 +6018,8 @@
     "average_watts": 336.9,
     "weighted_average_watts": 337,
     "suffer_score": 65.0,
-    "achievement_count": 40
+    "achievement_count": 40,
+    "gear_id": "g19578325"
   },
   {
     "id": 13892673783,
@@ -5926,7 +6040,8 @@
     "average_watts": 285.9,
     "weighted_average_watts": 263,
     "suffer_score": 97.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g21409049"
   },
   {
     "id": 13905804013,
@@ -5947,7 +6062,8 @@
     "average_watts": 288.9,
     "weighted_average_watts": 269,
     "suffer_score": 14.0,
-    "achievement_count": 3
+    "achievement_count": 3,
+    "gear_id": "g19578325"
   },
   {
     "id": 13924743390,
@@ -5968,7 +6084,8 @@
     "average_watts": 286.3,
     "weighted_average_watts": 283,
     "suffer_score": 28.0,
-    "achievement_count": 2
+    "achievement_count": 2,
+    "gear_id": "g19578325"
   },
   {
     "id": 13928501431,
@@ -6007,7 +6124,8 @@
     "average_watts": 272.6,
     "weighted_average_watts": 272,
     "suffer_score": 51.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g19578325"
   },
   {
     "id": 13955631198,
@@ -6028,7 +6146,8 @@
     "average_watts": 319.5,
     "weighted_average_watts": 327,
     "suffer_score": 117.0,
-    "achievement_count": 20
+    "achievement_count": 20,
+    "gear_id": "g19578325"
   },
   {
     "id": 13956019845,
@@ -6049,7 +6168,8 @@
     "average_watts": 261.5,
     "weighted_average_watts": 253,
     "suffer_score": 20.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g19578325"
   },
   {
     "id": 13971520906,
@@ -6070,7 +6190,8 @@
     "average_watts": 272.3,
     "weighted_average_watts": 260,
     "suffer_score": 38.0,
-    "achievement_count": 3
+    "achievement_count": 3,
+    "gear_id": "g19578325"
   },
   {
     "id": 13990881161,
@@ -6091,7 +6212,8 @@
     "average_watts": 285.3,
     "weighted_average_watts": 283,
     "suffer_score": 57.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g19578325"
   },
   {
     "id": 14001104971,
@@ -6112,7 +6234,8 @@
     "average_watts": 267.0,
     "weighted_average_watts": 267,
     "suffer_score": 46.0,
-    "achievement_count": 2
+    "achievement_count": 2,
+    "gear_id": "g19578325"
   },
   {
     "id": 14022185374,
@@ -6133,7 +6256,8 @@
     "average_watts": 297.6,
     "weighted_average_watts": 299,
     "suffer_score": 103.0,
-    "achievement_count": 7
+    "achievement_count": 7,
+    "gear_id": "g19578325"
   },
   {
     "id": 14037172350,
@@ -6154,7 +6278,8 @@
     "average_watts": 292.0,
     "weighted_average_watts": 273,
     "suffer_score": 51.0,
-    "achievement_count": 2
+    "achievement_count": 2,
+    "gear_id": "g19578325"
   },
   {
     "id": 14057519108,
@@ -6175,7 +6300,8 @@
     "average_watts": 288.2,
     "weighted_average_watts": 278,
     "suffer_score": 34.0,
-    "achievement_count": 3
+    "achievement_count": 3,
+    "gear_id": "g19578325"
   },
   {
     "id": 14073359623,
@@ -6196,7 +6322,8 @@
     "average_watts": 318.1,
     "weighted_average_watts": 303,
     "suffer_score": 37.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g19578325"
   },
   {
     "id": 14089841092,
@@ -6217,7 +6344,8 @@
     "average_watts": 314.8,
     "weighted_average_watts": 317,
     "suffer_score": 102.0,
-    "achievement_count": 31
+    "achievement_count": 31,
+    "gear_id": "g19578325"
   },
   {
     "id": 14090953942,
@@ -6256,7 +6384,8 @@
     "average_watts": 276.7,
     "weighted_average_watts": 258,
     "suffer_score": 12.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g19578325"
   },
   {
     "id": 14131900084,
@@ -6277,7 +6406,8 @@
     "average_watts": 355.8,
     "weighted_average_watts": 357,
     "suffer_score": 17.0,
-    "achievement_count": 13
+    "achievement_count": 13,
+    "gear_id": "g19578325"
   },
   {
     "id": 14157915575,
@@ -6298,7 +6428,8 @@
     "average_watts": 331.9,
     "weighted_average_watts": 325,
     "suffer_score": 155.0,
-    "achievement_count": 44
+    "achievement_count": 44,
+    "gear_id": "g19578325"
   },
   {
     "id": 14173544412,
@@ -6319,7 +6450,8 @@
     "average_watts": 287.9,
     "weighted_average_watts": 265,
     "suffer_score": 9.0,
-    "achievement_count": 2
+    "achievement_count": 2,
+    "gear_id": "g19578325"
   },
   {
     "id": 14192568922,
@@ -6340,7 +6472,8 @@
     "average_watts": 285.2,
     "weighted_average_watts": 281,
     "suffer_score": 17.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g19578325"
   },
   {
     "id": 14227145604,
@@ -6380,7 +6513,8 @@
     "average_watts": 290.4,
     "weighted_average_watts": 276,
     "suffer_score": 35.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g19578325"
   },
   {
     "id": 14245571191,
@@ -6399,7 +6533,8 @@
     "max_heartrate": 150.0,
     "average_watts": 47.6,
     "suffer_score": 22.0,
-    "achievement_count": 17
+    "achievement_count": 17,
+    "gear_id": "b15479444"
   },
   {
     "id": 14260924903,
@@ -6420,7 +6555,8 @@
     "average_watts": 287.1,
     "weighted_average_watts": 274,
     "suffer_score": 22.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g19578325"
   },
   {
     "id": 14270989488,
@@ -6441,7 +6577,8 @@
     "average_watts": 290.7,
     "weighted_average_watts": 277,
     "suffer_score": 26.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g19578325"
   },
   {
     "id": 14291864922,
@@ -6462,7 +6599,8 @@
     "average_watts": 318.8,
     "weighted_average_watts": 319,
     "suffer_score": 298.0,
-    "achievement_count": 3
+    "achievement_count": 3,
+    "gear_id": "g19578325"
   },
   {
     "id": 14310646061,
@@ -6483,7 +6621,8 @@
     "average_watts": 281.8,
     "weighted_average_watts": 256,
     "suffer_score": 12.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g19578325"
   },
   {
     "id": 14331729357,
@@ -6504,7 +6643,8 @@
     "average_watts": 306.4,
     "weighted_average_watts": 289,
     "suffer_score": 32.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g19578325"
   },
   {
     "id": 14343784366,
@@ -6525,7 +6665,8 @@
     "average_watts": 302.2,
     "weighted_average_watts": 286,
     "suffer_score": 114.0,
-    "achievement_count": 3
+    "achievement_count": 3,
+    "gear_id": "g19578325"
   },
   {
     "id": 14365442874,
@@ -6546,7 +6687,8 @@
     "average_watts": 344.4,
     "weighted_average_watts": 342,
     "suffer_score": 46.0,
-    "achievement_count": 5
+    "achievement_count": 5,
+    "gear_id": "g18527526"
   },
   {
     "id": 14380002790,
@@ -6567,7 +6709,8 @@
     "average_watts": 277.5,
     "weighted_average_watts": 279,
     "suffer_score": 14.0,
-    "achievement_count": 2
+    "achievement_count": 2,
+    "gear_id": "g19578325"
   },
   {
     "id": 14383993833,
@@ -6588,7 +6731,8 @@
     "average_watts": 277.0,
     "weighted_average_watts": 255,
     "suffer_score": 17.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g19578325"
   },
   {
     "id": 14403670969,
@@ -6609,7 +6753,8 @@
     "average_watts": 262.7,
     "weighted_average_watts": 260,
     "suffer_score": 26.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g19578325"
   },
   {
     "id": 14420868552,
@@ -6686,7 +6831,8 @@
     "average_watts": 287.8,
     "weighted_average_watts": 262,
     "suffer_score": 27.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g19578325"
   },
   {
     "id": 14476301356,
@@ -6707,7 +6853,8 @@
     "average_watts": 278.2,
     "weighted_average_watts": 270,
     "suffer_score": 64.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g19578325"
   },
   {
     "id": 14483581532,
@@ -6728,7 +6875,8 @@
     "average_watts": 360.4,
     "weighted_average_watts": 359,
     "suffer_score": 11.0,
-    "achievement_count": 6
+    "achievement_count": 6,
+    "gear_id": "g19578325"
   },
   {
     "id": 14497059131,
@@ -6749,7 +6897,8 @@
     "average_watts": 292.5,
     "weighted_average_watts": 282,
     "suffer_score": 57.0,
-    "achievement_count": 8
+    "achievement_count": 8,
+    "gear_id": "g19578325"
   },
   {
     "id": 14510120872,
@@ -6770,7 +6919,8 @@
     "average_watts": 312.4,
     "weighted_average_watts": 309,
     "suffer_score": 117.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g19578325"
   },
   {
     "id": 14528075790,
@@ -6791,7 +6941,8 @@
     "average_watts": 287.7,
     "weighted_average_watts": 266,
     "suffer_score": 28.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g19578325"
   },
   {
     "id": 14548935298,
@@ -6812,7 +6963,8 @@
     "average_watts": 278.0,
     "weighted_average_watts": 276,
     "suffer_score": 17.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g19578325"
   },
   {
     "id": 14568366615,
@@ -6833,7 +6985,8 @@
     "average_watts": 328.2,
     "weighted_average_watts": 304,
     "suffer_score": 14.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g19578325"
   },
   {
     "id": 14569132233,
@@ -6854,7 +7007,8 @@
     "average_watts": 297.1,
     "weighted_average_watts": 279,
     "suffer_score": 41.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g19578325"
   },
   {
     "id": 14599358209,
@@ -6875,7 +7029,8 @@
     "average_watts": 282.2,
     "weighted_average_watts": 259,
     "suffer_score": 18.0,
-    "achievement_count": 4
+    "achievement_count": 4,
+    "gear_id": "g19578325"
   },
   {
     "id": 14619700720,
@@ -6896,7 +7051,8 @@
     "average_watts": 293.8,
     "weighted_average_watts": 273,
     "suffer_score": 47.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g19578325"
   },
   {
     "id": 14630182314,
@@ -6917,7 +7073,8 @@
     "average_watts": 291.7,
     "weighted_average_watts": 280,
     "suffer_score": 89.0,
-    "achievement_count": 2
+    "achievement_count": 2,
+    "gear_id": "g19578325"
   },
   {
     "id": 14640445922,
@@ -6938,7 +7095,8 @@
     "average_watts": 299.0,
     "weighted_average_watts": 283,
     "suffer_score": 68.0,
-    "achievement_count": 5
+    "achievement_count": 5,
+    "gear_id": "g19578325"
   },
   {
     "id": 14653623161,
@@ -6959,7 +7117,8 @@
     "average_watts": 280.9,
     "weighted_average_watts": 294,
     "suffer_score": 50.0,
-    "achievement_count": 2
+    "achievement_count": 2,
+    "gear_id": "g19578325"
   },
   {
     "id": 14667344867,
@@ -6999,7 +7158,8 @@
     "average_watts": 296.4,
     "weighted_average_watts": 271,
     "suffer_score": 24.0,
-    "achievement_count": 6
+    "achievement_count": 6,
+    "gear_id": "g18527526"
   },
   {
     "id": 14693050098,
@@ -7020,7 +7180,8 @@
     "average_watts": 290.4,
     "weighted_average_watts": 270,
     "suffer_score": 29.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g18527526"
   },
   {
     "id": 14703473967,
@@ -7041,7 +7202,8 @@
     "average_watts": 293.6,
     "weighted_average_watts": 278,
     "suffer_score": 80.0,
-    "achievement_count": 2
+    "achievement_count": 2,
+    "gear_id": "g19578325"
   },
   {
     "id": 14713376497,
@@ -7062,7 +7224,8 @@
     "average_watts": 294.5,
     "weighted_average_watts": 287,
     "suffer_score": 47.0,
-    "achievement_count": 2
+    "achievement_count": 2,
+    "gear_id": "g19578325"
   },
   {
     "id": 14716875098,
@@ -7078,7 +7241,8 @@
     "average_speed": 4.662,
     "max_speed": 9.34,
     "average_watts": 61.3,
-    "achievement_count": 14
+    "achievement_count": 14,
+    "gear_id": "b15479444"
   },
   {
     "id": 14728393571,
@@ -7134,7 +7298,8 @@
     "average_speed": 5.318,
     "max_speed": 9.2,
     "average_watts": 69.5,
-    "achievement_count": 16
+    "achievement_count": 16,
+    "gear_id": "b15479444"
   },
   {
     "id": 14743392400,
@@ -7155,7 +7320,8 @@
     "average_watts": 286.8,
     "weighted_average_watts": 264,
     "suffer_score": 13.0,
-    "achievement_count": 2
+    "achievement_count": 2,
+    "gear_id": "g19578325"
   },
   {
     "id": 14764764806,
@@ -7176,7 +7342,8 @@
     "average_watts": 293.2,
     "weighted_average_watts": 270,
     "suffer_score": 23.0,
-    "achievement_count": 3
+    "achievement_count": 3,
+    "gear_id": "g19578325"
   },
   {
     "id": 14775689497,
@@ -7197,7 +7364,8 @@
     "average_watts": 294.9,
     "weighted_average_watts": 276,
     "suffer_score": 57.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g19578325"
   },
   {
     "id": 14781948164,
@@ -7216,7 +7384,8 @@
     "max_heartrate": 142.0,
     "average_watts": 64.4,
     "suffer_score": 16.0,
-    "achievement_count": 39
+    "achievement_count": 39,
+    "gear_id": "b15479444"
   },
   {
     "id": 14785339217,
@@ -7237,7 +7406,8 @@
     "average_watts": 292.2,
     "weighted_average_watts": 282,
     "suffer_score": 27.0,
-    "achievement_count": 4
+    "achievement_count": 4,
+    "gear_id": "g19578325"
   },
   {
     "id": 14798149612,
@@ -7258,7 +7428,8 @@
     "average_watts": 313.6,
     "weighted_average_watts": 326,
     "suffer_score": 146.0,
-    "achievement_count": 9
+    "achievement_count": 9,
+    "gear_id": "g19578325"
   },
   {
     "id": 14808679413,
@@ -7279,7 +7450,8 @@
     "average_watts": 321.3,
     "weighted_average_watts": 310,
     "suffer_score": 157.0,
-    "achievement_count": 13
+    "achievement_count": 13,
+    "gear_id": "g19578325"
   },
   {
     "id": 14815375648,
@@ -7300,7 +7472,8 @@
     "average_watts": 303.9,
     "weighted_average_watts": 277,
     "suffer_score": 24.0,
-    "achievement_count": 6
+    "achievement_count": 6,
+    "gear_id": "g18527526"
   },
   {
     "id": 14837834114,
@@ -7321,7 +7494,8 @@
     "average_watts": 289.3,
     "weighted_average_watts": 277,
     "suffer_score": 49.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g24148471"
   },
   {
     "id": 14848553556,
@@ -7342,7 +7516,8 @@
     "average_watts": 281.7,
     "weighted_average_watts": 274,
     "suffer_score": 84.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g24162579"
   },
   {
     "id": 14870366997,
@@ -7363,7 +7538,8 @@
     "average_watts": 284.2,
     "weighted_average_watts": 265,
     "suffer_score": 28.0,
-    "achievement_count": 3
+    "achievement_count": 3,
+    "gear_id": "g24162579"
   },
   {
     "id": 14874019016,
@@ -7403,7 +7579,8 @@
     "average_watts": 278.3,
     "weighted_average_watts": 274,
     "suffer_score": 53.0,
-    "achievement_count": 16
+    "achievement_count": 16,
+    "gear_id": "g24162579"
   },
   {
     "id": 14889662955,
@@ -7424,7 +7601,8 @@
     "average_watts": 279.9,
     "weighted_average_watts": 260,
     "suffer_score": 36.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g24162579"
   },
   {
     "id": 14910549213,
@@ -7445,7 +7623,8 @@
     "average_watts": 289.1,
     "weighted_average_watts": 275,
     "suffer_score": 46.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g24162579"
   },
   {
     "id": 14937981867,
@@ -7466,7 +7645,8 @@
     "average_watts": 317.3,
     "weighted_average_watts": 290,
     "suffer_score": 177.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g24162579"
   },
   {
     "id": 14956353754,
@@ -7487,7 +7667,8 @@
     "average_watts": 288.7,
     "weighted_average_watts": 276,
     "suffer_score": 130.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g24162579"
   },
   {
     "id": 14976664454,
@@ -7508,7 +7689,8 @@
     "average_watts": 330.4,
     "weighted_average_watts": 311,
     "suffer_score": 37.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g24162579"
   },
   {
     "id": 14980656652,
@@ -7529,7 +7711,8 @@
     "average_watts": 201.7,
     "weighted_average_watts": 230,
     "suffer_score": 81.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g24162579"
   },
   {
     "id": 15003259729,
@@ -7622,7 +7805,8 @@
     "average_watts": 240.6,
     "weighted_average_watts": 262,
     "suffer_score": 66.0,
-    "achievement_count": 2
+    "achievement_count": 2,
+    "gear_id": "g24162579"
   },
   {
     "id": 15141291716,
@@ -7643,7 +7827,8 @@
     "average_watts": 302.9,
     "weighted_average_watts": 296,
     "suffer_score": 55.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g24162579"
   },
   {
     "id": 15185956302,
@@ -7664,7 +7849,8 @@
     "average_watts": 285.6,
     "weighted_average_watts": 256,
     "suffer_score": 12.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g24162579"
   },
   {
     "id": 15208738302,
@@ -7685,7 +7871,8 @@
     "average_watts": 287.4,
     "weighted_average_watts": 268,
     "suffer_score": 21.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g24162579"
   },
   {
     "id": 15214325056,
@@ -7725,7 +7912,8 @@
     "average_watts": 287.7,
     "weighted_average_watts": 275,
     "suffer_score": 19.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g24162579"
   },
   {
     "id": 15226333749,
@@ -7746,7 +7934,8 @@
     "average_watts": 308.5,
     "weighted_average_watts": 295,
     "suffer_score": 80.0,
-    "achievement_count": 4
+    "achievement_count": 4,
+    "gear_id": "g24162579"
   },
   {
     "id": 15232663618,
@@ -7765,7 +7954,8 @@
     "max_heartrate": 168.0,
     "average_watts": 75.9,
     "suffer_score": 70.0,
-    "achievement_count": 45
+    "achievement_count": 45,
+    "gear_id": "b15479444"
   },
   {
     "id": 15307032329,
@@ -7786,7 +7976,8 @@
     "average_watts": 293.0,
     "weighted_average_watts": 281,
     "suffer_score": 46.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g24162579"
   },
   {
     "id": 15321738677,
@@ -7807,7 +7998,8 @@
     "average_watts": 314.2,
     "weighted_average_watts": 317,
     "suffer_score": 173.0,
-    "achievement_count": 9
+    "achievement_count": 9,
+    "gear_id": "g24162579"
   },
   {
     "id": 15339807469,
@@ -7828,7 +8020,8 @@
     "average_watts": 272.5,
     "weighted_average_watts": 248,
     "suffer_score": 17.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g24148471"
   },
   {
     "id": 15346351592,
@@ -7849,7 +8042,8 @@
     "average_watts": 287.7,
     "weighted_average_watts": 274,
     "suffer_score": 113.0,
-    "achievement_count": 3
+    "achievement_count": 3,
+    "gear_id": "g24162579"
   },
   {
     "id": 15362919643,
@@ -7870,7 +8064,8 @@
     "average_watts": 280.3,
     "weighted_average_watts": 279,
     "suffer_score": 23.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g24162579"
   },
   {
     "id": 15386372883,
@@ -7891,7 +8086,8 @@
     "average_watts": 296.3,
     "weighted_average_watts": 273,
     "suffer_score": 44.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g24162579"
   },
   {
     "id": 15412365665,
@@ -7912,7 +8108,8 @@
     "average_watts": 301.2,
     "weighted_average_watts": 313,
     "suffer_score": 176.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g24162579"
   },
   {
     "id": 15419496098,
@@ -7933,7 +8130,8 @@
     "average_watts": 276.8,
     "weighted_average_watts": 263,
     "suffer_score": 17.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g24162579"
   },
   {
     "id": 15443222288,
@@ -7954,7 +8152,8 @@
     "average_watts": 255.9,
     "weighted_average_watts": 252,
     "suffer_score": 27.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g24162579"
   },
   {
     "id": 15455322404,
@@ -7975,7 +8174,8 @@
     "average_watts": 287.9,
     "weighted_average_watts": 279,
     "suffer_score": 54.0,
-    "achievement_count": 2
+    "achievement_count": 2,
+    "gear_id": "g24162579"
   },
   {
     "id": 15467226235,
@@ -7994,7 +8194,8 @@
     "max_heartrate": 172.0,
     "average_watts": 106.5,
     "suffer_score": 59.0,
-    "achievement_count": 100
+    "achievement_count": 100,
+    "gear_id": "b15479444"
   },
   {
     "id": 15481139829,
@@ -8015,7 +8216,8 @@
     "average_watts": 279.1,
     "weighted_average_watts": 264,
     "suffer_score": 276.0,
-    "achievement_count": 12
+    "achievement_count": 12,
+    "gear_id": "g24162579"
   },
   {
     "id": 15500002253,
@@ -8036,7 +8238,8 @@
     "average_watts": 282.4,
     "weighted_average_watts": 256,
     "suffer_score": 62.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g24162579"
   },
   {
     "id": 15523421537,
@@ -8057,7 +8260,8 @@
     "average_watts": 294.0,
     "weighted_average_watts": 278,
     "suffer_score": 26.0,
-    "achievement_count": 2
+    "achievement_count": 2,
+    "gear_id": "g18527526"
   },
   {
     "id": 15535115878,
@@ -8078,7 +8282,8 @@
     "average_watts": 284.4,
     "weighted_average_watts": 273,
     "suffer_score": 101.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g24162579"
   },
   {
     "id": 15562178310,
@@ -8093,7 +8298,8 @@
     "total_elevation_gain": 154.1,
     "average_speed": 2.55,
     "max_speed": 4.417,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g24162579"
   },
   {
     "id": 15574828114,
@@ -8133,7 +8339,8 @@
     "average_watts": 283.3,
     "weighted_average_watts": 253,
     "suffer_score": 17.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g18527526"
   },
   {
     "id": 15586860585,
@@ -8152,7 +8359,8 @@
     "max_heartrate": 181.0,
     "average_watts": 111.5,
     "suffer_score": 98.0,
-    "achievement_count": 115
+    "achievement_count": 115,
+    "gear_id": "b15479444"
   },
   {
     "id": 15603387629,
@@ -8173,7 +8381,8 @@
     "average_watts": 295.0,
     "weighted_average_watts": 274,
     "suffer_score": 34.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g24148471"
   },
   {
     "id": 15614992279,
@@ -8194,7 +8403,8 @@
     "average_watts": 281.1,
     "weighted_average_watts": 267,
     "suffer_score": 60.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g24162579"
   },
   {
     "id": 15639261922,
@@ -8215,7 +8425,8 @@
     "average_watts": 317.1,
     "weighted_average_watts": 316,
     "suffer_score": 98.0,
-    "achievement_count": 13
+    "achievement_count": 13,
+    "gear_id": "g24162579"
   },
   {
     "id": 15653081581,
@@ -8255,7 +8466,8 @@
     "average_watts": 268.3,
     "weighted_average_watts": 250,
     "suffer_score": 9.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g24148471"
   },
   {
     "id": 15677382595,
@@ -8295,7 +8507,8 @@
     "average_watts": 285.1,
     "weighted_average_watts": 266,
     "suffer_score": 18.0,
-    "achievement_count": 5
+    "achievement_count": 5,
+    "gear_id": "g24162579"
   },
   {
     "id": 15693452392,
@@ -8316,7 +8529,8 @@
     "average_watts": 265.2,
     "weighted_average_watts": 260,
     "suffer_score": 37.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g24162579"
   },
   {
     "id": 15704230193,
@@ -8337,7 +8551,8 @@
     "average_watts": 298.1,
     "weighted_average_watts": 278,
     "suffer_score": 25.0,
-    "achievement_count": 3
+    "achievement_count": 3,
+    "gear_id": "g24162579"
   },
   {
     "id": 15718945593,
@@ -8358,7 +8573,8 @@
     "average_watts": 283.0,
     "weighted_average_watts": 269,
     "suffer_score": 194.0,
-    "achievement_count": 26
+    "achievement_count": 26,
+    "gear_id": "g25805243"
   },
   {
     "id": 15738834674,
@@ -8379,7 +8595,8 @@
     "average_watts": 275.1,
     "weighted_average_watts": 258,
     "suffer_score": 9.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g24162579"
   },
   {
     "id": 15757707656,
@@ -8400,7 +8617,8 @@
     "average_watts": 284.0,
     "weighted_average_watts": 297,
     "suffer_score": 56.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g24162579"
   },
   {
     "id": 15762612764,
@@ -8421,7 +8639,8 @@
     "average_watts": 265.1,
     "weighted_average_watts": 256,
     "suffer_score": 18.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g24162579"
   },
   {
     "id": 15773825660,
@@ -8442,7 +8661,8 @@
     "average_watts": 287.4,
     "weighted_average_watts": 269,
     "suffer_score": 8.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g24162579"
   },
   {
     "id": 15798183390,
@@ -8463,7 +8683,8 @@
     "average_watts": 270.2,
     "weighted_average_watts": 266,
     "suffer_score": 354.0,
-    "achievement_count": 11
+    "achievement_count": 11,
+    "gear_id": "g25805243"
   },
   {
     "id": 15818486736,
@@ -8484,11 +8705,12 @@
     "average_watts": 255.3,
     "weighted_average_watts": 247,
     "suffer_score": 13.0,
-    "achievement_count": 2
+    "achievement_count": 2,
+    "gear_id": "g24162579"
   },
   {
     "id": 15837246968,
-    "name": "Run & Sip",
+    "name": "Run & Sip #2",
     "sport_type": "Run",
     "type": "Run",
     "start_date": "2025-09-16T21:47:17Z",
@@ -8505,7 +8727,8 @@
     "average_watts": 284.0,
     "weighted_average_watts": 262,
     "suffer_score": 41.0,
-    "achievement_count": 9
+    "achievement_count": 9,
+    "gear_id": "g26014455"
   },
   {
     "id": 15841248523,
@@ -8526,7 +8749,8 @@
     "average_watts": 281.4,
     "weighted_average_watts": 259,
     "suffer_score": 26.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g24162579"
   },
   {
     "id": 15852832568,
@@ -8547,7 +8771,8 @@
     "average_watts": 280.8,
     "weighted_average_watts": 275,
     "suffer_score": 50.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g24162579"
   },
   {
     "id": 15859604470,
@@ -8568,7 +8793,8 @@
     "average_watts": 268.9,
     "weighted_average_watts": 252,
     "suffer_score": 16.0,
-    "achievement_count": 2
+    "achievement_count": 2,
+    "gear_id": "g24162579"
   },
   {
     "id": 15863561482,
@@ -8589,7 +8815,8 @@
     "average_watts": 297.5,
     "weighted_average_watts": 283,
     "suffer_score": 34.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g24162579"
   },
   {
     "id": 15888965889,
@@ -8610,7 +8837,8 @@
     "average_watts": 345.9,
     "weighted_average_watts": 347,
     "suffer_score": 351.0,
-    "achievement_count": 27
+    "achievement_count": 27,
+    "gear_id": "g26014455"
   },
   {
     "id": 15904103261,
@@ -8625,7 +8853,8 @@
     "total_elevation_gain": 32.4,
     "average_speed": 2.663,
     "max_speed": 5.38,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g24162579"
   },
   {
     "id": 15919505534,
@@ -8646,7 +8875,8 @@
     "average_watts": 279.5,
     "weighted_average_watts": 264,
     "suffer_score": 44.0,
-    "achievement_count": 4
+    "achievement_count": 4,
+    "gear_id": "g24162579"
   },
   {
     "id": 15930493090,
@@ -8667,7 +8897,8 @@
     "average_watts": 285.4,
     "weighted_average_watts": 279,
     "suffer_score": 19.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g24162579"
   },
   {
     "id": 15954918020,
@@ -8688,7 +8919,8 @@
     "average_watts": 305.6,
     "weighted_average_watts": 304,
     "suffer_score": 9.0,
-    "achievement_count": 4
+    "achievement_count": 4,
+    "gear_id": "g24162579"
   },
   {
     "id": 15973811608,
@@ -8709,7 +8941,8 @@
     "average_watts": 292.5,
     "weighted_average_watts": 265,
     "suffer_score": 15.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g24162579"
   },
   {
     "id": 15996633393,
@@ -8730,11 +8963,12 @@
     "average_watts": 270.7,
     "weighted_average_watts": 265,
     "suffer_score": 32.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g24162579"
   },
   {
     "id": 16003653912,
-    "name": "Run and sip",
+    "name": "Run & Sip #3",
     "sport_type": "Run",
     "type": "Run",
     "start_date": "2025-10-01T22:00:31Z",
@@ -8751,7 +8985,8 @@
     "average_watts": 282.4,
     "weighted_average_watts": 279,
     "suffer_score": 11.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g25805243"
   },
   {
     "id": 16014762700,
@@ -8766,7 +9001,8 @@
     "total_elevation_gain": 28.0,
     "average_speed": 2.671,
     "max_speed": 3.58,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g24162579"
   },
   {
     "id": 16044666433,
@@ -8787,7 +9023,8 @@
     "average_watts": 298.5,
     "weighted_average_watts": 307,
     "suffer_score": 696.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g26014455"
   },
   {
     "id": 16073002084,
@@ -8808,7 +9045,8 @@
     "average_watts": 240.2,
     "weighted_average_watts": 240,
     "suffer_score": 19.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g24162579"
   },
   {
     "id": 16083914630,
@@ -8829,7 +9067,8 @@
     "average_watts": 268.1,
     "weighted_average_watts": 264,
     "suffer_score": 8.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g25805243"
   },
   {
     "id": 16126291162,
@@ -8850,7 +9089,8 @@
     "average_watts": 288.3,
     "weighted_average_watts": 270,
     "suffer_score": 10.0,
-    "achievement_count": 3
+    "achievement_count": 3,
+    "gear_id": "g25805243"
   },
   {
     "id": 16128127319,
@@ -8871,7 +9111,8 @@
     "average_watts": 294.8,
     "weighted_average_watts": 283,
     "suffer_score": 15.0,
-    "achievement_count": 11
+    "achievement_count": 11,
+    "gear_id": "g25805243"
   },
   {
     "id": 16147873101,
@@ -8892,7 +9133,8 @@
     "average_watts": 285.5,
     "weighted_average_watts": 272,
     "suffer_score": 22.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g25805243"
   },
   {
     "id": 16159214616,
@@ -8913,7 +9155,8 @@
     "average_watts": 288.4,
     "weighted_average_watts": 275,
     "suffer_score": 57.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g25805243"
   },
   {
     "id": 16168648872,
@@ -8934,7 +9177,8 @@
     "average_watts": 314.1,
     "weighted_average_watts": 300,
     "suffer_score": 19.0,
-    "achievement_count": 2
+    "achievement_count": 2,
+    "gear_id": "g25805243"
   },
   {
     "id": 16169411594,
@@ -8955,7 +9199,8 @@
     "average_watts": 159.2,
     "weighted_average_watts": 190,
     "suffer_score": 4.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g25805243"
   },
   {
     "id": 16173716418,
@@ -8974,7 +9219,8 @@
     "max_heartrate": 158.0,
     "average_cadence": 55.5,
     "suffer_score": 66.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g21409049"
   },
   {
     "id": 16182993982,
@@ -8995,7 +9241,8 @@
     "average_watts": 268.1,
     "weighted_average_watts": 284,
     "suffer_score": 84.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g21409049"
   },
   {
     "id": 16193978744,
@@ -9035,7 +9282,8 @@
     "average_watts": 289.6,
     "weighted_average_watts": 273,
     "suffer_score": 16.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g25805243"
   },
   {
     "id": 16220976164,
@@ -9056,7 +9304,8 @@
     "average_watts": 300.0,
     "weighted_average_watts": 285,
     "suffer_score": 16.0,
-    "achievement_count": 3
+    "achievement_count": 3,
+    "gear_id": "g18527526"
   },
   {
     "id": 16243008714,
@@ -9077,7 +9326,8 @@
     "average_watts": 301.3,
     "weighted_average_watts": 288,
     "suffer_score": 40.0,
-    "achievement_count": 2
+    "achievement_count": 2,
+    "gear_id": "g18527526"
   },
   {
     "id": 16252563427,
@@ -9098,7 +9348,8 @@
     "average_watts": 276.3,
     "weighted_average_watts": 260,
     "suffer_score": 31.0,
-    "achievement_count": 3
+    "achievement_count": 3,
+    "gear_id": "g18527526"
   },
   {
     "id": 16266975341,
@@ -9138,7 +9389,8 @@
     "average_watts": 278.2,
     "weighted_average_watts": 256,
     "suffer_score": 10.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g25805243"
   },
   {
     "id": 16287420131,
@@ -9159,7 +9411,8 @@
     "average_watts": 297.8,
     "weighted_average_watts": 282,
     "suffer_score": 22.0,
-    "achievement_count": 2
+    "achievement_count": 2,
+    "gear_id": "g25805243"
   },
   {
     "id": 16291476301,
@@ -9180,7 +9433,8 @@
     "average_watts": 272.0,
     "weighted_average_watts": 264,
     "suffer_score": 19.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g18527526"
   },
   {
     "id": 16303636674,
@@ -9201,7 +9455,8 @@
     "average_watts": 289.4,
     "weighted_average_watts": 277,
     "suffer_score": 25.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g18527526"
   },
   {
     "id": 16310826797,
@@ -9216,7 +9471,8 @@
     "total_elevation_gain": 148.0,
     "average_speed": 2.648,
     "max_speed": 4.67,
-    "achievement_count": 3
+    "achievement_count": 3,
+    "gear_id": "g25805243"
   },
   {
     "id": 16340939789,
@@ -9237,7 +9493,8 @@
     "average_watts": 294.1,
     "weighted_average_watts": 261,
     "suffer_score": 7.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g25805243"
   },
   {
     "id": 16351249545,
@@ -9258,7 +9515,8 @@
     "average_watts": 299.5,
     "weighted_average_watts": 292,
     "suffer_score": 39.0,
-    "achievement_count": 3
+    "achievement_count": 3,
+    "gear_id": "g25805243"
   },
   {
     "id": 16362587235,
@@ -9279,7 +9537,8 @@
     "average_watts": 293.2,
     "weighted_average_watts": 289,
     "suffer_score": 44.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g25805243"
   },
   {
     "id": 16372719800,
@@ -9300,7 +9559,8 @@
     "average_watts": 308.6,
     "weighted_average_watts": 305,
     "suffer_score": 9.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g25805243"
   },
   {
     "id": 16383500401,
@@ -9321,11 +9581,12 @@
     "average_watts": 298.9,
     "weighted_average_watts": 276,
     "suffer_score": 50.0,
-    "achievement_count": 4
+    "achievement_count": 4,
+    "gear_id": "g25805243"
   },
   {
     "id": 16394878831,
-    "name": "Morning Run",
+    "name": "Zab caf\u00e9 x boutique endurance",
     "sport_type": "Run",
     "type": "Run",
     "start_date": "2025-11-08T13:24:41Z",
@@ -9342,7 +9603,8 @@
     "average_watts": 287.7,
     "weighted_average_watts": 270,
     "suffer_score": 18.0,
-    "achievement_count": 4
+    "achievement_count": 4,
+    "gear_id": "g25805243"
   },
   {
     "id": 16413624677,
@@ -9363,7 +9625,8 @@
     "average_watts": 259.9,
     "weighted_average_watts": 245,
     "suffer_score": 10.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g21409049"
   },
   {
     "id": 16423749123,
@@ -9384,7 +9647,8 @@
     "average_watts": 274.8,
     "weighted_average_watts": 260,
     "suffer_score": 36.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g21409049"
   },
   {
     "id": 16435142205,
@@ -9405,7 +9669,8 @@
     "average_watts": 261.9,
     "weighted_average_watts": 251,
     "suffer_score": 28.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g21409049"
   },
   {
     "id": 16445229235,
@@ -9426,7 +9691,8 @@
     "average_watts": 280.2,
     "weighted_average_watts": 272,
     "suffer_score": 33.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g21409049"
   },
   {
     "id": 16454941022,
@@ -9447,7 +9713,8 @@
     "average_watts": 262.8,
     "weighted_average_watts": 252,
     "suffer_score": 27.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g21409049"
   },
   {
     "id": 16460300658,
@@ -9508,7 +9775,8 @@
     "average_watts": 272.6,
     "weighted_average_watts": 253,
     "suffer_score": 20.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g21409049"
   },
   {
     "id": 16488822144,
@@ -9529,7 +9797,8 @@
     "average_watts": 252.0,
     "weighted_average_watts": 241,
     "suffer_score": 10.0,
-    "achievement_count": 3
+    "achievement_count": 3,
+    "gear_id": "g21409049"
   },
   {
     "id": 16493945689,
@@ -9550,7 +9819,8 @@
     "average_watts": 284.5,
     "weighted_average_watts": 271,
     "suffer_score": 39.0,
-    "achievement_count": 4
+    "achievement_count": 4,
+    "gear_id": "g21409049"
   },
   {
     "id": 16504535550,
@@ -9571,7 +9841,8 @@
     "average_watts": 276.4,
     "weighted_average_watts": 261,
     "suffer_score": 25.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g21409049"
   },
   {
     "id": 16514658840,
@@ -9592,7 +9863,8 @@
     "average_watts": 236.1,
     "weighted_average_watts": 242,
     "suffer_score": 31.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g21409049"
   },
   {
     "id": 16527790016,
@@ -9632,7 +9904,8 @@
     "average_watts": 319.5,
     "weighted_average_watts": 301,
     "suffer_score": 245.0,
-    "achievement_count": 17
+    "achievement_count": 17,
+    "gear_id": "g25805243"
   },
   {
     "id": 16545650413,
@@ -9671,7 +9944,8 @@
     "average_watts": 279.1,
     "weighted_average_watts": 251,
     "suffer_score": 9.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g25805243"
   },
   {
     "id": 16561267313,
@@ -9692,7 +9966,8 @@
     "average_watts": 301.4,
     "weighted_average_watts": 294,
     "suffer_score": 17.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g25805243"
   },
   {
     "id": 16571836904,
@@ -9713,7 +9988,8 @@
     "average_watts": 276.6,
     "weighted_average_watts": 271,
     "suffer_score": 34.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g21409049"
   },
   {
     "id": 16576219955,
@@ -9753,11 +10029,12 @@
     "average_watts": 288.4,
     "weighted_average_watts": 286,
     "suffer_score": 36.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g25805243"
   },
   {
     "id": 16601575168,
-    "name": "Morning Run",
+    "name": "The Great Mustache Run 2025: 1st edition",
     "sport_type": "Run",
     "type": "Run",
     "start_date": "2025-11-29T13:05:23Z",
@@ -9774,7 +10051,8 @@
     "average_watts": 266.3,
     "weighted_average_watts": 248,
     "suffer_score": 26.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g21409049"
   },
   {
     "id": 16618631990,
@@ -9795,7 +10073,8 @@
     "average_watts": 268.0,
     "weighted_average_watts": 252,
     "suffer_score": 17.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g21409049"
   },
   {
     "id": 16638067277,
@@ -9816,7 +10095,8 @@
     "average_watts": 266.9,
     "weighted_average_watts": 273,
     "suffer_score": 31.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g21409049"
   },
   {
     "id": 16647647710,
@@ -9837,7 +10117,8 @@
     "average_watts": 270.5,
     "weighted_average_watts": 262,
     "suffer_score": 23.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g21409049"
   },
   {
     "id": 16668353634,
@@ -9858,7 +10139,8 @@
     "average_watts": 289.4,
     "weighted_average_watts": 282,
     "suffer_score": 67.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g21409049"
   },
   {
     "id": 16671210834,
@@ -9897,7 +10179,8 @@
     "average_watts": 278.2,
     "weighted_average_watts": 261,
     "suffer_score": 14.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g21409049"
   },
   {
     "id": 16703275523,
@@ -9918,7 +10201,8 @@
     "average_watts": 266.1,
     "weighted_average_watts": 252,
     "suffer_score": 40.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g21409049"
   },
   {
     "id": 16707642737,
@@ -9958,7 +10242,8 @@
     "average_watts": 283.5,
     "weighted_average_watts": 266,
     "suffer_score": 32.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g21409049"
   },
   {
     "id": 16757286315,
@@ -9979,7 +10264,8 @@
     "average_watts": 279.6,
     "weighted_average_watts": 273,
     "suffer_score": 43.0,
-    "achievement_count": 3
+    "achievement_count": 3,
+    "gear_id": "g21409049"
   },
   {
     "id": 16767078744,
@@ -10000,7 +10286,8 @@
     "average_watts": 276.9,
     "weighted_average_watts": 264,
     "suffer_score": 59.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g21409049"
   },
   {
     "id": 16776104642,
@@ -10021,7 +10308,8 @@
     "average_watts": 291.9,
     "weighted_average_watts": 276,
     "suffer_score": 54.0,
-    "achievement_count": 3
+    "achievement_count": 3,
+    "gear_id": "g21409049"
   },
   {
     "id": 16784443194,
@@ -10042,7 +10330,8 @@
     "average_watts": 294.8,
     "weighted_average_watts": 277,
     "suffer_score": 45.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g21409049"
   },
   {
     "id": 16795649117,
@@ -10063,7 +10352,8 @@
     "average_watts": 294.2,
     "weighted_average_watts": 294,
     "suffer_score": 98.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g21409049"
   },
   {
     "id": 16803821148,
@@ -10103,7 +10393,8 @@
     "average_watts": 287.8,
     "weighted_average_watts": 269,
     "suffer_score": 10.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g21409049"
   },
   {
     "id": 16869536607,
@@ -10143,7 +10434,8 @@
     "average_watts": 293.5,
     "weighted_average_watts": 295,
     "suffer_score": 76.0,
-    "achievement_count": 3
+    "achievement_count": 3,
+    "gear_id": "g21409049"
   },
   {
     "id": 16913071259,
@@ -10164,7 +10456,8 @@
     "average_watts": 253.4,
     "weighted_average_watts": 260,
     "suffer_score": 80.0,
-    "achievement_count": 3
+    "achievement_count": 3,
+    "gear_id": "g21409049"
   },
   {
     "id": 16916156145,
@@ -10204,7 +10497,8 @@
     "average_watts": 263.5,
     "weighted_average_watts": 248,
     "suffer_score": 9.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g21409049"
   },
   {
     "id": 16936932032,
@@ -10225,7 +10519,8 @@
     "average_watts": 246.4,
     "weighted_average_watts": 220,
     "suffer_score": 40.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g21409049"
   },
   {
     "id": 16937711888,
@@ -10246,7 +10541,8 @@
     "average_watts": 266.1,
     "weighted_average_watts": 267,
     "suffer_score": 22.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g21409049"
   },
   {
     "id": 16944938336,
@@ -10267,7 +10563,8 @@
     "average_watts": 265.7,
     "weighted_average_watts": 240,
     "suffer_score": 17.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g21409049"
   },
   {
     "id": 16967858746,
@@ -10288,7 +10585,8 @@
     "average_watts": 229.6,
     "weighted_average_watts": 225,
     "suffer_score": 18.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g21409049"
   },
   {
     "id": 16989360090,
@@ -10309,7 +10607,8 @@
     "average_watts": 270.4,
     "weighted_average_watts": 259,
     "suffer_score": 36.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g21409049"
   },
   {
     "id": 16993795245,
@@ -10349,7 +10648,8 @@
     "average_watts": 284.3,
     "weighted_average_watts": 260,
     "suffer_score": 49.0,
-    "achievement_count": 7
+    "achievement_count": 7,
+    "gear_id": "g21409049"
   },
   {
     "id": 17004180755,
@@ -10370,7 +10670,8 @@
     "average_watts": 264.5,
     "weighted_average_watts": 265,
     "suffer_score": 17.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g21409049"
   },
   {
     "id": 17015735079,
@@ -10410,7 +10711,8 @@
     "average_watts": 273.3,
     "weighted_average_watts": 259,
     "suffer_score": 10.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g21409049"
   },
   {
     "id": 17046117832,
@@ -10431,7 +10733,8 @@
     "average_watts": 246.6,
     "weighted_average_watts": 242,
     "suffer_score": 19.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g21409049"
   },
   {
     "id": 17057597522,
@@ -10452,7 +10755,8 @@
     "average_watts": 277.8,
     "weighted_average_watts": 270,
     "suffer_score": 43.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g21409049"
   },
   {
     "id": 17069154178,
@@ -10473,7 +10777,8 @@
     "average_watts": 244.0,
     "weighted_average_watts": 242,
     "suffer_score": 47.0,
-    "achievement_count": 4
+    "achievement_count": 4,
+    "gear_id": "g21409049"
   },
   {
     "id": 17073091462,
@@ -10513,7 +10818,8 @@
     "average_watts": 256.7,
     "weighted_average_watts": 244,
     "suffer_score": 26.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g21409049"
   },
   {
     "id": 17126963266,
@@ -10534,7 +10840,8 @@
     "average_watts": 265.4,
     "weighted_average_watts": 255,
     "suffer_score": 20.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g21409049"
   },
   {
     "id": 17138446190,
@@ -10555,7 +10862,8 @@
     "average_watts": 263.6,
     "weighted_average_watts": 253,
     "suffer_score": 48.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g21409049"
   },
   {
     "id": 17149520512,
@@ -10576,7 +10884,8 @@
     "average_watts": 245.5,
     "weighted_average_watts": 247,
     "suffer_score": 73.0,
-    "achievement_count": 2
+    "achievement_count": 2,
+    "gear_id": "g21409049"
   },
   {
     "id": 17153062547,
@@ -10616,7 +10925,8 @@
     "average_watts": 235.8,
     "weighted_average_watts": 217,
     "suffer_score": 10.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g21409049"
   },
   {
     "id": 17188596040,
@@ -10655,7 +10965,8 @@
     "average_watts": 245.3,
     "weighted_average_watts": 233,
     "suffer_score": 28.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g21409049"
   },
   {
     "id": 17216324969,
@@ -10676,7 +10987,8 @@
     "average_watts": 248.2,
     "weighted_average_watts": 245,
     "suffer_score": 40.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g21409049"
   },
   {
     "id": 17226764433,
@@ -10697,7 +11009,8 @@
     "average_watts": 268.6,
     "weighted_average_watts": 261,
     "suffer_score": 28.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g21409049"
   },
   {
     "id": 17259687456,
@@ -10718,7 +11031,8 @@
     "average_watts": 273.0,
     "weighted_average_watts": 256,
     "suffer_score": 23.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g21409049"
   },
   {
     "id": 17261990246,
@@ -10758,7 +11072,8 @@
     "average_watts": 251.6,
     "weighted_average_watts": 241,
     "suffer_score": 87.0,
-    "achievement_count": 2
+    "achievement_count": 2,
+    "gear_id": "g21409049"
   },
   {
     "id": 17309858271,
@@ -10798,7 +11113,8 @@
     "average_watts": 265.6,
     "weighted_average_watts": 268,
     "suffer_score": 58.0,
-    "achievement_count": 54
+    "achievement_count": 54,
+    "gear_id": "g21409049"
   },
   {
     "id": 17341188162,
@@ -11163,7 +11479,8 @@
     "average_watts": 278.7,
     "weighted_average_watts": 253,
     "suffer_score": 14.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g21409049"
   },
   {
     "id": 17600107847,
@@ -11184,7 +11501,8 @@
     "average_watts": 270.5,
     "weighted_average_watts": 259,
     "suffer_score": 21.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g21409049"
   },
   {
     "id": 17613212559,
@@ -11205,7 +11523,8 @@
     "average_watts": 281.3,
     "weighted_average_watts": 270,
     "suffer_score": 63.0,
-    "achievement_count": 2
+    "achievement_count": 2,
+    "gear_id": "g21409049"
   },
   {
     "id": 17617275763,
@@ -11245,7 +11564,8 @@
     "average_watts": 265.3,
     "weighted_average_watts": 254,
     "suffer_score": 97.0,
-    "achievement_count": 6
+    "achievement_count": 6,
+    "gear_id": "g21409049"
   },
   {
     "id": 17628684325,
@@ -11281,7 +11601,8 @@
     "average_watts": 274.9,
     "weighted_average_watts": 258,
     "suffer_score": 36.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g21409049"
   },
   {
     "id": 17684017260,
@@ -11302,7 +11623,8 @@
     "average_watts": 263.1,
     "weighted_average_watts": 256,
     "suffer_score": 36.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g21409049"
   },
   {
     "id": 17692423756,
@@ -11342,7 +11664,8 @@
     "average_watts": 281.9,
     "weighted_average_watts": 256,
     "suffer_score": 36.0,
-    "achievement_count": 3
+    "achievement_count": 3,
+    "gear_id": "g21409049"
   },
   {
     "id": 17721843383,
@@ -11363,7 +11686,8 @@
     "average_watts": 278.3,
     "weighted_average_watts": 280,
     "suffer_score": 45.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g21409049"
   },
   {
     "id": 17741474545,
@@ -11384,7 +11708,8 @@
     "average_watts": 266.0,
     "weighted_average_watts": 259,
     "suffer_score": 43.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g21409049"
   },
   {
     "id": 17765397297,
@@ -11405,7 +11730,8 @@
     "average_watts": 264.9,
     "weighted_average_watts": 262,
     "suffer_score": 20.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g21409049"
   },
   {
     "id": 17778304192,
@@ -11444,7 +11770,8 @@
     "average_watts": 262.4,
     "weighted_average_watts": 254,
     "suffer_score": 72.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g21409049"
   },
   {
     "id": 17808897911,
@@ -11484,7 +11811,8 @@
     "average_watts": 243.7,
     "weighted_average_watts": 241,
     "suffer_score": 74.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g21409049"
   },
   {
     "id": 17826584211,
@@ -11505,7 +11833,8 @@
     "average_watts": 266.8,
     "weighted_average_watts": 249,
     "suffer_score": 17.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g21409049"
   },
   {
     "id": 17839899047,
@@ -11526,7 +11855,8 @@
     "average_watts": 266.0,
     "weighted_average_watts": 262,
     "suffer_score": 53.0,
-    "achievement_count": 3
+    "achievement_count": 3,
+    "gear_id": "g21409049"
   },
   {
     "id": 17852388582,
@@ -11547,7 +11877,8 @@
     "average_watts": 263.1,
     "weighted_average_watts": 252,
     "suffer_score": 42.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g21409049"
   },
   {
     "id": 17911424771,
@@ -11568,7 +11899,8 @@
     "average_watts": 270.9,
     "weighted_average_watts": 247,
     "suffer_score": 16.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g21409049"
   },
   {
     "id": 17936700871,
@@ -11589,7 +11921,8 @@
     "average_watts": 265.0,
     "weighted_average_watts": 249,
     "suffer_score": 23.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g21409049"
   },
   {
     "id": 17948681381,
@@ -11610,7 +11943,8 @@
     "average_watts": 286.6,
     "weighted_average_watts": 272,
     "suffer_score": 44.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g21409049"
   },
   {
     "id": 17961015947,
@@ -11631,11 +11965,12 @@
     "average_watts": 287.7,
     "weighted_average_watts": 279,
     "suffer_score": 70.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g21409049"
   },
   {
     "id": 17977643954,
-    "name": "First long run of 2026!",
+    "name": "First long run of 2026!  (Cos\u00e9)",
     "sport_type": "Run",
     "type": "Run",
     "start_date": "2026-04-04T12:25:13Z",
@@ -11652,7 +11987,8 @@
     "average_watts": 273.7,
     "weighted_average_watts": 262,
     "suffer_score": 176.0,
-    "achievement_count": 9
+    "achievement_count": 9,
+    "gear_id": "g21409049"
   },
   {
     "id": 17998752203,
@@ -11673,7 +12009,8 @@
     "average_watts": 276.3,
     "weighted_average_watts": 259,
     "suffer_score": 11.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g21409049"
   },
   {
     "id": 18026369397,
@@ -11694,7 +12031,8 @@
     "average_watts": 271.8,
     "weighted_average_watts": 254,
     "suffer_score": 33.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g21409049"
   },
   {
     "id": 18040356046,
@@ -11715,7 +12053,8 @@
     "average_watts": 261.6,
     "weighted_average_watts": 258,
     "suffer_score": 88.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g21409049"
   },
   {
     "id": 18052788019,
@@ -11736,7 +12075,8 @@
     "average_watts": 277.1,
     "weighted_average_watts": 263,
     "suffer_score": 64.0,
-    "achievement_count": 3
+    "achievement_count": 3,
+    "gear_id": "g25805243"
   },
   {
     "id": 18069736164,
@@ -11757,7 +12097,8 @@
     "average_watts": 306.7,
     "weighted_average_watts": 288,
     "suffer_score": 52.0,
-    "achievement_count": 4
+    "achievement_count": 4,
+    "gear_id": "g25805243"
   },
   {
     "id": 18081784576,
@@ -11778,7 +12119,8 @@
     "average_watts": 272.5,
     "weighted_average_watts": 263,
     "suffer_score": 19.0,
-    "achievement_count": 2
+    "achievement_count": 2,
+    "gear_id": "g25805243"
   },
   {
     "id": 18090433693,
@@ -11799,7 +12141,8 @@
     "average_watts": 273.5,
     "weighted_average_watts": 257,
     "suffer_score": 18.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g25805243"
   },
   {
     "id": 18109960077,
@@ -11839,7 +12182,8 @@
     "average_watts": 285.9,
     "weighted_average_watts": 280,
     "suffer_score": 24.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g25805243"
   },
   {
     "id": 18138903066,
@@ -11860,7 +12204,8 @@
     "average_watts": 297.9,
     "weighted_average_watts": 265,
     "suffer_score": 22.0,
-    "achievement_count": 3
+    "achievement_count": 3,
+    "gear_id": "g26014455"
   },
   {
     "id": 18143212445,
@@ -11881,7 +12226,8 @@
     "average_watts": 287.6,
     "weighted_average_watts": 264,
     "suffer_score": 27.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g25805243"
   },
   {
     "id": 18159861395,
@@ -11902,7 +12248,8 @@
     "average_watts": 271.4,
     "weighted_average_watts": 264,
     "suffer_score": 21.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g25805243"
   },
   {
     "id": 18172734023,
@@ -11923,7 +12270,8 @@
     "average_watts": 365.4,
     "weighted_average_watts": 365,
     "suffer_score": 35.0,
-    "achievement_count": 11
+    "achievement_count": 11,
+    "gear_id": "g26014455"
   },
   {
     "id": 18183115772,
@@ -11944,7 +12292,8 @@
     "average_watts": 274.7,
     "weighted_average_watts": 253,
     "suffer_score": 12.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g24148471"
   },
   {
     "id": 18194846550,
@@ -11963,7 +12312,8 @@
     "max_heartrate": 153.0,
     "average_watts": 67.7,
     "suffer_score": 16.0,
-    "achievement_count": 20
+    "achievement_count": 20,
+    "gear_id": "b15479444"
   },
   {
     "id": 18195470775,
@@ -11984,7 +12334,8 @@
     "average_watts": 252.8,
     "weighted_average_watts": 249,
     "suffer_score": 16.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g25805243"
   },
   {
     "id": 18197044499,
@@ -12003,7 +12354,8 @@
     "max_heartrate": 144.0,
     "average_watts": 43.4,
     "suffer_score": 12.0,
-    "achievement_count": 12
+    "achievement_count": 12,
+    "gear_id": "b15479444"
   },
   {
     "id": 18203153844,
@@ -12043,7 +12395,8 @@
     "average_watts": 274.2,
     "weighted_average_watts": 265,
     "suffer_score": 25.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g30522125"
   },
   {
     "id": 18233629282,
@@ -12064,7 +12417,8 @@
     "average_watts": 281.1,
     "weighted_average_watts": 273,
     "suffer_score": 19.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g25805243"
   },
   {
     "id": 18233629361,
@@ -12085,7 +12439,8 @@
     "average_watts": 318.0,
     "weighted_average_watts": 281,
     "suffer_score": 47.0,
-    "achievement_count": 2
+    "achievement_count": 2,
+    "gear_id": "g25805243"
   },
   {
     "id": 18237245220,
@@ -12106,7 +12461,8 @@
     "average_watts": 290.6,
     "weighted_average_watts": 262,
     "suffer_score": 13.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g25805243"
   },
   {
     "id": 18253649687,
@@ -12127,7 +12483,8 @@
     "average_watts": 290.8,
     "weighted_average_watts": 293,
     "suffer_score": 7.0,
-    "achievement_count": 12
+    "achievement_count": 12,
+    "gear_id": "g25805243"
   },
   {
     "id": 18272173434,
@@ -12148,7 +12505,8 @@
     "average_watts": 301.7,
     "weighted_average_watts": 278,
     "suffer_score": 58.0,
-    "achievement_count": 10
+    "achievement_count": 10,
+    "gear_id": "g25805243"
   },
   {
     "id": 18277385985,
@@ -12169,7 +12527,8 @@
     "average_watts": 261.2,
     "weighted_average_watts": 243,
     "suffer_score": 12.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g25805243"
   },
   {
     "id": 18286225132,
@@ -12188,7 +12547,8 @@
     "max_heartrate": 160.0,
     "average_watts": 71.6,
     "suffer_score": 20.0,
-    "achievement_count": 48
+    "achievement_count": 48,
+    "gear_id": "b15479444"
   },
   {
     "id": 18289953909,
@@ -12209,7 +12569,8 @@
     "average_watts": 269.0,
     "weighted_average_watts": 260,
     "suffer_score": 8.0,
-    "achievement_count": 4
+    "achievement_count": 4,
+    "gear_id": "g25805243"
   },
   {
     "id": 18304582469,
@@ -12230,7 +12591,8 @@
     "average_watts": 264.3,
     "weighted_average_watts": 253,
     "suffer_score": 14.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g30522125"
   },
   {
     "id": 18330615893,
@@ -12251,7 +12613,8 @@
     "average_watts": 257.0,
     "weighted_average_watts": 265,
     "suffer_score": 14.0,
-    "achievement_count": 6
+    "achievement_count": 6,
+    "gear_id": "g30522125"
   },
   {
     "id": 18361621945,
@@ -12272,7 +12635,8 @@
     "average_watts": 320.7,
     "weighted_average_watts": 302,
     "suffer_score": 42.0,
-    "achievement_count": 10
+    "achievement_count": 10,
+    "gear_id": "g30522125"
   },
   {
     "id": 18371480064,
@@ -12293,7 +12657,8 @@
     "average_watts": 279.8,
     "weighted_average_watts": 248,
     "suffer_score": 9.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g25805243"
   },
   {
     "id": 18391882272,
@@ -12314,7 +12679,8 @@
     "average_watts": 281.9,
     "weighted_average_watts": 277,
     "suffer_score": 7.0,
-    "achievement_count": 6
+    "achievement_count": 6,
+    "gear_id": "g25805243"
   },
   {
     "id": 18398567257,
@@ -12335,7 +12701,8 @@
     "average_watts": 278.8,
     "weighted_average_watts": 259,
     "suffer_score": 17.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g30522125"
   },
   {
     "id": 18410430581,
@@ -12356,7 +12723,8 @@
     "average_watts": 286.5,
     "weighted_average_watts": 280,
     "suffer_score": 7.0,
-    "achievement_count": 2
+    "achievement_count": 2,
+    "gear_id": "g25805243"
   },
   {
     "id": 18423623103,
@@ -12377,7 +12745,8 @@
     "average_watts": 293.0,
     "weighted_average_watts": 271,
     "suffer_score": 9.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g30522125"
   },
   {
     "id": 18440208477,
@@ -12398,7 +12767,8 @@
     "average_watts": 289.9,
     "weighted_average_watts": 303,
     "suffer_score": 266.0,
-    "achievement_count": 20
+    "achievement_count": 20,
+    "gear_id": "g30522125"
   },
   {
     "id": 18462882036,
@@ -12419,7 +12789,8 @@
     "average_watts": 275.5,
     "weighted_average_watts": 247,
     "suffer_score": 8.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g25805243"
   },
   {
     "id": 18470590325,
@@ -12440,7 +12811,8 @@
     "average_watts": 286.9,
     "weighted_average_watts": 268,
     "suffer_score": 15.0,
-    "achievement_count": 2
+    "achievement_count": 2,
+    "gear_id": "g25805243"
   },
   {
     "id": 18489525213,
@@ -12461,7 +12833,8 @@
     "average_watts": 271.4,
     "weighted_average_watts": 257,
     "suffer_score": 13.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g25805243"
   },
   {
     "id": 18515780637,
@@ -12482,7 +12855,8 @@
     "average_watts": 283.2,
     "weighted_average_watts": 271,
     "suffer_score": 24.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g25805243"
   },
   {
     "id": 18532982439,
@@ -12503,7 +12877,8 @@
     "average_watts": 305.0,
     "weighted_average_watts": 292,
     "suffer_score": 95.0,
-    "achievement_count": 5
+    "achievement_count": 5,
+    "gear_id": "g25805243"
   },
   {
     "id": 18554467875,
@@ -12524,7 +12899,8 @@
     "average_watts": 264.2,
     "weighted_average_watts": 239,
     "suffer_score": 9.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g25805243"
   },
   {
     "id": 18561351504,
@@ -12545,7 +12921,8 @@
     "average_watts": 277.3,
     "weighted_average_watts": 276,
     "suffer_score": 16.0,
-    "achievement_count": 6
+    "achievement_count": 6,
+    "gear_id": "g31188164"
   },
   {
     "id": 18565942288,
@@ -12566,7 +12943,8 @@
     "average_watts": 268.5,
     "weighted_average_watts": 257,
     "suffer_score": 9.0,
-    "achievement_count": 4
+    "achievement_count": 4,
+    "gear_id": "g25805243"
   },
   {
     "id": 18580783835,
@@ -12587,11 +12965,12 @@
     "average_watts": 285.8,
     "weighted_average_watts": 270,
     "suffer_score": 15.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g31188164"
   },
   {
     "id": 18588283377,
-    "name": "Run and sip",
+    "name": "Run & Sip \u00d7 Mate Libre",
     "sport_type": "Run",
     "type": "Run",
     "start_date": "2026-05-20T22:07:59Z",
@@ -12608,7 +12987,8 @@
     "average_watts": 267.7,
     "weighted_average_watts": 261,
     "suffer_score": 9.0,
-    "achievement_count": 6
+    "achievement_count": 6,
+    "gear_id": "g31188164"
   },
   {
     "id": 18603703742,
@@ -12629,7 +13009,8 @@
     "average_watts": 276.9,
     "weighted_average_watts": 268,
     "suffer_score": 8.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g25805243"
   },
   {
     "id": 18607212909,
@@ -12650,7 +13031,8 @@
     "average_watts": 281.6,
     "weighted_average_watts": 267,
     "suffer_score": 29.0,
-    "achievement_count": 1
+    "achievement_count": 1,
+    "gear_id": "g25805243"
   },
   {
     "id": 18625877224,
@@ -12671,7 +13053,8 @@
     "average_watts": 268.5,
     "weighted_average_watts": 251,
     "suffer_score": 30.0,
-    "achievement_count": 3
+    "achievement_count": 3,
+    "gear_id": "g25805243"
   },
   {
     "id": 18654810824,
@@ -12692,7 +13075,8 @@
     "average_watts": 265.4,
     "weighted_average_watts": 239,
     "suffer_score": 8.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g30522125"
   },
   {
     "id": 18654815153,
@@ -12713,7 +13097,8 @@
     "average_watts": 278.9,
     "weighted_average_watts": 275,
     "suffer_score": 16.0,
-    "achievement_count": 9
+    "achievement_count": 9,
+    "gear_id": "g31188164"
   },
   {
     "id": 18659184066,
@@ -12734,7 +13119,8 @@
     "average_watts": 279.2,
     "weighted_average_watts": 267,
     "suffer_score": 9.0,
-    "achievement_count": 4
+    "achievement_count": 4,
+    "gear_id": "g31188164"
   },
   {
     "id": 18674078956,
@@ -12755,7 +13141,8 @@
     "average_watts": 272.5,
     "weighted_average_watts": 261,
     "suffer_score": 30.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g25805243"
   },
   {
     "id": 18683278523,
@@ -12776,7 +13163,8 @@
     "average_watts": 286.2,
     "weighted_average_watts": 258,
     "suffer_score": 9.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g25805243"
   },
   {
     "id": 18687211996,
@@ -12797,7 +13185,8 @@
     "average_watts": 280.4,
     "weighted_average_watts": 270,
     "suffer_score": 9.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g25805243"
   },
   {
     "id": 18691038634,
@@ -12818,7 +13207,8 @@
     "average_watts": 308.7,
     "weighted_average_watts": 304,
     "suffer_score": 2.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g25805243"
   },
   {
     "id": 18701738041,
@@ -12839,7 +13229,8 @@
     "average_watts": 299.3,
     "weighted_average_watts": 281,
     "suffer_score": 21.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g25805243"
   },
   {
     "id": 18707640947,
@@ -12860,6 +13251,23 @@
     "average_watts": 334.9,
     "weighted_average_watts": 307,
     "suffer_score": 2.0,
-    "achievement_count": 0
+    "achievement_count": 0,
+    "gear_id": "g25805243"
+  },
+  {
+    "id": 18720498405,
+    "name": "The North Face Trail Series x Slowpokes Montr\u00e9al",
+    "sport_type": "Run",
+    "type": "Run",
+    "start_date": "2026-05-30T12:05:18Z",
+    "start_date_local": "2026-05-30T08:05:18Z",
+    "distance": 11922.4,
+    "moving_time": 4820,
+    "elapsed_time": 8908,
+    "total_elevation_gain": 314.0,
+    "average_speed": 2.474,
+    "max_speed": 9.5,
+    "achievement_count": 0,
+    "gear_id": "g25805243"
   }
 ]

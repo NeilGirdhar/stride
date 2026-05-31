@@ -82,45 +82,6 @@
         { "tier": "b", "type": "ramp", "start": 62, "end": 85 },
         { "tier": "c", "type": "ramp", "start": 55, "end": 75 }
       ]
-    },
-    {
-      "id": "durability",
-      "label": "Long-run durability",
-      "unit": "km/week beyond 20 km",
-      "higher_better": true,
-      "compute": "ewma_km_beyond",
-      "tau_days": 20,
-      "threshold_km": 20,
-      "targets": [
-        { "tier": "a", "type": "ramp", "start": 8, "end": 20 },
-        { "tier": "b", "type": "ramp", "start": 7, "end": 16 },
-        { "tier": "c", "type": "ramp", "start": 6, "end": 12 }
-      ]
-    },
-    {
-      "id": "mp",
-      "label": "Marathon-pace control",
-      "unit": "km/week at marathon pace",
-      "higher_better": true,
-      "compute": "ewma_marathon_pace",
-      "tau_days": 14,
-      "targets": [
-        { "tier": "a", "type": "ramp", "start": 4, "end": 20 },
-        { "tier": "b", "type": "ramp", "start": 3, "end": 14 },
-        { "tier": "c", "type": "ramp", "start": 2, "end": 8 }
-      ]
-    },
-    {
-      "id": "fitness",
-      "label": "Threshold / race fitness",
-      "unit": "equivalent 5K",
-      "higher_better": false,
-      "compute": "race_fitness",
-      "targets": [
-        { "tier": "a", "type": "line", "start": 1380, "end": 1200 },
-        { "tier": "b", "type": "line", "start": 1380, "end": 1260 },
-        { "tier": "c", "type": "line", "start": 1380, "end": 1320 }
-      ]
     }
   ]
 }

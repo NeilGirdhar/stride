@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-05-30T20:02:25+00:00",
-  "total_activities": 682,
+  "generated_at": "2026-05-31T20:00:10+00:00",
+  "total_activities": 683,
   "date_range": {
     "first": "2015-06-06",
-    "last": "2026-05-29"
+    "last": "2026-05-30"
   },
   "by_sport": {
     "Run": {
-      "count": 578,
-      "distance_km": 4133.7,
-      "moving_hours": 454.0,
-      "elevation_m": 34824
+      "count": 579,
+      "distance_km": 4145.6,
+      "moving_hours": 455.4,
+      "elevation_m": 35138
     },
     "Ride": {
       "count": 28,
@@ -131,8 +131,8 @@
     },
     {
       "week_start": "2026-05-25",
-      "all_moving_hours": 5.5,
-      "run_km": 52.9
+      "all_moving_hours": 6.8,
+      "run_km": 64.8
     }
   ],
   "running_fitness": {
@@ -149,11 +149,6 @@
     }
   },
   "running_form_by_month": {
-    "2025-05": {
-      "avg_cadence_spm": 151.6,
-      "efficiency_m_per_beat_x1000": 18.7,
-      "runs": 1
-    },
     "2025-06": {
       "avg_cadence_spm": 157.7,
       "efficiency_m_per_beat_x1000": 18.8,
