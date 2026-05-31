@@ -42,7 +42,8 @@ Key files:
   — compact derived metrics and best-effort PRs
 - `data/entered/races.json`, `data/entered/club-overrides.json`
   — manually entered race labels and club overrides
-- `data/private/strava-tokens.json` — OAuth tokens (gitignored, never committed)
+- `data/private/strava-config.json`, `data/private/strava-tokens.json`
+  — API credentials and OAuth tokens (gitignored, never committed)
 
 ### One-time setup
 
@@ -51,14 +52,9 @@ Key files:
    not, create one (any name; website can be `http://localhost`). Set the
    **Authorization Callback Domain** to exactly `localhost`.
 
-2. **Add your credentials** (kept out of git):
-
-   ```sh
-   cp scripts/strava_config.example.json scripts/strava_config.json
-   # then edit it and fill in client_id + client_secret
-   ```
-
-3. **Authorize** (opens your browser; click *Authorize*):
+2. **Authorize.** `auth` prompts for your Client ID and Secret (saved to
+   `data/private/strava-config.json`, gitignored), then opens your browser to
+   click *Authorize*:
 
    ```sh
    uv run stride-sync auth

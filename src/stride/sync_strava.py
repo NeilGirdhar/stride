@@ -3,6 +3,7 @@
 Pulls your Strava activity history (all sports) and writes under data/:
   imported/strava-activities.json  raw activity list, deduped by id
   generated/fitness-summary.json   compact derived metrics
+  private/strava-config.json       API credentials, written by `auth` (gitignored)
   private/strava-tokens.json       OAuth tokens (gitignored)
 
 The raw history is fetched in full once; subsequent syncs only pull activities
@@ -14,7 +15,7 @@ Also writes (after `details`):
   generated/records.json            best efforts: 400m, 1k, 5k, 10k, half, 30k, marathon
 
 Usage:
-  uv run stride-sync auth            one-time browser authorization
+  uv run stride-sync auth            prompt for API credentials, then authorize in the browser
   uv run stride-sync sync            fetch new activities + recompute summary
   uv run stride-sync sync --full     ignore checkpoint, refetch everything
   uv run stride-sync details         backfill per-run shoes + PRs (resumable)
@@ -46,7 +47,7 @@ IMPORTED_DIR = DATA_DIR / "imported"
 GENERATED_DIR = DATA_DIR / "generated"
 ENTERED_DIR = DATA_DIR / "entered"
 PRIVATE_DIR = DATA_DIR / "private"
-CONFIG_PATH = ROOT / "scripts" / "strava_config.json"
+CONFIG_PATH = PRIVATE_DIR / "strava-config.json"
 TOKENS_PATH = PRIVATE_DIR / "strava-tokens.json"
 RAW_PATH = IMPORTED_DIR / "strava-activities.json"
 SUMMARY_PATH = GENERATED_DIR / "fitness-summary.json"
@@ -127,16 +128,44 @@ def save_json(path: str | os.PathLike[str], obj: object) -> None:
         json.dump(obj, f, indent=2)
 
 
+def configured(cfg: JsonDict | None) -> bool:
+    if not cfg:
+        return False
+    return not str(cfg.get("client_id", "")).startswith("YOUR_")
+
+
 def load_config() -> JsonDict:
     cfg = cast("JsonDict | None", load_json(CONFIG_PATH))
-    if not cfg or cfg.get("client_id", "").startswith("YOUR_"):
-        sys.exit(
-            "Missing or unfilled scripts/strava_config.json.\n"
-            "Copy scripts/strava_config.example.json to scripts/strava_config.json "
-            "and fill in your Strava client_id and client_secret.\n"
-            "See scripts/README.md."
-        )
+    if not configured(cfg):
+        sys.exit("No Strava credentials yet. Run:  uv run stride-sync auth")
+    return cast("JsonDict", cfg)
+
+
+def prompt_config() -> JsonDict:
+    """Interactively collect Strava API credentials and write them to CONFIG_PATH."""
+    print(
+        "Strava API credentials needed.\n"
+        "Open (or create) an API application at https://www.strava.com/settings/api\n"
+        "with Authorization Callback Domain set to exactly 'localhost', then paste:\n"
+    )
+    client_id = input("  Client ID: ").strip()
+    client_secret = input("  Client Secret: ").strip()
+    if not client_id or not client_secret:
+        sys.exit("Client ID and Client Secret are both required.")
+    port = input("  Redirect port [8721]: ").strip()
+    cfg = {
+        "client_id": client_id,
+        "client_secret": client_secret,
+        "redirect_port": int(port) if port else 8721,
+    }
+    save_json(CONFIG_PATH, cfg)
+    print("\nSaved credentials to data/private/strava-config.json (gitignored).\n")
     return cfg
+
+
+def ensure_config() -> JsonDict:
+    cfg = cast("JsonDict | None", load_json(CONFIG_PATH))
+    return cast("JsonDict", cfg) if configured(cfg) else prompt_config()
 
 
 def load_club_patterns() -> dict[str, re.Pattern[str]]:
@@ -881,7 +910,7 @@ def main() -> None:
     args = sys.argv[1:]
     cmd = args[0] if args else ""
     if cmd == "auth":
-        auth(load_config())
+        auth(ensure_config())
     elif cmd == "sync":
         sync(load_config(), full="--full" in args)
     elif cmd == "details":
