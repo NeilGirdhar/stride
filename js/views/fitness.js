@@ -9,6 +9,7 @@ import {
   rangeButtonsHTML,
   rangeStart,
 } from "../lib/ranges.js";
+import { gaussianSmoothFields } from "../lib/smoothing.js";
 
 const ACTS_URL = "./data/imported/strava-activities.json";
 const TRAINING_CONFIG_URL = "./data/entered/training-config.json";
@@ -203,13 +204,18 @@ function drawFitnessChart(root) {
     MODEL[0].t,
   );
   const end = MODEL[MODEL.length - 1].t;
-  const points = smoothChartPoints(
+  const points = gaussianSmoothFields(
     chartPoints(RUNS, start, end),
     CHART_SMOOTH_SIGMA_DAYS * DAY,
+    ["fitness", "fatigue", "form"],
   );
   if (points.length < 2) {
     host.innerHTML = fitnessChart(
-      smoothChartPoints(MODEL, CHART_SMOOTH_SIGMA_DAYS * DAY),
+      gaussianSmoothFields(MODEL, CHART_SMOOTH_SIGMA_DAYS * DAY, [
+        "fitness",
+        "fatigue",
+        "form",
+      ]),
       Math.max(300, Math.round(host.clientWidth)),
     );
     return;
@@ -274,28 +280,6 @@ function statesAtTimes(runs, times) {
     });
   }
   return out;
-}
-
-function smoothChartPoints(points, sigmaMs) {
-  if (points.length < 2) return points;
-  return points.map((p) => {
-    const sums = { fitness: 0, fatigue: 0, form: 0, weight: 0 };
-    for (const q of points) {
-      const z = (p.t - q.t) / sigmaMs;
-      if (Math.abs(z) > 4) continue;
-      const w = Math.exp(-0.5 * z * z);
-      sums.fitness += q.fitness * w;
-      sums.fatigue += q.fatigue * w;
-      sums.form += q.form * w;
-      sums.weight += w;
-    }
-    return {
-      ...p,
-      fitness: sums.fitness / sums.weight,
-      fatigue: sums.fatigue / sums.weight,
-      form: sums.form / sums.weight,
-    };
-  });
 }
 
 function fitnessChart(points, W) {

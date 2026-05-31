@@ -14,6 +14,11 @@ import {
   rangeButtonsHTML,
   rangeStart,
 } from "../lib/ranges.js";
+import {
+  gaussianObservationLine,
+  gaussianRateLine,
+  VOLUME_SMOOTH_SIGMA_DAYS,
+} from "../lib/smoothing.js";
 
 const ACTS_URL = "./data/imported/strava-activities.json";
 const DETAILS_URL = "./data/imported/strava-run-details.json";
@@ -156,7 +161,7 @@ export async function renderGoals() {
 // not a thing to train, so it's excluded). Relative gap to today's A-goal.
 const FOCUS_MSG = {
   volume: (pct) =>
-    `<b>Volume</b> is your biggest gap (~${pct}% under target). Add easy km — raise weekly volume before piling on intensity.`,
+    `<b>Load tolerance</b> is your biggest gap (~${pct}% under target). Add easy km — raise weekly volume before piling on intensity.`,
   durability: (pct) =>
     `<b>Long-run durability</b> is lagging (~${pct}% under). Get a longer long run in this week — and repeat it, don't rely on one.`,
   mp: (pct) =>
@@ -428,6 +433,17 @@ function ewmaRate(runs, grid, tau, contrib) {
   return out;
 }
 
+function gaussianWeeklyRate(runs, grid, valueFor) {
+  return gaussianRateLine(
+    runs,
+    grid[0],
+    grid[grid.length - 1],
+    VOLUME_SMOOTH_SIGMA_DAYS * DAY,
+    valueFor,
+    grid.length - 1,
+  );
+}
+
 // MP-weighted km for one run: full credit near configured pace, ramped up by length
 // (MP control is about holding pace in *long* efforts). Proxy — without splits
 // it misses MP blocks buried inside slower-average runs; streams would fix it.
@@ -450,7 +466,12 @@ function raceFitness(runs, grid) {
     const k = Math.min(3, eqs.length);
     return { t, v: eqs.slice(0, k).reduce((a, b) => a + b, 0) / k };
   });
-  return fillAndSmooth(raw, 7);
+  const filled = fillForward(raw);
+  return gaussianObservationLine(
+    filled,
+    filled.map((p) => p.t),
+    7 * DAY,
+  );
 }
 
 // Prefer the supervised offline artifact. Fallback keeps the static app usable
@@ -492,35 +513,22 @@ function aerobicPower(runs, grid) {
 }
 
 function anaerobicPower(runs, grid) {
-  const win = 35 * DAY;
-  return fillForward(
-    grid.map((t) => {
-      const best = runs
-        .filter((r) => r.anaerobicPower != null && r.t <= t && r.t >= t - win)
-        .map((r) => r.anaerobicPower)
-        .sort((a, b) => b - a)[0];
-      return { t, v: best ?? null };
-    }),
+  return gaussianObservationLine(
+    runs,
+    grid,
+    VOLUME_SMOOTH_SIGMA_DAYS * DAY,
+    (r) => r.anaerobicPower,
   );
 }
 
 function aerobicMetric(runs, grid, valueFor, fallbackPredicate) {
   const easy = runs.filter((r) => valueFor(r) != null || fallbackPredicate(r));
-  const sigma = 16 * DAY;
-  const raw = grid.map((t) => {
-    let sw = 0,
-      swv = 0;
-    for (const r of easy) {
-      const z = (t - r.t) / sigma;
-      if (Math.abs(z) > 4) continue;
-      const efficiency = valueFor(r) ?? (1000 / r.paceSec / r.hr) * 60;
-      const w = Math.exp(-0.5 * z * z);
-      sw += w;
-      swv += w * efficiency;
-    }
-    return { t, v: sw ? swv / sw : null };
-  });
-  return fillForward(raw);
+  return gaussianObservationLine(
+    easy,
+    grid,
+    VOLUME_SMOOTH_SIGMA_DAYS * DAY,
+    (r) => valueFor(r) ?? (1000 / r.paceSec / r.hr) * 60,
+  );
 }
 
 // ---- targets --------------------------------------------------------------
@@ -603,6 +611,10 @@ function computeFor(section) {
         Math.max(0, run.km - section.threshold_km),
       );
   }
+  if (section.compute === "ewma_grade_adjusted_km") {
+    return (runs, grid) =>
+      gaussianWeeklyRate(runs, grid, (run) => run.gradeAdjustedKm);
+  }
   return (runs, grid) =>
     ewmaRate(runs, grid, section.tau_days, (run) => run.km);
 }
@@ -632,6 +644,7 @@ function normalizeRuns(acts) {
       t: new Date(a.start_date_local || a.start_date).getTime(),
       id: a.id,
       km: a.distance / 1000,
+      gradeAdjustedKm: streamGradeAdjustedKm(a.id) ?? a.distance / 1000,
       movingTime: a.moving_time,
       paceSec: a.moving_time / (a.distance / 1000),
       hr: a.average_heartrate || null,
@@ -657,6 +670,11 @@ function streamAnaerobicPower(activityId) {
   return Number.isFinite(value) ? value : null;
 }
 
+function streamGradeAdjustedKm(activityId) {
+  const value = DETAILS[String(activityId)]?.grade_adjusted_distance_km;
+  return Number.isFinite(value) ? value : null;
+}
+
 function inHighZone2(run) {
   return run.hr >= HIGH_ZONE2_HR_MIN && run.hr <= HIGH_ZONE2_HR_MAX;
 }
@@ -670,23 +688,6 @@ function fillForward(raw) {
   return raw
     .map((p) => (p.v == null ? { t: p.t, v: last } : ((last = p.v), p)))
     .filter((p) => p.v != null);
-}
-
-function fillAndSmooth(raw, sigmaDays) {
-  const filled = fillForward(raw);
-  const sigma = sigmaDays * DAY;
-  return filled.map((p) => {
-    let sw = 0,
-      swv = 0;
-    for (const q of filled) {
-      const z = (p.t - q.t) / sigma;
-      if (Math.abs(z) > 4) continue;
-      const w = Math.exp(-0.5 * z * z);
-      sw += w;
-      swv += w * q.v;
-    }
-    return { t: p.t, v: swv / sw };
-  });
 }
 
 function niceTicks(lo, hi, n) {

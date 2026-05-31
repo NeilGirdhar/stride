@@ -13,6 +13,7 @@ import {
   rangeButtonsHTML,
   rangeStart,
 } from "../lib/ranges.js";
+import { gaussianRateLine } from "../lib/smoothing.js";
 
 const ACTS_URL = "./data/imported/strava-activities.json";
 const DETAILS_URL = "./data/imported/strava-run-details.json";
@@ -59,7 +60,6 @@ let resizeWired = false,
   rzT = null;
 
 // Gaussian bandwidth (σ) for the km/week trend line — one value for every zoom.
-const SMOOTH_SIGMA_DAYS = 9;
 const DETAIL_TABS = [
   { id: "clubs", label: "Clubs" },
   { id: "shoes", label: "Shoes" },
@@ -271,14 +271,12 @@ function drawGraph(root) {
     padL + ((W - padL - padR) * (t - start)) / Math.max(1, now - start);
   const yKm = (km) => H - padB - plotH * (km / maxKm);
 
-  const line = weeklyVolumeLine(RUNS, start, now, SMOOTH_SIGMA_DAYS * DAY);
-  const maxWk = niceTop(Math.max(20, ...line.map((p) => p.kmwk)));
+  const line = gaussianRateLine(RUNS, start, now);
+  const maxWk = niceTop(Math.max(20, ...line.map((p) => p.v)));
   const yWk = (kmwk) => H - padB - plotH * (kmwk / maxWk);
   const linePath = line.length
     ? "M " +
-      line
-        .map((p) => `${x(p.t).toFixed(1)} ${yWk(p.kmwk).toFixed(1)}`)
-        .join(" L ")
+      line.map((p) => `${x(p.t).toFixed(1)} ${yWk(p.v).toFixed(1)}`).join(" L ")
     : "";
 
   plotted = pts.map((p) => ({ ...p, px: x(p.t), py: yKm(p.km) }));
@@ -333,27 +331,6 @@ function drawGraph(root) {
     </svg>`;
 
   wirePointer(root);
-}
-
-// Gaussian kernel weekly-volume rate with edge renormalization.
-// rate(t) = [Σ km_i·G_h(t−t_i)] / [Φ((t1−t)/h) − Φ((t0−t)/h)] ; ×7d → km/week.
-function weeklyVolumeLine(pts, start, end, h) {
-  if (!pts.length) return [];
-  const t0 = pts[0].t,
-    t1 = pts[pts.length - 1].t;
-  const norm = 1 / (h * Math.sqrt(2 * Math.PI));
-  const out = [];
-  const N = 200;
-  for (let i = 0; i <= N; i++) {
-    const t = start + (end - start) * (i / N);
-    let s = 0;
-    for (const p of pts) s += p.km * Math.exp(-0.5 * ((t - p.t) / h) ** 2);
-    s *= norm;
-    const edge = Phi((t1 - t) / h) - Phi((t0 - t) / h);
-    if (edge < 0.05) continue;
-    out.push({ t, kmwk: (s / edge) * 7 * DAY });
-  }
-  return out;
 }
 
 function bestEffortsTable() {
@@ -582,23 +559,6 @@ function openRun(run) {
 }
 
 // ---- math + format helpers ----
-
-function erf(x) {
-  const s = x < 0 ? -1 : 1;
-  x = Math.abs(x);
-  const t = 1 / (1 + 0.3275911 * x);
-  const y =
-    1 -
-    ((((1.061405429 * t - 1.453152027) * t + 1.421413741) * t - 0.284496736) *
-      t +
-      0.254829592) *
-      t *
-      Math.exp(-x * x);
-  return s * y;
-}
-function Phi(z) {
-  return 0.5 * (1 + erf(z / Math.SQRT2));
-}
 
 function niceTop(v) {
   const step = v > 80 ? 20 : v > 40 ? 10 : v > 16 ? 5 : 2;

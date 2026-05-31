@@ -72,10 +72,10 @@
     },
     {
       "id": "volume",
-      "label": "Volume",
-      "unit": "",
+      "label": "Load tolerance",
+      "unit": "Grade-adjusted weekly volume",
       "higher_better": true,
-      "compute": "ewma_km",
+      "compute": "ewma_grade_adjusted_km",
       "tau_days": 9,
       "targets": [
         { "tier": "a", "type": "ramp", "start": 70, "end": 95 },
