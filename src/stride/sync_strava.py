@@ -61,6 +61,8 @@ CLUB_OVERRIDES_PATH = ENTERED_DIR / "club-overrides.json"
 CLUB_PATTERNS_PATH = ENTERED_DIR / "club-patterns.json"
 TRAINING_CONFIG_PATH = ENTERED_DIR / "training-config.json"
 SAMPLES_PATH = PRIVATE_DIR / "strava-durability-samples.json"  # cache: id -> segments
+HR_ZONES_PATH = GENERATED_DIR / "hr-zones.json"  # computed max HR + zone bpm boundaries
+ZONE_METRICS_PATH = GENERATED_DIR / "zone-metrics.json"  # per-run m/beat by HR zone
 
 AUTH_URL = "https://www.strava.com/oauth/authorize"
 TOKEN_URL = "https://www.strava.com/oauth/token"  # noqa: S105
@@ -84,9 +86,25 @@ BEST_EFFORT_KEYS = {
 # Fallback for 30k/marathon on long runs where Strava didn't flag a best effort
 # — found as the fastest window from the distance/time streams.
 STREAM_RECORDS = {"30k": 30000, "marathon": 42195}
-# High zone 2 / high zone 3 heart-rate bands, used to pick the runs that feed the
-# aerobic efficiency / power metrics. These are personal, so they live in
-# data/entered/training-config.json; the defaults below apply when it is absent.
+# HR zones are derived from max HR: dividers are fractions of it (personal, kept in
+# data/entered/training-config.json), and max HR itself is measured from the runs
+# (rolling max-average, written to data/generated/hr-zones.json by `streams`).
+# A metric's "high ZN" band is the upper half of zone N; "low ZN" the lower half.
+DEFAULT_ZONE_FRACTIONS = {
+    "z1_floor": 0.50,
+    "z1_z2": 0.60,
+    "z2_z3": 0.70,
+    "z3_z4": 0.80,
+    "z4_z5": 0.90,
+}
+DEFAULT_MAX_HR = 190.0
+MAX_HR_WINDOWS = (10, 30, 60)  # seconds; max-average HR over each, not single peak
+# Zone economy (m/beat) is measured over sustained in-band blocks: a block must
+# last at least ZONE_MIN_BLOCK_S, and its first ZONE_TRIM_S is dropped because HR
+# lags the effort and would otherwise inflate the ratio.
+ZONE_MIN_BLOCK_S = 60.0
+ZONE_TRIM_S = 20.0
+# Ultimate fallback bands when neither max HR nor config is available yet.
 DEFAULT_HR_ZONES = {
     "high_zone2": {"min": 135.0, "max": 145.0},
     "high_zone3": {"min": 155.0, "max": 165.0},
@@ -105,13 +123,43 @@ def load_json(path: str | os.PathLike[str], default: object = None) -> object:
         return default
 
 
-def load_hr_zones() -> dict[str, dict[str, float]]:
-    """High-zone HR bands from training-config.json, falling back per field."""
+def load_zone_fractions() -> dict[str, float]:
+    """Zone-divider fractions of max HR, from training-config.json."""
     cfg = cast("JsonDict | None", load_json(TRAINING_CONFIG_PATH)) or {}
-    configured = cast("JsonDict", cfg.get("hr_zones") or {})
+    configured = cast("JsonDict", cfg.get("hr_zone_fractions") or {})
+    return {
+        name: float(configured.get(name, default))
+        for name, default in DEFAULT_ZONE_FRACTIONS.items()
+    }
+
+
+def compute_zone_bands(max_hr: float, fractions: dict[str, float]) -> JsonDict:
+    """Zone dividers and metric bands (bpm) from max HR. high ZN = upper half of zone N."""
+    bpm = {name: round(fraction * max_hr, 1) for name, fraction in fractions.items()}
+    mid = lambda lo, hi: round((bpm[lo] + bpm[hi]) / 2, 1)  # noqa: E731
+    return {
+        "dividers_bpm": bpm,
+        "high_zone2": {"min": mid("z1_z2", "z2_z3"), "max": bpm["z2_z3"]},
+        "high_zone3": {"min": mid("z2_z3", "z3_z4"), "max": bpm["z3_z4"]},
+        "high_zone4": {"min": mid("z3_z4", "z4_z5"), "max": bpm["z4_z5"]},
+        # Anaerobic = high Z4 and above (high Z4 + Z5), i.e. from the 85% mark up.
+        "anaerobic_floor": mid("z3_z4", "z4_z5"),
+    }
+
+
+def load_hr_zones() -> dict[str, dict[str, float]]:
+    """High-zone HR bands (bpm), from the computed hr-zones.json, falling back per field.
+
+    Bands are derived from measured max HR; until `streams` has written hr-zones.json
+    they fall back to DEFAULT_MAX_HR x the configured fractions, then to DEFAULT_HR_ZONES.
+    """
+    data = cast("JsonDict | None", load_json(HR_ZONES_PATH))
+    bands = cast("JsonDict", (data or {}).get("zones_bpm") or {})
+    if not bands:
+        bands = compute_zone_bands(DEFAULT_MAX_HR, load_zone_fractions())
     zones: dict[str, dict[str, float]] = {}
     for name, default in DEFAULT_HR_ZONES.items():
-        band = cast("JsonDict", configured.get(name) or {})
+        band = cast("JsonDict", bands.get(name) or {})
         zones[name] = {
             "min": float(band.get("min", default["min"])),
             "max": float(band.get("max", default["max"])),
@@ -851,11 +899,122 @@ def stream_segments(activity: StreamActivity, streams: JsonDict) -> list[Segment
     return segments
 
 
+def rolling_max_avg(series: list[float], window: int) -> float:
+    """Max average over any contiguous `window`-sample run (not the single peak)."""
+    if len(series) < window:
+        return 0.0
+    total = sum(series[:window])
+    best = total
+    for i in range(window, len(series)):
+        total += series[i] - series[i - window]
+        best = max(best, total)
+    return best / window
+
+
+def athlete_max_hr(cache: dict[str, JsonDict]) -> dict[int, float]:
+    """Max-average HR over each window length, across all cached runs.
+
+    Each segment's HR is expanded to ~1 Hz by its duration, then we take the best
+    rolling average per window — robust to single-sample spikes.
+    """
+    best: dict[int, float] = dict.fromkeys(MAX_HR_WINDOWS, 0.0)
+    for row in cache.values():
+        series: list[float] = []
+        for segment in cast("list[JsonDict]", row.get("segments") or []):
+            series.extend([float(segment["hr"])] * max(1, round(float(segment["dt"]))))
+        for window in MAX_HR_WINDOWS:
+            best[window] = max(best[window], rolling_max_avg(series, window))
+    return best
+
+
+def write_hr_zones(cache: dict[str, JsonDict]) -> JsonDict:
+    """Recompute max HR from the cache, write hr-zones.json, return the zone bands."""
+    windows = athlete_max_hr(cache)
+    measured = [value for value in windows.values() if value > 0]
+    max_hr = max(measured) if measured else DEFAULT_MAX_HR
+    fractions = load_zone_fractions()
+    bands = compute_zone_bands(max_hr, fractions)
+    save_json(
+        HR_ZONES_PATH,
+        {
+            "generated_at": datetime.now(UTC).isoformat(),
+            "max_hr": round(max_hr, 1),
+            "max_hr_by_window_s": {str(w): round(windows[w], 1) for w in MAX_HR_WINDOWS},
+            "fractions": fractions,
+            "zones_bpm": bands,
+        },
+    )
+    print(f"Max HR {max_hr:.0f} bpm -> wrote {HR_ZONES_PATH.relative_to(ROOT)}")
+    return bands
+
+
+def band_m_per_beat(segments: list[JsonDict], lo: float, hi: float) -> float | None:
+    """Grade-adjusted metres per heartbeat over sustained blocks in HR band [lo, hi].
+
+    A block is contiguous segments with HR in band; only blocks lasting at least
+    ZONE_MIN_BLOCK_S count, and the first ZONE_TRIM_S of each is dropped (HR lag).
+    """
+    blocks: list[list[JsonDict]] = []
+    current: list[JsonDict] = []
+    for segment in segments:
+        if lo <= float(segment["hr"]) <= hi:
+            current.append(segment)
+        elif current:
+            blocks.append(current)
+            current = []
+    if current:
+        blocks.append(current)
+
+    metres = 0.0
+    beats = 0.0
+    for block in blocks:
+        if sum(float(s["dt"]) for s in block) < ZONE_MIN_BLOCK_S:
+            continue
+        skipped = 0.0
+        for segment in block:
+            dt = float(segment["dt"])
+            if skipped < ZONE_TRIM_S:
+                skipped += dt
+                continue
+            metres += float(segment["adjusted_speed"]) * dt
+            beats += float(segment["hr"]) * dt / 60.0
+    return metres / beats if beats > 0 else None
+
+
+def write_zone_metrics(cache: dict[str, JsonDict], bands: JsonDict) -> None:
+    """Per-run economy (m/beat) for each HR band, from the cached segments.
+
+    aerobic efficiency = high Z2, aerobic power = high Z3, anaerobic power = high
+    Z4 and above — all the same sustained-block measure, just different bands.
+    """
+    high_zone2 = cast("JsonDict", bands["high_zone2"])
+    high_zone3 = cast("JsonDict", bands["high_zone3"])
+    floor = float(bands["anaerobic_floor"])
+    band_for = {
+        "aerobic_efficiency": (float(high_zone2["min"]), float(high_zone2["max"])),
+        "aerobic_power": (float(high_zone3["min"]), float(high_zone3["max"])),
+        "anaerobic_power": (floor, float("inf")),
+    }
+    out: JsonDict = {}
+    for run_id, row in cache.items():
+        segments = cast("list[JsonDict]", row.get("segments") or [])
+        present = {
+            name: round(value, 4)
+            for name, (lo, hi) in band_for.items()
+            if (value := band_m_per_beat(segments, lo, hi)) is not None
+        }
+        if present:
+            out[run_id] = {"date": row["date"], **present}
+    save_json(ZONE_METRICS_PATH, out)
+    print(f"Zone economy: {len(out)} runs with a sustained in-band block")
+
+
 def streams(cfg: JsonDict, limit: int | None = None) -> None:
-    """Fetch per-run HR/grade/speed streams and cache durability segments.
+    """Fetch per-run HR/grade/speed streams, cache segments, and recompute max HR.
 
     Resumable: only activities missing from the cache are fetched. The durability
-    model reads this cache offline; it does no network I/O of its own.
+    model reads this cache offline; it does no network I/O of its own. Each run
+    refreshes hr-zones.json (max HR + zone boundaries) from the full cache.
     """
     activities = load_stream_activities()
     if not activities:
@@ -868,37 +1027,39 @@ def streams(cfg: JsonDict, limit: int | None = None) -> None:
         f"Durability streams: {len(activities)} runs, {len(cache)} cached, "
         f"{len(todo)} remaining. Fetching {len(batch)} now."
     )
-    if not batch:
-        return
 
-    tm = Tokens(cfg)
-    for i, activity in enumerate(batch):
-        st = cast(
-            "JsonDict",
-            api_get(
-                tm,
-                f"{ACTIVITY_URL}/{activity.id}/streams",
-                {"keys": "time,distance,grade_smooth,heartrate", "key_by_type": "true"},
-            ),
-        )
-        segments = stream_segments(activity, st)
-        cache[str(activity.id)] = {
-            "date": activity.date,
-            "name": activity.name,
-            "segments": [
-                {
-                    "dt": round(segment.dt, 3),
-                    "speed": round(segment.speed, 4),
-                    "adjusted_speed": round(segment.adjusted_speed, 4),
-                    "hr": round(segment.hr, 2),
-                }
-                for segment in segments
-            ],
-        }
-        if (i + 1) % 10 == 0:
-            save_json(SAMPLES_PATH, cache)
-            print(f"  {i + 1}/{len(batch)} ...")
-    save_json(SAMPLES_PATH, cache)
+    if batch:
+        tm = Tokens(cfg)
+        for i, activity in enumerate(batch):
+            st = cast(
+                "JsonDict",
+                api_get(
+                    tm,
+                    f"{ACTIVITY_URL}/{activity.id}/streams",
+                    {"keys": "time,distance,grade_smooth,heartrate", "key_by_type": "true"},
+                ),
+            )
+            segments = stream_segments(activity, st)
+            cache[str(activity.id)] = {
+                "date": activity.date,
+                "name": activity.name,
+                "segments": [
+                    {
+                        "dt": round(segment.dt, 3),
+                        "speed": round(segment.speed, 4),
+                        "adjusted_speed": round(segment.adjusted_speed, 4),
+                        "hr": round(segment.hr, 2),
+                    }
+                    for segment in segments
+                ],
+            }
+            if (i + 1) % 10 == 0:
+                save_json(SAMPLES_PATH, cache)
+                print(f"  {i + 1}/{len(batch)} ...")
+        save_json(SAMPLES_PATH, cache)
+
+    bands = write_hr_zones(cache)
+    write_zone_metrics(cache, bands)
 
 
 def details(cfg: JsonDict, limit: int | None = None) -> None:

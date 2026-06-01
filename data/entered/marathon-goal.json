@@ -71,7 +71,7 @@
     {
       "id": "anaerobic_power",
       "label": "Anaerobic power",
-      "unit": "Best 1-minute grade-adjusted pace",
+      "unit": "Grade-adjusted metres per heartbeat in sustained efforts above 85% HR (high Z4 + Z5).",
       "higher_better": true,
       "compute": "anaerobic_power",
       "targets": []

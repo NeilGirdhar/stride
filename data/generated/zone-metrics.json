@@ -1,0 +1,1787 @@
+{
+  "11759056067": {
+    "date": "2024-06-28",
+    "anaerobic_power": 1.0444
+  },
+  "11781006019": {
+    "date": "2024-07-01",
+    "aerobic_power": 1.0524,
+    "anaerobic_power": 1.0175
+  },
+  "11797236686": {
+    "date": "2024-07-03",
+    "aerobic_power": 1.1597,
+    "anaerobic_power": 0.9747
+  },
+  "11813295404": {
+    "date": "2024-07-05",
+    "anaerobic_power": 1.0452
+  },
+  "11836317434": {
+    "date": "2024-07-08",
+    "anaerobic_power": 1.0006
+  },
+  "11852998062": {
+    "date": "2024-07-10",
+    "anaerobic_power": 0.9185
+  },
+  "11892518333": {
+    "date": "2024-07-15",
+    "anaerobic_power": 0.9988
+  },
+  "11909315838": {
+    "date": "2024-07-17",
+    "anaerobic_power": 0.9303
+  },
+  "11917878724": {
+    "date": "2024-07-18",
+    "aerobic_power": 1.1599,
+    "anaerobic_power": 1.0031
+  },
+  "11926338066": {
+    "date": "2024-07-19",
+    "anaerobic_power": 1.2135
+  },
+  "11950523040": {
+    "date": "2024-07-22",
+    "aerobic_efficiency": 1.1897,
+    "aerobic_power": 1.0967
+  },
+  "11967801048": {
+    "date": "2024-07-24",
+    "aerobic_power": 1.1254
+  },
+  "11972850654": {
+    "date": "2024-07-24",
+    "aerobic_power": 0.8899
+  },
+  "11989323766": {
+    "date": "2024-07-26",
+    "aerobic_power": 1.1624
+  },
+  "12003105923": {
+    "date": "2024-07-28",
+    "aerobic_power": 0.9655,
+    "anaerobic_power": 0.9682
+  },
+  "12008914517": {
+    "date": "2024-07-29",
+    "anaerobic_power": 0.977
+  },
+  "12017288694": {
+    "date": "2024-07-30",
+    "anaerobic_power": 0.9786
+  },
+  "12034456394": {
+    "date": "2024-08-01",
+    "anaerobic_power": 0.9987
+  },
+  "12044939282": {
+    "date": "2024-08-02",
+    "aerobic_power": 1.6373,
+    "anaerobic_power": 1.0484
+  },
+  "12052416601": {
+    "date": "2024-08-03",
+    "aerobic_power": 0.9673,
+    "anaerobic_power": 0.7607
+  },
+  "12067228073": {
+    "date": "2024-08-05",
+    "aerobic_power": 1.0109
+  },
+  "12086010462": {
+    "date": "2024-08-07",
+    "aerobic_power": 1.0393,
+    "anaerobic_power": 1.0296
+  },
+  "12119818401": {
+    "date": "2024-08-11",
+    "aerobic_power": 0.9411,
+    "anaerobic_power": 1.0685
+  },
+  "12144316421": {
+    "date": "2024-08-14",
+    "aerobic_power": 0.9298,
+    "anaerobic_power": 0.9772
+  },
+  "12185928208": {
+    "date": "2024-08-19",
+    "aerobic_power": 1.0589,
+    "anaerobic_power": 1.0398
+  },
+  "12194433915": {
+    "date": "2024-08-20",
+    "aerobic_power": 1.0134,
+    "anaerobic_power": 0.9414
+  },
+  "12220693371": {
+    "date": "2024-08-23",
+    "anaerobic_power": 1.0732
+  },
+  "12245315717": {
+    "date": "2024-08-26",
+    "aerobic_power": 1.0344,
+    "anaerobic_power": 1.0079
+  },
+  "12262958240": {
+    "date": "2024-08-28",
+    "aerobic_power": 1.1011,
+    "anaerobic_power": 0.9935
+  },
+  "12280066194": {
+    "date": "2024-08-30",
+    "aerobic_power": 1.1893
+  },
+  "12304935977": {
+    "date": "2024-09-02",
+    "aerobic_power": 0.8949,
+    "anaerobic_power": 1.0138
+  },
+  "12322611310": {
+    "date": "2024-09-04",
+    "anaerobic_power": 0.9533
+  },
+  "12331462321": {
+    "date": "2024-09-05",
+    "anaerobic_power": 0.9985
+  },
+  "12339807861": {
+    "date": "2024-09-06",
+    "anaerobic_power": 1.1173
+  },
+  "12417799602": {
+    "date": "2024-09-15",
+    "aerobic_power": 1.2409,
+    "anaerobic_power": 0.9219
+  },
+  "12449129845": {
+    "date": "2024-09-19",
+    "aerobic_power": 1.0137,
+    "anaerobic_power": 0.9707
+  },
+  "12470543161": {
+    "date": "2024-09-21",
+    "anaerobic_power": 0.9518
+  },
+  "12499350025": {
+    "date": "2024-09-25",
+    "aerobic_power": 1.0999,
+    "anaerobic_power": 0.9098
+  },
+  "12507323621": {
+    "date": "2024-09-26",
+    "anaerobic_power": 1.0914
+  },
+  "12524171266": {
+    "date": "2024-09-28",
+    "aerobic_power": 1.0541,
+    "anaerobic_power": 1.0367
+  },
+  "12534394689": {
+    "date": "2024-09-29",
+    "aerobic_power": 0.9432,
+    "anaerobic_power": 1.0633
+  },
+  "12538785420": {
+    "date": "2024-09-30",
+    "aerobic_power": 1.0842,
+    "anaerobic_power": 1.018
+  },
+  "12555241344": {
+    "date": "2024-10-02",
+    "aerobic_power": 1.0923,
+    "anaerobic_power": 1.0205
+  },
+  "12563624485": {
+    "date": "2024-10-03",
+    "aerobic_efficiency": 1.3536,
+    "aerobic_power": 1.1122
+  },
+  "12590639809": {
+    "date": "2024-10-06",
+    "anaerobic_power": 1.0608
+  },
+  "12612575439": {
+    "date": "2024-10-09",
+    "aerobic_power": 1.1473,
+    "anaerobic_power": 1.2343
+  },
+  "12617485409": {
+    "date": "2024-10-09",
+    "aerobic_power": 1.046
+  },
+  "12620355334": {
+    "date": "2024-10-10",
+    "aerobic_power": 1.139
+  },
+  "12638349543": {
+    "date": "2024-10-12",
+    "aerobic_power": 0.9911,
+    "anaerobic_power": 0.936
+  },
+  "12651987048": {
+    "date": "2024-10-14",
+    "aerobic_power": 1.0988,
+    "anaerobic_power": 0.9578
+  },
+  "12668540257": {
+    "date": "2024-10-16",
+    "aerobic_power": 1.14,
+    "anaerobic_power": 0.9779
+  },
+  "12684376246": {
+    "date": "2024-10-18",
+    "aerobic_power": 1.2375,
+    "anaerobic_power": 1.0564
+  },
+  "12694067665": {
+    "date": "2024-10-19",
+    "anaerobic_power": 0.9422
+  },
+  "12712691366": {
+    "date": "2024-10-21",
+    "anaerobic_power": 1.0696
+  },
+  "12724191474": {
+    "date": "2024-10-23",
+    "aerobic_power": 1.1572,
+    "anaerobic_power": 1.0393
+  },
+  "12763901703": {
+    "date": "2024-10-28",
+    "aerobic_power": 1.0865
+  },
+  "12780197978": {
+    "date": "2024-10-30",
+    "aerobic_power": 1.1421,
+    "anaerobic_power": 1.0113
+  },
+  "12785642014": {
+    "date": "2024-10-30",
+    "anaerobic_power": 1.2076
+  },
+  "12795684957": {
+    "date": "2024-11-01",
+    "aerobic_power": 1.2558,
+    "anaerobic_power": 1.0629
+  },
+  "12827686070": {
+    "date": "2024-11-05",
+    "aerobic_efficiency": 1.1617,
+    "aerobic_power": 1.0914
+  },
+  "12835904754": {
+    "date": "2024-11-06",
+    "aerobic_power": 1.0563,
+    "anaerobic_power": 0.9969
+  },
+  "12848608580": {
+    "date": "2024-11-07",
+    "anaerobic_power": 1.1406
+  },
+  "12874534842": {
+    "date": "2024-11-11",
+    "aerobic_efficiency": 1.1612,
+    "aerobic_power": 1.1084
+  },
+  "12890511992": {
+    "date": "2024-11-13",
+    "aerobic_power": 1.133,
+    "anaerobic_power": 1.0617
+  },
+  "12902865617": {
+    "date": "2024-11-14",
+    "anaerobic_power": 1.0646
+  },
+  "12917103153": {
+    "date": "2024-11-16",
+    "aerobic_power": 0.9812,
+    "anaerobic_power": 0.9201
+  },
+  "12928226052": {
+    "date": "2024-11-18",
+    "aerobic_efficiency": 1.2459,
+    "aerobic_power": 1.134,
+    "anaerobic_power": 1.1072
+  },
+  "12943102683": {
+    "date": "2024-11-20",
+    "aerobic_power": 1.1193,
+    "anaerobic_power": 1.2498
+  },
+  "12950664101": {
+    "date": "2024-11-21",
+    "aerobic_power": 1.0629,
+    "anaerobic_power": 0.9558
+  },
+  "12978984568": {
+    "date": "2024-11-25",
+    "aerobic_efficiency": 1.2434,
+    "aerobic_power": 1.1467
+  },
+  "12994017153": {
+    "date": "2024-11-27",
+    "aerobic_power": 1.0536
+  },
+  "13001454858": {
+    "date": "2024-11-28",
+    "aerobic_efficiency": 1.3547,
+    "aerobic_power": 1.0711,
+    "anaerobic_power": 1.0816
+  },
+  "13016263635": {
+    "date": "2024-11-30",
+    "aerobic_power": 1.3931
+  },
+  "13029565376": {
+    "date": "2024-12-02",
+    "aerobic_power": 1.12
+  },
+  "13044333108": {
+    "date": "2024-12-04",
+    "aerobic_efficiency": 1.0817,
+    "aerobic_power": 1.0945,
+    "anaerobic_power": 1.0383
+  },
+  "13066239693": {
+    "date": "2024-12-07",
+    "aerobic_efficiency": 1.1677,
+    "aerobic_power": 1.1112
+  },
+  "13078054740": {
+    "date": "2024-12-09",
+    "aerobic_efficiency": 1.2807,
+    "aerobic_power": 1.124
+  },
+  "13099694209": {
+    "date": "2024-12-12",
+    "aerobic_power": 1.1344,
+    "anaerobic_power": 1.1712
+  },
+  "13114138669": {
+    "date": "2024-12-14",
+    "aerobic_efficiency": 1.2797,
+    "aerobic_power": 1.0524,
+    "anaerobic_power": 1.1607
+  },
+  "13126837178": {
+    "date": "2024-12-16",
+    "aerobic_efficiency": 1.2164,
+    "aerobic_power": 1.0903
+  },
+  "13148390805": {
+    "date": "2024-12-19",
+    "aerobic_efficiency": 1.2935,
+    "aerobic_power": 1.1673
+  },
+  "13162787968": {
+    "date": "2024-12-21",
+    "aerobic_power": 1.1184,
+    "anaerobic_power": 0.9804
+  },
+  "13163090899": {
+    "date": "2024-12-21",
+    "aerobic_efficiency": 1.1356
+  },
+  "13227252657": {
+    "date": "2024-12-30",
+    "aerobic_efficiency": 0.7665,
+    "aerobic_power": 1.293,
+    "anaerobic_power": 1.0576
+  },
+  "13280171705": {
+    "date": "2025-01-06",
+    "aerobic_power": 1.0823
+  },
+  "13298285037": {
+    "date": "2025-01-08",
+    "aerobic_power": 0.9318,
+    "anaerobic_power": 0.9683
+  },
+  "13307393640": {
+    "date": "2025-01-09",
+    "aerobic_efficiency": 1.2874,
+    "aerobic_power": 1.1001,
+    "anaerobic_power": 0.9169
+  },
+  "13326875221": {
+    "date": "2025-01-11",
+    "aerobic_efficiency": 1.2585,
+    "aerobic_power": 1.1126,
+    "anaerobic_power": 0.8674
+  },
+  "13333913681": {
+    "date": "2025-01-12",
+    "aerobic_power": 1.2064,
+    "anaerobic_power": 1.0141
+  },
+  "13342152856": {
+    "date": "2025-01-13",
+    "aerobic_power": 1.1553,
+    "anaerobic_power": 0.9452
+  },
+  "13360470551": {
+    "date": "2025-01-15",
+    "aerobic_power": 1.1435,
+    "anaerobic_power": 0.9029
+  },
+  "13369869437": {
+    "date": "2025-01-16",
+    "aerobic_power": 1.1217,
+    "anaerobic_power": 0.9392
+  },
+  "13389668867": {
+    "date": "2025-01-18",
+    "aerobic_power": 1.1679,
+    "anaerobic_power": 0.9953
+  },
+  "13431220213": {
+    "date": "2025-01-23",
+    "aerobic_power": 1.0921,
+    "anaerobic_power": 1.039
+  },
+  "13450994075": {
+    "date": "2025-01-25",
+    "aerobic_efficiency": 1.5186,
+    "aerobic_power": 1.1588
+  },
+  "13465257524": {
+    "date": "2025-01-27",
+    "aerobic_efficiency": 1.286,
+    "aerobic_power": 1.2005
+  },
+  "13483134248": {
+    "date": "2025-01-29",
+    "aerobic_power": 1.0639,
+    "anaerobic_power": 0.9804
+  },
+  "13511662520": {
+    "date": "2025-02-01",
+    "aerobic_power": 1.3039,
+    "anaerobic_power": 1.1326
+  },
+  "13512555164": {
+    "date": "2025-02-01",
+    "aerobic_power": 1.3005
+  },
+  "13546380996": {
+    "date": "2025-02-05",
+    "aerobic_efficiency": 1.1976,
+    "aerobic_power": 1.2187,
+    "anaerobic_power": 1.0127
+  },
+  "13575123061": {
+    "date": "2025-02-08",
+    "aerobic_efficiency": 1.2658,
+    "aerobic_power": 1.3036,
+    "anaerobic_power": 0.9736
+  },
+  "13589467595": {
+    "date": "2025-02-10",
+    "aerobic_efficiency": 1.1928,
+    "aerobic_power": 1.1669
+  },
+  "13607325755": {
+    "date": "2025-02-12",
+    "aerobic_efficiency": 1.2007,
+    "aerobic_power": 1.2115
+  },
+  "13635357353": {
+    "date": "2025-02-15",
+    "aerobic_efficiency": 0.7257,
+    "anaerobic_power": 1.0729
+  },
+  "13712716867": {
+    "date": "2025-02-24",
+    "aerobic_efficiency": 1.2088,
+    "aerobic_power": 1.1109
+  },
+  "13768111798": {
+    "date": "2025-03-02",
+    "aerobic_power": 1.1122
+  },
+  "13776178940": {
+    "date": "2025-03-03",
+    "aerobic_power": 1.0606
+  },
+  "13794831650": {
+    "date": "2025-03-05",
+    "aerobic_power": 1.0565,
+    "anaerobic_power": 0.9688
+  },
+  "13804710943": {
+    "date": "2025-03-06",
+    "anaerobic_power": 1.0481
+  },
+  "13825370216": {
+    "date": "2025-03-08",
+    "aerobic_power": 1.0435,
+    "anaerobic_power": 1.0399
+  },
+  "13826208117": {
+    "date": "2025-03-08",
+    "anaerobic_power": 0.8368
+  },
+  "13841154047": {
+    "date": "2025-03-10",
+    "aerobic_power": 1.0291,
+    "anaerobic_power": 0.8877
+  },
+  "13869927795": {
+    "date": "2025-03-13",
+    "aerobic_power": 1.152,
+    "anaerobic_power": 1.0781
+  },
+  "13890404398": {
+    "date": "2025-03-15",
+    "aerobic_power": 1.2758,
+    "anaerobic_power": 1.2163
+  },
+  "13892673783": {
+    "date": "2025-03-15",
+    "aerobic_power": 1.1159,
+    "anaerobic_power": 1.0967
+  },
+  "13905804013": {
+    "date": "2025-03-17",
+    "aerobic_efficiency": 1.2467,
+    "aerobic_power": 1.2122
+  },
+  "13924743390": {
+    "date": "2025-03-19",
+    "aerobic_efficiency": 1.3906,
+    "aerobic_power": 1.0397,
+    "anaerobic_power": 1.104
+  },
+  "13934430886": {
+    "date": "2025-03-20",
+    "aerobic_power": 1.1339,
+    "anaerobic_power": 1.0262
+  },
+  "13955631198": {
+    "date": "2025-03-22",
+    "aerobic_power": 1.3975,
+    "anaerobic_power": 0.9628
+  },
+  "13956019845": {
+    "date": "2025-03-22",
+    "aerobic_power": 1.1479
+  },
+  "13971520906": {
+    "date": "2025-03-24",
+    "aerobic_power": 1.0299
+  },
+  "13990881161": {
+    "date": "2025-03-26",
+    "aerobic_power": 1.0889,
+    "anaerobic_power": 0.9653
+  },
+  "14001104971": {
+    "date": "2025-03-27",
+    "aerobic_power": 1.2827,
+    "anaerobic_power": 1.0136
+  },
+  "14022185374": {
+    "date": "2025-03-29",
+    "aerobic_efficiency": 1.2266,
+    "aerobic_power": 1.2161,
+    "anaerobic_power": 1.1156
+  },
+  "14037172350": {
+    "date": "2025-03-31",
+    "aerobic_power": 1.0838,
+    "anaerobic_power": 0.9366
+  },
+  "14057519108": {
+    "date": "2025-04-02",
+    "aerobic_efficiency": 1.5081,
+    "aerobic_power": 1.0409
+  },
+  "14073359623": {
+    "date": "2025-04-03",
+    "aerobic_efficiency": 1.372,
+    "aerobic_power": 1.3047,
+    "anaerobic_power": 0.9812
+  },
+  "14089841092": {
+    "date": "2025-04-05",
+    "aerobic_power": 1.2023,
+    "anaerobic_power": 1.1845
+  },
+  "14105738041": {
+    "date": "2025-04-07",
+    "aerobic_efficiency": 1.1741
+  },
+  "14131900084": {
+    "date": "2025-04-09",
+    "aerobic_efficiency": 1.4671,
+    "aerobic_power": 1.3952
+  },
+  "14157915575": {
+    "date": "2025-04-12",
+    "anaerobic_power": 1.1115
+  },
+  "14173544412": {
+    "date": "2025-04-14",
+    "aerobic_efficiency": 1.2876
+  },
+  "14192568922": {
+    "date": "2025-04-16",
+    "aerobic_efficiency": 1.1457,
+    "aerobic_power": 1.223
+  },
+  "14240539495": {
+    "date": "2025-04-21",
+    "aerobic_efficiency": 1.3288,
+    "aerobic_power": 1.1849,
+    "anaerobic_power": 1.0558
+  },
+  "14260924903": {
+    "date": "2025-04-23",
+    "aerobic_efficiency": 1.3081,
+    "aerobic_power": 1.1444
+  },
+  "14270989488": {
+    "date": "2025-04-24",
+    "aerobic_efficiency": 1.2805,
+    "aerobic_power": 1.1403,
+    "anaerobic_power": 1.0929
+  },
+  "14291864922": {
+    "date": "2025-04-26",
+    "aerobic_power": 1.2912,
+    "anaerobic_power": 1.0739
+  },
+  "14310646061": {
+    "date": "2025-04-28",
+    "aerobic_efficiency": 1.2563,
+    "aerobic_power": 1.2024
+  },
+  "14331729357": {
+    "date": "2025-04-30",
+    "aerobic_efficiency": 1.3537,
+    "aerobic_power": 1.1331
+  },
+  "14343784366": {
+    "date": "2025-05-01",
+    "aerobic_power": 1.1497,
+    "anaerobic_power": 1.0176
+  },
+  "14365442874": {
+    "date": "2025-05-03",
+    "aerobic_power": 1.2949,
+    "anaerobic_power": 1.1781
+  },
+  "14380002790": {
+    "date": "2025-05-04",
+    "aerobic_efficiency": 1.2402
+  },
+  "14383993833": {
+    "date": "2025-05-05",
+    "aerobic_efficiency": 1.2561,
+    "aerobic_power": 1.1155
+  },
+  "14403670969": {
+    "date": "2025-05-07",
+    "aerobic_power": 1.0968
+  },
+  "14454976659": {
+    "date": "2025-05-12",
+    "aerobic_efficiency": 1.1924,
+    "aerobic_power": 1.1158
+  },
+  "14476301356": {
+    "date": "2025-05-14",
+    "aerobic_power": 0.8967,
+    "anaerobic_power": 0.9918
+  },
+  "14483581532": {
+    "date": "2025-05-14",
+    "aerobic_power": 1.3908
+  },
+  "14497059131": {
+    "date": "2025-05-16",
+    "aerobic_power": 1.3079,
+    "anaerobic_power": 1.1422
+  },
+  "14510120872": {
+    "date": "2025-05-17",
+    "aerobic_power": 1.1134,
+    "anaerobic_power": 1.202
+  },
+  "14528075790": {
+    "date": "2025-05-19",
+    "aerobic_power": 1.0921
+  },
+  "14548935298": {
+    "date": "2025-05-21",
+    "aerobic_efficiency": 1.0429,
+    "aerobic_power": 1.1254
+  },
+  "14568366615": {
+    "date": "2025-05-23",
+    "aerobic_power": 1.2105
+  },
+  "14569132233": {
+    "date": "2025-05-23",
+    "aerobic_efficiency": 1.0689,
+    "aerobic_power": 1.1281,
+    "anaerobic_power": 1.1882
+  },
+  "14599358209": {
+    "date": "2025-05-26",
+    "aerobic_efficiency": 1.2745,
+    "aerobic_power": 1.1291
+  },
+  "14619700720": {
+    "date": "2025-05-28",
+    "aerobic_power": 1.1811
+  },
+  "14630182314": {
+    "date": "2025-05-29",
+    "aerobic_efficiency": 1.4897,
+    "aerobic_power": 1.1688,
+    "anaerobic_power": 1.0408
+  },
+  "14640445922": {
+    "date": "2025-05-30",
+    "aerobic_efficiency": 1.2921,
+    "aerobic_power": 1.2206
+  },
+  "14653623161": {
+    "date": "2025-05-31",
+    "aerobic_efficiency": 1.2555,
+    "aerobic_power": 1.4052,
+    "anaerobic_power": 1.0811
+  },
+  "14671542333": {
+    "date": "2025-06-02",
+    "aerobic_efficiency": 1.5241,
+    "aerobic_power": 1.1824
+  },
+  "14693050098": {
+    "date": "2025-06-04",
+    "aerobic_efficiency": 1.3252,
+    "aerobic_power": 1.0184,
+    "anaerobic_power": 0.9814
+  },
+  "14703473967": {
+    "date": "2025-06-05",
+    "aerobic_efficiency": 1.3141,
+    "aerobic_power": 1.1046,
+    "anaerobic_power": 1.062
+  },
+  "14713376497": {
+    "date": "2025-06-06",
+    "aerobic_power": 1.2987
+  },
+  "14728393571": {
+    "date": "2025-06-07",
+    "aerobic_power": 1.2084,
+    "anaerobic_power": 1.1228
+  },
+  "14743392400": {
+    "date": "2025-06-09",
+    "aerobic_efficiency": 1.3176
+  },
+  "14764764806": {
+    "date": "2025-06-11",
+    "aerobic_efficiency": 1.2198,
+    "aerobic_power": 1.1822
+  },
+  "14775689497": {
+    "date": "2025-06-12",
+    "aerobic_power": 1.1438
+  },
+  "14785339217": {
+    "date": "2025-06-13",
+    "aerobic_efficiency": 1.4344,
+    "aerobic_power": 1.3333
+  },
+  "14798149612": {
+    "date": "2025-06-14",
+    "aerobic_efficiency": 1.5574,
+    "anaerobic_power": 1.0421
+  },
+  "14808679413": {
+    "date": "2025-06-15",
+    "aerobic_power": 1.4639,
+    "anaerobic_power": 1.1254
+  },
+  "14815375648": {
+    "date": "2025-06-16",
+    "aerobic_efficiency": 1.3839
+  },
+  "14837834114": {
+    "date": "2025-06-18",
+    "aerobic_efficiency": 1.4283,
+    "aerobic_power": 1.1045
+  },
+  "14848553556": {
+    "date": "2025-06-19",
+    "aerobic_efficiency": 1.3133,
+    "aerobic_power": 1.1323
+  },
+  "14870366997": {
+    "date": "2025-06-21",
+    "aerobic_efficiency": 1.2882,
+    "aerobic_power": 1.2153
+  },
+  "14881880833": {
+    "date": "2025-06-22",
+    "aerobic_power": 1.0772
+  },
+  "14889662955": {
+    "date": "2025-06-23",
+    "aerobic_efficiency": 1.2744,
+    "aerobic_power": 1.1189
+  },
+  "14910549213": {
+    "date": "2025-06-25",
+    "aerobic_efficiency": 1.3031,
+    "aerobic_power": 1.1857
+  },
+  "14937981867": {
+    "date": "2025-06-28",
+    "aerobic_power": 1.0909,
+    "anaerobic_power": 1.0407
+  },
+  "14956353754": {
+    "date": "2025-06-29",
+    "aerobic_power": 1.2552,
+    "anaerobic_power": 1.1032
+  },
+  "14976664454": {
+    "date": "2025-07-01",
+    "aerobic_power": 1.254,
+    "anaerobic_power": 0.997
+  },
+  "14980656652": {
+    "date": "2025-07-02",
+    "aerobic_efficiency": 1.2028,
+    "aerobic_power": 1.1424,
+    "anaerobic_power": 1.1248
+  },
+  "15092901032": {
+    "date": "2025-07-12",
+    "aerobic_efficiency": 1.1275,
+    "aerobic_power": 0.9675,
+    "anaerobic_power": 1.0236
+  },
+  "15141291716": {
+    "date": "2025-07-17",
+    "anaerobic_power": 1.0595
+  },
+  "15185956302": {
+    "date": "2025-07-21",
+    "aerobic_efficiency": 1.2149
+  },
+  "15208738302": {
+    "date": "2025-07-23",
+    "aerobic_efficiency": 1.204,
+    "aerobic_power": 0.9289
+  },
+  "15219377025": {
+    "date": "2025-07-24",
+    "aerobic_efficiency": 1.1926,
+    "aerobic_power": 1.1095
+  },
+  "15226333749": {
+    "date": "2025-07-24",
+    "aerobic_power": 1.1351,
+    "anaerobic_power": 1.0079
+  },
+  "15307032329": {
+    "date": "2025-08-01",
+    "aerobic_efficiency": 1.4244,
+    "aerobic_power": 1.2117,
+    "anaerobic_power": 1.0958
+  },
+  "15321738677": {
+    "date": "2025-08-02",
+    "aerobic_power": 1.2298,
+    "anaerobic_power": 1.0863
+  },
+  "15339807469": {
+    "date": "2025-08-04",
+    "aerobic_efficiency": 1.1752,
+    "aerobic_power": 1.1561
+  },
+  "15346351592": {
+    "date": "2025-08-04",
+    "aerobic_efficiency": 1.1856,
+    "aerobic_power": 1.0669,
+    "anaerobic_power": 1.0728
+  },
+  "15362919643": {
+    "date": "2025-08-06",
+    "aerobic_efficiency": 0.9931,
+    "aerobic_power": 1.0356
+  },
+  "15386372883": {
+    "date": "2025-08-08",
+    "aerobic_efficiency": 1.0545,
+    "aerobic_power": 1.1451,
+    "anaerobic_power": 1.1327
+  },
+  "15412365665": {
+    "date": "2025-08-10",
+    "aerobic_efficiency": 1.4162,
+    "anaerobic_power": 0.9623
+  },
+  "15419496098": {
+    "date": "2025-08-11",
+    "aerobic_efficiency": 1.2356,
+    "aerobic_power": 1.1146
+  },
+  "15443222288": {
+    "date": "2025-08-13",
+    "aerobic_power": 1.0594
+  },
+  "15455322404": {
+    "date": "2025-08-14",
+    "aerobic_efficiency": 1.2525,
+    "aerobic_power": 1.1188,
+    "anaerobic_power": 1.0203
+  },
+  "15481139829": {
+    "date": "2025-08-16",
+    "aerobic_power": 1.0898,
+    "anaerobic_power": 1.0018
+  },
+  "15500002253": {
+    "date": "2025-08-18",
+    "aerobic_power": 1.0929
+  },
+  "15523421537": {
+    "date": "2025-08-20",
+    "aerobic_efficiency": 1.3026,
+    "aerobic_power": 1.0964
+  },
+  "15535115878": {
+    "date": "2025-08-21",
+    "aerobic_power": 1.1026
+  },
+  "15580195399": {
+    "date": "2025-08-25",
+    "aerobic_efficiency": 1.0954,
+    "aerobic_power": 1.0953
+  },
+  "15603387629": {
+    "date": "2025-08-27",
+    "aerobic_efficiency": 1.2411,
+    "aerobic_power": 1.1132
+  },
+  "15614992279": {
+    "date": "2025-08-28",
+    "aerobic_efficiency": 1.2324,
+    "aerobic_power": 1.1344
+  },
+  "15639261922": {
+    "date": "2025-08-30",
+    "aerobic_efficiency": 1.4142,
+    "aerobic_power": 1.2766,
+    "anaerobic_power": 1.2725
+  },
+  "15657976714": {
+    "date": "2025-09-01",
+    "aerobic_efficiency": 1.2563
+  },
+  "15681407414": {
+    "date": "2025-09-03",
+    "aerobic_efficiency": 1.3867,
+    "aerobic_power": 0.8423
+  },
+  "15693452392": {
+    "date": "2025-09-04",
+    "aerobic_efficiency": 1.2448,
+    "aerobic_power": 1.1358
+  },
+  "15704230193": {
+    "date": "2025-09-05",
+    "aerobic_efficiency": 0.8751,
+    "aerobic_power": 1.2576
+  },
+  "15718945593": {
+    "date": "2025-09-06",
+    "aerobic_power": 1.0992
+  },
+  "15738834674": {
+    "date": "2025-09-08",
+    "aerobic_efficiency": 1.149
+  },
+  "15757707656": {
+    "date": "2025-09-09",
+    "aerobic_power": 1.2076
+  },
+  "15762612764": {
+    "date": "2025-09-10",
+    "aerobic_efficiency": 1.1683,
+    "aerobic_power": 1.0419
+  },
+  "15773825660": {
+    "date": "2025-09-11",
+    "aerobic_efficiency": 1.2911
+  },
+  "15798183390": {
+    "date": "2025-09-13",
+    "aerobic_power": 1.0692,
+    "anaerobic_power": 0.95
+  },
+  "15818486736": {
+    "date": "2025-09-15",
+    "aerobic_efficiency": 1.3767
+  },
+  "15837246968": {
+    "date": "2025-09-16",
+    "aerobic_power": 1.0914
+  },
+  "15841248523": {
+    "date": "2025-09-17",
+    "aerobic_efficiency": 1.3753,
+    "aerobic_power": 0.9581
+  },
+  "15852832568": {
+    "date": "2025-09-18",
+    "aerobic_efficiency": 1.2301,
+    "aerobic_power": 1.1725
+  },
+  "15859604470": {
+    "date": "2025-09-18",
+    "aerobic_efficiency": 1.189,
+    "aerobic_power": 1.0626
+  },
+  "15863561482": {
+    "date": "2025-09-19",
+    "aerobic_efficiency": 1.0885,
+    "aerobic_power": 1.4935,
+    "anaerobic_power": 1.1984
+  },
+  "15888965889": {
+    "date": "2025-09-21",
+    "anaerobic_power": 1.1962
+  },
+  "15919505534": {
+    "date": "2025-09-24",
+    "aerobic_efficiency": 1.5077,
+    "aerobic_power": 1.0986
+  },
+  "15930493090": {
+    "date": "2025-09-25",
+    "aerobic_efficiency": 1.3379,
+    "aerobic_power": 1.212
+  },
+  "15954918020": {
+    "date": "2025-09-27",
+    "aerobic_efficiency": 1.414
+  },
+  "15973811608": {
+    "date": "2025-09-29",
+    "aerobic_efficiency": 1.2548,
+    "aerobic_power": 1.1433
+  },
+  "15996633393": {
+    "date": "2025-10-01",
+    "aerobic_power": 1.08
+  },
+  "16003653912": {
+    "date": "2025-10-01",
+    "aerobic_efficiency": 1.2057,
+    "aerobic_power": 1.1387
+  },
+  "16044666433": {
+    "date": "2025-10-05",
+    "anaerobic_power": 1.0372
+  },
+  "16073002084": {
+    "date": "2025-10-08",
+    "aerobic_efficiency": 1.1583,
+    "aerobic_power": 1.1403
+  },
+  "16083914630": {
+    "date": "2025-10-09",
+    "aerobic_efficiency": 1.1924
+  },
+  "16126291162": {
+    "date": "2025-10-13",
+    "aerobic_efficiency": 1.3799
+  },
+  "16128127319": {
+    "date": "2025-10-13",
+    "aerobic_efficiency": 1.2933
+  },
+  "16147873101": {
+    "date": "2025-10-15",
+    "aerobic_efficiency": 1.2347,
+    "aerobic_power": 1.1772
+  },
+  "16159214616": {
+    "date": "2025-10-16",
+    "aerobic_power": 1.1618
+  },
+  "16168648872": {
+    "date": "2025-10-17",
+    "aerobic_efficiency": 1.5424,
+    "aerobic_power": 1.3942
+  },
+  "16182993982": {
+    "date": "2025-10-18",
+    "aerobic_efficiency": 1.3697,
+    "aerobic_power": 1.1418,
+    "anaerobic_power": 0.712
+  },
+  "16199941705": {
+    "date": "2025-10-20",
+    "aerobic_efficiency": 1.2364,
+    "aerobic_power": 1.1719
+  },
+  "16220976164": {
+    "date": "2025-10-22",
+    "aerobic_efficiency": 1.2705,
+    "aerobic_power": 1.474
+  },
+  "16243008714": {
+    "date": "2025-10-24",
+    "aerobic_efficiency": 1.2152,
+    "aerobic_power": 1.3707,
+    "anaerobic_power": 1.2476
+  },
+  "16252563427": {
+    "date": "2025-10-25",
+    "aerobic_efficiency": 1.2111,
+    "aerobic_power": 1.2468
+  },
+  "16270845729": {
+    "date": "2025-10-27",
+    "aerobic_efficiency": 1.2573
+  },
+  "16287420131": {
+    "date": "2025-10-28",
+    "aerobic_power": 1.1566
+  },
+  "16291476301": {
+    "date": "2025-10-29",
+    "aerobic_efficiency": 1.376,
+    "aerobic_power": 1.1383
+  },
+  "16303636674": {
+    "date": "2025-10-30",
+    "aerobic_efficiency": 1.2503,
+    "aerobic_power": 1.1607
+  },
+  "16340939789": {
+    "date": "2025-11-03",
+    "aerobic_efficiency": 1.3126
+  },
+  "16351249545": {
+    "date": "2025-11-04",
+    "aerobic_efficiency": 1.4842,
+    "aerobic_power": 1.2101
+  },
+  "16362587235": {
+    "date": "2025-11-05",
+    "aerobic_efficiency": 1.2151,
+    "aerobic_power": 1.0779,
+    "anaerobic_power": 0.9253
+  },
+  "16372719800": {
+    "date": "2025-11-06",
+    "aerobic_efficiency": 1.3117
+  },
+  "16383500401": {
+    "date": "2025-11-07",
+    "aerobic_efficiency": 1.4548,
+    "aerobic_power": 1.1255
+  },
+  "16394878831": {
+    "date": "2025-11-08",
+    "aerobic_efficiency": 1.2738
+  },
+  "16413624677": {
+    "date": "2025-11-10",
+    "aerobic_efficiency": 1.3778,
+    "aerobic_power": 1.202
+  },
+  "16423749123": {
+    "date": "2025-11-11",
+    "aerobic_efficiency": 1.2957,
+    "aerobic_power": 1.1277
+  },
+  "16435142205": {
+    "date": "2025-11-12",
+    "aerobic_efficiency": 1.1131,
+    "aerobic_power": 1.1247
+  },
+  "16445229235": {
+    "date": "2025-11-13",
+    "aerobic_efficiency": 1.3699,
+    "aerobic_power": 1.1272
+  },
+  "16454941022": {
+    "date": "2025-11-14",
+    "aerobic_efficiency": 1.1685,
+    "aerobic_power": 1.2696
+  },
+  "16465912963": {
+    "date": "2025-11-15",
+    "aerobic_efficiency": 1.4251,
+    "aerobic_power": 1.2212
+  },
+  "16484347170": {
+    "date": "2025-11-17",
+    "aerobic_efficiency": 1.2166,
+    "aerobic_power": 1.0971
+  },
+  "16493945689": {
+    "date": "2025-11-18",
+    "aerobic_efficiency": 1.3116,
+    "aerobic_power": 1.1538
+  },
+  "16504535550": {
+    "date": "2025-11-19",
+    "aerobic_efficiency": 1.2264,
+    "aerobic_power": 1.1317
+  },
+  "16514658840": {
+    "date": "2025-11-20",
+    "aerobic_efficiency": 1.2431,
+    "aerobic_power": 1.094
+  },
+  "16537223463": {
+    "date": "2025-11-22",
+    "aerobic_efficiency": 1.4103,
+    "aerobic_power": 1.2458,
+    "anaerobic_power": 1.0743
+  },
+  "16552427551": {
+    "date": "2025-11-24",
+    "aerobic_efficiency": 1.1908
+  },
+  "16561267313": {
+    "date": "2025-11-25",
+    "aerobic_efficiency": 1.2379
+  },
+  "16571836904": {
+    "date": "2025-11-26",
+    "aerobic_efficiency": 1.3314,
+    "anaerobic_power": 1.085
+  },
+  "16581296115": {
+    "date": "2025-11-27",
+    "aerobic_efficiency": 1.3782,
+    "aerobic_power": 1.2249
+  },
+  "16601575168": {
+    "date": "2025-11-29",
+    "aerobic_efficiency": 1.1841,
+    "aerobic_power": 1.1149
+  },
+  "16618631990": {
+    "date": "2025-12-01",
+    "aerobic_efficiency": 1.1961
+  },
+  "16638067277": {
+    "date": "2025-12-03",
+    "aerobic_power": 1.0462
+  },
+  "16647647710": {
+    "date": "2025-12-04",
+    "aerobic_efficiency": 1.2795
+  },
+  "16668353634": {
+    "date": "2025-12-06",
+    "aerobic_efficiency": 1.2202,
+    "aerobic_power": 1.0241
+  },
+  "16683929381": {
+    "date": "2025-12-08",
+    "aerobic_efficiency": 1.2032,
+    "aerobic_power": 1.0997
+  },
+  "16703275523": {
+    "date": "2025-12-10",
+    "aerobic_efficiency": 1.1977,
+    "aerobic_power": 0.9782
+  },
+  "16748592929": {
+    "date": "2025-12-15",
+    "aerobic_efficiency": 1.1992,
+    "aerobic_power": 1.0439
+  },
+  "16757286315": {
+    "date": "2025-12-16",
+    "aerobic_efficiency": 1.3091,
+    "aerobic_power": 1.1322
+  },
+  "16767078744": {
+    "date": "2025-12-17",
+    "aerobic_efficiency": 1.3199,
+    "aerobic_power": 1.1337,
+    "anaerobic_power": 0.8567
+  },
+  "16776104642": {
+    "date": "2025-12-18",
+    "aerobic_efficiency": 1.6343,
+    "aerobic_power": 1.16
+  },
+  "16784443194": {
+    "date": "2025-12-19",
+    "aerobic_efficiency": 1.3646,
+    "aerobic_power": 1.0371,
+    "anaerobic_power": 1.1132
+  },
+  "16795649117": {
+    "date": "2025-12-20",
+    "aerobic_power": 1.2037
+  },
+  "16810384299": {
+    "date": "2025-12-22",
+    "aerobic_efficiency": 1.2546
+  },
+  "16896013624": {
+    "date": "2025-12-31",
+    "aerobic_power": 1.1789,
+    "anaerobic_power": 1.1069
+  },
+  "16913071259": {
+    "date": "2026-01-02",
+    "aerobic_efficiency": 1.355,
+    "aerobic_power": 1.0485,
+    "anaerobic_power": 1.0811
+  },
+  "16935511890": {
+    "date": "2026-01-04",
+    "aerobic_efficiency": 1.3016,
+    "aerobic_power": 1.1389
+  },
+  "16936932032": {
+    "date": "2026-01-04",
+    "aerobic_efficiency": 1.2043,
+    "aerobic_power": 1.1234
+  },
+  "16937711888": {
+    "date": "2026-01-04",
+    "aerobic_efficiency": 1.2811,
+    "aerobic_power": 1.1299,
+    "anaerobic_power": 1.1126
+  },
+  "16944938336": {
+    "date": "2026-01-05",
+    "aerobic_efficiency": 1.2137,
+    "aerobic_power": 1.217
+  },
+  "16967858746": {
+    "date": "2026-01-07",
+    "aerobic_efficiency": 1.1409,
+    "aerobic_power": 1.0922
+  },
+  "16989360090": {
+    "date": "2026-01-09",
+    "aerobic_efficiency": 1.4317,
+    "aerobic_power": 1.1256
+  },
+  "17003780337": {
+    "date": "2026-01-10",
+    "aerobic_efficiency": 1.3049,
+    "aerobic_power": 1.2554
+  },
+  "17022219709": {
+    "date": "2026-01-12",
+    "aerobic_efficiency": 1.2399
+  },
+  "17046117832": {
+    "date": "2026-01-14",
+    "aerobic_efficiency": 1.2755
+  },
+  "17057597522": {
+    "date": "2026-01-15",
+    "aerobic_efficiency": 1.2598,
+    "aerobic_power": 1.1689
+  },
+  "17069154178": {
+    "date": "2026-01-16",
+    "aerobic_efficiency": 1.3743,
+    "aerobic_power": 1.1487
+  },
+  "17103488602": {
+    "date": "2026-01-19",
+    "aerobic_efficiency": 1.3072,
+    "aerobic_power": 1.0382
+  },
+  "17126963266": {
+    "date": "2026-01-21",
+    "aerobic_efficiency": 1.2707,
+    "aerobic_power": 1.0752
+  },
+  "17138446190": {
+    "date": "2026-01-22",
+    "aerobic_efficiency": 1.3097,
+    "aerobic_power": 1.0792
+  },
+  "17149520512": {
+    "date": "2026-01-23",
+    "aerobic_efficiency": 1.0299,
+    "aerobic_power": 1.1236,
+    "anaerobic_power": 1.0426
+  },
+  "17182664353": {
+    "date": "2026-01-26",
+    "aerobic_efficiency": 1.0843
+  },
+  "17205042707": {
+    "date": "2026-01-28",
+    "aerobic_efficiency": 1.159,
+    "aerobic_power": 1.0179
+  },
+  "17216324969": {
+    "date": "2026-01-29",
+    "aerobic_efficiency": 1.2406,
+    "aerobic_power": 1.1277
+  },
+  "17226764433": {
+    "date": "2026-01-30",
+    "aerobic_efficiency": 1.2283,
+    "aerobic_power": 1.0514,
+    "anaerobic_power": 0.9672
+  },
+  "17259687456": {
+    "date": "2026-02-02",
+    "aerobic_efficiency": 1.161,
+    "anaerobic_power": 1.0296
+  },
+  "17283444938": {
+    "date": "2026-02-04",
+    "aerobic_power": 1.0939,
+    "anaerobic_power": 0.8749
+  },
+  "17319284515": {
+    "date": "2026-02-07",
+    "aerobic_efficiency": 1.2305,
+    "aerobic_power": 1.1495
+  },
+  "17364594760": {
+    "date": "2026-02-11",
+    "aerobic_power": 1.1187,
+    "anaerobic_power": 0.884
+  },
+  "17575462298": {
+    "date": "2026-03-02",
+    "aerobic_efficiency": 1.2929,
+    "aerobic_power": 1.2078
+  },
+  "17600107847": {
+    "date": "2026-03-04",
+    "aerobic_efficiency": 1.3548,
+    "aerobic_power": 1.2736
+  },
+  "17613212559": {
+    "date": "2026-03-05",
+    "aerobic_efficiency": 1.2433,
+    "aerobic_power": 1.1218,
+    "anaerobic_power": 0.9823
+  },
+  "17624272234": {
+    "date": "2026-03-06",
+    "aerobic_power": 1.2434,
+    "anaerobic_power": 0.9408
+  },
+  "17658754487": {
+    "date": "2026-03-09",
+    "aerobic_efficiency": 1.4766,
+    "aerobic_power": 1.0681
+  },
+  "17684017260": {
+    "date": "2026-03-11",
+    "aerobic_efficiency": 1.2155,
+    "aerobic_power": 1.0999
+  },
+  "17706831402": {
+    "date": "2026-03-13",
+    "aerobic_efficiency": 1.2705,
+    "aerobic_power": 1.1628
+  },
+  "17721843383": {
+    "date": "2026-03-14",
+    "aerobic_efficiency": 1.249,
+    "aerobic_power": 1.1782,
+    "anaerobic_power": 0.5387
+  },
+  "17741474545": {
+    "date": "2026-03-16",
+    "aerobic_efficiency": 1.5087,
+    "aerobic_power": 1.0518
+  },
+  "17765397297": {
+    "date": "2026-03-18",
+    "aerobic_efficiency": 1.2441,
+    "aerobic_power": 1.1624
+  },
+  "17790083347": {
+    "date": "2026-03-20",
+    "aerobic_efficiency": 1.3205,
+    "aerobic_power": 1.0947,
+    "anaerobic_power": 1.1477
+  },
+  "17818363029": {
+    "date": "2026-03-22",
+    "aerobic_efficiency": 1.1958,
+    "aerobic_power": 0.948,
+    "anaerobic_power": 0.9528
+  },
+  "17826584211": {
+    "date": "2026-03-23",
+    "aerobic_efficiency": 1.2306,
+    "aerobic_power": 1.0108
+  },
+  "17839899047": {
+    "date": "2026-03-24",
+    "aerobic_efficiency": 1.401,
+    "aerobic_power": 1.1493
+  },
+  "17852388582": {
+    "date": "2026-03-25",
+    "aerobic_efficiency": 1.1203,
+    "aerobic_power": 1.0891
+  },
+  "17911424771": {
+    "date": "2026-03-30",
+    "aerobic_efficiency": 1.2662,
+    "aerobic_power": 1.2186
+  },
+  "17936700871": {
+    "date": "2026-04-01",
+    "aerobic_efficiency": 1.2468,
+    "aerobic_power": 1.1924
+  },
+  "17948681381": {
+    "date": "2026-04-02",
+    "aerobic_efficiency": 1.3028,
+    "aerobic_power": 1.3198
+  },
+  "17961015947": {
+    "date": "2026-04-03",
+    "aerobic_efficiency": 1.5332,
+    "aerobic_power": 1.1505,
+    "anaerobic_power": 1.1343
+  },
+  "17977643954": {
+    "date": "2026-04-04",
+    "aerobic_efficiency": 1.2686,
+    "aerobic_power": 1.1248
+  },
+  "17998752203": {
+    "date": "2026-04-06",
+    "aerobic_efficiency": 1.2662
+  },
+  "18026369397": {
+    "date": "2026-04-08",
+    "aerobic_efficiency": 1.2379,
+    "aerobic_power": 1.1006
+  },
+  "18040356046": {
+    "date": "2026-04-09",
+    "aerobic_efficiency": 1.3406,
+    "aerobic_power": 1.1635,
+    "anaerobic_power": 1.0438
+  },
+  "18052788019": {
+    "date": "2026-04-10",
+    "aerobic_efficiency": 1.2367,
+    "aerobic_power": 1.0389,
+    "anaerobic_power": 1.2368
+  },
+  "18069736164": {
+    "date": "2026-04-11",
+    "aerobic_efficiency": 1.4738,
+    "aerobic_power": 1.2388
+  },
+  "18081784576": {
+    "date": "2026-04-12",
+    "aerobic_efficiency": 1.3038
+  },
+  "18090433693": {
+    "date": "2026-04-13",
+    "aerobic_efficiency": 1.2965
+  },
+  "18117188000": {
+    "date": "2026-04-15",
+    "aerobic_efficiency": 1.2325
+  },
+  "18138903066": {
+    "date": "2026-04-16",
+    "aerobic_efficiency": 1.2878,
+    "aerobic_power": 1.3947
+  },
+  "18143212445": {
+    "date": "2026-04-17",
+    "aerobic_efficiency": 1.2755,
+    "anaerobic_power": 1.1355
+  },
+  "18159861395": {
+    "date": "2026-04-18",
+    "aerobic_efficiency": 1.1731,
+    "aerobic_power": 1.2441
+  },
+  "18172734023": {
+    "date": "2026-04-19",
+    "aerobic_efficiency": 1.7203
+  },
+  "18183115772": {
+    "date": "2026-04-20",
+    "aerobic_efficiency": 1.2884
+  },
+  "18195470775": {
+    "date": "2026-04-21",
+    "aerobic_efficiency": 1.1796
+  },
+  "18233629331": {
+    "date": "2026-04-22",
+    "aerobic_efficiency": 1.1781,
+    "aerobic_power": 1.1452
+  },
+  "18233629282": {
+    "date": "2026-04-23",
+    "aerobic_efficiency": 1.3114,
+    "aerobic_power": 1.2277
+  },
+  "18237245220": {
+    "date": "2026-04-24",
+    "aerobic_efficiency": 1.8471,
+    "aerobic_power": 1.3235
+  },
+  "18253649687": {
+    "date": "2026-04-25",
+    "aerobic_efficiency": 1.3929
+  },
+  "18272173434": {
+    "date": "2026-04-26",
+    "aerobic_efficiency": 1.3919,
+    "aerobic_power": 1.2546
+  },
+  "18277385985": {
+    "date": "2026-04-27",
+    "aerobic_efficiency": 1.2248
+  },
+  "18289953909": {
+    "date": "2026-04-28",
+    "aerobic_efficiency": 1.2897
+  },
+  "18304582469": {
+    "date": "2026-04-29",
+    "aerobic_efficiency": 1.2402
+  },
+  "18330615893": {
+    "date": "2026-05-01",
+    "aerobic_efficiency": 1.2837
+  },
+  "18361621945": {
+    "date": "2026-05-03",
+    "aerobic_power": 1.3224
+  },
+  "18371480064": {
+    "date": "2026-05-04",
+    "aerobic_efficiency": 1.2856
+  },
+  "18391882272": {
+    "date": "2026-05-05",
+    "aerobic_efficiency": 1.2829
+  },
+  "18398567257": {
+    "date": "2026-05-06",
+    "aerobic_efficiency": 1.3174,
+    "aerobic_power": 1.4699
+  },
+  "18410430581": {
+    "date": "2026-05-07",
+    "aerobic_efficiency": 1.3054
+  },
+  "18423623103": {
+    "date": "2026-05-08",
+    "aerobic_efficiency": 1.3619
+  },
+  "18440208477": {
+    "date": "2026-05-09",
+    "aerobic_power": 1.198,
+    "anaerobic_power": 1.0698
+  },
+  "18462882036": {
+    "date": "2026-05-11",
+    "aerobic_efficiency": 1.3274
+  },
+  "18470590325": {
+    "date": "2026-05-11",
+    "aerobic_efficiency": 1.3814
+  },
+  "18489525213": {
+    "date": "2026-05-13",
+    "aerobic_efficiency": 1.2694
+  },
+  "18515780637": {
+    "date": "2026-05-15",
+    "aerobic_efficiency": 1.2842,
+    "aerobic_power": 1.3212
+  },
+  "18532982439": {
+    "date": "2026-05-16",
+    "aerobic_efficiency": 1.3277,
+    "aerobic_power": 1.2465
+  },
+  "18554467875": {
+    "date": "2026-05-18",
+    "aerobic_efficiency": 1.1996
+  },
+  "18561351504": {
+    "date": "2026-05-18",
+    "aerobic_power": 1.4488
+  },
+  "18565942288": {
+    "date": "2026-05-19",
+    "aerobic_efficiency": 1.2253
+  },
+  "18580783835": {
+    "date": "2026-05-20",
+    "aerobic_efficiency": 1.3174,
+    "aerobic_power": 1.2419
+  },
+  "18607212909": {
+    "date": "2026-05-22",
+    "aerobic_efficiency": 1.2744,
+    "aerobic_power": 1.3056
+  },
+  "18625877224": {
+    "date": "2026-05-23",
+    "aerobic_efficiency": 1.2172,
+    "aerobic_power": 1.1018
+  },
+  "18654810824": {
+    "date": "2026-05-25",
+    "aerobic_efficiency": 1.2383
+  },
+  "18654815153": {
+    "date": "2026-05-25",
+    "aerobic_efficiency": 1.3336,
+    "aerobic_power": 1.5794
+  },
+  "18659184066": {
+    "date": "2026-05-26",
+    "aerobic_efficiency": 1.2966
+  },
+  "18674078956": {
+    "date": "2026-05-27",
+    "aerobic_efficiency": 1.3145,
+    "aerobic_power": 1.0803
+  },
+  "18683278523": {
+    "date": "2026-05-27",
+    "aerobic_efficiency": 1.3135
+  },
+  "18687211996": {
+    "date": "2026-05-28",
+    "aerobic_efficiency": 1.3033
+  },
+  "18701738041": {
+    "date": "2026-05-29",
+    "aerobic_efficiency": 1.3628
+  }
+}

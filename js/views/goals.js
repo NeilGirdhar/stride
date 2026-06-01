@@ -28,15 +28,11 @@ const DURABILITY_MODEL_URL = "./data/generated/durability-model.json";
 const MARATHON_GOAL_URL = "./data/entered/marathon-goal.json";
 const RECORDS_URL = "./data/generated/records.json";
 const TRAINING_CONFIG_URL = "./data/entered/training-config.json";
+const ZONE_METRICS_URL = "./data/generated/zone-metrics.json";
 const RUN_TYPES = new Set(["Run", "TrailRun"]);
-// High zone 2 / high zone 3 HR bands; defaults below, overridden per field from
-// training-config.json's `hr_zones` (shared with the offline Python models).
-const DEFAULT_HR_ZONES = {
-  high_zone2: { min: 135, max: 145 },
-  high_zone3: { min: 155, max: 165 },
-};
-let HIGH_ZONE2 = DEFAULT_HR_ZONES.high_zone2;
-let HIGH_ZONE3 = DEFAULT_HR_ZONES.high_zone3;
+// Per-run grade-adjusted m/beat by HR zone (aerobic efficiency / power, anaerobic
+// power), computed offline from stream segments by `stride-sync streams`.
+let ZONE_METRICS = {};
 
 let RUNS = null;
 let DETAILS = {};
@@ -83,6 +79,7 @@ export async function renderGoals() {
         goal,
         records,
         trainingConfig,
+        zoneMetrics,
       ] = await Promise.all([
         fetchJSON(ACTS_URL),
         fetchJSON(DETAILS_URL).catch(() => ({})),
@@ -91,6 +88,7 @@ export async function renderGoals() {
         fetchJSON(MARATHON_GOAL_URL),
         fetchJSON(RECORDS_URL).catch(() => ({})),
         fetchJSON(TRAINING_CONFIG_URL).catch(() => null),
+        fetchJSON(ZONE_METRICS_URL).catch(() => ({})),
       ]);
       loadGoal(goal);
       DETAILS = details || {};
@@ -101,7 +99,7 @@ export async function renderGoals() {
       SERIOUS_START = trainingConfig?.serious_start
         ? parseLocalDate(trainingConfig.serious_start)
         : RANGE_START;
-      loadHrZones(trainingConfig);
+      ZONE_METRICS = zoneMetrics || {};
       RUNS = normalizeRuns(acts || []);
       GRID = buildGrid();
       for (const s of SECTIONS) SERIES[s.id] = s.compute(RUNS, GRID);
@@ -510,23 +508,27 @@ function raceModelSeries(key) {
     .sort((a, b) => a.t - b.t);
 }
 
-// Grade-adjusted metres per heartbeat by HR band. Prefer stream-derived detail
-// data; fall back to whole-activity average HR for older cached runs.
-function recoveryEff(runs, grid) {
-  return aerobicMetric(runs, grid, (r) => r.aerobicEfficiency, inHighZone2);
-}
-
-function aerobicPower(runs, grid) {
-  return aerobicMetric(runs, grid, (r) => r.aerobicPower, inHighZone3);
-}
-
-function anaerobicPower(runs, grid) {
+// Grade-adjusted metres per heartbeat in an HR zone — precomputed per run from the
+// stream segments (sustained in-band blocks) and smoothed across runs here.
+function zoneEconomy(runs, grid, valueFor) {
   return gaussianObservationLine(
     runs,
     grid,
     VOLUME_SMOOTH_SIGMA_DAYS * DAY,
-    (r) => r.anaerobicPower,
+    valueFor,
   );
+}
+
+function recoveryEff(runs, grid) {
+  return zoneEconomy(runs, grid, (r) => r.aerobicEfficiency);
+}
+
+function aerobicPower(runs, grid) {
+  return zoneEconomy(runs, grid, (r) => r.aerobicPower);
+}
+
+function anaerobicPower(runs, grid) {
+  return zoneEconomy(runs, grid, (r) => r.anaerobicPower);
 }
 
 function caeDurability() {
@@ -549,16 +551,6 @@ function caeDurability() {
     series.push({ t: Math.min(Date.now(), MARATHON), v: current });
   }
   return series;
-}
-
-function aerobicMetric(runs, grid, valueFor, fallbackPredicate) {
-  const easy = runs.filter((r) => valueFor(r) != null || fallbackPredicate(r));
-  return gaussianObservationLine(
-    easy,
-    grid,
-    VOLUME_SMOOTH_SIGMA_DAYS * DAY,
-    (r) => valueFor(r) ?? (1000 / r.paceSec / r.hr) * 60,
-  );
 }
 
 // ---- targets --------------------------------------------------------------
@@ -619,7 +611,7 @@ function buildSection(section) {
 function formatterFor(id) {
   if (id === "race") return hms;
   if (id === "fitness") return clock;
-  if (id === "anaerobic_power") return speedPaceLabel;
+  if (id === "anaerobic_power") return (v) => `${v.toFixed(2)} m/beat`;
   if (id === "cae_durability") return (v) => `${(v * 100).toFixed(0)}%`;
   if (id === "volume") return (v) => `${v.toFixed(0)} km/wk`;
   if (id === "recovery" || id === "aerobic_power")
@@ -695,58 +687,32 @@ function normalizeRuns(acts) {
         a.distance > 0 &&
         a.moving_time,
     )
-    .map((a) => ({
-      t: new Date(a.start_date_local || a.start_date).getTime(),
-      id: a.id,
-      km: a.distance / 1000,
-      gradeAdjustedKm: streamGradeAdjustedKm(a.id) ?? a.distance / 1000,
-      movingTime: a.moving_time,
-      paceSec: a.moving_time / (a.distance / 1000),
-      hr: a.average_heartrate || null,
-      aerobicEfficiency: streamAerobicEfficiency(a.id),
-      aerobicPower: streamAerobicPower(a.id),
-      anaerobicPower: streamAnaerobicPower(a.id),
-    }))
+    .map((a) => {
+      const zone = ZONE_METRICS[String(a.id)] || {};
+      return {
+        t: new Date(a.start_date_local || a.start_date).getTime(),
+        id: a.id,
+        km: a.distance / 1000,
+        gradeAdjustedKm:
+          finite(detail(a.id, "grade_adjusted_distance_km")) ??
+          a.distance / 1000,
+        movingTime: a.moving_time,
+        paceSec: a.moving_time / (a.distance / 1000),
+        hr: a.average_heartrate || null,
+        aerobicEfficiency: finite(zone.aerobic_efficiency),
+        aerobicPower: finite(zone.aerobic_power),
+        anaerobicPower: finite(zone.anaerobic_power),
+      };
+    })
     .sort((x, y) => x.t - y.t);
 }
 
-function streamAerobicEfficiency(activityId) {
-  const value = DETAILS[String(activityId)]?.aerobic_efficiency_m_per_beat;
+function detail(activityId, key) {
+  return DETAILS[String(activityId)]?.[key];
+}
+
+function finite(value) {
   return Number.isFinite(value) ? value : null;
-}
-
-function streamAerobicPower(activityId) {
-  const value = DETAILS[String(activityId)]?.aerobic_power_m_per_beat;
-  return Number.isFinite(value) ? value : null;
-}
-
-function streamAnaerobicPower(activityId) {
-  const value = DETAILS[String(activityId)]?.best_60s_grade_adjusted_speed_mps;
-  return Number.isFinite(value) ? value : null;
-}
-
-function streamGradeAdjustedKm(activityId) {
-  const value = DETAILS[String(activityId)]?.grade_adjusted_distance_km;
-  return Number.isFinite(value) ? value : null;
-}
-
-function loadHrZones(cfg) {
-  const zones = cfg?.hr_zones || {};
-  const band = (name) => {
-    const def = DEFAULT_HR_ZONES[name];
-    const z = zones[name] || {};
-    return { min: Number(z.min ?? def.min), max: Number(z.max ?? def.max) };
-  };
-  HIGH_ZONE2 = band("high_zone2");
-  HIGH_ZONE3 = band("high_zone3");
-}
-
-function inHighZone2(run) {
-  return run.hr >= HIGH_ZONE2.min && run.hr <= HIGH_ZONE2.max;
-}
-
-function inHighZone3(run) {
-  return run.hr >= HIGH_ZONE3.min && run.hr <= HIGH_ZONE3.max;
 }
 
 function fillForward(raw) {
@@ -790,9 +756,6 @@ function hms(sec) {
 }
 function paceLabel(sec) {
   return `${Math.floor(sec / 60)}:${String(Math.round(sec % 60)).padStart(2, "0")}/km`;
-}
-function speedPaceLabel(speed) {
-  return speed > 0 ? paceLabel(1000 / speed) : "—";
 }
 function esc(s) {
   return String(s).replace(

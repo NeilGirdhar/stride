@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-05-31T23:18:46.540838+00:00",
-  "as_of": "2026-05-31T23:18:45.391949+00:00",
+  "generated_at": "2026-06-01T02:35:30.875669+00:00",
+  "as_of": "2026-06-01T02:35:29.732224+00:00",
   "schema_version": 2,
   "label_count": 7,
   "labels": [
@@ -566,37 +566,37 @@
     ]
   },
   "current_factors": {
-    "fitness": 55.799703318970536,
-    "fatigue": 64.84621246057276,
-    "form": -9.046509141602222,
+    "fitness": 55.61848404033241,
+    "fatigue": 63.59283113872294,
+    "form": -7.974347098390531,
     "volume_28d_km_per_week": 58.525475,
     "volume_56d_km_per_week": 55.2888875,
     "longest_run_56d_km": 23.710900000000002,
-    "long_run_durability": 0.8172154012269605,
-    "mp_specificity": 0.17946537517233083,
+    "long_run_durability": 0.8132375607467816,
+    "mp_specificity": 0.1783015777859601,
     "aerobic_efficiency": 1.1898,
     "aerobic_power": 1.11455,
     "anaerobic_power": 5.6373,
     "consistency_runs_per_week": 5.75,
-    "load_tolerance": 59.775560463971956,
-    "durability": 0.5973053301186605,
-    "fitness_score": 69.56861952874797
+    "load_tolerance": 58.87499166578061,
+    "durability": 0.5951139550402974,
+    "fitness_score": 69.65215369829522
   },
   "current_predictions": {
     "400m": {
       "distance_km": 0.4,
-      "time_sec": 84.96350851417186,
-      "model_time_sec": 90.35432617945516,
-      "race_evidence_time_sec": 82.19523152046534,
+      "time_sec": 85.11495960628741,
+      "model_time_sec": 90.51538663489717,
+      "race_evidence_time_sec": 82.34174804030033,
       "race_evidence": {
-        "time_sec": 82.19523152046534,
+        "time_sec": 82.34174804030033,
         "source": {
           "activity_id": 18172734023,
           "name": "Montreal 21k",
           "date": "2026-04-19",
           "source_distance_km": 21.097,
-          "adjusted_time_sec": 82.19523152046534,
-          "confidence": 0.8897541956500321
+          "adjusted_time_sec": 82.34174804030033,
+          "confidence": 0.8894212112565308
         },
         "candidates": [
           {
@@ -604,77 +604,77 @@
             "name": "BougeBouge Verdun",
             "date": "2024-09-15",
             "source_distance_km": 10.0,
-            "adjusted_time_sec": 94.32019816606,
-            "confidence": 0.18117160375167857
+            "adjusted_time_sec": 94.4883279581392,
+            "confidence": 0.18110380152395117
           },
           {
             "activity_id": 12590639809,
             "name": "Lachine 10k",
             "date": "2024-10-06",
             "source_distance_km": 10.0,
-            "adjusted_time_sec": 91.12760226634987,
-            "confidence": 0.19187871128642148
+            "adjusted_time_sec": 91.29004111952892,
+            "confidence": 0.19180690199727637
           },
           {
             "activity_id": 14291864922,
             "name": "Montreal 21k",
             "date": "2025-04-26",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 90.5777950742901,
-            "confidence": 0.3336616885886892
+            "adjusted_time_sec": 90.73925387260621,
+            "confidence": 0.33353681799459434
           },
           {
             "activity_id": 15412365665,
             "name": "Tremblant Half",
             "date": "2025-08-10",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 90.97062528422217,
-            "confidence": 0.4461363921835932
+            "adjusted_time_sec": 91.13278431920872,
+            "confidence": 0.4459694287045825
           },
           {
             "activity_id": 15888965889,
             "name": "Beneva Montreal Half",
             "date": "2025-09-21",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 88.34139049127893,
-            "confidence": 0.5004961093272903
+            "adjusted_time_sec": 88.49886280266163,
+            "confidence": 0.5003088020976882
           },
           {
             "activity_id": 16044666433,
             "name": "Marathon",
             "date": "2025-10-05",
             "source_distance_km": 42.195,
-            "adjusted_time_sec": 95.59919479169122,
-            "confidence": 0.5200703914895259
+            "adjusted_time_sec": 95.76960445002301,
+            "confidence": 0.5198757587193353
           },
           {
             "activity_id": 18172734023,
             "name": "Montreal 21k",
             "date": "2026-04-19",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 82.19523152046534,
-            "confidence": 0.8897541956500321
+            "adjusted_time_sec": 82.34174804030033,
+            "confidence": 0.8894212112565308
           }
         ]
       },
       "blend_weight": 0.65,
-      "low_sec": 81.1681591448118,
-      "high_sec": 88.93632497145495
+      "low_sec": 81.3128448641573,
+      "high_sec": 89.09485777902401
     },
     "1k": {
       "distance_km": 1.0,
-      "time_sec": 224.41343183026973,
-      "model_time_sec": 238.65215518096184,
-      "race_evidence_time_sec": 217.1016040670502,
+      "time_sec": 224.81345838202665,
+      "model_time_sec": 239.07756286680217,
+      "race_evidence_time_sec": 217.4885969727223,
       "race_evidence": {
-        "time_sec": 217.1016040670502,
+        "time_sec": 217.4885969727223,
         "source": {
           "activity_id": 18172734023,
           "name": "Montreal 21k",
           "date": "2026-04-19",
           "source_distance_km": 21.097,
-          "adjusted_time_sec": 217.1016040670502,
-          "confidence": 0.8897541956500321
+          "adjusted_time_sec": 217.4885969727223,
+          "confidence": 0.8894212112565308
         },
         "candidates": [
           {
@@ -682,77 +682,77 @@
             "name": "BougeBouge Verdun",
             "date": "2024-09-15",
             "source_distance_km": 10.0,
-            "adjusted_time_sec": 249.12718096882787,
-            "confidence": 0.18117160375167857
+            "adjusted_time_sec": 249.57126083668206,
+            "confidence": 0.18110380152395117
           },
           {
             "activity_id": 12590639809,
             "name": "Lachine 10k",
             "date": "2024-10-06",
             "source_distance_km": 10.0,
-            "adjusted_time_sec": 240.69460309121243,
-            "confidence": 0.19187871128642148
+            "adjusted_time_sec": 241.12365152791162,
+            "confidence": 0.19180690199727637
           },
           {
             "activity_id": 14291864922,
             "name": "Montreal 21k",
             "date": "2025-04-26",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 239.24240177593222,
-            "confidence": 0.3336616885886892
+            "adjusted_time_sec": 239.6688616016028,
+            "confidence": 0.33353681799459434
           },
           {
             "activity_id": 15412365665,
             "name": "Tremblant Half",
             "date": "2025-08-10",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 240.27998105060118,
-            "confidence": 0.4461363921835932
+            "adjusted_time_sec": 240.70829040575865,
+            "confidence": 0.4459694287045825
           },
           {
             "activity_id": 15888965889,
             "name": "Beneva Montreal Half",
             "date": "2025-09-21",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 233.33540433419208,
-            "confidence": 0.5004961093272903
+            "adjusted_time_sec": 233.75133468398153,
+            "confidence": 0.5003088020976882
           },
           {
             "activity_id": 16044666433,
             "name": "Marathon",
             "date": "2025-10-05",
             "source_distance_km": 42.195,
-            "adjusted_time_sec": 252.50538447144532,
-            "confidence": 0.5200703914895259
+            "adjusted_time_sec": 252.95548613169962,
+            "confidence": 0.5198757587193353
           },
           {
             "activity_id": 18172734023,
             "name": "Montreal 21k",
             "date": "2026-04-19",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 217.1016040670502,
-            "confidence": 0.8897541956500321
+            "adjusted_time_sec": 217.4885969727223,
+            "confidence": 0.8894212112565308
           }
         ]
       },
       "blend_weight": 0.65,
-      "low_sec": 214.3888060601266,
-      "high_sec": 234.9067999926963
+      "low_sec": 214.77096328718767,
+      "high_sec": 235.32553142253516
     },
     "5k": {
       "distance_km": 5.0,
-      "time_sec": 1235.8252143483933,
-      "model_time_sec": 1314.2366231192611,
-      "race_evidence_time_sec": 1195.559615987982,
+      "time_sec": 1238.0281257117567,
+      "model_time_sec": 1316.5793061763818,
+      "race_evidence_time_sec": 1197.6907521980695,
       "race_evidence": {
-        "time_sec": 1195.559615987982,
+        "time_sec": 1197.6907521980695,
         "source": {
           "activity_id": 18172734023,
           "name": "Montreal 21k",
           "date": "2026-04-19",
           "source_distance_km": 21.097,
-          "adjusted_time_sec": 1195.559615987982,
-          "confidence": 0.8897541956500321
+          "adjusted_time_sec": 1197.6907521980695,
+          "confidence": 0.8894212112565308
         },
         "candidates": [
           {
@@ -760,77 +760,77 @@
             "name": "BougeBouge Verdun",
             "date": "2024-09-15",
             "source_distance_km": 10.0,
-            "adjusted_time_sec": 1371.921677369425,
-            "confidence": 0.18117160375167857
+            "adjusted_time_sec": 1374.3671865058557,
+            "confidence": 0.18110380152395117
           },
           {
             "activity_id": 12590639809,
             "name": "Lachine 10k",
             "date": "2024-10-06",
             "source_distance_km": 10.0,
-            "adjusted_time_sec": 1325.484205787976,
-            "confidence": 0.19187871128642148
+            "adjusted_time_sec": 1327.8469381428317,
+            "confidence": 0.19180690199727637
           },
           {
             "activity_id": 14291864922,
             "name": "Montreal 21k",
             "date": "2025-04-26",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 1317.487059685373,
-            "confidence": 0.3336616885886892
+            "adjusted_time_sec": 1319.8355367848583,
+            "confidence": 0.33353681799459434
           },
           {
             "activity_id": 15412365665,
             "name": "Tremblant Half",
             "date": "2025-08-10",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 1323.2009183393018,
-            "confidence": 0.4461363921835932
+            "adjusted_time_sec": 1325.5595806365088,
+            "confidence": 0.4459694287045825
           },
           {
             "activity_id": 15888965889,
             "name": "Beneva Montreal Half",
             "date": "2025-09-21",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 1284.9577394924752,
-            "confidence": 0.5004961093272903
+            "adjusted_time_sec": 1287.2482316857916,
+            "confidence": 0.5003088020976882
           },
           {
             "activity_id": 16044666433,
             "name": "Marathon",
             "date": "2025-10-05",
             "source_distance_km": 42.195,
-            "adjusted_time_sec": 1390.5251496914034,
-            "confidence": 0.5200703914895259
+            "adjusted_time_sec": 1393.0038203138602,
+            "confidence": 0.5198757587193353
           },
           {
             "activity_id": 18172734023,
             "name": "Montreal 21k",
             "date": "2026-04-19",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 1195.559615987982,
-            "confidence": 0.8897541956500321
+            "adjusted_time_sec": 1197.6907521980695,
+            "confidence": 0.8894212112565308
           }
         ]
       },
       "blend_weight": 0.65,
-      "low_sec": 1180.6204737492678,
-      "high_sec": 1293.61127845696
+      "low_sec": 1182.7249802986128,
+      "high_sec": 1295.9171959540313
     },
     "10k": {
       "distance_km": 10.0,
-      "time_sec": 2576.6109446846795,
-      "model_time_sec": 2740.0933624905756,
-      "race_evidence_time_sec": 2492.659929423661,
+      "time_sec": 2581.2038640256255,
+      "model_time_sec": 2744.977696241677,
+      "race_evidence_time_sec": 2497.1032024850715,
       "race_evidence": {
-        "time_sec": 2492.659929423661,
+        "time_sec": 2497.1032024850715,
         "source": {
           "activity_id": 18172734023,
           "name": "Montreal 21k",
           "date": "2026-04-19",
           "source_distance_km": 21.097,
-          "adjusted_time_sec": 2492.659929423661,
-          "confidence": 0.8897541956500321
+          "adjusted_time_sec": 2497.1032024850715,
+          "confidence": 0.8894212112565308
         },
         "candidates": [
           {
@@ -838,77 +838,77 @@
             "name": "BougeBouge Verdun",
             "date": "2024-09-15",
             "source_distance_km": 10.0,
-            "adjusted_time_sec": 2860.3627504266906,
-            "confidence": 0.18117160375167857
+            "adjusted_time_sec": 2865.4614695117966,
+            "confidence": 0.18110380152395117
           },
           {
             "activity_id": 12590639809,
             "name": "Lachine 10k",
             "date": "2024-10-06",
             "source_distance_km": 10.0,
-            "adjusted_time_sec": 2763.543802139304,
-            "confidence": 0.19187871128642148
+            "adjusted_time_sec": 2768.4699373032413,
+            "confidence": 0.19180690199727637
           },
           {
             "activity_id": 14291864922,
             "name": "Montreal 21k",
             "date": "2025-04-26",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 2746.8703001464887,
-            "confidence": 0.3336616885886892
+            "adjusted_time_sec": 2751.766714079155,
+            "confidence": 0.33353681799459434
           },
           {
             "activity_id": 15412365665,
             "name": "Tremblant Half",
             "date": "2025-08-10",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 2758.7833041645017,
-            "confidence": 0.4461363921835932
+            "adjusted_time_sec": 2763.7009535369516,
+            "confidence": 0.4459694287045825
           },
           {
             "activity_id": 15888965889,
             "name": "Beneva Montreal Half",
             "date": "2025-09-21",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 2679.0488950974213,
-            "confidence": 0.5004961093272903
+            "adjusted_time_sec": 2683.8244144714336,
+            "confidence": 0.5003088020976882
           },
           {
             "activity_id": 16044666433,
             "name": "Marathon",
             "date": "2025-10-05",
             "source_distance_km": 42.195,
-            "adjusted_time_sec": 2899.1497162835267,
-            "confidence": 0.5200703914895259
+            "adjusted_time_sec": 2904.317574796154,
+            "confidence": 0.5198757587193353
           },
           {
             "activity_id": 18172734023,
             "name": "Montreal 21k",
             "date": "2026-04-19",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 2492.659929423661,
-            "confidence": 0.8897541956500321
+            "adjusted_time_sec": 2497.1032024850715,
+            "confidence": 0.8894212112565308
           }
         ]
       },
       "blend_weight": 0.65,
-      "low_sec": 2461.5128408632713,
-      "high_sec": 2697.090931258581
+      "low_sec": 2465.900592905585,
+      "high_sec": 2701.8986113346214
     },
     "half": {
       "distance_km": 21.097,
-      "time_sec": 5684.8995106059165,
-      "model_time_sec": 6045.598559445495,
-      "race_evidence_time_sec": 5499.674385114319,
+      "time_sec": 5695.033087414422,
+      "model_time_sec": 6056.375097753898,
+      "race_evidence_time_sec": 5509.477790205184,
       "race_evidence": {
-        "time_sec": 5499.674385114319,
+        "time_sec": 5509.477790205184,
         "source": {
           "activity_id": 18172734023,
           "name": "Montreal 21k",
           "date": "2026-04-19",
           "source_distance_km": 21.097,
-          "adjusted_time_sec": 5499.674385114319,
-          "confidence": 0.8897541956500321
+          "adjusted_time_sec": 5509.477790205184,
+          "confidence": 0.8894212112565308
         },
         "candidates": [
           {
@@ -916,77 +916,77 @@
             "name": "BougeBouge Verdun",
             "date": "2024-09-15",
             "source_distance_km": 10.0,
-            "adjusted_time_sec": 6310.954641251067,
-            "confidence": 0.18117160375167857
+            "adjusted_time_sec": 6322.204188138008,
+            "confidence": 0.18110380152395117
           },
           {
             "activity_id": 12590639809,
             "name": "Lachine 10k",
             "date": "2024-10-06",
             "source_distance_km": 10.0,
-            "adjusted_time_sec": 6097.338381927252,
-            "confidence": 0.19187871128642148
+            "adjusted_time_sec": 6108.20714868477,
+            "confidence": 0.19180690199727637
           },
           {
             "activity_id": 14291864922,
             "name": "Montreal 21k",
             "date": "2025-04-26",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 6060.550839937422,
-            "confidence": 0.3336616885886892
+            "adjusted_time_sec": 6071.354031326079,
+            "confidence": 0.33353681799459434
           },
           {
             "activity_id": 15412365665,
             "name": "Tremblant Half",
             "date": "2025-08-10",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 6086.835068393238,
-            "confidence": 0.4461363921835932
+            "adjusted_time_sec": 6097.685112544624,
+            "confidence": 0.4459694287045825
           },
           {
             "activity_id": 15888965889,
             "name": "Beneva Montreal Half",
             "date": "2025-09-21",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 5910.913242081439,
-            "confidence": 0.5004961093272903
+            "adjusted_time_sec": 5921.4496980443455,
+            "confidence": 0.5003088020976882
           },
           {
             "activity_id": 16044666433,
             "name": "Marathon",
             "date": "2025-10-05",
             "source_distance_km": 42.195,
-            "adjusted_time_sec": 6396.532172337897,
-            "confidence": 0.5200703914895259
+            "adjusted_time_sec": 6407.934264838482,
+            "confidence": 0.5198757587193353
           },
           {
             "activity_id": 18172734023,
             "name": "Montreal 21k",
             "date": "2026-04-19",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 5499.674385114319,
-            "confidence": 0.8897541956500321
+            "adjusted_time_sec": 5509.477790205184,
+            "confidence": 0.8894212112565308
           }
         ]
       },
       "blend_weight": 0.65,
-      "low_sec": 5430.953079370033,
-      "high_sec": 5950.720246221708
+      "low_sec": 5440.6339857907205,
+      "high_sec": 5961.327659874054
     },
     "30k": {
       "distance_km": 30.0,
-      "time_sec": 8256.526463422635,
-      "model_time_sec": 8780.391702644416,
-      "race_evidence_time_sec": 7987.5127108560355,
+      "time_sec": 8271.244075393164,
+      "model_time_sec": 8796.043126836086,
+      "race_evidence_time_sec": 8001.7507942932825,
       "race_evidence": {
-        "time_sec": 7987.5127108560355,
+        "time_sec": 8001.7507942932825,
         "source": {
           "activity_id": 18172734023,
           "name": "Montreal 21k",
           "date": "2026-04-19",
           "source_distance_km": 21.097,
-          "adjusted_time_sec": 7987.5127108560355,
-          "confidence": 0.8897541956500321
+          "adjusted_time_sec": 8001.7507942932825,
+          "confidence": 0.8894212112565308
         },
         "candidates": [
           {
@@ -994,77 +994,77 @@
             "name": "BougeBouge Verdun",
             "date": "2024-09-15",
             "source_distance_km": 10.0,
-            "adjusted_time_sec": 9165.784532820295,
-            "confidence": 0.18117160375167857
+            "adjusted_time_sec": 9182.12293623451,
+            "confidence": 0.18110380152395117
           },
           {
             "activity_id": 12590639809,
             "name": "Lachine 10k",
             "date": "2024-10-06",
             "source_distance_km": 10.0,
-            "adjusted_time_sec": 8855.536604104234,
-            "confidence": 0.19187871128642148
+            "adjusted_time_sec": 8871.321977300506,
+            "confidence": 0.19180690199727637
           },
           {
             "activity_id": 14291864922,
             "name": "Montreal 21k",
             "date": "2025-04-26",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 8802.107812021517,
-            "confidence": 0.3336616885886892
+            "adjusted_time_sec": 8817.797946108049,
+            "confidence": 0.33353681799459434
           },
           {
             "activity_id": 15412365665,
             "name": "Tremblant Half",
             "date": "2025-08-10",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 8840.282000925157,
-            "confidence": 0.4461363921835932
+            "adjusted_time_sec": 8856.040182138051,
+            "confidence": 0.4459694287045825
           },
           {
             "activity_id": 15888965889,
             "name": "Beneva Montreal Half",
             "date": "2025-09-21",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 8584.779997463676,
-            "confidence": 0.5004961093272903
+            "adjusted_time_sec": 8600.08273541465,
+            "confidence": 0.5003088020976882
           },
           {
             "activity_id": 16044666433,
             "name": "Marathon",
             "date": "2025-10-05",
             "source_distance_km": 42.195,
-            "adjusted_time_sec": 9290.074003333288,
-            "confidence": 0.5200703914895259
+            "adjusted_time_sec": 9306.633958050841,
+            "confidence": 0.5198757587193353
           },
           {
             "activity_id": 18172734023,
             "name": "Montreal 21k",
             "date": "2026-04-19",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 7987.5127108560355,
-            "confidence": 0.8897541956500321
+            "adjusted_time_sec": 8001.7507942932825,
+            "confidence": 0.8894212112565308
           }
         ]
       },
       "blend_weight": 0.65,
-      "low_sec": 7887.704565009284,
-      "high_sec": 8642.594138681214
+      "low_sec": 7901.764736152713,
+      "high_sec": 8657.999932814542
     },
     "marathon": {
       "distance_km": 42.195,
-      "time_sec": 11852.923949800082,
-      "model_time_sec": 12604.975659189942,
-      "race_evidence_time_sec": 11466.732545370132,
+      "time_sec": 11874.052294290006,
+      "model_time_sec": 12627.444568055163,
+      "race_evidence_time_sec": 11487.172487144708,
       "race_evidence": {
-        "time_sec": 11466.732545370132,
+        "time_sec": 11487.172487144708,
         "source": {
           "activity_id": 18172734023,
           "name": "Montreal 21k",
           "date": "2026-04-19",
           "source_distance_km": 21.097,
-          "adjusted_time_sec": 11466.732545370132,
-          "confidence": 0.8897541956500321
+          "adjusted_time_sec": 11487.172487144708,
+          "confidence": 0.8894212112565308
         },
         "candidates": [
           {
@@ -1072,68 +1072,68 @@
             "name": "BougeBouge Verdun",
             "date": "2024-09-15",
             "source_distance_km": 10.0,
-            "adjusted_time_sec": 13158.238817384836,
-            "confidence": 0.18117160375167857
+            "adjusted_time_sec": 13181.693941520603,
+            "confidence": 0.18110380152395117
           },
           {
             "activity_id": 12590639809,
             "name": "Lachine 10k",
             "date": "2024-10-06",
             "source_distance_km": 10.0,
-            "adjusted_time_sec": 12712.852356026597,
-            "confidence": 0.19187871128642148
+            "adjusted_time_sec": 12735.513559723273,
+            "confidence": 0.19180690199727637
           },
           {
             "activity_id": 14291864922,
             "name": "Montreal 21k",
             "date": "2025-04-26",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 12636.150923276193,
-            "confidence": 0.3336616885886892
+            "adjusted_time_sec": 12658.675403384592,
+            "confidence": 0.33353681799459434
           },
           {
             "activity_id": 15412365665,
             "name": "Tremblant Half",
             "date": "2025-08-10",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 12690.953116416938,
-            "confidence": 0.4461363921835932
+            "adjusted_time_sec": 12713.575283781274,
+            "confidence": 0.4459694287045825
           },
           {
             "activity_id": 15888965889,
             "name": "Beneva Montreal Half",
             "date": "2025-09-21",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 12324.15894098895,
-            "confidence": 0.5004961093272903
+            "adjusted_time_sec": 12346.127282029234,
+            "confidence": 0.5003088020976882
           },
           {
             "activity_id": 16044666433,
             "name": "Marathon",
             "date": "2025-10-05",
             "source_distance_km": 42.195,
-            "adjusted_time_sec": 13336.666591858499,
-            "confidence": 0.5200703914895259
+            "adjusted_time_sec": 13360.439771142652,
+            "confidence": 0.5198757587193353
           },
           {
             "activity_id": 18172734023,
             "name": "Montreal 21k",
             "date": "2026-04-19",
             "source_distance_km": 21.097,
-            "adjusted_time_sec": 11466.732545370132,
-            "confidence": 0.8897541956500321
+            "adjusted_time_sec": 11487.172487144708,
+            "confidence": 0.8894212112565308
           }
         ]
       },
       "blend_weight": 0.65,
-      "low_sec": 11323.449729341744,
-      "high_sec": 12407.155903708108
+      "low_sec": 11343.634263361293,
+      "high_sec": 12429.272190388421
     }
   },
   "goal_prediction": {
     "name": "2026-10-11",
     "distance_km": 42.195,
-    "neutral_time_sec": 11852.923949800082,
+    "neutral_time_sec": 11874.052294290006,
     "conditions": {
       "elevation": 1.0165,
       "temperature": 1.0,
@@ -1141,16 +1141,16 @@
       "temp_c": 9.0,
       "factor": 1.0165
     },
-    "adjusted_time_sec": 12048.497194971784,
-    "low_sec": 11510.286649875883,
-    "high_sec": 12611.87397611929
+    "adjusted_time_sec": 12069.97415714579,
+    "low_sec": 11530.804228706753,
+    "high_sec": 12634.355181529829
   },
   "prediction_components": {
     "aerobic_efficiency": -0.025452190855764896,
     "aerobic_power": -0.006786348520297789,
     "anaerobic_power": -0.01410254312349011,
-    "load_tolerance": -0.058526060122883326,
-    "durability": -0.0008560133443147436
+    "load_tolerance": -0.05676607880472317,
+    "durability": -0.0008350386858560202
   },
   "series": {
     "400m": [
@@ -33790,531 +33790,531 @@
       },
       {
         "date": "2026-06-01",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-06-02",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-06-03",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-06-04",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-06-05",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-06-06",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-06-07",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-06-08",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-06-09",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-06-10",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-06-11",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-06-12",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-06-13",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-06-14",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-06-15",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-06-16",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-06-17",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-06-18",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-06-19",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-06-20",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-06-21",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-06-22",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-06-23",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-06-24",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-06-25",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-06-26",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-06-27",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-06-28",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-06-29",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-06-30",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-07-01",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-07-02",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-07-03",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-07-04",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-07-05",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-07-06",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-07-07",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-07-08",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-07-09",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-07-10",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-07-11",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-07-12",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-07-13",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-07-14",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-07-15",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-07-16",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-07-17",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-07-18",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-07-19",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-07-20",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-07-21",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-07-22",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-07-23",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-07-24",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-07-25",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-07-26",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-07-27",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-07-28",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-07-29",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-07-30",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-07-31",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-08-01",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-08-02",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-08-03",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-08-04",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-08-05",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-08-06",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-08-07",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-08-08",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-08-09",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-08-10",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-08-11",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-08-12",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-08-13",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-08-14",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-08-15",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-08-16",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-08-17",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-08-18",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-08-19",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-08-20",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-08-21",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-08-22",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-08-23",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-08-24",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-08-25",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-08-26",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-08-27",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-08-28",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-08-29",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-08-30",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-08-31",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-09-01",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-09-02",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-09-03",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-09-04",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-09-05",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-09-06",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-09-07",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-09-08",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-09-09",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-09-10",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-09-11",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-09-12",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-09-13",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-09-14",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-09-15",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-09-16",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-09-17",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-09-18",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-09-19",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-09-20",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-09-21",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-09-22",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-09-23",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-09-24",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-09-25",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-09-26",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-09-27",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-09-28",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-09-29",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-09-30",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-10-01",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-10-02",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-10-03",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-10-04",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-10-05",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-10-06",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-10-07",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-10-08",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-10-09",
-        "time_sec": 224
+        "time_sec": 225
       },
       {
         "date": "2026-10-10",
-        "time_sec": 224
+        "time_sec": 225
       }
     ],
     "5k": [
@@ -50372,531 +50372,531 @@
       },
       {
         "date": "2026-06-01",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-06-02",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-06-03",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-06-04",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-06-05",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-06-06",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-06-07",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-06-08",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-06-09",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-06-10",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-06-11",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-06-12",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-06-13",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-06-14",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-06-15",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-06-16",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-06-17",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-06-18",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-06-19",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-06-20",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-06-21",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-06-22",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-06-23",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-06-24",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-06-25",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-06-26",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-06-27",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-06-28",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-06-29",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-06-30",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-07-01",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-07-02",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-07-03",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-07-04",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-07-05",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-07-06",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-07-07",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-07-08",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-07-09",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-07-10",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-07-11",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-07-12",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-07-13",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-07-14",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-07-15",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-07-16",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-07-17",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-07-18",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-07-19",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-07-20",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-07-21",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-07-22",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-07-23",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-07-24",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-07-25",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-07-26",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-07-27",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-07-28",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-07-29",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-07-30",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-07-31",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-08-01",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-08-02",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-08-03",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-08-04",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-08-05",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-08-06",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-08-07",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-08-08",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-08-09",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-08-10",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-08-11",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-08-12",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-08-13",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-08-14",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-08-15",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-08-16",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-08-17",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-08-18",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-08-19",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-08-20",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-08-21",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-08-22",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-08-23",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-08-24",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-08-25",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-08-26",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-08-27",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-08-28",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-08-29",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-08-30",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-08-31",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-09-01",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-09-02",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-09-03",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-09-04",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-09-05",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-09-06",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-09-07",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-09-08",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-09-09",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-09-10",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-09-11",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-09-12",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-09-13",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-09-14",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-09-15",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-09-16",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-09-17",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-09-18",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-09-19",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-09-20",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-09-21",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-09-22",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-09-23",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-09-24",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-09-25",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-09-26",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-09-27",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-09-28",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-09-29",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-09-30",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-10-01",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-10-02",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-10-03",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-10-04",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-10-05",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-10-06",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-10-07",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-10-08",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-10-09",
-        "time_sec": 1236
+        "time_sec": 1238
       },
       {
         "date": "2026-10-10",
-        "time_sec": 1236
+        "time_sec": 1238
       }
     ],
     "10k": [
@@ -66954,531 +66954,531 @@
       },
       {
         "date": "2026-06-01",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-06-02",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-06-03",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-06-04",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-06-05",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-06-06",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-06-07",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-06-08",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-06-09",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-06-10",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-06-11",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-06-12",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-06-13",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-06-14",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-06-15",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-06-16",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-06-17",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-06-18",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-06-19",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-06-20",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-06-21",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-06-22",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-06-23",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-06-24",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-06-25",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-06-26",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-06-27",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-06-28",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-06-29",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-06-30",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-07-01",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-07-02",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-07-03",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-07-04",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-07-05",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-07-06",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-07-07",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-07-08",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-07-09",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-07-10",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-07-11",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-07-12",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-07-13",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-07-14",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-07-15",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-07-16",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-07-17",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-07-18",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-07-19",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-07-20",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-07-21",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-07-22",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-07-23",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-07-24",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-07-25",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-07-26",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-07-27",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-07-28",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-07-29",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-07-30",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-07-31",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-08-01",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-08-02",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-08-03",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-08-04",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-08-05",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-08-06",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-08-07",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-08-08",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-08-09",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-08-10",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-08-11",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-08-12",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-08-13",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-08-14",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-08-15",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-08-16",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-08-17",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-08-18",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-08-19",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-08-20",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-08-21",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-08-22",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-08-23",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-08-24",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-08-25",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-08-26",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-08-27",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-08-28",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-08-29",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-08-30",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-08-31",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-09-01",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-09-02",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-09-03",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-09-04",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-09-05",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-09-06",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-09-07",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-09-08",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-09-09",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-09-10",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-09-11",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-09-12",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-09-13",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-09-14",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-09-15",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-09-16",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-09-17",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-09-18",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-09-19",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-09-20",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-09-21",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-09-22",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-09-23",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-09-24",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-09-25",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-09-26",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-09-27",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-09-28",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-09-29",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-09-30",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-10-01",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-10-02",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-10-03",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-10-04",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-10-05",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-10-06",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-10-07",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-10-08",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-10-09",
-        "time_sec": 2577
+        "time_sec": 2581
       },
       {
         "date": "2026-10-10",
-        "time_sec": 2577
+        "time_sec": 2581
       }
     ],
     "half": [
@@ -83536,531 +83536,531 @@
       },
       {
         "date": "2026-06-01",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-06-02",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-06-03",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-06-04",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-06-05",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-06-06",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-06-07",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-06-08",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-06-09",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-06-10",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-06-11",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-06-12",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-06-13",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-06-14",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-06-15",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-06-16",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-06-17",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-06-18",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-06-19",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-06-20",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-06-21",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-06-22",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-06-23",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-06-24",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-06-25",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-06-26",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-06-27",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-06-28",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-06-29",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-06-30",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-07-01",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-07-02",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-07-03",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-07-04",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-07-05",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-07-06",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-07-07",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-07-08",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-07-09",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-07-10",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-07-11",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-07-12",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-07-13",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-07-14",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-07-15",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-07-16",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-07-17",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-07-18",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-07-19",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-07-20",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-07-21",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-07-22",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-07-23",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-07-24",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-07-25",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-07-26",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-07-27",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-07-28",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-07-29",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-07-30",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-07-31",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-08-01",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-08-02",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-08-03",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-08-04",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-08-05",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-08-06",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-08-07",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-08-08",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-08-09",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-08-10",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-08-11",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-08-12",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-08-13",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-08-14",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-08-15",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-08-16",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-08-17",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-08-18",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-08-19",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-08-20",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-08-21",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-08-22",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-08-23",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-08-24",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-08-25",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-08-26",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-08-27",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-08-28",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-08-29",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-08-30",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-08-31",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-09-01",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-09-02",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-09-03",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-09-04",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-09-05",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-09-06",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-09-07",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-09-08",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-09-09",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-09-10",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-09-11",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-09-12",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-09-13",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-09-14",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-09-15",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-09-16",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-09-17",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-09-18",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-09-19",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-09-20",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-09-21",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-09-22",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-09-23",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-09-24",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-09-25",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-09-26",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-09-27",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-09-28",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-09-29",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-09-30",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-10-01",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-10-02",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-10-03",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-10-04",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-10-05",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-10-06",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-10-07",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-10-08",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-10-09",
-        "time_sec": 5685
+        "time_sec": 5695
       },
       {
         "date": "2026-10-10",
-        "time_sec": 5685
+        "time_sec": 5695
       }
     ],
     "30k": [
@@ -100118,531 +100118,531 @@
       },
       {
         "date": "2026-06-01",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-06-02",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-06-03",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-06-04",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-06-05",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-06-06",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-06-07",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-06-08",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-06-09",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-06-10",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-06-11",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-06-12",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-06-13",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-06-14",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-06-15",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-06-16",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-06-17",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-06-18",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-06-19",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-06-20",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-06-21",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-06-22",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-06-23",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-06-24",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-06-25",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-06-26",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-06-27",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-06-28",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-06-29",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-06-30",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-07-01",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-07-02",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-07-03",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-07-04",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-07-05",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-07-06",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-07-07",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-07-08",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-07-09",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-07-10",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-07-11",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-07-12",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-07-13",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-07-14",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-07-15",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-07-16",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-07-17",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-07-18",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-07-19",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-07-20",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-07-21",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-07-22",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-07-23",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-07-24",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-07-25",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-07-26",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-07-27",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-07-28",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-07-29",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-07-30",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-07-31",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-08-01",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-08-02",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-08-03",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-08-04",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-08-05",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-08-06",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-08-07",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-08-08",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-08-09",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-08-10",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-08-11",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-08-12",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-08-13",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-08-14",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-08-15",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-08-16",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-08-17",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-08-18",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-08-19",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-08-20",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-08-21",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-08-22",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-08-23",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-08-24",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-08-25",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-08-26",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-08-27",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-08-28",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-08-29",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-08-30",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-08-31",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-09-01",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-09-02",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-09-03",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-09-04",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-09-05",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-09-06",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-09-07",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-09-08",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-09-09",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-09-10",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-09-11",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-09-12",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-09-13",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-09-14",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-09-15",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-09-16",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-09-17",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-09-18",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-09-19",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-09-20",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-09-21",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-09-22",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-09-23",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-09-24",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-09-25",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-09-26",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-09-27",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-09-28",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-09-29",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-09-30",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-10-01",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-10-02",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-10-03",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-10-04",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-10-05",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-10-06",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-10-07",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-10-08",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-10-09",
-        "time_sec": 8257
+        "time_sec": 8271
       },
       {
         "date": "2026-10-10",
-        "time_sec": 8257
+        "time_sec": 8271
       }
     ],
     "marathon": [
@@ -116700,531 +116700,531 @@
       },
       {
         "date": "2026-06-01",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-06-02",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-06-03",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-06-04",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-06-05",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-06-06",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-06-07",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-06-08",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-06-09",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-06-10",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-06-11",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-06-12",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-06-13",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-06-14",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-06-15",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-06-16",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-06-17",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-06-18",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-06-19",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-06-20",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-06-21",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-06-22",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-06-23",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-06-24",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-06-25",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-06-26",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-06-27",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-06-28",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-06-29",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-06-30",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-07-01",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-07-02",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-07-03",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-07-04",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-07-05",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-07-06",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-07-07",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-07-08",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-07-09",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-07-10",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-07-11",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-07-12",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-07-13",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-07-14",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-07-15",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-07-16",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-07-17",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-07-18",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-07-19",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-07-20",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-07-21",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-07-22",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-07-23",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-07-24",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-07-25",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-07-26",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-07-27",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-07-28",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-07-29",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-07-30",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-07-31",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-08-01",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-08-02",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-08-03",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-08-04",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-08-05",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-08-06",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-08-07",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-08-08",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-08-09",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-08-10",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-08-11",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-08-12",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-08-13",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-08-14",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-08-15",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-08-16",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-08-17",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-08-18",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-08-19",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-08-20",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-08-21",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-08-22",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-08-23",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-08-24",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-08-25",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-08-26",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-08-27",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-08-28",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-08-29",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-08-30",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-08-31",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-09-01",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-09-02",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-09-03",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-09-04",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-09-05",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-09-06",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-09-07",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-09-08",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-09-09",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-09-10",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-09-11",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-09-12",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-09-13",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-09-14",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-09-15",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-09-16",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-09-17",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-09-18",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-09-19",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-09-20",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-09-21",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-09-22",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-09-23",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-09-24",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-09-25",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-09-26",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-09-27",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-09-28",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-09-29",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-09-30",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-10-01",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-10-02",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-10-03",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-10-04",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-10-05",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-10-06",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-10-07",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-10-08",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-10-09",
-        "time_sec": 11853
+        "time_sec": 11874
       },
       {
         "date": "2026-10-10",
-        "time_sec": 11853
+        "time_sec": 11874
       }
     ]
   },

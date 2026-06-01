@@ -29,7 +29,7 @@ Python tools (`uv run stride-…`).
 ```sh
 uv run stride-sync sync       # activities — full history first run, incremental after
 uv run stride-sync details    # per-run shoes, photos, best-effort PRs
-uv run stride-sync streams    # per-run HR/grade streams for the durability model
+uv run stride-sync streams    # per-run HR/grade streams + max HR / HR zones
 ```
 
 Every command is resumable and fetches only what's missing, so the first run is
@@ -37,6 +37,11 @@ the slow one — `streams` most of all (one request per run, cached in
 `data/private/strava-durability-samples.json`); if rate limits pause it, just
 re-run. Re-run any command later to pull recent activity, or `stride-sync sync
 --full` to ignore the checkpoint and refetch everything.
+
+`streams` also recomputes your **max HR** (rolling max-average over 10/30/60 s
+windows) from the cache and writes `data/generated/hr-zones.json`, where HR zone
+boundaries are derived as fractions of max HR (set the fractions in
+`data/entered/training-config.json`). It refreshes every time new runs are pulled.
 
 ## Rebuild models
 
@@ -78,6 +83,8 @@ Key files:
 - `data/imported/strava-run-details.json`, `strava-gear.json` — per-run shoes, photos, gear
 - `data/generated/fitness-summary.json`, `records.json` — derived metrics and best-effort PRs
 - `data/generated/race-model.json`, `durability-model.json` — the Progression-pane models
+- `data/generated/hr-zones.json` — measured max HR + HR zone boundaries (from `streams`)
 - `data/entered/races.json`, `club-overrides.json` — race labels and club overrides
+- `data/entered/training-config.json` — serious-start date and HR zone-divider fractions
 - `data/private/strava-config.json`, `strava-tokens.json`, `strava-durability-samples.json`
   — secrets and the stream cache (never committed)
