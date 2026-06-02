@@ -182,6 +182,8 @@ const FOCUS_MSG = {
     `<b>Aerobic efficiency</b> is slipping (~${pct}% off). Keep easy runs steady in high zone 2.`,
   aerobic_power: (pct) =>
     `<b>Aerobic power</b> is slipping (~${pct}% off). Keep steady aerobic work controlled in high zone 3.`,
+  anaerobic_power: (pct) =>
+    `<b>Anaerobic power</b> is your biggest gap (~${pct}% off). Add short hard efforts above 85% HR (high Z4/Z5).`,
 };
 
 function focusBox() {
@@ -510,11 +512,14 @@ function raceModelSeries(key) {
 
 // Grade-adjusted metres per heartbeat in an HR zone — precomputed per run from the
 // stream segments (sustained in-band blocks) and smoothed across runs here.
+// Per-run economy has ~10% day-to-day variance and only a few qualifying runs land
+// per week, so this needs a wider window than volume to average the noise out.
+const ECONOMY_SMOOTH_SIGMA_DAYS = 28;
 function zoneEconomy(runs, grid, valueFor) {
   return gaussianObservationLine(
     runs,
     grid,
-    VOLUME_SMOOTH_SIGMA_DAYS * DAY,
+    ECONOMY_SMOOTH_SIGMA_DAYS * DAY,
     valueFor,
   );
 }
@@ -673,9 +678,15 @@ function buildTarget(target, sectionId) {
   if (target.type === "ramp") {
     return { tier: target.tier, at: rampTarget(target.start, target.end) };
   }
+  // goal_ramp: a diagonal from the metric's measured baseline up to `end` on race
+  // day, so the slope is the improvement actually required from here. Baseline is
+  // read lazily — SERIES isn't built yet when targets are constructed.
   return {
     tier: target.tier,
-    at: (t) => recoveryBaseline(sectionId) * (1 + target.gain * frac(t)),
+    at: (t) => {
+      const base = recoveryBaseline(sectionId);
+      return base + (target.end - base) * frac(t);
+    },
   };
 }
 

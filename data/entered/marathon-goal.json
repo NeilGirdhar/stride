@@ -47,25 +47,25 @@
     {
       "id": "recovery",
       "label": "Aerobic efficiency",
-      "unit": "Grade-adjusted distance per heartbeat in high zone 2",
+      "unit": "Grade-adjusted metres per heartbeat in high zone 2",
       "higher_better": true,
       "compute": "recovery_efficiency",
       "targets": [
-        { "tier": "a", "type": "recovery", "gain": 0.1 },
-        { "tier": "b", "type": "recovery", "gain": 0.06 },
-        { "tier": "c", "type": "recovery", "gain": 0.02 }
+        { "tier": "a", "type": "goal_ramp", "end": 1.76 },
+        { "tier": "b", "type": "goal_ramp", "end": 1.67 },
+        { "tier": "c", "type": "goal_ramp", "end": 1.59 }
       ]
     },
     {
       "id": "aerobic_power",
       "label": "Aerobic power",
-      "unit": "Grade-adjusted distance per heartbeat in high zone 3",
+      "unit": "Grade-adjusted metres per heartbeat in high zone 3",
       "higher_better": true,
       "compute": "aerobic_power",
       "targets": [
-        { "tier": "a", "type": "recovery", "gain": 0.1 },
-        { "tier": "b", "type": "recovery", "gain": 0.06 },
-        { "tier": "c", "type": "recovery", "gain": 0.02 }
+        { "tier": "a", "type": "goal_ramp", "end": 1.54 },
+        { "tier": "b", "type": "goal_ramp", "end": 1.46 },
+        { "tier": "c", "type": "goal_ramp", "end": 1.39 }
       ]
     },
     {
@@ -74,7 +74,11 @@
       "unit": "Grade-adjusted metres per heartbeat in sustained efforts above 85% HR (high Z4 + Z5).",
       "higher_better": true,
       "compute": "anaerobic_power",
-      "targets": []
+      "targets": [
+        { "tier": "a", "type": "goal_ramp", "end": 1.45 },
+        { "tier": "b", "type": "goal_ramp", "end": 1.38 },
+        { "tier": "c", "type": "goal_ramp", "end": 1.31 }
+      ]
     },
     {
       "id": "volume",
@@ -84,9 +88,9 @@
       "compute": "ewma_grade_adjusted_km",
       "tau_days": 9,
       "targets": [
-        { "tier": "a", "type": "ramp", "start": 70, "end": 95 },
-        { "tier": "b", "type": "ramp", "start": 62, "end": 85 },
-        { "tier": "c", "type": "ramp", "start": 55, "end": 75 }
+        { "tier": "a", "type": "goal_ramp", "end": 95 },
+        { "tier": "b", "type": "goal_ramp", "end": 85 },
+        { "tier": "c", "type": "goal_ramp", "end": 75 }
       ]
     }
   ]

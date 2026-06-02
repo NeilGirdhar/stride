@@ -6,5 +6,10 @@
     "z2_z3": 0.7,
     "z3_z4": 0.8,
     "z4_z5": 0.9
+  },
+  "economy_bands": {
+    "aerobic_efficiency": [0.62, 0.73],
+    "aerobic_power": [0.72, 0.83],
+    "anaerobic_floor": 0.85
   }
 }

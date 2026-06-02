@@ -42,6 +42,16 @@ from datetime import UTC, datetime, timedelta
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from typing import Any, cast
 
+JsonDict = dict[str, Any]
+
+
+@dataclass(frozen=True)
+class EconomyBands:
+    aerobic_efficiency: tuple[float, float]
+    aerobic_power: tuple[float, float]
+    anaerobic_floor: float
+
+
 ROOT = pathlib.Path(
     pathlib.Path(pathlib.Path(pathlib.Path(__file__).resolve()).parent).parent
 ).parent
@@ -86,10 +96,9 @@ BEST_EFFORT_KEYS = {
 # Fallback for 30k/marathon on long runs where Strava didn't flag a best effort
 # — found as the fastest window from the distance/time streams.
 STREAM_RECORDS = {"30k": 30000, "marathon": 42195}
-# HR zones are derived from max HR: dividers are fractions of it (personal, kept in
-# data/entered/training-config.json), and max HR itself is measured from the runs
+# HR zones and the economy-metric bands are fractions of max HR (personal, kept in
+# data/entered/training-config.json); max HR itself is measured from the runs
 # (rolling max-average, written to data/generated/hr-zones.json by `streams`).
-# A metric's "high ZN" band is the upper half of zone N; "low ZN" the lower half.
 DEFAULT_ZONE_FRACTIONS = {
     "z1_floor": 0.50,
     "z1_z2": 0.60,
@@ -97,6 +106,13 @@ DEFAULT_ZONE_FRACTIONS = {
     "z3_z4": 0.80,
     "z4_z5": 0.90,
 }
+# Fraction-of-max-HR bands the three economy metrics are measured in. Aerobic ones
+# are [lo, hi] ranges; anaerobic is an open-ended floor (high Z4 and above).
+DEFAULT_ECONOMY_BANDS = EconomyBands(
+    aerobic_efficiency=(0.62, 0.73),
+    aerobic_power=(0.75, 0.80),
+    anaerobic_floor=0.85,
+)
 DEFAULT_MAX_HR = 190.0
 MAX_HR_WINDOWS = (10, 30, 60)  # seconds; max-average HR over each, not single peak
 # Zone economy (m/beat) is measured over sustained in-band blocks: a block must
@@ -104,12 +120,6 @@ MAX_HR_WINDOWS = (10, 30, 60)  # seconds; max-average HR over each, not single p
 # lags the effort and would otherwise inflate the ratio.
 ZONE_MIN_BLOCK_S = 60.0
 ZONE_TRIM_S = 20.0
-# Ultimate fallback bands when neither max HR nor config is available yet.
-DEFAULT_HR_ZONES = {
-    "high_zone2": {"min": 135.0, "max": 145.0},
-    "high_zone3": {"min": 155.0, "max": 165.0},
-}
-JsonDict = dict[str, Any]
 
 
 # ---------- small IO helpers ----------
@@ -133,38 +143,56 @@ def load_zone_fractions() -> dict[str, float]:
     }
 
 
+def load_economy_bands() -> EconomyBands:
+    """Fraction-of-max-HR bands for the economy metrics, from training-config.json."""
+    cfg = cast("JsonDict | None", load_json(TRAINING_CONFIG_PATH)) or {}
+    configured = cast("JsonDict", cfg.get("economy_bands") or {})
+    efficiency = configured.get("aerobic_efficiency") or DEFAULT_ECONOMY_BANDS.aerobic_efficiency
+    power = configured.get("aerobic_power") or DEFAULT_ECONOMY_BANDS.aerobic_power
+    floor = configured.get("anaerobic_floor", DEFAULT_ECONOMY_BANDS.anaerobic_floor)
+    return EconomyBands(
+        aerobic_efficiency=(float(efficiency[0]), float(efficiency[1])),
+        aerobic_power=(float(power[0]), float(power[1])),
+        anaerobic_floor=float(floor),
+    )
+
+
 def compute_zone_bands(max_hr: float, fractions: dict[str, float]) -> JsonDict:
-    """Zone dividers and metric bands (bpm) from max HR. high ZN = upper half of zone N."""
-    bpm = {name: round(fraction * max_hr, 1) for name, fraction in fractions.items()}
-    mid = lambda lo, hi: round((bpm[lo] + bpm[hi]) / 2, 1)  # noqa: E731
+    """Zone dividers and the economy-metric bands (bpm) from max HR."""
+    economy = load_economy_bands()
+    bpm = lambda fraction: round(fraction * max_hr, 1)  # noqa: E731
+    efficiency = economy.aerobic_efficiency
+    power = economy.aerobic_power
     return {
-        "dividers_bpm": bpm,
-        "high_zone2": {"min": mid("z1_z2", "z2_z3"), "max": bpm["z2_z3"]},
-        "high_zone3": {"min": mid("z2_z3", "z3_z4"), "max": bpm["z3_z4"]},
-        "high_zone4": {"min": mid("z3_z4", "z4_z5"), "max": bpm["z4_z5"]},
-        # Anaerobic = high Z4 and above (high Z4 + Z5), i.e. from the 85% mark up.
-        "anaerobic_floor": mid("z3_z4", "z4_z5"),
+        "dividers_bpm": {name: bpm(fraction) for name, fraction in fractions.items()},
+        "aerobic_efficiency": {"min": bpm(efficiency[0]), "max": bpm(efficiency[1])},
+        "aerobic_power": {"min": bpm(power[0]), "max": bpm(power[1])},
+        "anaerobic_floor": bpm(economy.anaerobic_floor),
     }
 
 
 def load_hr_zones() -> dict[str, dict[str, float]]:
-    """High-zone HR bands (bpm), from the computed hr-zones.json, falling back per field.
+    """Aerobic-metric bands (bpm) from the computed hr-zones.json, with fallbacks.
 
-    Bands are derived from measured max HR; until `streams` has written hr-zones.json
-    they fall back to DEFAULT_MAX_HR x the configured fractions, then to DEFAULT_HR_ZONES.
+    Derived from measured max HR; until `streams` has written hr-zones.json they
+    fall back to DEFAULT_MAX_HR x the configured economy-band fractions.
     """
     data = cast("JsonDict | None", load_json(HR_ZONES_PATH))
     bands = cast("JsonDict", (data or {}).get("zones_bpm") or {})
-    if not bands:
+    if not bands.get("aerobic_efficiency"):
         bands = compute_zone_bands(DEFAULT_MAX_HR, load_zone_fractions())
-    zones: dict[str, dict[str, float]] = {}
-    for name, default in DEFAULT_HR_ZONES.items():
-        band = cast("JsonDict", bands.get(name) or {})
-        zones[name] = {
-            "min": float(band.get("min", default["min"])),
-            "max": float(band.get("max", default["max"])),
+
+    def band(key: str, default: tuple[float, float]) -> dict[str, float]:
+        configured = cast("JsonDict", bands.get(key) or {})
+        return {
+            "min": float(configured.get("min", default[0] * DEFAULT_MAX_HR)),
+            "max": float(configured.get("max", default[1] * DEFAULT_MAX_HR)),
         }
-    return zones
+
+    return {
+        "high_zone2": band("aerobic_efficiency", DEFAULT_ECONOMY_BANDS.aerobic_efficiency),
+        "high_zone3": band("aerobic_power", DEFAULT_ECONOMY_BANDS.aerobic_power),
+    }
 
 
 HR_ZONES = load_hr_zones()
@@ -982,18 +1010,17 @@ def band_m_per_beat(segments: list[JsonDict], lo: float, hi: float) -> float | N
 
 
 def write_zone_metrics(cache: dict[str, JsonDict], bands: JsonDict) -> None:
-    """Per-run economy (m/beat) for each HR band, from the cached segments.
+    """Per-run economy (m/beat) for each band, from the cached segments.
 
-    aerobic efficiency = high Z2, aerobic power = high Z3, anaerobic power = high
-    Z4 and above — all the same sustained-block measure, just different bands.
+    All three are the same sustained-block measure, just different HR bands:
+    aerobic efficiency and power in their [lo, hi] ranges, anaerobic from its floor up.
     """
-    high_zone2 = cast("JsonDict", bands["high_zone2"])
-    high_zone3 = cast("JsonDict", bands["high_zone3"])
-    floor = float(bands["anaerobic_floor"])
+    efficiency = cast("JsonDict", bands["aerobic_efficiency"])
+    power = cast("JsonDict", bands["aerobic_power"])
     band_for = {
-        "aerobic_efficiency": (float(high_zone2["min"]), float(high_zone2["max"])),
-        "aerobic_power": (float(high_zone3["min"]), float(high_zone3["max"])),
-        "anaerobic_power": (floor, float("inf")),
+        "aerobic_efficiency": (float(efficiency["min"]), float(efficiency["max"])),
+        "aerobic_power": (float(power["min"]), float(power["max"])),
+        "anaerobic_power": (float(bands["anaerobic_floor"]), float("inf")),
     }
     out: JsonDict = {}
     for run_id, row in cache.items():
