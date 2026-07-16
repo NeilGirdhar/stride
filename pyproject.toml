@@ -23,7 +23,7 @@ maintainers = [{name = "Neil Girdhar", email = "mistersheik@gmail.com"}]
 license = "Apache-2.0"
 license-files = ["LICENSE"]
 dependencies = [
-  "numpy>=2"
+  "numpy>=2.2"
 ]
 
 [project.scripts]
@@ -48,40 +48,40 @@ line-length = 100
 preview = true
 select = ["ALL"]
 ignore = [
-  "ARG001", # Unused function arg.
-  "ARG002", # Unused method arg.
-  "ARG003", # Unused class method arg.
-  "ARG004", # Unused static method arg.
-  "COM812", # Missing trailing comma.
-  "CPY001", # Missing copyright notice.
-  "D100", # Missing module docstring.
-  "D101", # Missing class docstring.
-  "D102", # Missing method docstring.
-  "D103", # Missing function docstring.
-  "D105", # Missing magic method docstring.
-  "D107", # Missing __init__ docstring.
-  "DOC201", # Missing return doc.
-  "DOC202", # Extraneous returns section.
-  "DOC402", # Missing yield doc.
-  "DOC501", # Missing raised exception doc.
-  "ERA001", # Commented-out code.
-  "FIX002", # TODO comment.
-  "G004", # Logging uses f-string.
-  "PD008", # Prefer .loc over .at.
-  "PGH003", # Use specific type-ignore codes.
-  "PLR0913", # Too many function arguments.
-  "PLR6301", # Method does not use self.
-  "RUF002", # Ambiguous Unicode character.
-  "RUF003", # Ambiguous minus sign.
-  "RUF021", # Parenthesize mixed and/or.
-  "RUF069", # Float equality comparison.
-  "S101", # Assert used.
-  "TC001", # Move app import into TYPE_CHECKING.
-  "TC002", # Move third-party import into TYPE_CHECKING.
-  "TC003", # Move stdlib import into TYPE_CHECKING.
-  "TD002", # TODO missing author.
-  "TD003", # TODO missing issue link.
-  "T201", "PLR2004", "PLR0912", "C901", "S310",
+  "unused-function-argument", # Unused function arg.
+  "unused-method-argument", # Unused method arg.
+  "unused-class-method-argument", # Unused class method arg.
+  "unused-static-method-argument", # Unused static method arg.
+  "missing-trailing-comma", # Missing trailing comma.
+  "missing-copyright-notice", # Missing copyright notice.
+  "undocumented-public-module", # Missing module docstring.
+  "undocumented-public-class", # Missing class docstring.
+  "undocumented-public-method", # Missing method docstring.
+  "undocumented-public-function", # Missing function docstring.
+  "undocumented-magic-method", # Missing magic method docstring.
+  "undocumented-public-init", # Missing __init__ docstring.
+  "docstring-missing-returns", # Missing return doc.
+  "docstring-extraneous-returns", # Extraneous returns section.
+  "docstring-missing-yields", # Missing yield doc.
+  "docstring-missing-exception", # Missing raised exception doc.
+  "commented-out-code", # Commented-out code.
+  "line-contains-todo", # TODO comment.
+  "logging-f-string", # Logging uses f-string.
+  "pandas-use-of-dot-at", # Prefer .loc over .at.
+  "blanket-type-ignore", # Use specific type-ignore codes.
+  "too-many-arguments", # Too many function arguments.
+  "no-self-use", # Method does not use self.
+  "ambiguous-unicode-character-docstring", # Ambiguous Unicode character.
+  "ambiguous-unicode-character-comment", # Ambiguous minus sign.
+  "parenthesize-chained-operators", # Parenthesize mixed and/or.
+  "float-equality-comparison", # Float equality comparison.
+  "assert", # Assert used.
+  "typing-only-first-party-import", # Move app import into TYPE_CHECKING.
+  "typing-only-third-party-import", # Move third-party import into TYPE_CHECKING.
+  "typing-only-standard-library-import", # Move stdlib import into TYPE_CHECKING.
+  "missing-todo-author", # TODO missing author.
+  "missing-todo-link", # TODO missing issue link.
+  "print", "magic-value-comparison", "too-many-branches", "complex-structure", "suspicious-url-open-usage",
 ]
 
 [tool.ruff.lint.flake8-errmsg]

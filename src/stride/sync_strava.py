@@ -75,7 +75,7 @@ HR_ZONES_PATH = GENERATED_DIR / "hr-zones.json"  # computed max HR + zone bpm bo
 ZONE_METRICS_PATH = GENERATED_DIR / "zone-metrics.json"  # per-run m/beat by HR zone
 
 AUTH_URL = "https://www.strava.com/oauth/authorize"
-TOKEN_URL = "https://www.strava.com/oauth/token"  # noqa: S105
+TOKEN_URL = "https://www.strava.com/oauth/token"  # ruff:ignore[hardcoded-password-string]
 ACTIVITIES_URL = "https://www.strava.com/api/v3/athlete/activities"
 ACTIVITY_URL = "https://www.strava.com/api/v3/activities"
 GEAR_URL = "https://www.strava.com/api/v3/gear"
@@ -160,7 +160,7 @@ def load_economy_bands() -> EconomyBands:
 def compute_zone_bands(max_hr: float, fractions: dict[str, float]) -> JsonDict:
     """Zone dividers and the economy-metric bands (bpm) from max HR."""
     economy = load_economy_bands()
-    bpm = lambda fraction: round(fraction * max_hr, 1)  # noqa: E731
+    bpm = lambda fraction: round(fraction * max_hr, 1)  # ruff:ignore[lambda-assignment]
     efficiency = economy.aerobic_efficiency
     power = economy.aerobic_power
     return {
@@ -309,16 +309,16 @@ def auth(cfg: JsonDict) -> None:
                 b"<p>You can close this tab and return to the terminal.</p>"
             )
 
-        def log_message(self, format: str, *args: object) -> None:  # noqa: A002
+        def log_message(self, format: str, *args: object) -> None:  # ruff:ignore[builtin-argument-shadowing]
             pass
 
     print("\nOpen this URL in your browser and click Authorize:\n")
     print(f"  {url}\n")
     try:
-        import webbrowser  # noqa: PLC0415
+        import webbrowser  # ruff:ignore[import-outside-top-level]
 
         webbrowser.open(url)
-    except Exception:  # noqa: BLE001, S110
+    except Exception:  # ruff:ignore[blind-except, try-except-pass]
         pass
 
     print(f"Waiting for the Strava redirect on http://localhost:{port}/ ...")
@@ -1144,7 +1144,7 @@ def details(cfg: JsonDict, limit: int | None = None) -> None:
                     },
                 ),
             )
-        except Exception:  # noqa: BLE001
+        except Exception:  # ruff:ignore[blind-except]
             st = {}
             entry["aerobic_efficiency_m_per_beat"] = None
             entry["aerobic_power_m_per_beat"] = None
@@ -1175,7 +1175,7 @@ def details(cfg: JsonDict, limit: int | None = None) -> None:
                     for k, m in STREAM_RECORDS.items()
                     if (a.get("distance") or 0) >= m
                 }
-            except Exception:  # noqa: BLE001
+            except Exception:  # ruff:ignore[blind-except]
                 entry["windows"] = {}
         elif previous.get("windows"):
             entry["windows"] = previous["windows"]
@@ -1208,7 +1208,7 @@ def fetch_gear(tm: Tokens, cache: dict[str, JsonDict]) -> None:
             continue
         try:
             g = cast("JsonDict", api_get(tm, f"{GEAR_URL}/{gid}"))
-        except Exception:  # noqa: BLE001, S112
+        except Exception:  # ruff:ignore[blind-except, try-except-continue]
             continue
         gear[gid] = {
             "name": g.get("name") or g.get("nickname") or gid,
