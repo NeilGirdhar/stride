@@ -48,43 +48,40 @@ line-length = 100
 preview = true
 select = ["ALL"]
 ignore = [
-  "ambiguous-unicode-character-comment", # Ambiguous minus sign.
-  "ambiguous-unicode-character-docstring", # Ambiguous Unicode character.
-  "assert", # Assert used.
-  "blanket-type-ignore", # Use specific type-ignore codes.
-  "commented-out-code", # Commented-out code.
-  "complex-structure",
-  "docstring-extraneous-returns", # Extraneous returns section.
-  "docstring-missing-exception", # Missing raised exception doc.
-  "docstring-missing-returns", # Missing return doc.
-  "docstring-missing-yields", # Missing yield doc.
-  "float-equality-comparison", # Float equality comparison.
-  "line-contains-todo", # TODO comment.
-  "logging-f-string", # Logging uses f-string.
+  "ambiguous-unicode-character-comment",
+  "ambiguous-unicode-character-docstring",
+  "assert",
+  "blanket-type-ignore",
+  "commented-out-code",
+  "docstring-extraneous-returns",
+  "docstring-missing-exception",
+  "docstring-missing-returns",
+  "docstring-missing-yields",
+  "float-equality-comparison",
+  "line-contains-todo",
+  "logging-f-string",
   "magic-value-comparison",
-  "missing-copyright-notice", # Missing copyright notice.
-  "missing-todo-author", # TODO missing author.
-  "missing-todo-link", # TODO missing issue link.
-  "missing-trailing-comma", # Missing trailing comma.
-  "no-self-use", # Method does not use self.
-  "pandas-use-of-dot-at", # Prefer .loc over .at.
-  "parenthesize-chained-operators", # Parenthesize mixed and/or.
+  "missing-copyright-notice",
+  "missing-todo-author",
+  "missing-todo-link",
+  "missing-trailing-comma",
+  "no-self-use",
+  "pandas-use-of-dot-at",
+  "parenthesize-chained-operators",
   "print",
-  "suspicious-url-open-usage",
-  "too-many-arguments", # Too many function arguments.
-  "too-many-branches",
-  "typing-only-first-party-import", # Move app import into TYPE_CHECKING.
-  "typing-only-standard-library-import", # Move stdlib import into TYPE_CHECKING.
-  "typing-only-third-party-import", # Move third-party import into TYPE_CHECKING.
-  "undocumented-magic-method", # Missing magic method docstring.
-  "undocumented-public-class", # Missing class docstring.
-  "undocumented-public-function", # Missing function docstring.
-  "undocumented-public-init", # Missing __init__ docstring.
-  "undocumented-public-method", # Missing method docstring.
-  "undocumented-public-module", # Missing module docstring.
-  "unused-class-method-argument", # Unused class method arg.
-  "unused-function-argument", # Unused function arg.
-  "unused-method-argument", # Unused method arg.
+  "too-many-arguments",
+  "typing-only-first-party-import",
+  "typing-only-standard-library-import",
+  "typing-only-third-party-import",
+  "undocumented-magic-method",
+  "undocumented-public-class",
+  "undocumented-public-function",
+  "undocumented-public-init",
+  "undocumented-public-method",
+  "undocumented-public-module",
+  "unused-class-method-argument",
+  "unused-function-argument",
+  "unused-method-argument",
   "unused-static-method-argument" # Unused static method arg.
 ]
 

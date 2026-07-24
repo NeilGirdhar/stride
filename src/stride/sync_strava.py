@@ -262,16 +262,16 @@ def load_club_patterns() -> dict[str, re.Pattern[str]]:
 
 def http_post(url: str, data: dict[str, object]) -> JsonDict:
     body = urllib.parse.urlencode(data).encode()
-    req = urllib.request.Request(url, data=body, method="POST")
-    with urllib.request.urlopen(req) as resp:
+    req = urllib.request.Request(url, data=body, method="POST")  # ruff:ignore[suspicious-url-open-usage]
+    with urllib.request.urlopen(req) as resp:  # ruff:ignore[suspicious-url-open-usage]
         return cast("JsonDict", json.load(resp))
 
 
 def http_get(url: str, params: Mapping[str, object], token: str) -> object:
     qs = urllib.parse.urlencode(params)
-    req = urllib.request.Request(f"{url}?{qs}")
+    req = urllib.request.Request(f"{url}?{qs}")  # ruff:ignore[suspicious-url-open-usage]
     req.add_header("Authorization", f"Bearer {token}")
-    with urllib.request.urlopen(req) as resp:
+    with urllib.request.urlopen(req) as resp:  # ruff:ignore[suspicious-url-open-usage]
         return json.load(resp)
 
 
@@ -535,7 +535,7 @@ def riegel_equiv_5k(
     return time_sec * (target_km / dist_km) ** 1.06
 
 
-def compute_summary(acts: list[JsonDict]) -> JsonDict:
+def compute_summary(acts: list[JsonDict]) -> JsonDict:  # ruff:ignore[complex-structure, too-many-branches]
     now = datetime.now(UTC)
 
     # ---- totals by sport ----
