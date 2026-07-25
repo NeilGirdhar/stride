@@ -706,7 +706,7 @@ def prediction_components(
     return out
 
 
-def build_series(
+def build_series(  # ruff:ignore[too-many-arguments]
     runs: list[Run],
     model: JsonDict,
     beta: np.ndarray,

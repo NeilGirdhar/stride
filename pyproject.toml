@@ -69,7 +69,6 @@ ignore = [
   "pandas-use-of-dot-at",
   "parenthesize-chained-operators",
   "print",
-  "too-many-arguments",
   "typing-only-first-party-import",
   "typing-only-standard-library-import",
   "typing-only-third-party-import",
