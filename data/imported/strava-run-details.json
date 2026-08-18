@@ -23096,5 +23096,3160 @@
     "aerobic_power_m_per_beat": null,
     "best_60s_grade_adjusted_speed_mps": 4.6531,
     "grade_adjusted_distance_km": 12.8649
+  },
+  "18740870324": {
+    "gear_id": "g31188164",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 133
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 304
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 380
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 628
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1294
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 2024
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.2583,
+    "aerobic_power_m_per_beat": null,
+    "best_60s_grade_adjusted_speed_mps": 4.3211,
+    "grade_adjusted_distance_km": 6.6052
+  },
+  "18748925112": {
+    "gear_id": "g31188164",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 104
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 271
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 339
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 552
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1147
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 1835
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.272,
+    "aerobic_power_m_per_beat": 1.1934,
+    "best_60s_grade_adjusted_speed_mps": 4.3374,
+    "grade_adjusted_distance_km": 9.0469
+  },
+  "18753603014": {
+    "gear_id": "g31188164",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 124
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 257
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 328
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 557
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1168
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.2334,
+    "aerobic_power_m_per_beat": 1.2613,
+    "best_60s_grade_adjusted_speed_mps": 3.4659,
+    "grade_adjusted_distance_km": 4.9029
+  },
+  "18768899892": {
+    "gear_id": "g25805243",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 124
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 261
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 326
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 548
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1164
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 2074
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.2487,
+    "aerobic_power_m_per_beat": 1.0729,
+    "best_60s_grade_adjusted_speed_mps": 3.7283,
+    "grade_adjusted_distance_km": 7.0825
+  },
+  "18776370831": {
+    "gear_id": "g31188164",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 104
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 217
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 274
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 448
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 926
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.5209,
+    "aerobic_power_m_per_beat": 1.3061,
+    "best_60s_grade_adjusted_speed_mps": 4.2869,
+    "grade_adjusted_distance_km": 4.4729
+  },
+  "18777580016": {
+    "gear_id": "g31188164",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 131
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 289
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 371
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 633
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1319
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 2473
+      },
+      {
+        "name": "10K",
+        "distance": 10000,
+        "elapsed_time": 6748
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.052,
+    "aerobic_power_m_per_beat": 1.0136,
+    "best_60s_grade_adjusted_speed_mps": 3.6896,
+    "grade_adjusted_distance_km": 10.1576
+  },
+  "18794989305": {
+    "gear_id": "g25805243",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 93
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 248
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 333
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 538
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1875
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 2818
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.3146,
+    "aerobic_power_m_per_beat": 1.0917,
+    "best_60s_grade_adjusted_speed_mps": 4.6937,
+    "grade_adjusted_distance_km": 6.4869
+  },
+  "18835494792": {
+    "gear_id": "g31188164",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 137
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 301
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 374
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 611
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1265
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 2015
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.2175,
+    "aerobic_power_m_per_beat": 1.1548,
+    "best_60s_grade_adjusted_speed_mps": 3.4937,
+    "grade_adjusted_distance_km": 6.0086
+  },
+  "18843541263": {
+    "gear_id": "g31188164",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 126
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 259
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 322
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 522
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1073
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 1702
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.3299,
+    "aerobic_power_m_per_beat": 1.1835,
+    "best_60s_grade_adjusted_speed_mps": 4.1712,
+    "grade_adjusted_distance_km": 7.0564
+  },
+  "18848380954": {
+    "gear_id": "g31188164",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 118
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 270
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 344
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 562
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1138
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 1929
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.2572,
+    "aerobic_power_m_per_beat": 1.161,
+    "best_60s_grade_adjusted_speed_mps": 3.5547,
+    "grade_adjusted_distance_km": 5.2483
+  },
+  "18863796273": {
+    "gear_id": "g25805243",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 134
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 272
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 351
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 605
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1296
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 2316
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.2232,
+    "aerobic_power_m_per_beat": 1.1932,
+    "best_60s_grade_adjusted_speed_mps": 3.524,
+    "grade_adjusted_distance_km": 7.0984
+  },
+  "18876214480": {
+    "gear_id": "g25805243",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 139
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 283
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 354
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 575
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1477
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 2143
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.3221,
+    "aerobic_power_m_per_beat": 1.1154,
+    "best_60s_grade_adjusted_speed_mps": 3.1995,
+    "grade_adjusted_distance_km": 5.8767
+  },
+  "18917933191": {
+    "gear_id": "g26014455",
+    "photo": "https://d35tn3x5zm6xrc.cloudfront.net/uOx_PbqTiWf9ApOxU_zMN-wMrkHX_V2CaXMCNvC_qFU/thumbnails/uOx_PbqTiWf9ApOxU_zMN-wMrkHX_V2CaXMCNvC_qFU_600x600.jpg",
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 85
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 184
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 233
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 398
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 814
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 1314
+      },
+      {
+        "name": "10K",
+        "distance": 10000,
+        "elapsed_time": 2734
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 0.4086,
+    "aerobic_power_m_per_beat": 1.8381,
+    "best_60s_grade_adjusted_speed_mps": 4.7518,
+    "grade_adjusted_distance_km": 10.1313
+  },
+  "18928231107": {
+    "gear_id": "g25805243",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 130
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 282
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 358
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 592
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1222
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 1982
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.262,
+    "aerobic_power_m_per_beat": 1.0491,
+    "best_60s_grade_adjusted_speed_mps": 3.5674,
+    "grade_adjusted_distance_km": 5.8754
+  },
+  "18956599871": {
+    "gear_id": "g25805243",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 124
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 259
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 323
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 560
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1213
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 2055
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.2799,
+    "aerobic_power_m_per_beat": 1.1542,
+    "best_60s_grade_adjusted_speed_mps": 3.5912,
+    "grade_adjusted_distance_km": 8.161
+  },
+  "18983508032": {
+    "gear_id": "g30522125",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 125
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 259
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 324
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 531
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1516
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 2300
+      },
+      {
+        "name": "10K",
+        "distance": 10000,
+        "elapsed_time": 8418
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.1864,
+    "aerobic_power_m_per_beat": 1.1555,
+    "best_60s_grade_adjusted_speed_mps": 3.8394,
+    "grade_adjusted_distance_km": 11.7708
+  },
+  "19012262607": {
+    "gear_id": "g25805243",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 103
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 222
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 277
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 481
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1011
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 1585
+      },
+      {
+        "name": "10K",
+        "distance": 10000,
+        "elapsed_time": 6256
+      },
+      {
+        "name": "15K",
+        "distance": 15000,
+        "elapsed_time": 10628
+      },
+      {
+        "name": "10 mile",
+        "distance": 16090,
+        "elapsed_time": 11171
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.1986,
+    "aerobic_power_m_per_beat": 1.1372,
+    "best_60s_grade_adjusted_speed_mps": 4.194,
+    "grade_adjusted_distance_km": 18.3609
+  },
+  "19021573511": {
+    "gear_id": "g31188164",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 131
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 284
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 373
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 609
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1309
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 2101
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.3286,
+    "aerobic_power_m_per_beat": null,
+    "best_60s_grade_adjusted_speed_mps": 3.4337,
+    "grade_adjusted_distance_km": 6.0299
+  },
+  "19028666207": {
+    "gear_id": "g31188164",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 96
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 206
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 261
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 520
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1099
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 1762
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.3106,
+    "aerobic_power_m_per_beat": 1.2021,
+    "best_60s_grade_adjusted_speed_mps": 4.3768,
+    "grade_adjusted_distance_km": 7.3748
+  },
+  "19033602440": {
+    "gear_id": "g31188164",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 140
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 289
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 359
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 584
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1172
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.3223,
+    "aerobic_power_m_per_beat": 0.1196,
+    "best_60s_grade_adjusted_speed_mps": 3.2452,
+    "grade_adjusted_distance_km": 4.7229
+  },
+  "19047808597": {
+    "gear_id": "g25805243",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 95
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 202
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 262
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 560
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1261
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 2087
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.3598,
+    "aerobic_power_m_per_beat": 1.2082,
+    "best_60s_grade_adjusted_speed_mps": 4.1566,
+    "grade_adjusted_distance_km": 8.1496
+  },
+  "19060575701": {
+    "gear_id": "g31188164",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 97
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 196
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 247
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 417
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1111
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 1761
+      },
+      {
+        "name": "10K",
+        "distance": 10000,
+        "elapsed_time": 5515
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.2454,
+    "aerobic_power_m_per_beat": 1.2527,
+    "best_60s_grade_adjusted_speed_mps": 4.4871,
+    "grade_adjusted_distance_km": 11.6087
+  },
+  "19072810864": {
+    "gear_id": "g25805243",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 120
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 246
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 307
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 505
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1067
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 1855
+      },
+      {
+        "name": "10K",
+        "distance": 10000,
+        "elapsed_time": 6823
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.3375,
+    "aerobic_power_m_per_beat": 1.1553,
+    "best_60s_grade_adjusted_speed_mps": 3.8802,
+    "grade_adjusted_distance_km": 11.2633
+  },
+  "19088013986": {
+    "gear_id": "g25805243",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 109
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 224
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 281
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 461
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 935
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 1641
+      },
+      {
+        "name": "10K",
+        "distance": 10000,
+        "elapsed_time": 4421
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.2493,
+    "aerobic_power_m_per_beat": 1.2181,
+    "best_60s_grade_adjusted_speed_mps": 4.4214,
+    "grade_adjusted_distance_km": 14.7293
+  },
+  "19109420156": {
+    "gear_id": "g31188164",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 148
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 308
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 382
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 627
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1314
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 2085
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.3198,
+    "aerobic_power_m_per_beat": 1.4972,
+    "best_60s_grade_adjusted_speed_mps": 3.4352,
+    "grade_adjusted_distance_km": 5.9511
+  },
+  "19116768436": {
+    "gear_id": "g31188164",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 128
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 264
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 353
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 573
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1151
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 1836
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.3399,
+    "aerobic_power_m_per_beat": 1.2981,
+    "best_60s_grade_adjusted_speed_mps": 3.3716,
+    "grade_adjusted_distance_km": 7.254
+  },
+  "19121569961": {
+    "gear_id": "g31188164",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 114
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 263
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 333
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 570
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1168
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 1829
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.3431,
+    "aerobic_power_m_per_beat": 1.4134,
+    "best_60s_grade_adjusted_speed_mps": 3.5908,
+    "grade_adjusted_distance_km": 5.502
+  },
+  "19137715726": {
+    "gear_id": "g31188164",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 104
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 228
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 286
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 596
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1292
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 2394
+      },
+      {
+        "name": "10K",
+        "distance": 10000,
+        "elapsed_time": 9857
+      },
+      {
+        "name": "15K",
+        "distance": 15000,
+        "elapsed_time": 13649
+      },
+      {
+        "name": "10 mile",
+        "distance": 16090,
+        "elapsed_time": 14110
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.1774,
+    "aerobic_power_m_per_beat": 1.165,
+    "best_60s_grade_adjusted_speed_mps": 4.225,
+    "grade_adjusted_distance_km": 16.425
+  },
+  "19149110850": {
+    "gear_id": "g31188164",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 105
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 227
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 284
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 470
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1016
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 1658
+      },
+      {
+        "name": "10K",
+        "distance": 10000,
+        "elapsed_time": 5368
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.4022,
+    "aerobic_power_m_per_beat": 1.1829,
+    "best_60s_grade_adjusted_speed_mps": 4.1023,
+    "grade_adjusted_distance_km": 11.7255
+  },
+  "19162203198": {
+    "gear_id": "g25805243",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 112
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 240
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 304
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 506
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1235
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 2041
+      },
+      {
+        "name": "10K",
+        "distance": 10000,
+        "elapsed_time": 7372
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.2659,
+    "aerobic_power_m_per_beat": 1.2534,
+    "best_60s_grade_adjusted_speed_mps": 4.2993,
+    "grade_adjusted_distance_km": 11.4371
+  },
+  "19179577554": {
+    "gear_id": "g31188164",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 97
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 219
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 277
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 463
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 942
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 1554
+      },
+      {
+        "name": "10K",
+        "distance": 10000,
+        "elapsed_time": 3971
+      },
+      {
+        "name": "15K",
+        "distance": 15000,
+        "elapsed_time": 10312
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.3633,
+    "aerobic_power_m_per_beat": 1.1949,
+    "best_60s_grade_adjusted_speed_mps": 4.6333,
+    "grade_adjusted_distance_km": 15.3415
+  },
+  "19180802677": {
+    "gear_id": "g31188164",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 137
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 281
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 350
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 607
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1594
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 0.9972,
+    "aerobic_power_m_per_beat": 1.1115,
+    "best_60s_grade_adjusted_speed_mps": 4.5296,
+    "grade_adjusted_distance_km": 3.3782
+  },
+  "19200436842": {
+    "gear_id": "g31188164",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 146
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 299
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 375
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 619
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1308
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 2111
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.2816,
+    "aerobic_power_m_per_beat": 1.3562,
+    "best_60s_grade_adjusted_speed_mps": 3.2214,
+    "grade_adjusted_distance_km": 6.0438
+  },
+  "19207333362": {
+    "gear_id": "g31188164",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 140
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 284
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 353
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 572
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1155
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 1797
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.3189,
+    "aerobic_power_m_per_beat": 1.1561,
+    "best_60s_grade_adjusted_speed_mps": 3.0826,
+    "grade_adjusted_distance_km": 5.1551
+  },
+  "19213528363": {
+    "gear_id": "g31188164",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 138
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 283
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 352
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 570
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1156
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 1852
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.214,
+    "aerobic_power_m_per_beat": 1.167,
+    "best_60s_grade_adjusted_speed_mps": 3.3897,
+    "grade_adjusted_distance_km": 5.461
+  },
+  "19227773848": {
+    "gear_id": "g25805243",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 106
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 226
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 286
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 580
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1233
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 2143
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.2275,
+    "aerobic_power_m_per_beat": 1.4509,
+    "best_60s_grade_adjusted_speed_mps": 4.1555,
+    "grade_adjusted_distance_km": 7.5501
+  },
+  "19235489098": {
+    "gear_id": "g24148471",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 95
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 200
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 269
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 449
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1136
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.488,
+    "aerobic_power_m_per_beat": 1.3264,
+    "best_60s_grade_adjusted_speed_mps": 4.7014,
+    "grade_adjusted_distance_km": 3.9628
+  },
+  "19240808647": {
+    "gear_id": "g31188164",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 137
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 281
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 350
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 570
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1602
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 2271
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.3048,
+    "aerobic_power_m_per_beat": 1.2072,
+    "best_60s_grade_adjusted_speed_mps": 3.332,
+    "grade_adjusted_distance_km": 5.8104
+  },
+  "19272786452": {
+    "gear_id": "g31188164",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 109
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 228
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 288
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 512
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1065
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 1832
+      },
+      {
+        "name": "10K",
+        "distance": 10000,
+        "elapsed_time": 3878
+      },
+      {
+        "name": "15K",
+        "distance": 15000,
+        "elapsed_time": 6608
+      },
+      {
+        "name": "10 mile",
+        "distance": 16090,
+        "elapsed_time": 7700
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 0.7795,
+    "aerobic_power_m_per_beat": 1.13,
+    "best_60s_grade_adjusted_speed_mps": 4.8415,
+    "grade_adjusted_distance_km": 17.6829
+  },
+  "19348154734": {
+    "gear_id": "g25805243",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 102
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 271
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 337
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 545
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1833
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 2988
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.2288,
+    "aerobic_power_m_per_beat": 1.2898,
+    "best_60s_grade_adjusted_speed_mps": 4.4712,
+    "grade_adjusted_distance_km": 6.2568
+  },
+  "19365102096": {
+    "gear_id": "g30522125",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 106
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 215
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 268
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 443
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 934
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 1480
+      },
+      {
+        "name": "10K",
+        "distance": 10000,
+        "elapsed_time": 3210
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.5338,
+    "aerobic_power_m_per_beat": 1.3407,
+    "best_60s_grade_adjusted_speed_mps": 4.2569,
+    "grade_adjusted_distance_km": 10.2406
+  },
+  "19377965493": {
+    "gear_id": "g25805243",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 141
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 288
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 360
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 604
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1299
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 2406
+      },
+      {
+        "name": "10K",
+        "distance": 10000,
+        "elapsed_time": 5149
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.1899,
+    "aerobic_power_m_per_beat": 1.0165,
+    "best_60s_grade_adjusted_speed_mps": 3.332,
+    "grade_adjusted_distance_km": 13.9968
+  },
+  "19387605670": {
+    "gear_id": "g31188164",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 109
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 228
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 288
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 476
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1050
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 6522
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.2398,
+    "aerobic_power_m_per_beat": 1.3273,
+    "best_60s_grade_adjusted_speed_mps": 4.1282,
+    "grade_adjusted_distance_km": 5.5079
+  },
+  "19395544572": {
+    "gear_id": "g31188164",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 139
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 286
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 356
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 574
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1169
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 1843
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.2726,
+    "aerobic_power_m_per_beat": 1.1636,
+    "best_60s_grade_adjusted_speed_mps": 3.1307,
+    "grade_adjusted_distance_km": 7.1262
+  },
+  "19402355724": {
+    "gear_id": "g25805243",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 138
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 286
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 356
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 579
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1166
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 2066
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.1754,
+    "aerobic_power_m_per_beat": null,
+    "best_60s_grade_adjusted_speed_mps": 3.1032,
+    "grade_adjusted_distance_km": 10.0517
+  },
+  "19416354908": {
+    "gear_id": "g25805243",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 131
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 264
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 359
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 613
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1241
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 2206
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.2083,
+    "aerobic_power_m_per_beat": 0.8685,
+    "best_60s_grade_adjusted_speed_mps": 3.5446,
+    "grade_adjusted_distance_km": 8.434
+  },
+  "19424837306": {
+    "gear_id": "g24148471",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 95
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 198
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 247
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 404
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 820
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 1294
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.8684,
+    "aerobic_power_m_per_beat": 1.5984,
+    "best_60s_grade_adjusted_speed_mps": 4.4088,
+    "grade_adjusted_distance_km": 5.0728
+  },
+  "19444029582": {
+    "gear_id": "g25805243",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 130
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 272
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 339
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 546
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1364
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 2880
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.293,
+    "aerobic_power_m_per_beat": 1.219,
+    "best_60s_grade_adjusted_speed_mps": 3.889,
+    "grade_adjusted_distance_km": 6.2433
+  },
+  "19484430049": {
+    "gear_id": "g25805243",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 147
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 298
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 373
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 609
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1263
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 1983
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.1083,
+    "aerobic_power_m_per_beat": null,
+    "best_60s_grade_adjusted_speed_mps": 3.3899,
+    "grade_adjusted_distance_km": 6.54
+  },
+  "19497670233": {
+    "gear_id": "g31188164",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 139
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 283
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 353
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 570
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1141
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 1937
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.3079,
+    "aerobic_power_m_per_beat": 1.2803,
+    "best_60s_grade_adjusted_speed_mps": 3.1068,
+    "grade_adjusted_distance_km": 5.23
+  },
+  "19513499429": {
+    "gear_id": "g25805243",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 108
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 224
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 280
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 468
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1304
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 2106
+      },
+      {
+        "name": "10K",
+        "distance": 10000,
+        "elapsed_time": 5703
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.3371,
+    "aerobic_power_m_per_beat": 1.18,
+    "best_60s_grade_adjusted_speed_mps": 3.8012,
+    "grade_adjusted_distance_km": 11.81
+  },
+  "19521900100": {
+    "gear_id": "g31188164",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 88
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 205
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 272
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 446
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 925
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 1453
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.643,
+    "aerobic_power_m_per_beat": 1.4927,
+    "best_60s_grade_adjusted_speed_mps": 4.8199,
+    "grade_adjusted_distance_km": 5.0567
+  },
+  "19529523385": {
+    "gear_id": "g25805243",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 100
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 213
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 272
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 446
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1082
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 1764
+      },
+      {
+        "name": "10K",
+        "distance": 10000,
+        "elapsed_time": 5452
+      },
+      {
+        "name": "15K",
+        "distance": 15000,
+        "elapsed_time": 8226
+      },
+      {
+        "name": "10 mile",
+        "distance": 16090,
+        "elapsed_time": 8604
+      },
+      {
+        "name": "20K",
+        "distance": 20000,
+        "elapsed_time": 14605
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.3324,
+    "aerobic_power_m_per_beat": 1.2418,
+    "best_60s_grade_adjusted_speed_mps": 4.3048,
+    "grade_adjusted_distance_km": 20.4046
+  },
+  "19541542077": {
+    "gear_id": "g25805243",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 123
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 255
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 324
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 522
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1473
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 2305
+      },
+      {
+        "name": "10K",
+        "distance": 10000,
+        "elapsed_time": 7512
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.2373,
+    "aerobic_power_m_per_beat": 1.1496,
+    "best_60s_grade_adjusted_speed_mps": 4.0478,
+    "grade_adjusted_distance_km": 11.1845
+  },
+  "19558415387": {
+    "gear_id": "g31188164",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 119
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 249
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 314
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 524
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1104
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 1829
+      },
+      {
+        "name": "10K",
+        "distance": 10000,
+        "elapsed_time": 3974
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.2972,
+    "aerobic_power_m_per_beat": 1.0506,
+    "best_60s_grade_adjusted_speed_mps": 4.0285,
+    "grade_adjusted_distance_km": 13.8838
+  },
+  "19561950612": {
+    "gear_id": "g31188164",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 142
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 294
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 369
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 605
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1235
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.2414,
+    "aerobic_power_m_per_beat": null,
+    "best_60s_grade_adjusted_speed_mps": 3.4917,
+    "grade_adjusted_distance_km": 4.5151
+  },
+  "19606523355": {
+    "gear_id": "g25805243",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 133
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 290
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 362
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 635
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1291
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 2170
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.3099,
+    "aerobic_power_m_per_beat": 1.1986,
+    "best_60s_grade_adjusted_speed_mps": 3.7172,
+    "grade_adjusted_distance_km": 6.0965
+  },
+  "19606523219": {
+    "gear_id": "g25805243",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 121
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 251
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 319
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 562
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1146
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 1898
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.4034,
+    "aerobic_power_m_per_beat": null,
+    "best_60s_grade_adjusted_speed_mps": 3.4711,
+    "grade_adjusted_distance_km": 5.2471
+  },
+  "19611514383": {
+    "gear_id": "g25805243",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 115
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 242
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 299
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 497
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1120
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 2080
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.0961,
+    "aerobic_power_m_per_beat": 1.1907,
+    "best_60s_grade_adjusted_speed_mps": 4.1828,
+    "grade_adjusted_distance_km": 7.2043
+  },
+  "19624968394": {
+    "gear_id": "g25805243",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 140
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 290
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 360
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 582
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1771
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 2428
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.2747,
+    "aerobic_power_m_per_beat": 1.0948,
+    "best_60s_grade_adjusted_speed_mps": 3.0656,
+    "grade_adjusted_distance_km": 5.7929
+  },
+  "19634585986": {
+    "gear_id": "g24148471",
+    "photo": "https://dgtzuqphqg23d.cloudfront.net/SX0eGpnqm_NnblrlBI9m_RhEEl48HrGU2WuS-M8l7M8-768x576.jpg",
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 95
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 226
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 330
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 567
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1230
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 2065
+      },
+      {
+        "name": "10K",
+        "distance": 10000,
+        "elapsed_time": 4867
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.2879,
+    "aerobic_power_m_per_beat": 1.1711,
+    "best_60s_grade_adjusted_speed_mps": 5.4066,
+    "grade_adjusted_distance_km": 13.5298
+  },
+  "19648200362": {
+    "gear_id": "g24148471",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 99
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 210
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 265
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 436
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 914
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 1477
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.4889,
+    "aerobic_power_m_per_beat": 1.4523,
+    "best_60s_grade_adjusted_speed_mps": 4.1771,
+    "grade_adjusted_distance_km": 5.3023
+  },
+  "19648703333": {
+    "gear_id": "g24148471",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 100
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 210
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 262
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 442
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 926
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 1492
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.5194,
+    "aerobic_power_m_per_beat": 1.4192,
+    "best_60s_grade_adjusted_speed_mps": 4.4968,
+    "grade_adjusted_distance_km": 5.2796
+  },
+  "19649189112": {
+    "gear_id": "g24148471",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 97
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 201
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 261
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 468
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 982
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 1572
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.6155,
+    "aerobic_power_m_per_beat": 1.428,
+    "best_60s_grade_adjusted_speed_mps": 4.3513,
+    "grade_adjusted_distance_km": 5.1491
+  },
+  "19670102166": {
+    "gear_id": "g26014455",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 91
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 192
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 240
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 390
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 2.1155,
+    "aerobic_power_m_per_beat": 1.5662,
+    "best_60s_grade_adjusted_speed_mps": 4.8763,
+    "grade_adjusted_distance_km": 2.6495
+  },
+  "19670525040": {
+    "gear_id": "g26014455",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 102
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 217
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 271
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 439
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 893
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 1398
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": null,
+    "aerobic_power_m_per_beat": 1.4787,
+    "best_60s_grade_adjusted_speed_mps": 4.1828,
+    "grade_adjusted_distance_km": 5.3031
+  },
+  "19679921482": {
+    "gear_id": "g25805243",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 137
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 294
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 371
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 618
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1270
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 2042
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.2471,
+    "aerobic_power_m_per_beat": 1.0686,
+    "best_60s_grade_adjusted_speed_mps": 3.4692,
+    "grade_adjusted_distance_km": 6.0707
+  },
+  "19688163927": {
+    "gear_id": "g25805243",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 108
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 272
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 353
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 653
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1428
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 2304
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.3413,
+    "aerobic_power_m_per_beat": 1.2534,
+    "best_60s_grade_adjusted_speed_mps": 4.6924,
+    "grade_adjusted_distance_km": 5.4034
+  },
+  "19693575437": {
+    "gear_id": "g25805243",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 142
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 293
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 364
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 591
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1191
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 1954
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.3202,
+    "aerobic_power_m_per_beat": 1.9743,
+    "best_60s_grade_adjusted_speed_mps": 4.1733,
+    "grade_adjusted_distance_km": 4.9947
+  },
+  "19709931355": {
+    "gear_id": "g25805243",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 132
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 266
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 339
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 559
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1273
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 2003
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.2682,
+    "aerobic_power_m_per_beat": 1.2754,
+    "best_60s_grade_adjusted_speed_mps": 3.6311,
+    "grade_adjusted_distance_km": 8.0775
+  },
+  "19723287298": {
+    "gear_id": "g25805243",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 136
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 285
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 355
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 576
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1508
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 2162
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.2996,
+    "aerobic_power_m_per_beat": 0.9767,
+    "best_60s_grade_adjusted_speed_mps": 3.1508,
+    "grade_adjusted_distance_km": 5.666
+  },
+  "19738119533": {
+    "gear_id": "g25805243",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 133
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 270
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 337
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 544
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1387
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 2889
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.2487,
+    "aerobic_power_m_per_beat": 1.1089,
+    "best_60s_grade_adjusted_speed_mps": 4.1075,
+    "grade_adjusted_distance_km": 9.9325
+  },
+  "19754876218": {
+    "gear_id": "g25805243",
+    "photo": "https://dgtzuqphqg23d.cloudfront.net/5cQ_Ing8BghERIe2oKPE8h6c51Etxc6GK0gj2ixOsIA-576x768.jpg",
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 93
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 200
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 248
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 411
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 826
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 1525
+      },
+      {
+        "name": "10K",
+        "distance": 10000,
+        "elapsed_time": 3768
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.474,
+    "aerobic_power_m_per_beat": 1.4023,
+    "best_60s_grade_adjusted_speed_mps": 4.9645,
+    "grade_adjusted_distance_km": 11.9875
+  },
+  "19755389395": {
+    "gear_id": "g25805243",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 128
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 261
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 330
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 587
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.3486,
+    "aerobic_power_m_per_beat": 1.096,
+    "best_60s_grade_adjusted_speed_mps": 3.3675,
+    "grade_adjusted_distance_km": 1.7288
+  },
+  "19769967144": {
+    "gear_id": "g25805243",
+    "photo": "https://dgtzuqphqg23d.cloudfront.net/fkczqreDz70T-1FyMlEROHIr-BxDoyisADlb5fIV7dQ-578x768.jpg",
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 116
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 246
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 311
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 510
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1051
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 1782
+      },
+      {
+        "name": "10K",
+        "distance": 10000,
+        "elapsed_time": 4398
+      },
+      {
+        "name": "15K",
+        "distance": 15000,
+        "elapsed_time": 6348
+      },
+      {
+        "name": "10 mile",
+        "distance": 16090,
+        "elapsed_time": 6707
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.3125,
+    "aerobic_power_m_per_beat": 1.2834,
+    "best_60s_grade_adjusted_speed_mps": 4.8336,
+    "grade_adjusted_distance_km": 18.0232
+  },
+  "19777447452": {
+    "gear_id": "g25805243",
+    "photo": null,
+    "best_efforts": [
+      {
+        "name": "400m",
+        "distance": 400,
+        "elapsed_time": 135
+      },
+      {
+        "name": "1/2 mile",
+        "distance": 805,
+        "elapsed_time": 290
+      },
+      {
+        "name": "1K",
+        "distance": 1000,
+        "elapsed_time": 369
+      },
+      {
+        "name": "1 mile",
+        "distance": 1609,
+        "elapsed_time": 628
+      },
+      {
+        "name": "2 mile",
+        "distance": 3219,
+        "elapsed_time": 1289
+      },
+      {
+        "name": "5K",
+        "distance": 5000,
+        "elapsed_time": 2089
+      }
+    ],
+    "aerobic_efficiency_m_per_beat": 1.2232,
+    "aerobic_power_m_per_beat": 1.2212,
+    "best_60s_grade_adjusted_speed_mps": 3.2312,
+    "grade_adjusted_distance_km": 6.4651
   }
 }

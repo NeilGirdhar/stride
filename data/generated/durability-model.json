@@ -1,514 +1,558 @@
 {
-  "generated_at": "2026-06-01T02:35:36.769006+00:00",
+  "generated_at": "2026-08-18T18:39:03.269739+00:00",
   "summary": {
-    "durability_retained": 0.9886,
+    "durability_retained": 1.0089,
     "reference_cae": 4000.0,
     "unit": "fraction of fresh efficiency",
     "definition": "Fraction of fresh grade-adjusted metres per heartbeat still held after 4000 CAE of cumulative load in a run.",
-    "runs_used": 382,
-    "sample_count": 943896,
-    "retained_sample_count": 902804
+    "runs_used": 458,
+    "sample_count": 1116786,
+    "retained_sample_count": 1069979
   },
   "fresh_efficiency_curve": [
     {
-      "effort_rate": 1.1045,
-      "efficiency_m_per_beat": 0.9228
+      "effort_rate": 1.1193,
+      "efficiency_m_per_beat": 0.9453
     },
     {
-      "effort_rate": 1.4681,
-      "efficiency_m_per_beat": 1.0476
+      "effort_rate": 1.4777,
+      "efficiency_m_per_beat": 1.0753
     },
     {
-      "effort_rate": 1.703,
-      "efficiency_m_per_beat": 1.0991
+      "effort_rate": 1.7101,
+      "efficiency_m_per_beat": 1.1288
     },
     {
-      "effort_rate": 1.9031,
-      "efficiency_m_per_beat": 1.1278
+      "effort_rate": 1.9044,
+      "efficiency_m_per_beat": 1.1628
     },
     {
-      "effort_rate": 2.0879,
-      "efficiency_m_per_beat": 1.1642
+      "effort_rate": 2.0878,
+      "efficiency_m_per_beat": 1.1908
     },
     {
-      "effort_rate": 2.2647,
-      "efficiency_m_per_beat": 1.1748
+      "effort_rate": 2.2689,
+      "efficiency_m_per_beat": 1.2102
     },
     {
-      "effort_rate": 2.4462,
-      "efficiency_m_per_beat": 1.1887
+      "effort_rate": 2.4507,
+      "efficiency_m_per_beat": 1.2109
     },
     {
-      "effort_rate": 2.6328,
-      "efficiency_m_per_beat": 1.2205
+      "effort_rate": 2.6439,
+      "efficiency_m_per_beat": 1.2406
     },
     {
-      "effort_rate": 2.8419,
-      "efficiency_m_per_beat": 1.2469
+      "effort_rate": 2.855,
+      "efficiency_m_per_beat": 1.2701
     },
     {
-      "effort_rate": 3.0747,
-      "efficiency_m_per_beat": 1.2766
+      "effort_rate": 3.0965,
+      "efficiency_m_per_beat": 1.295
     },
     {
-      "effort_rate": 3.3559,
-      "efficiency_m_per_beat": 1.3058
+      "effort_rate": 3.3894,
+      "efficiency_m_per_beat": 1.3201
     },
     {
-      "effort_rate": 3.7114,
-      "efficiency_m_per_beat": 1.3427
+      "effort_rate": 3.7712,
+      "efficiency_m_per_beat": 1.3576
     },
     {
-      "effort_rate": 4.2663,
-      "efficiency_m_per_beat": 1.3989
+      "effort_rate": 4.3573,
+      "efficiency_m_per_beat": 1.4203
     },
     {
-      "effort_rate": 5.5115,
-      "efficiency_m_per_beat": 1.5461
+      "effort_rate": 5.698,
+      "efficiency_m_per_beat": 1.5712
     }
   ],
   "durability_curve": [
     {
-      "cae": 123.0,
-      "retained_efficiency": 1.0255,
-      "samples": 32243
+      "cae": 123.2,
+      "retained_efficiency": 1.0223,
+      "samples": 38214
     },
     {
-      "cae": 368.5,
-      "retained_efficiency": 1.0074,
-      "samples": 32243
+      "cae": 368.2,
+      "retained_efficiency": 1.0076,
+      "samples": 38214
     },
     {
-      "cae": 615.0,
-      "retained_efficiency": 0.9935,
-      "samples": 32243
+      "cae": 614.3,
+      "retained_efficiency": 0.9978,
+      "samples": 38214
     },
     {
-      "cae": 867.3,
-      "retained_efficiency": 0.9881,
-      "samples": 32243
+      "cae": 866.2,
+      "retained_efficiency": 0.9893,
+      "samples": 38214
     },
     {
-      "cae": 1121.7,
-      "retained_efficiency": 0.9836,
-      "samples": 32243
+      "cae": 1119.6,
+      "retained_efficiency": 0.9835,
+      "samples": 38214
     },
     {
-      "cae": 1379.7,
-      "retained_efficiency": 0.9836,
-      "samples": 32243
+      "cae": 1376.4,
+      "retained_efficiency": 0.9835,
+      "samples": 38214
     },
     {
-      "cae": 1632.5,
-      "retained_efficiency": 0.9817,
-      "samples": 32243
+      "cae": 1628.9,
+      "retained_efficiency": 0.9794,
+      "samples": 38214
     },
     {
-      "cae": 1882.0,
-      "retained_efficiency": 0.9673,
-      "samples": 32243
+      "cae": 1878.2,
+      "retained_efficiency": 0.9703,
+      "samples": 38214
     },
     {
-      "cae": 2130.1,
-      "retained_efficiency": 0.9585,
-      "samples": 32243
+      "cae": 2125.9,
+      "retained_efficiency": 0.9601,
+      "samples": 38214
     },
     {
-      "cae": 2380.4,
-      "retained_efficiency": 0.9585,
-      "samples": 32243
+      "cae": 2377.5,
+      "retained_efficiency": 0.9591,
+      "samples": 38213
     },
     {
-      "cae": 2632.1,
-      "retained_efficiency": 0.9585,
-      "samples": 32243
+      "cae": 2630.5,
+      "retained_efficiency": 0.9591,
+      "samples": 38214
     },
     {
-      "cae": 2888.7,
-      "retained_efficiency": 0.9585,
-      "samples": 32243
+      "cae": 2889.2,
+      "retained_efficiency": 0.9591,
+      "samples": 38214
     },
     {
-      "cae": 3143.6,
-      "retained_efficiency": 0.9576,
-      "samples": 32243
+      "cae": 3148.1,
+      "retained_efficiency": 0.9552,
+      "samples": 38214
     },
     {
-      "cae": 3407.7,
-      "retained_efficiency": 0.9395,
-      "samples": 32243
+      "cae": 3413.8,
+      "retained_efficiency": 0.9373,
+      "samples": 38214
     },
     {
-      "cae": 3678.3,
-      "retained_efficiency": 0.9395,
-      "samples": 32243
+      "cae": 3691.1,
+      "retained_efficiency": 0.9349,
+      "samples": 38214
     },
     {
-      "cae": 3955.8,
-      "retained_efficiency": 0.9322,
-      "samples": 32243
+      "cae": 3980.5,
+      "retained_efficiency": 0.929,
+      "samples": 38214
     },
     {
-      "cae": 4259.7,
-      "retained_efficiency": 0.9217,
-      "samples": 32243
+      "cae": 4294.5,
+      "retained_efficiency": 0.9162,
+      "samples": 38214
     },
     {
-      "cae": 4599.4,
-      "retained_efficiency": 0.9181,
-      "samples": 32243
+      "cae": 4648.9,
+      "retained_efficiency": 0.9125,
+      "samples": 38213
     },
     {
-      "cae": 4978.3,
-      "retained_efficiency": 0.9176,
-      "samples": 32243
+      "cae": 5046.5,
+      "retained_efficiency": 0.9115,
+      "samples": 38214
     },
     {
-      "cae": 5418.0,
-      "retained_efficiency": 0.9176,
-      "samples": 32243
+      "cae": 5504.7,
+      "retained_efficiency": 0.9115,
+      "samples": 38213
     },
     {
-      "cae": 5937.9,
-      "retained_efficiency": 0.9093,
-      "samples": 32243
+      "cae": 6047.8,
+      "retained_efficiency": 0.9022,
+      "samples": 38214
     },
     {
-      "cae": 6585.2,
-      "retained_efficiency": 0.9061,
-      "samples": 32243
+      "cae": 6718.5,
+      "retained_efficiency": 0.9022,
+      "samples": 38214
     },
     {
-      "cae": 7415.8,
-      "retained_efficiency": 0.9061,
-      "samples": 32243
+      "cae": 7555.0,
+      "retained_efficiency": 0.9022,
+      "samples": 38214
     },
     {
-      "cae": 8400.9,
-      "retained_efficiency": 0.9061,
-      "samples": 32243
+      "cae": 8550.5,
+      "retained_efficiency": 0.9022,
+      "samples": 38214
     },
     {
-      "cae": 9651.2,
-      "retained_efficiency": 0.8861,
-      "samples": 32243
+      "cae": 9817.7,
+      "retained_efficiency": 0.8753,
+      "samples": 38214
     },
     {
-      "cae": 11604.7,
-      "retained_efficiency": 0.8678,
-      "samples": 32243
+      "cae": 11741.3,
+      "retained_efficiency": 0.8609,
+      "samples": 38213
     },
     {
-      "cae": 15713.9,
-      "retained_efficiency": 0.8576,
-      "samples": 32243
+      "cae": 15317.5,
+      "retained_efficiency": 0.8609,
+      "samples": 38214
     },
     {
-      "cae": 25122.9,
-      "retained_efficiency": 0.779,
-      "samples": 32243
+      "cae": 24281.3,
+      "retained_efficiency": 0.7731,
+      "samples": 38214
     }
   ],
   "series": [
     {
       "date": "2024-12-25",
-      "retained": 0.8424
+      "retained": 0.826
     },
     {
       "date": "2025-01-01",
-      "retained": 0.8462
+      "retained": 0.828
     },
     {
       "date": "2025-01-08",
-      "retained": 0.849
+      "retained": 0.8308
     },
     {
       "date": "2025-01-15",
-      "retained": 0.8449
+      "retained": 0.8276
     },
     {
       "date": "2025-01-22",
-      "retained": 0.8384
+      "retained": 0.8213
     },
     {
       "date": "2025-01-29",
-      "retained": 0.8609
+      "retained": 0.8411
     },
     {
       "date": "2025-02-05",
-      "retained": 0.8627
+      "retained": 0.8446
     },
     {
       "date": "2025-02-12",
-      "retained": 0.8661
+      "retained": 0.8469
     },
     {
       "date": "2025-02-19",
-      "retained": 0.8649
+      "retained": 0.8467
     },
     {
       "date": "2025-02-26",
-      "retained": 0.8743
+      "retained": 0.8561
     },
     {
       "date": "2025-03-05",
-      "retained": 0.877
+      "retained": 0.8595
     },
     {
       "date": "2025-03-12",
-      "retained": 0.8796
+      "retained": 0.8595
     },
     {
       "date": "2025-03-19",
-      "retained": 0.8811
+      "retained": 0.8648
     },
     {
       "date": "2025-03-26",
-      "retained": 0.8816
+      "retained": 0.8666
     },
     {
       "date": "2025-04-02",
-      "retained": 0.8801
+      "retained": 0.8692
     },
     {
       "date": "2025-04-09",
-      "retained": 0.886
+      "retained": 0.8749
     },
     {
       "date": "2025-04-16",
-      "retained": 0.8882
+      "retained": 0.8767
     },
     {
       "date": "2025-04-23",
-      "retained": 0.8898
+      "retained": 0.8793
     },
     {
       "date": "2025-04-30",
-      "retained": 0.9004
+      "retained": 0.8869
     },
     {
       "date": "2025-05-07",
-      "retained": 0.8999
+      "retained": 0.8894
     },
     {
       "date": "2025-05-14",
-      "retained": 0.9004
+      "retained": 0.8893
     },
     {
       "date": "2025-05-21",
-      "retained": 0.9027
+      "retained": 0.8902
     },
     {
       "date": "2025-05-28",
-      "retained": 0.9002
+      "retained": 0.8881
     },
     {
       "date": "2025-06-04",
-      "retained": 0.9064
+      "retained": 0.8892
     },
     {
       "date": "2025-06-11",
-      "retained": 0.9082
+      "retained": 0.893
     },
     {
       "date": "2025-06-18",
-      "retained": 0.9024
+      "retained": 0.89
     },
     {
       "date": "2025-06-25",
-      "retained": 0.9123
+      "retained": 0.8953
     },
     {
       "date": "2025-07-02",
-      "retained": 0.9145
+      "retained": 0.8967
     },
     {
       "date": "2025-07-09",
-      "retained": 0.9153
+      "retained": 0.8975
     },
     {
       "date": "2025-07-16",
-      "retained": 0.9138
+      "retained": 0.8968
     },
     {
       "date": "2025-07-23",
-      "retained": 0.9134
+      "retained": 0.9019
     },
     {
       "date": "2025-07-30",
-      "retained": 0.906
+      "retained": 0.8929
     },
     {
       "date": "2025-08-06",
-      "retained": 0.9118
+      "retained": 0.8957
     },
     {
       "date": "2025-08-13",
-      "retained": 0.9159
+      "retained": 0.8989
     },
     {
       "date": "2025-08-20",
-      "retained": 0.9223
+      "retained": 0.9058
     },
     {
       "date": "2025-08-27",
-      "retained": 0.9259
+      "retained": 0.9101
     },
     {
       "date": "2025-09-03",
-      "retained": 0.933
+      "retained": 0.9168
     },
     {
       "date": "2025-09-10",
-      "retained": 0.9372
+      "retained": 0.9226
     },
     {
       "date": "2025-09-17",
-      "retained": 0.9359
+      "retained": 0.9162
     },
     {
       "date": "2025-09-24",
-      "retained": 0.9329
+      "retained": 0.9143
     },
     {
       "date": "2025-10-01",
-      "retained": 0.9406
+      "retained": 0.9241
     },
     {
       "date": "2025-10-08",
-      "retained": 0.936
+      "retained": 0.9166
     },
     {
       "date": "2025-10-15",
-      "retained": 0.9404
+      "retained": 0.9206
     },
     {
       "date": "2025-10-22",
-      "retained": 0.9416
+      "retained": 0.9229
     },
     {
       "date": "2025-10-29",
-      "retained": 0.9512
+      "retained": 0.9319
     },
     {
       "date": "2025-11-05",
-      "retained": 0.9485
+      "retained": 0.9289
     },
     {
       "date": "2025-11-12",
-      "retained": 0.9512
+      "retained": 0.9318
     },
     {
       "date": "2025-11-19",
-      "retained": 0.9592
+      "retained": 0.9388
     },
     {
       "date": "2025-11-26",
-      "retained": 0.9642
+      "retained": 0.9452
     },
     {
       "date": "2025-12-03",
-      "retained": 0.9694
+      "retained": 0.9488
     },
     {
       "date": "2025-12-10",
-      "retained": 0.9654
+      "retained": 0.946
     },
     {
       "date": "2025-12-17",
-      "retained": 0.9691
+      "retained": 0.9478
     },
     {
       "date": "2025-12-24",
-      "retained": 0.9649
+      "retained": 0.9463
     },
     {
       "date": "2025-12-31",
-      "retained": 0.963
+      "retained": 0.9448
     },
     {
       "date": "2026-01-07",
-      "retained": 0.9686
+      "retained": 0.9472
     },
     {
       "date": "2026-01-14",
-      "retained": 0.9722
+      "retained": 0.9497
     },
     {
       "date": "2026-01-21",
-      "retained": 0.9704
+      "retained": 0.9487
     },
     {
       "date": "2026-01-28",
-      "retained": 0.9696
+      "retained": 0.9479
     },
     {
       "date": "2026-02-04",
-      "retained": 0.9707
+      "retained": 0.9486
     },
     {
       "date": "2026-02-11",
-      "retained": 0.9638
+      "retained": 0.9449
     },
     {
       "date": "2026-02-18",
-      "retained": 0.9727
+      "retained": 0.9519
     },
     {
       "date": "2026-02-25",
-      "retained": 0.9752
+      "retained": 0.9525
     },
     {
       "date": "2026-03-04",
-      "retained": 0.9732
+      "retained": 0.9479
     },
     {
       "date": "2026-03-11",
-      "retained": 0.9634
+      "retained": 0.9401
     },
     {
       "date": "2026-03-18",
-      "retained": 0.9706
+      "retained": 0.9481
     },
     {
       "date": "2026-03-25",
-      "retained": 0.9695
+      "retained": 0.9474
     },
     {
       "date": "2026-04-01",
-      "retained": 0.9606
+      "retained": 0.9385
     },
     {
       "date": "2026-04-08",
-      "retained": 0.9626
+      "retained": 0.9415
     },
     {
       "date": "2026-04-15",
-      "retained": 0.9686
+      "retained": 0.9453
     },
     {
       "date": "2026-04-22",
-      "retained": 0.971
+      "retained": 0.9478
     },
     {
       "date": "2026-04-29",
-      "retained": 0.97
+      "retained": 0.9471
     },
     {
       "date": "2026-05-06",
-      "retained": 0.9686
+      "retained": 0.9463
     },
     {
       "date": "2026-05-13",
-      "retained": 0.9761
+      "retained": 0.9552
     },
     {
       "date": "2026-05-20",
-      "retained": 0.9805
+      "retained": 0.9576
     },
     {
       "date": "2026-05-27",
-      "retained": 0.9886
+      "retained": 0.9676
+    },
+    {
+      "date": "2026-06-03",
+      "retained": 0.9674
+    },
+    {
+      "date": "2026-06-10",
+      "retained": 0.9696
+    },
+    {
+      "date": "2026-06-17",
+      "retained": 0.9665
+    },
+    {
+      "date": "2026-06-24",
+      "retained": 0.9663
+    },
+    {
+      "date": "2026-07-01",
+      "retained": 0.9654
+    },
+    {
+      "date": "2026-07-08",
+      "retained": 0.9728
+    },
+    {
+      "date": "2026-07-15",
+      "retained": 0.976
+    },
+    {
+      "date": "2026-07-22",
+      "retained": 0.9807
+    },
+    {
+      "date": "2026-07-29",
+      "retained": 0.9883
+    },
+    {
+      "date": "2026-08-05",
+      "retained": 1.0003
+    },
+    {
+      "date": "2026-08-12",
+      "retained": 1.0089
     }
   ]
 }

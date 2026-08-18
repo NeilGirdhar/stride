@@ -1,22 +1,22 @@
 {
-  "generated_at": "2026-06-01T02:35:28+00:00",
-  "total_activities": 683,
+  "generated_at": "2026-08-18T18:31:33+00:00",
+  "total_activities": 774,
   "date_range": {
     "first": "2015-06-06",
-    "last": "2026-05-30"
+    "last": "2026-08-17"
   },
   "by_sport": {
     "Run": {
-      "count": 579,
-      "distance_km": 4145.6,
-      "moving_hours": 455.4,
-      "elevation_m": 35138
+      "count": 655,
+      "distance_km": 4754.5,
+      "moving_hours": 517.4,
+      "elevation_m": 40119
     },
     "Ride": {
-      "count": 28,
-      "distance_km": 544.0,
-      "moving_hours": 32.5,
-      "elevation_m": 3033
+      "count": 41,
+      "distance_km": 1216.5,
+      "moving_hours": 66.5,
+      "elevation_m": 6253
     },
     "WeightTraining": {
       "count": 3,
@@ -61,7 +61,7 @@
       "elevation_m": 0
     },
     "Workout": {
-      "count": 3,
+      "count": 4,
       "distance_km": 0.0,
       "moving_hours": 4.2,
       "elevation_m": 0
@@ -71,98 +71,99 @@
       "distance_km": 25.7,
       "moving_hours": 2.6,
       "elevation_m": 706
+    },
+    "Swim": {
+      "count": 1,
+      "distance_km": 0.3,
+      "moving_hours": 0.3,
+      "elevation_m": 0
     }
   },
   "last_12_weeks": [
     {
-      "week_start": "2026-03-09",
-      "all_moving_hours": 4.9,
-      "run_km": 33.0
-    },
-    {
-      "week_start": "2026-03-16",
-      "all_moving_hours": 6.1,
-      "run_km": 34.9
-    },
-    {
-      "week_start": "2026-03-23",
-      "all_moving_hours": 2.5,
-      "run_km": 23.0
-    },
-    {
-      "week_start": "2026-03-30",
-      "all_moving_hours": 6.5,
-      "run_km": 62.3
-    },
-    {
-      "week_start": "2026-04-06",
-      "all_moving_hours": 6.6,
-      "run_km": 63.8
-    },
-    {
-      "week_start": "2026-04-13",
-      "all_moving_hours": 7.8,
-      "run_km": 54.2
-    },
-    {
-      "week_start": "2026-04-20",
-      "all_moving_hours": 9.4,
-      "run_km": 61.4
-    },
-    {
-      "week_start": "2026-04-27",
-      "all_moving_hours": 4.6,
-      "run_km": 22.8
-    },
-    {
-      "week_start": "2026-05-04",
-      "all_moving_hours": 5.1,
-      "run_km": 29.8
-    },
-    {
-      "week_start": "2026-05-11",
-      "all_moving_hours": 6.0,
-      "run_km": 58.5
-    },
-    {
-      "week_start": "2026-05-18",
-      "all_moving_hours": 6.6,
-      "run_km": 61.3
-    },
-    {
       "week_start": "2026-05-25",
+      "all_moving_hours": 4.9,
+      "run_km": 46.2
+    },
+    {
+      "week_start": "2026-06-01",
+      "all_moving_hours": 7.7,
+      "run_km": 48.3
+    },
+    {
+      "week_start": "2026-06-08",
+      "all_moving_hours": 6.6,
+      "run_km": 41.0
+    },
+    {
+      "week_start": "2026-06-15",
       "all_moving_hours": 6.8,
-      "run_km": 64.8
+      "run_km": 43.0
+    },
+    {
+      "week_start": "2026-06-22",
+      "all_moving_hours": 12.6,
+      "run_km": 63.0
+    },
+    {
+      "week_start": "2026-06-29",
+      "all_moving_hours": 12.1,
+      "run_km": 75.7
+    },
+    {
+      "week_start": "2026-07-06",
+      "all_moving_hours": 14.0,
+      "run_km": 51.0
+    },
+    {
+      "week_start": "2026-07-13",
+      "all_moving_hours": 3.2,
+      "run_km": 29.9
+    },
+    {
+      "week_start": "2026-07-20",
+      "all_moving_hours": 7.9,
+      "run_km": 41.9
+    },
+    {
+      "week_start": "2026-07-27",
+      "all_moving_hours": 7.9,
+      "run_km": 77.5
+    },
+    {
+      "week_start": "2026-08-03",
+      "all_moving_hours": 8.1,
+      "run_km": 60.5
+    },
+    {
+      "week_start": "2026-08-10",
+      "all_moving_hours": 8.7,
+      "run_km": 70.6
+    },
+    {
+      "week_start": "2026-08-17",
+      "all_moving_hours": 0.7,
+      "run_km": 6.4
     }
   ],
   "running_fitness": {
-    "recent_runs_considered": 53,
+    "recent_runs_considered": 59,
     "window_days": 60,
-    "best_equiv_5k": "21:13",
-    "best_equiv_5k_sec": 1273,
-    "median_equiv_5k": "30:49",
+    "best_equiv_5k": "21:31",
+    "best_equiv_5k_sec": 1291,
+    "median_equiv_5k": "30:22",
     "best_from": {
-      "name": "Montreal 21k",
-      "date": "2026-04-19",
-      "distance_km": 21.29,
-      "time": "98:33"
+      "name": "Triathlon Verdun",
+      "date": "2026-08-09",
+      "distance_km": 2.62,
+      "time": "10:50"
     }
   },
   "running_form_by_month": {
-    "2025-06": {
-      "avg_cadence_spm": 157.7,
-      "efficiency_m_per_beat_x1000": 18.8,
-      "runs": 20
-    },
-    "2025-07": {
-      "avg_cadence_spm": 150.7,
-      "efficiency_m_per_beat_x1000": 18.2,
-      "runs": 8
-    },
     "2025-08": {
-      "avg_cadence_spm": 157.0,
-      "efficiency_m_per_beat_x1000": 18.9,
-      "runs": 18
+      "avg_cadence_spm": 158.7,
+      "efficiency_m_per_beat_x1000": 19.6,
+      "runs": 6
     },
     "2025-09": {
       "avg_cadence_spm": 158.6,
@@ -208,6 +209,21 @@
       "avg_cadence_spm": 158.7,
       "efficiency_m_per_beat_x1000": 21.1,
       "runs": 28
+    },
+    "2026-06": {
+      "avg_cadence_spm": 160.0,
+      "efficiency_m_per_beat_x1000": 20.5,
+      "runs": 27
+    },
+    "2026-07": {
+      "avg_cadence_spm": 156.8,
+      "efficiency_m_per_beat_x1000": 21.2,
+      "runs": 27
+    },
+    "2026-08": {
+      "avg_cadence_spm": 159.3,
+      "efficiency_m_per_beat_x1000": 21.5,
+      "runs": 22
     }
   }
 }
