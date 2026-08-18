@@ -1,90 +1,103 @@
 # Stride
 
-Stride is a running-training app with three panes:
+Stride is a personal, Strava-backed running dashboard and marathon-progression
+tool. A static browser application renders committed JSON data; bundled Python
+commands pull that data from Strava and build the heavier model artifacts
+offline.
 
-- **Log** — past runs, with clubs, shoes, and best efforts.
-- **Fitness** — how hard to run, based on recent training.
-- **Progression** — progress tracked with advanced running metrics.
+The application has three panes:
 
-It's a client-side PWA — vanilla JS ES modules, no build step, no backend.
-Training data comes from your Strava history, pulled locally by the bundled
-Python tools (`uv run stride-…`).
+- **Log** plots running history and weekly volume, with club, shoe, race, and
+  best-effort details.
+- **Fitness** estimates slow-decaying fitness, fast-decaying fatigue, form, and a
+  simple Rest/Jog/Run/Push signal.
+- **Progression** tracks load tolerance, running economy, durability, and race
+  predictions against a configured marathon goal.
 
-## Setup
+There is no runtime backend, database, framework, or frontend build step. See
+[`ARCHITECTURE.md`](ARCHITECTURE.md) for the data flow, module map, and metric and
+model definitions.
 
-1. **Create Strava API credentials** at <https://www.strava.com/settings/api>
-   (any app name; website `http://localhost`; set **Authorization Callback
-   Domain** to exactly `localhost`). Note the **Client ID** and **Client Secret**.
+## Set up Strava
 
-2. **Authorize.** `auth` prompts for those two values (saved to
-   `data/private/strava-config.json`, gitignored), then opens your browser to
-   click *Authorize*:
-
-   ```sh
-   uv run stride-sync auth
-   ```
-
-## Pull your Strava data
+Create API credentials at <https://www.strava.com/settings/api>. Set the
+**Authorization Callback Domain** to exactly `localhost`, then run:
 
 ```sh
-uv run stride-sync sync       # activities — full history first run, incremental after
-uv run stride-sync details    # per-run shoes, photos, best-effort PRs
-uv run stride-sync streams    # per-run HR/grade streams + max HR / HR zones
+uv run stride-sync auth
 ```
 
-Every command is resumable and fetches only what's missing, so the first run is
-the slow one — `streams` most of all (one request per run, cached in
-`data/private/strava-durability-samples.json`); if rate limits pause it, just
-re-run. Re-run any command later to pull recent activity, or `stride-sync sync
---full` to ignore the checkpoint and refetch everything.
+The command prompts for the client ID and secret, opens Strava authorization,
+and stores the credentials and OAuth tokens under the gitignored
+`data/private/` directory.
 
-`streams` also recomputes your **max HR** (rolling max-average over 10/30/60 s
-windows) from the cache and writes `data/generated/hr-zones.json`, where HR zone
-boundaries are derived as fractions of max HR (set the fractions in
-`data/entered/training-config.json`). It refreshes every time new runs are pulled.
+## Refresh the dashboard
 
-## Rebuild models
-
-The Progression pane reads two precomputed artifacts rather than fitting them in
-the browser: a race model (`data/generated/race-model.json`) and a durability
-model (`data/generated/durability-model.json`). Both are offline computations
-over already-pulled data, so rebuild them after syncing or editing race labels:
+Run the pipeline in this order:
 
 ```sh
+uv run stride-sync sync
+uv run stride-sync details
+uv run stride-sync streams
 uv run stride-race-model
 uv run stride-durability-model
 ```
 
-Race labels live in `data/entered/races.json` — add only true efforts (races,
-time trials, deliberate benchmarks); ordinary runs stay out and serve only as
-training-load features. Rebuild the race model after each new race, and weekly
-during training so load factors and predictions stay current.
+- `sync` incrementally fetches activities and rebuilds the fitness summary. Use
+  `sync --full` to ignore the stored checkpoint.
+- `details` refreshes run details, shoes, best efforts, grade-adjusted metrics,
+  and records.
+- `streams` refreshes the resumable segment cache, measured maximum HR, HR-zone
+  boundaries, and sustained-zone economy metrics.
+- The final two commands rebuild the race-prediction and durability artifacts.
 
-## Run the app
+`details` and `streams` accept `--limit=N` for rate-limited backfills. Model
+artifacts are not rebuilt automatically by the sync commands.
 
-Serve the folder over HTTP (it's fully static):
+True race efforts are registered manually in `data/entered/races.json`. The
+marathon goal, conditions, prediction distances, and progression targets live in
+`data/entered/marathon-goal.json`.
+
+## Run locally
+
+ES modules and JSON fetches require an HTTP origin:
 
 ```sh
-python -m http.server 8000   # then open http://localhost:8000
+python -m http.server 8000
 ```
+
+Then open <http://localhost:8000>.
 
 ## Project layout
 
-Data is grouped by source:
+- `index.html`, `js/`, `css/` — static three-pane browser application
+- `src/stride/` — Strava sync and offline model commands
+- `data/imported/` — slimmed Strava activities, run details, and gear
+- `data/generated/` — reproducible browser-facing summaries and models
+- `data/entered/` — hand-maintained goals, race labels, clubs, and training config
+- `data/private/` — credentials, tokens, and the large stream cache; never commit
+- `ARCHITECTURE.md` — technical design and model semantics
+- `AGENTS.md` — repository instructions for coding agents
 
-- `data/imported/` — pulled from Strava by `sync` / `details` / `streams`
-- `data/generated/` — reproducible outputs from the model scripts
-- `data/entered/` — hand-maintained labels and overrides
-- `data/private/` — credentials, tokens, and stream cache (gitignored)
+Imported and generated JSON is intentionally committed so the deployed static
+site has data. It omits GPS coordinates but still contains personal activity
+names, dates, Strava IDs, performance data, shoe names, and some photo URLs.
+Treat changes to these files as user data and do not discard or regenerate them
+unless the task calls for it.
 
-Key files:
+## Verify changes
 
-- `data/imported/strava-activities.json` — activity list, deduped by id
-- `data/imported/strava-run-details.json`, `strava-gear.json` — per-run shoes, photos, gear
-- `data/generated/fitness-summary.json`, `records.json` — derived metrics and best-effort PRs
-- `data/generated/race-model.json`, `durability-model.json` — the Progression-pane models
-- `data/generated/hr-zones.json` — measured max HR + HR zone boundaries (from `streams`)
-- `data/entered/races.json`, `club-overrides.json` — race labels and club overrides
-- `data/entered/training-config.json` — serious-start date and HR zone-divider fractions
-- `data/private/strava-config.json`, `strava-tokens.json`, `strava-durability-samples.json`
-  — secrets and the stream cache (never committed)
+```sh
+npm test
+npx eslint .
+uv run ruff check .
+uv run ty check
+uv lock --check
+```
+
+`npm test` currently performs JavaScript syntax checks. There is no behavioral
+JavaScript suite or Python `tests/` directory.
+
+## License
+
+Apache-2.0. See `LICENSE`.
